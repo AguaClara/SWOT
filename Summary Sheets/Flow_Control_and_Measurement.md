@@ -385,4 +385,12 @@ Such that:
 $h$ = $h(t)$ = elevation of water level with reference to the valve.
 
 
-With these two equations for flow $Q$ and water level $h$ as a function of time, we can make a plot, shown below, to visualize what's going on.
+With these two equations for flow $Q$ and water level $h$ as a function of time, we can make a plot, shown below, to visualize what's going on. The plot below shows normalized water level (referred to as depth) and flow. Normalized simply refers to the ratio of current/initial, so normalized flow refers to $\frac{Q}{Q_0}$ and normalized depth _in the tank_ refers to $\frac{h}{h_0}$. **The tank/valve system this plot is based on has the valve at the same level as the bottom of the tank**, so $h_{Tank} = h_0$. $t_{Design} = 4$ days
+
+![](https://github.com/AguaClara/CEE4540_Master/blob/master/Summary%20Sheets/Images/Tank%20valve%20not%20elevated.jpg?raw=true)
+
+This plot shows the interesting relationship of both water depth and flow over time. The relationship is unfortunate in this case, as normalized flow goes from 1 to 0, which is clearly not _constant_ head. Ideally, the normalized flow $\frac{Q}{Q_0}$ would be a horizontal line, such that  $\frac{Q}{Q_0} = 1$. We can manipulate the equation $\frac{Q}{Q_0} = 1 - \frac{1}{2} \frac{t}{t_{Design}} \frac{h_{Tank}}{h_0}$ to get closer to $\frac{Q}{Q_0} = 1$ by making $\frac{h_{Tank}}{h_{0}}$ very, very large to make the $\frac{1}{2} \frac{t}{t_{Design}} \frac{h_{Tank}}{h_0}$ term drop out. What does this mean in real life? It means having the valve far, far below the bottom of the tank. Since underground systems have their own particular challenges, this solution means raising the tank far, far above the valve. In the plot below, $h_0 = 50 \cdot h_{Tank}$
+
+![](https://github.com/AguaClara/CEE4540_Master/blob/master/Summary%20Sheets/Images/Tank%20valve%20elevated.jpg?raw=true)
+
+This plot is exactly what we want. $\frac{Q}{Q_0} \approx 1$. While the water depth 
