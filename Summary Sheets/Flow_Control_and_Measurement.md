@@ -36,6 +36,8 @@ Please use this table to control/command find the sections you are looking for.
 
 #### **Section 2: Introduction to Flow Control: The Search for Constant Head**  
 **2.1)** Tank with a valve  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - &nbsp;Flow $Q$ and Water Level $h$ as a Function of Time  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - &nbsp;Drain System for a Tank  
 **2.2)** Conventional Flow Control Devices  
 **2.3)**
 
@@ -52,7 +54,7 @@ Please use this table to control/command find the sections you are looking for.
 ## Section 1: Fluids Review
 This section is meant to be a brief refresher on fluid mechanics. It will only cover the topics of fluids mechanics that will be used heavily in the course.
 
-If you wish to review fluid mechanics in (much) more detail, please refer to [this guide](https://confluence.cornell.edu/display/cee4540/Fluids+Review+Guide "CEE 4540 Fluids Review"). If you wish to review from the textbook used in  CEE 3310 the intro to fluid mechanics course at Cornell, you can find a pdf of the book [here](https://hellcareers.files.wordpress.com/2016/01/fluid-mechanics-seventh-edition-by-frank-m-white.pdf "CEE 3310 textbook").
+If you wish to review fluid mechanics in (much) more detail, please refer to [this guide](https://github.com/AguaClara/CEE4540_Master/wiki/Fluids-Review-Guide "CEE 4540 Fluids Review"). If you wish to review from the textbook used in  CEE 3310 the intro to fluid mechanics course at Cornell, you can find a pdf of the book [here](https://hellcareers.files.wordpress.com/2016/01/fluid-mechanics-seventh-edition-by-frank-m-white.pdf "CEE 3310 textbook").
 
 ### Important Terms
 1. Head
@@ -93,7 +95,9 @@ There are two important distinctions to keep in mind when using head to talk abo
 Going back to the Bernoulli equation, the $\frac{p}{\rho g}$ term is called the pressure head, $z$ the elevation head, and $\frac{V^2}{2g}$ the velocity head. The following diagram shows these various forms of head via a 1 meter deep bucket (left) and a jet of water shooting out of the ground (right).
 
 
-![Anyone getting this?](https://github.com/AguaClara/CEE4540_DC/blob/master/AguaClara%20Water%20Treatment%20Plant%20Design/Summary%20Sheets/Images/Different%20forms%20of%20head.jpg?raw=true)
+![Anyone getting this?](https://github.com/AguaClara/CEE4540_Master/blob/master/Summary%20Sheets/Images/Different%20forms%20of%20head.jpg?raw=true)
+
+sssss](https://github.com/AguaClara/CEE4540_Master/blob/master/Summary%20Sheets/Images/Different%20forms%20of%20head.jpg?raw=true
 
 
 #### Assumption in using the Bernoulli equation  
@@ -186,14 +190,14 @@ The significance of this equation lies in its relationship between $h_{\rm{f}}$ 
 In 1944, Lewis Ferry Moody plotted a ridiculous amount of experimental data, gathered by many people, on the Darcy-Weisbach friction factor to create what we now call the [**Moody diagram**](https://en.wikipedia.org/wiki/Moody_chart "Moody wikipedia"). This diagram has the friction factor $\rm{f}$ on the left-hand y-axis, relative pipe roughness $\frac{\epsilon}{D}$ on the right-hand y-axis, and Reynolds number $\rm{Re}$ on the x-axis. The Moody diagram is an alternative to computational methods for finding $\rm{f}$.
 
 
-![Moody doody](https://github.com/AguaClara/CEE4540_DC/blob/master/AguaClara%20Water%20Treatment%20Plant%20Design/Summary%20Sheets/Images/Moody.jpg?raw=true)
+![Moody doody](https://github.com/AguaClara/CEE4540_Master/blob/master/Summary%20Sheets/Images/Moody.jpg?raw=true)
 
 
 ### Minor Losses
 
 Unfortunately, there is no simple 'pushing a box across the ground' example to explain minor losses. So instead, consider a [hydraulic jump](https://www.youtube.com/watch?v=5spXXZX55C8 "What an amazingly made video, but sorry for the 3310 PTSD"). In the video, you can see lots of turbulence and eddies in the transition region between the fast, shallow flow and the slow, deep flow. The high amount of mixing of the water in the transition region of the hydraulic jump results in significant friction *between water and water* (the measure of a fluid's resistance to internal, fluid-fluid friction is called [**viscosity**](https://en.wikipedia.org/wiki/Viscosity "Viscosity wikipedia")). This turbulent, eddy-induced, fluid-fluid friction results in minor losses, much like fluid-pipe friction results in major losses.
 
-As is the case in a hydraulic jump, a flow expansion (from shallow flow to deep flow) creates the turbulent eddies that result in minor losses. This will be a recurring theme in throughout the course: _**minor losses are caused by flow expansions**_. Imagine a pipe fitting that connects a small diameter pipe to a large diameter one, as shown in the image below. The flow must expand to fill up the entire large diameter pipe. This expansion creates turbulent eddies near the union between the small and large pipes, and these eddies cause minor losses. You may already know the equation for minor losses, but understanding where it comes from is very important for effective AguaClara plant design. For this reason, you are strongly recommended to read through the full derivation, which can be found [here](https://github.com/AguaClara/CEE4540_DC/blob/master/AguaClara%20Water%20Treatment%20Plant%20Design/Summary%20Sheets/Derivation_minor_loss_equation.md "Remember to check this link").
+As is the case in a hydraulic jump, a flow expansion (from shallow flow to deep flow) creates the turbulent eddies that result in minor losses. This will be a recurring theme in throughout the course: _**minor losses are caused by flow expansions**_. Imagine a pipe fitting that connects a small diameter pipe to a large diameter one, as shown in the image below. The flow must expand to fill up the entire large diameter pipe. This expansion creates turbulent eddies near the union between the small and large pipes, and these eddies cause minor losses. You may already know the equation for minor losses, but understanding where it comes from is very important for effective AguaClara plant design. For this reason, you are strongly recommended to read through the full derivation, which can be found [here](https://github.com/AguaClara/CEE4540_Master/blob/master/Summary%20Sheets/Derivation_minor_loss_equation.md "Remember to check this link").
 
 There are three forms of the minor loss equation that you will see in this class:
 
@@ -212,13 +216,13 @@ $K_e, \,\, K_e^{'}$ = minor loss coefficients, dimensionless
 
 The $in$ and $out$ subscripts in each of the three forms refer to the diagram that was used for the derivation:
 
-![I really don't think anyone can read this](https://github.com/AguaClara/CEE4540_DC/blob/master/AguaClara%20Water%20Treatment%20Plant%20Design/Summary%20Sheets/Images/Minor%20loss%20pipe.jpg?raw=true)
+![I really don't think anyone can read this](https://github.com/AguaClara/CEE4540_Master/blob/master/Summary%20Sheets/Images/Minor%20loss%20pipe.jpg?raw=true)
 
 The second and third forms are the ones which you are probably most familiar with. The distinction between them, however, is critical. First, consider the magnitudes of $A_{in}$ and $A_{out}$. $A_{in}$ can never be larger than $A_{out}$, because the flow is expanding. When flow expands, the cross-sectional area it flows through must increase. As a result, both $\frac{A_{out}}{A_{in}} > 1$ and $\frac{A_{in}}{A_{out}} < 1$ must always be true. This means that $K_e$ can never be greater than 1, while $K_e^{'}$ technically has no upper limit.
 
 If you have taken CEE 3310, you have seen tables of minor loss coefficients [like this one](https://www.engineeringtoolbox.com/minor-loss-coefficients-pipes-d_626.html "engineeringtoolbox is the best site ever"), and they almost all have coefficients greater than 1. This implies that these tables use the third form of the minor loss equation as we have defined it, where the velocity is $V_{out}$. There is a good reason for using the third form over the second one: $V_{out}$ is far easier to determine than $V_{in}$. Consider flow through a pipe elbow, as shown in the image below.
 
-![What does this text do again?](https://github.com/AguaClara/CEE4540_DC/blob/master/AguaClara%20Water%20Treatment%20Plant%20Design/Summary%20Sheets/Images/Minor%20loss%20elbow.jpg?raw=true)
+![What does this text do again?](https://github.com/AguaClara/CEE4540_Master/blob/master/Summary%20Sheets/Images/Minor%20loss%20elbow.jpg?raw=true)
 
 In order to find $V_{out}$, we first need to know which point is $out$ and which point is $in$. A simple way to distinguish the two points is that $in$ occurs when the flow is most contracted, and $out$ occurs when the flow has fully expanded after that maximal contraction. Going on these guidelines, point 'B' above would be $in$, since it represents the most contracted flow in the elbow-pipe system. Therefore point 'C' would be $out$, as it is the point where the flow has fully expanded after its compression in 'B.'
 
@@ -242,7 +246,7 @@ _**A vena contracta coefficient is not a minor loss coefficient.**_ Though the e
 ### Origin
 The orifice equation is derived from the Bernoulli equation as applied to the red points in the following image:
 
-![What does this text do again?](https://github.com/AguaClara/CEE4540_DC/blob/master/AguaClara%20Water%20Treatment%20Plant%20Design/Summary%20Sheets/Images/Hole%20in%20a%20bucket.jpg?raw=true)
+![What does this text do again?](https://github.com/AguaClara/CEE4540_Master/blob/master/Summary%20Sheets/Images/Hole%20in%20a%20bucket.jpg?raw=true)
 
 At point A, the pressure is atmospheric and the instantaneous velocity is negligible as the water level in the bucket drops slowly. At point B, the pressure is also atmospheric. We define the difference in elevations between the two points, $z_A - z_B$, to be $\Delta h$. With these simplifications ($p_A = V_A = p_B = 0$) and assumptions ($z_A - z_B = \Delta h$), the Bernoulli equation becomes:
 
@@ -265,7 +269,7 @@ $\Delta h$ = elevation difference between orifice and water level
 `pc.flow_orifice(Diam, Height, RatioVCOrifice)` Returns flow through a horizontal orifice.  
 `pc.flow_orifice_vert(Diam, Height, RatioVCOrifice)` Returns flow through a vertical orifice. The height parameter refers to height above the center of the orifice.
 
-![What does this text do again?](https://github.com/AguaClara/CEE4540_DC/blob/master/AguaClara%20Water%20Treatment%20Plant%20Design/Summary%20Sheets/Images/Vertical%20and%20Horizontal%20Orifices.jpg?raw=true)
+![What does this text do again?](https://github.com/AguaClara/CEE4540_Master/blob/master/Summary%20Sheets/Images/Vertical%20and%20Horizontal%20Orifices.jpg?raw=true)
 
 There are two configurations for an orifice in the wall of a reservoir of water, horizontal and vertical, as the image above shows. The orifice equation shown in the previous section is for a horizontal orifice, but for a vertical orifice the equation requires integration to return the correct flow. You will explore this in the Flow Control and Measurement Design Challenge.
 
@@ -347,13 +351,14 @@ This section introduces the problem of creating constant head  without electrici
 2.
 
 ## 2.1) Tank with a Valve  
+### Flow $Q$ and Water Level $h$ as a Function of Time  
 As evidenced by the orifice equation, a tank of water with a hole poked in the bottom or side does not provide constant flow with time. Why not? In the orifice equation, $Q = \Pi_{vc} A_{or} \sqrt{2g \Delta h}$, flow $Q$ is a function of the height of water above the orifice, $\Delta h$. Since the water drains from the hole over time, the height of water above the orifice necessarily changes. The first approach in the search for a constant flow rate is understanding and manipulating the 'tank-with-a-valve' system, as it is the most simple way of controlling the flow of water by tightening or loosening the valve.
 
 The system we are using to gain an understanding of this 'tank-with-a-valve' scenario is shown below. In the image, a hypochlorite solution is slowly dripping and mixing with piped source water, thereby disinfecting it. The valve is almost closed to make sure that the hypochlorite solution drips instead of flows.
 
-![What does this text do again?](https://github.com/AguaClara/CEE4540_DC/blob/master/AguaClara%20Water%20Treatment%20Plant%20Design/Summary%20Sheets/Images/complete%20hypochlorinator.jpg?raw=true)
+![What does this text do again?](https://github.com/AguaClara/CEE4540_Master/blob/master/Summary%20Sheets/Images/complete%20hypochlorinator.jpg?raw=true)
 
-Shown  [here](https://github.com/AguaClara/CEE4540_DC/blob/master/AguaClara%20Water%20Treatment%20Plant%20Design/Summary%20Sheets/Derivation_flow_through_simple_hypoclorinator.md "Hypochlorinator derivation"), the derivation yields the following equation:
+Shown  [here](https://github.com/AguaClara/CEE4540_Master/blob/master/Summary%20Sheets/Derivation_flow_through_simple_hypoclorinator.md "Hypochlorinator derivation"), the derivation yields the following equation:
 
 $$ \frac{Q}{Q_0} = 1 - \frac{1}{2} \frac{t}{t_{Design}} \frac{h_{Tank}}{h_0}$$
 
@@ -365,7 +370,7 @@ $h_{Tank}$ = elevation of water level with reference to tank bottom
 $h_0$ = elevation of water level with reference to the valve  
 **Note:** While the derivation uses a hypochlorinator as an example, we will just consider a bucket of water from now on to avoid saying 'hypochlorite solution' instead of 'water'.
 
-This equation has consistently been a source of confusion for students, and its nuances are thoroughly explained in the derivation, which you are recommended to read. These nuances will be quickly summarized below:
+This equation has consistently been a source of confusion for students, and its nuances are thoroughly explained in the [derivation](https://github.com/AguaClara/CEE4540_Master/blob/master/Summary%20Sheets/Derivation_flow_through_tank_with_a_valve.md), which you are recommended to read. These nuances will be quickly summarized below:
 
 - $t_{Design}$ is **NOT** the time it takes to drain the tank. It is the time that it _would_ take to drain the tank _if_ the flow rate at time $t = 0$, $Q_0$, were the flow rate forever, whic hit is not. $t_{Design}$ was used in the derivation to simplify the equation, which is why this potentially confusing parameter exists. The actual time it takes to drain the tank lies somewhere between $t_{Design}$ and $2 \cdot t_{Design}$.
 - $h_{Tank}$ is not the same as $h_{0}$. $h_{Tank}$ is the height of water level in the tank with reference to the tank bottom. $h_{0}$ is the water level in the tank with reference to the valve. Therefore, $h_{0} \geq h_{Tank}$ is true if the valve is located at or below the bottom of the tank. If the tank is elevated far above the valve, then the $h_{0} > > h_{Tank}$. If the valve is at the same elevation as the bottom of the tank, then $h_{0} = h_{Tank}$. Please refer to the image above to clarify $h_{0}$ and $h_{Tank}$. Also note that both $h_{Tank}$ and $h_{0}$ are not variables, they are constants which are defined by the initial state of the system, when the water just begins to flow.
@@ -384,7 +389,6 @@ $$\frac{h}{h_0} = \left( 1 - \frac{1}{2} \frac{t}{t_{Design}} \frac{h_{Tank}}{h_
 Such that:  
 $h$ = $h(t)$ = elevation of water level with reference to the valve.
 
-
 With these two equations for flow $Q$ and water level $h$ as a function of time, we can make a plot, shown below, to visualize what's going on. The plot below shows normalized water level (referred to as depth) and flow. Normalized simply refers to the ratio of current/initial, so normalized flow refers to $\frac{Q}{Q_0}$ and normalized depth _in the tank_ refers to $\frac{h}{h_0}$. **The tank/valve system this plot is based on has the valve at the same level as the bottom of the tank**, so $h_{Tank} = h_0$. $t_{Design} = 4$ days
 
 ![](https://github.com/AguaClara/CEE4540_Master/blob/master/Summary%20Sheets/Images/Tank%20valve%20not%20elevated.jpg?raw=true)
@@ -393,4 +397,22 @@ This plot shows the interesting relationship of both water depth and flow over t
 
 ![](https://github.com/AguaClara/CEE4540_Master/blob/master/Summary%20Sheets/Images/Tank%20valve%20elevated.jpg?raw=true)
 
-This plot is exactly what we want. $\frac{Q}{Q_0} \approx 1$. While the water depth 
+This plot is exactly what we want. $\frac{Q}{Q_0} \approx 1$. While the water depth declines as the tank empties, the flow rate remains roughly constant. Unfortunately, we had to elevate our tank about 50 times its height. So for a standard 1 meter tall tank, it would have to be elevated by 50 meters. Unfortunately this is not realistically feasible. Other solutions must be used for effective and elegant constant head management.
+
+### Drain System for a Tank  
+While our efforts to understand the 'tank-with-a-valve' scenario did not lead to a proper constant head/chemical dosing solution, we can use our understanding to properly design drain systems for flocculators and sedimentation tanks, since there are literally 'tank-with-a-valve' systems. Our goal is to calculate how large to make the drain pipe for flocculators or sed tanks if we want them to drain in a certain amount of time, $t_{Drain}$. Note that $t_{Drain}$ is _not_ the same as $t_{Design}$ from the previous section.
+
+We will start from the following equation, which is found in an intermediate step from the [tank-with-a-valve derivation](https://github.com/AguaClara/CEE4540_Master/blob/master/Summary%20Sheets/Derivation_flow_through_tank_with_a_valve.md).
+
+$$\sqrt h  = \sqrt{h_0} - t \frac{A_{Valve}}{2 A_{Tank}} \sqrt {\frac{2g}{K_e}}$$
+
+We are looking for how long it will take to completely drain the tank, so to have a water level of $h = 0$ at time $t_{Drain}$. With these assumptions, the knowledge that $A_{Valve} = \frac{\pi D_{Valve}}{4}$, and rearranging to solve for $D_{Valve}$ we obtain the following equation:
+
+$$ D_{Valve} = \sqrt{ \frac{8 A_{Tank}}{\pi t_{Drain}}} {\left( \frac{K_{e} h_{0}}{2g} \right)^{\frac{1}{4}}}$$
+
+To get the equation in terms of easily measureable tank parameters, we substitute $A_{Tank}$ for $L_{Tank} W_{Tank}$ and $h_0$ for $H_{Tank}$.   
+**Note:** By saying that $h_0 = H_{Tank}$, we are making the assumption that the valve is at the same elevation as the bottom of the tank.
+
+$$ D_{Valve} = \sqrt{ \frac{8 L_{Tank} W_{Tank}}{\pi t_{Drain}}} {\left( \frac{K_{e} H_{Tank}}{2g} \right)^{\frac{1}{4}}}$$
+
+![](https://github.com/AguaClara/CEE4540_Master/blob/master/Summary%20Sheets/Images/Pipe%20stub%20drainage.jpg?raw=true)
