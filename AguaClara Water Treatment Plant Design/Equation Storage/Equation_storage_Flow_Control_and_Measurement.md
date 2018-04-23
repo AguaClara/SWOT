@@ -24,7 +24,7 @@ $$\frac{p_{in}}{\rho g} + z_{in} + \alpha_{in} \frac{V_{in}^2}{2g} + h_P = \frac
 ### Head Loss in a Long STRAIGHT Tube (due to wall shear): Major Losses
 $$h_{\rm{f}} = {\rm{f}} \frac{8}{g \pi^2} \frac{LQ^2}{D^5}$$
 
-$${\rm{Re}}=\frac{4Q}{\pi D\nu} = \frac{\rho VD}{\mu} = \frac{VD}{\nu}$$
+$${\rm{Re}} = \frac{4Q}{\pi D\nu} = \frac{\rho VD}{\mu} = \frac{VD}{\nu}$$
 
 $$\rm{f} = \frac{64}{Re}$$
 
