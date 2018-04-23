@@ -97,8 +97,6 @@ Going back to the Bernoulli equation, the $\frac{p}{\rho g}$ term is called the 
 
 ![Anyone getting this?](https://github.com/AguaClara/CEE4540_Master/blob/master/Summary%20Sheets/Images/Different%20forms%20of%20head.jpg?raw=true)
 
-sssss](https://github.com/AguaClara/CEE4540_Master/blob/master/Summary%20Sheets/Images/Different%20forms%20of%20head.jpg?raw=true
-
 
 #### Assumption in using the Bernoulli equation  
 Though there are [many assumptions needed to confirm that the Bernoulli equation can be used](https://en.wikipedia.org/wiki/Bernoulli%27s_principle#Incompressible_flow_equation "Bernoulli wikipedia"), the main one for the purpose of this class is that energy is not gained or lost through the streamline or control volume being considered. If we consider more precise fluid mechanics terminology, then "friction by viscous forces must be negligible." Energy can only be transferred among its three forms if this equation is to be used.
@@ -358,7 +356,7 @@ The system we are using to gain an understanding of this 'tank-with-a-valve' sce
 
 ![What does this text do again?](https://github.com/AguaClara/CEE4540_Master/blob/master/Summary%20Sheets/Images/complete%20hypochlorinator.jpg?raw=true)
 
-Shown  [here](https://github.com/AguaClara/CEE4540_Master/blob/master/Summary%20Sheets/Derivation_flow_through_simple_hypoclorinator.md "Hypochlorinator derivation"), the derivation yields the following equation:
+Found  [here](https://github.com/AguaClara/CEE4540_Master/blob/master/Summary%20Sheets/Derivation_flow_through_tank_with_a_valve.md "Hypochlorinator derivation"), the derivation yields the following equation:
 
 $$ \frac{Q}{Q_0} = 1 - \frac{1}{2} \frac{t}{t_{Design}} \frac{h_{Tank}}{h_0}$$
 
@@ -370,7 +368,7 @@ $h_{Tank}$ = elevation of water level with reference to tank bottom
 $h_0$ = elevation of water level with reference to the valve  
 **Note:** While the derivation uses a hypochlorinator as an example, we will just consider a bucket of water from now on to avoid saying 'hypochlorite solution' instead of 'water'.
 
-This equation has consistently been a source of confusion for students, and its nuances are thoroughly explained in the [derivation](https://github.com/AguaClara/CEE4540_Master/blob/master/Summary%20Sheets/Derivation_flow_through_tank_with_a_valve.md), which you are recommended to read. These nuances will be quickly summarized below:
+This equation has consistently been a source of confusion for students, and its nuances are thoroughly explained in the derivation, which you are recommended to read. These nuances will be quickly summarized below:
 
 - $t_{Design}$ is **NOT** the time it takes to drain the tank. It is the time that it _would_ take to drain the tank _if_ the flow rate at time $t = 0$, $Q_0$, were the flow rate forever, whic hit is not. $t_{Design}$ was used in the derivation to simplify the equation, which is why this potentially confusing parameter exists. The actual time it takes to drain the tank lies somewhere between $t_{Design}$ and $2 \cdot t_{Design}$.
 - $h_{Tank}$ is not the same as $h_{0}$. $h_{Tank}$ is the height of water level in the tank with reference to the tank bottom. $h_{0}$ is the water level in the tank with reference to the valve. Therefore, $h_{0} \geq h_{Tank}$ is true if the valve is located at or below the bottom of the tank. If the tank is elevated far above the valve, then the $h_{0} > > h_{Tank}$. If the valve is at the same elevation as the bottom of the tank, then $h_{0} = h_{Tank}$. Please refer to the image above to clarify $h_{0}$ and $h_{Tank}$. Also note that both $h_{Tank}$ and $h_{0}$ are not variables, they are constants which are defined by the initial state of the system, when the water just begins to flow.
