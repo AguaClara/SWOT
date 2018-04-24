@@ -334,7 +334,7 @@ $$Q = \Pi_{vc} A_{or} \sqrt{2g\Delta h}$$
 
 **Constant head** implies constant flow. It is as if the orifice equation applied to a hole in the bottom of a bucket, but somehow $\Delta h$ never changes, the water level in the bucket is always the same. Hence, the flow is always the same too.
 
-While constant head can now be achieved with pumps and computers, this was not always the case. Getting constant head has been a challenge to engineers for a long time. This problem becomes even harder when considering that we need 'constant head' for dosing purposes, so there needs to be a 'constant head' of chlorine that adjusts to the amount of water flowing through an AguaClara plant, for example, to maintain a specific chlorine concentration in the treated water, no matter the plant flow rate. So the challenge of constant head is not _just_ providing one continuous flow rate, it is also varying that flow rate (chlorine solution) in proportion to another flow rate (flow through a plant).  
+While constant head can now be achieved with pumps and computers, this was not always the case. Getting constant head has been a challenge to engineers for a long time. This problem becomes even harder when considering that we need constant head for dosing purposes. For example, the chlorine concentration in treated water must always be the same, even if the plant flow rate changes over thr course of a day. So the challenge of constant head is not _just_ providing one continuous flow rate, it is also varying that flow rate (chlorine solution) in proportion to another flow rate (flow through a plant).  
 
 This section introduces the problem of creating constant head  without electricity and presents some historical solutions.
 
@@ -350,33 +350,34 @@ This section introduces the problem of creating constant head  without electrici
 
 ## 2.1) Tank with a Valve  
 ### Flow $Q$ and Water Level $h$ as a Function of Time  
-As evidenced by the orifice equation, a tank of water with a hole poked in the bottom or side does not provide constant flow with time. Why not? In the orifice equation, $Q = \Pi_{vc} A_{or} \sqrt{2g \Delta h}$, flow $Q$ is a function of the height of water above the orifice, $\Delta h$. Since the water drains from the hole over time, the height of water above the orifice necessarily changes. The first approach in the search for a constant flow rate is understanding and manipulating the 'tank-with-a-valve' system, as it is the most simple way of controlling the flow of water by tightening or loosening the valve.
+As evidenced by the orifice equation, a tank of water with a hole poked in the bottom or side does not provide constant flow over time. Why not? In the orifice equation, $Q = \Pi_{vc} A_{or} \sqrt{2g \Delta h}$, flow $Q$ is a function of the height of water above the orifice, $\Delta h$. Since the water drains from the hole over time, the height of water above the orifice necessarily changes. The first approach in the search for a constant flow rate is understanding and manipulating the 'tank-with-a-valve' system, as tightening or loosening a valve is one of the most simple ways of controlling the flow of water.
 
 The system we are using to gain an understanding of this 'tank-with-a-valve' scenario is shown below. In the image, a hypochlorite solution is slowly dripping and mixing with piped source water, thereby disinfecting it. The valve is almost closed to make sure that the hypochlorite solution drips instead of flows.
 
 ![What does this text do again?](https://github.com/AguaClara/CEE4540_Master/blob/master/Summary%20Sheets/Images/complete%20hypochlorinator.jpg?raw=true)
 
-Found  [here](https://github.com/AguaClara/CEE4540_Master/blob/master/Summary%20Sheets/Derivation_flow_through_tank_with_a_valve.md "Hypochlorinator derivation"), the derivation yields the following equation:
+[Found here](https://github.com/AguaClara/CEE4540_Master/blob/master/Summary%20Sheets/Derivation_flow_through_tank_with_a_valve.md "Hypochlorinator derivation"), the derivation for flow as a function of time yields the following equation:
 
 $$ \frac{Q}{Q_0} = 1 - \frac{1}{2} \frac{t}{t_{Design}} \frac{h_{Tank}}{h_0}$$
 
 Such that:  
-$Q = Q(t)$ = flow of hypochlorite through valve at time $t$   
+$Q$ = $Q(t)$ = flow of hypochlorite through valve at time $t$   
+$Q_0$ = flow of hypochlorite through valve at time $t$ = 0    
 $t$ = elapsed time  
 $t_{Design}$ = time it would take for tank to empty if flow stayed constant at $Q_0$, which it does not  
-$h_{Tank}$ = elevation of water level with reference to tank bottom  
-$h_0$ = elevation of water level with reference to the valve  
-**Note:** While the derivation uses a hypochlorinator as an example, we will just consider a bucket of water from now on to avoid saying 'hypochlorite solution' instead of 'water'.
+$h_{Tank}$ = elevation of water level with reference to tank bottom at time $t$ = 0  
+$h_0$ = elevation of water level with reference to the valve at time $t$ = 0   
+**Note:** While the derivation uses a hypochlorinator as an example, this section will refer to the hypochlorinte solution as 'water' from now on, since that is the fluid most commonly considered in this class.
 
 This equation has consistently been a source of confusion for students, and its nuances are thoroughly explained in the derivation, which you are recommended to read. These nuances will be quickly summarized below:
 
-- $t_{Design}$ is **NOT** the time it takes to drain the tank. It is the time that it _would_ take to drain the tank _if_ the flow rate at time $t = 0$, $Q_0$, were the flow rate forever, whic hit is not. $t_{Design}$ was used in the derivation to simplify the equation, which is why this potentially confusing parameter exists. The actual time it takes to drain the tank lies somewhere between $t_{Design}$ and $2 \cdot t_{Design}$.
-- $h_{Tank}$ is not the same as $h_{0}$. $h_{Tank}$ is the height of water level in the tank with reference to the tank bottom. $h_{0}$ is the water level in the tank with reference to the valve. Therefore, $h_{0} \geq h_{Tank}$ is true if the valve is located at or below the bottom of the tank. If the tank is elevated far above the valve, then the $h_{0} > > h_{Tank}$. If the valve is at the same elevation as the bottom of the tank, then $h_{0} = h_{Tank}$. Please refer to the image above to clarify $h_{0}$ and $h_{Tank}$. Also note that both $h_{Tank}$ and $h_{0}$ are not variables, they are constants which are defined by the initial state of the system, when the water just begins to flow.
+- $t_{Design}$ is **NOT** the time it takes to drain the tank. It is the time that it _would_ take to drain the tank _if_ the flow rate at time $t = 0$, $Q_0$, were the flow rate forever, which it is not. $t_{Design}$ was used in the derivation to simplify the equation, which is why this potentially-confusing parameter exists. The actual time it takes to drain the tank lies somewhere between $t_{Design}$ and $2 \cdot t_{Design}$ and depends on the ratio between $h_{Tank}$ and $h_{0}$
+- $h_{Tank}$ is not the same as $h_{0}$. $h_{Tank}$ is the height of water level in the tank with reference to the tank bottom. $h_{0}$ is the water level in the tank with reference to the valve. Neither change with time, they both refer to the water level and time $t$ = 0. Therefore, $h_{0} \geq h_{Tank}$ is true if the valve is located at or below the bottom of the tank. If the tank is elevated far above the valve, then the $h_{0} > > h_{Tank}$. If the valve is at the same elevation as the bottom of the tank, then $h_{0} = h_{Tank}$. Please refer to the image above to clarify $h_{0}$ and $h_{Tank}$.
 
 "How does this 'tank-with-a-valve' scenario differ from the 'hole-in-a-bucket' scenario?" you might ask. If you would like, you may go through the derivation on your own, using the orifice equation instead of the minor loss equation for the first step. If you do so, you'll find that the equation remains almost the same, the only difference is that the $\frac{h_{Tank}}{h_0}$ term drops out for an orifice, as $h_{Tank} = h_0$. The big difference in the systems lies with the flexibility of the valve. It can be tightened or loosened to change the flow rate, whereas changing the size of an orifice multiple times in a row is not easy nor recommended.
 
-Thanks to the derivation, we have an expression of flow out of the system as a function of time. To complete our understanding, we need another expression for water/solution level $h$ (or
-$\Delta h$) as a function of time. Fortunately, this is very easy to find. Both the orifice equation for the hole-in-a-bucket scenario and the minor loss equation for the 'tank-with-a-valve' scenario have flow that is proportional to the square root of the driving head, $Q \propto h$. We can use this proportionality to come up with an equation relating the height of the water to the flow of water using the flow and height at time $t = 0$ as a reference:
+Thanks to the derivation, we have an expression of flow out of the system as a function of time. To complete our understanding, we need another expression for water level $h$ (or
+$\Delta h$) as a function of time. Fortunately, this is very easy to find. Both the orifice equation for the hole-in-a-bucket scenario and the minor loss equation for the 'tank-with-a-valve' scenario show that flow that is proportional to the square root of the driving head, $Q \propto h$. We can use this proportionality to come up with an equation relating the height of the water to the flow of water using the flow and height at time $t = 0$ as a reference:
 
 $$\frac{Q}{Q_0} = \sqrt{\frac{h}{h_0}}$$
 
@@ -387,30 +388,15 @@ $$\frac{h}{h_0} = \left( 1 - \frac{1}{2} \frac{t}{t_{Design}} \frac{h_{Tank}}{h_
 Such that:  
 $h$ = $h(t)$ = elevation of water level with reference to the valve.
 
-With these two equations for flow $Q$ and water level $h$ as a function of time, we can make a plot, shown below, to visualize what's going on. The plot below shows normalized water level (referred to as depth) and flow. Normalized simply refers to the ratio of current/initial, so normalized flow refers to $\frac{Q}{Q_0}$ and normalized depth _in the tank_ refers to $\frac{h}{h_0}$. **The tank/valve system this plot is based on has the valve at the same level as the bottom of the tank**, so $h_{Tank} = h_0$. $t_{Design} = 4$ days
+With these two equations for flow $Q$ and water level $h$ as a function of time, we can make a plot, shown below, to visualize what's going on. The plot below shows normalized water level (referred to as depth) and flow. Normalized simply refers to the ratio of current/initial, so normalized flow refers to $\frac{Q}{Q_0}$ and normalized depth _in the tank_ refers to $\frac{h}{h_0}$. **The 'tank-in-a-valve' system this plot is based on has the valve at the same elevation as the bottom of the tank**, so $h_{Tank} = h_0$. $t_{Design} = 4$ days
 
 ![](https://github.com/AguaClara/CEE4540_Master/blob/master/Summary%20Sheets/Images/Tank%20valve%20not%20elevated.jpg?raw=true)
 
-This plot shows the interesting relationship of both water depth and flow over time. The relationship is unfortunate in this case, as normalized flow goes from 1 to 0, which is clearly not _constant_ head. Ideally, the normalized flow $\frac{Q}{Q_0}$ would be a horizontal line, such that  $\frac{Q}{Q_0} = 1$. We can manipulate the equation $\frac{Q}{Q_0} = 1 - \frac{1}{2} \frac{t}{t_{Design}} \frac{h_{Tank}}{h_0}$ to get closer to $\frac{Q}{Q_0} = 1$ by making $\frac{h_{Tank}}{h_{0}}$ very, very large to make the $\frac{1}{2} \frac{t}{t_{Design}} \frac{h_{Tank}}{h_0}$ term drop out. What does this mean in real life? It means having the valve far, far below the bottom of the tank. Since underground systems have their own particular challenges, this solution means raising the tank far, far above the valve. In the plot below, $h_0 = 50 \cdot h_{Tank}$
+This plot shows the interesting relationship of both water depth and flow over time. The relationship is unfortunate in this case, as normalized flow goes from 1 to 0, which is clearly not _constant_ head. Ideally, the normalized flow $\frac{Q}{Q_0}$ would be a horizontal line, such that  $\frac{Q}{Q_0} = 1$. We can manipulate the equation $\frac{Q}{Q_0} = 1 - \frac{1}{2} \frac{t}{t_{Design}} \frac{h_{Tank}}{h_0}$ to get closer to $\frac{Q}{Q_0} = 1$ by making $\frac{h_{Tank}}{h_{0}}$ very, very large to make the $\frac{1}{2} \frac{t}{t_{Design}} \frac{h_{Tank}}{h_0}$ term drop out. What does this mean in real life? It means having the valve far, far below the bottom of the tank. Since putting the valve underground does not make sense, this solution implies that the tank must be raised far, far above the valve. In the plot below, $h_0 = 50 \cdot h_{Tank}$
 
 ![](https://github.com/AguaClara/CEE4540_Master/blob/master/Summary%20Sheets/Images/Tank%20valve%20elevated.jpg?raw=true)
 
-This plot is exactly what we want. $\frac{Q}{Q_0} \approx 1$. While the water depth declines as the tank empties, the flow rate remains roughly constant. Unfortunately, we had to elevate our tank about 50 times its height. So for a standard 1 meter tall tank, it would have to be elevated by 50 meters. Unfortunately this is not realistically feasible. Other solutions must be used for effective and elegant constant head management.
+This plot is exactly what we want, $\frac{Q}{Q_0} \approx 1$. While the water depth declines as the tank empties, the flow rate remains roughly constant. Unfortunately, we had to elevate our tank about 50 times its height. So for a standard 1 meter tall tank, it would have to be elevated by 50 meters. This is not realistically feasible. Other solutions must be used for effective and elegant constant head management.
 
 ### Drain System for a Tank  
 While our efforts to understand the 'tank-with-a-valve' scenario did not lead to a proper constant head/chemical dosing solution, we can use our understanding to properly design drain systems for flocculators and sedimentation tanks, since there are literally 'tank-with-a-valve' systems. Our goal is to calculate how large to make the drain pipe for flocculators or sed tanks if we want them to drain in a certain amount of time, $t_{Drain}$. Note that $t_{Drain}$ is _not_ the same as $t_{Design}$ from the previous section.
-
-We will start from the following equation, which is found in an intermediate step from the [tank-with-a-valve derivation](https://github.com/AguaClara/CEE4540_Master/blob/master/Summary%20Sheets/Derivation_flow_through_tank_with_a_valve.md).
-
-$$\sqrt h  = \sqrt{h_0} - t \frac{A_{Valve}}{2 A_{Tank}} \sqrt {\frac{2g}{K_e}}$$
-
-We are looking for how long it will take to completely drain the tank, so to have a water level of $h = 0$ at time $t_{Drain}$. With these assumptions, the knowledge that $A_{Valve} = \frac{\pi D_{Valve}}{4}$, and rearranging to solve for $D_{Valve}$ we obtain the following equation:
-
-$$ D_{Valve} = \sqrt{ \frac{8 A_{Tank}}{\pi t_{Drain}}} {\left( \frac{K_{e} h_{0}}{2g} \right)^{\frac{1}{4}}}$$
-
-To get the equation in terms of easily measureable tank parameters, we substitute $A_{Tank}$ for $L_{Tank} W_{Tank}$ and $h_0$ for $H_{Tank}$.   
-**Note:** By saying that $h_0 = H_{Tank}$, we are making the assumption that the valve is at the same elevation as the bottom of the tank.
-
-$$ D_{Valve} = \sqrt{ \frac{8 L_{Tank} W_{Tank}}{\pi t_{Drain}}} {\left( \frac{K_{e} H_{Tank}}{2g} \right)^{\frac{1}{4}}}$$
-
-![](https://github.com/AguaClara/CEE4540_Master/blob/master/Summary%20Sheets/Images/Pipe%20stub%20drainage.jpg?raw=true)
