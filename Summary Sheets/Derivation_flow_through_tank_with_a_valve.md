@@ -2,7 +2,7 @@
 
 This document contains the derivation of the flow through a tank-with-a-valve. Our reference will be a simple hypochlorinator, shown in the following image. In the image, a hypochlorite solution is slowly dripping and mixing with piped source water, thereby disinfecting it. The valve is almost closed to make sure that the hypochlorite solution drips instead of flows.
 
-![I really don't think anyone can read this](https://github.com/AguaClara/CEE4540_DC/blob/master/AguaClara%20Water%20Treatment%20Plant%20Design/Summary%20Sheets/Images/drip%20hypochlorinator.jpg?raw=true)
+![I really don't think anyone can read this](https://github.com/AguaClara/CEE4540_Master/blob/master/Summary%20Sheets/Images/drip%20hypochlorinator.jpg?raw=true)
 
 This derivation begins by finding two equations for flow, $Q$, through the hypochlorinator and setting them equal to each other. First, the rate of change of the volume of hypochlorite solution in the tank is equivalent to the flow out of the hypochlorinator. Since the volume of hypochlorite solution in the tank is equal to the tank's cross-sectional area times it height, we get the following equation:
 
@@ -65,7 +65,7 @@ $h_{Tank}$ = elevation of water level in the tank with reference to tank bottom 
 
 Here lies another common source of confusion. $h_{Tank}$ is not the same as $h_{0}$. $h_{Tank}$ is the height of water level in the tank with reference to the tank bottom. $h_{0}$ is the water level in the tank with reference to the valve. Therefore, $h_{0} \geq h_{Tank}$ is true if the valve is located at or below the bottom of the tank. If the tank is elevated far above the valve, then the $h_{0} > > h_{Tank}$. If the valve is at the same elevation as the bottom of the tank, then $h_{0} = h_{Tank}$. Please refer to the following image to clarify $h_{0}$ and $h_{Tank}$. Also note that both $h_{Tank}$ and $h_{0}$ are not variables, they are constants which are defined by the initial state of the hypochlorinator, when the solution just begins to flow.
 
-![I really don't think anyone can read this](https://github.com/AguaClara/CEE4540_DC/blob/master/AguaClara%20Water%20Treatment%20Plant%20Design/Summary%20Sheets/Images/hypochlorinator%20variable%20explanation.jpg?raw=true)
+![I really don't think anyone can read this](https://github.com/AguaClara/CEE4540_Master/blob/master/Summary%20Sheets/Images/hypochlorinator%20variable%20explanation.jpg?raw=true)
 
 Finally, our fabricated equivalence, $\frac{Q_0}{A_{Tank}} = \frac{h_{Tank}}{t_{Design}}$ can be plugged into $\frac{Q}{Q_0} = 1 - \frac{t Q_0}{2 A_{Tank} h_0}$ to create the highly useful equation for flow rate as a function of time for a drip hypochlorinator:
 

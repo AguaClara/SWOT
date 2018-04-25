@@ -399,4 +399,55 @@ This plot shows the interesting relationship of both water depth and flow over t
 This plot is exactly what we want, $\frac{Q}{Q_0} \approx 1$. While the water depth declines as the tank empties, the flow rate remains roughly constant. Unfortunately, we had to elevate our tank about 50 times its height. So for a standard 1 meter tall tank, it would have to be elevated by 50 meters. This is not realistically feasible. Other solutions must be used for effective and elegant constant head management.
 
 ### Drain System for a Tank  
-While our efforts to understand the 'tank-with-a-valve' scenario did not lead to a proper constant head/chemical dosing solution, we can use our understanding to properly design drain systems for flocculators and sedimentation tanks, since there are literally 'tank-with-a-valve' systems. Our goal is to calculate how large to make the drain pipe for flocculators or sed tanks if we want them to drain in a certain amount of time, $t_{Drain}$. Note that $t_{Drain}$ is _not_ the same as $t_{Design}$ from the previous section.
+While our efforts to understand the 'tank-with-a-valve' scenario did not lead to a great constant head/chemical dosing solution, we can use our understanding to properly design drain systems for flocculators and sedimentation tanks, since there exist systems that are literally 'tank-with-a-valve'. Our goal is to calculate how large to make the drain pipe for flocculators or sed tanks if we want them to drain in a certain amount of time, $t_{Drain}$. Note that $t_{Drain}$ is _not_ the same as $t_{Design}$ from the previous section. The derivation for the following equation is found [here](https://github.com/AguaClara/CEE4540_Master/blob/master/Summary%20Sheets/Derivation_drain_system_design.md):
+
+$$D_{Pipe} = \sqrt{ \frac{8 L_{Tank} W_{Tank}}{\pi t_{Drain}}} {\left( \frac{K_e H_{Tank}}{2g} \right)^{\frac{1}{4}}}$$
+
+
+## 2.2) Constant Head Devices  
+This section will describe very briefly some common devices and clever systems that can be used to generate constant head. Visualizing these devices in action is extremely helpful to understanding them, which is why you are recommended to view the 'Constant head devices' section in the 'Flow Control and Measurement' powerpoint. Since the powerpoint does a great job of illustrating these devices, this section will be kept very brief.
+
+### Floats  
+A logical way to ensure constant head is to find a device that moves in accordance with the water level- something that floats. The idea is to combine this something that floats, which is usually referred to as just a **float**, with another device that allows the water to flow, usually an orifice. There are many, many possibilities with float systems, two of which are shown below.
+
+**Advantages:**
+1. Easy to design and fabricate
+
+**Disadvantages:**  
+1. Inflexible. What happens when you want to increase or decrease the amount of head?
+
+![](https://github.com/AguaClara/CEE4540_Master/blob/master/Summary%20Sheets/Images/Different%20Floats.jpg?raw=true)
+
+### Overflow Tanks
+This constant head system requires a pump. It consists of an overhead tank to store water with an orifice or pipe inside  to dispense the constant head of water. The pump fills the overhead tank as it empties, but it provides more water than necessary. The extra water leaves through an overflow pipe, which is why this device is called an overhead tank. An image is shown below. Within the AguaClara lab, the Ram Pump team uses an overflow tank setup, if you would like a closer look.
+
+**Advantages:**  
+1. Can run for a very long time without needing to replenish the amount of water in the system.
+2. Can provide a very high amount of constant head, which means high and consistent flow creates
+
+**Disadvantages:**
+1. Requires a pump and therefore electricity
+2. Requires lots of vertical space
+
+![](https://github.com/AguaClara/CEE4540_Master/blob/master/Summary%20Sheets/Images/Overflow%20tank.jpg?raw=true)
+
+### Marriot Bottle   
+Marriot bottles are simple yet exceedingly clever devices to ensure constant flow out of a bottle. [This video](https://www.youtube.com/watch?v=y1S5Md0WhNM "1 minute and 21 seconds of pure beauty") provides a great example of one in practice. The only outlet to atmosphere is through the long tube filled with air, as the top of the bottle is completely capped. Therefore the bottom of _both_ tubes is always at atmospheric pressure, even as the water level in the bottle falls.
+
+**Advantages:**  
+1. Easy to create  
+2. Can change the amount of constant head by raising or lowering the end of the tube that is dispensing the water
+
+**Disadvantages:**  
+1. Batch process, adding water requires that the system stop working for some time.
+
+### Float Valve  
+An very clever device, a float valve consists of a float attached to a lever which controls a valve. When there is a low water level, the valve is open. As the water rises, it pushes the float upwards. As the float moves upwards, the lever forces the valve to close, until the float reaches a certain level and the valve closes completely. This can be used to create tanks or bottles with unchanging water levels, even as water exits the tank or bottle. Float valves are a critical part to AguaClara's flow control system. Most toilets found in homes have float valves to ensure that water doesn't spill out of the toilet tank and onto the floor. [Here is a video](https://youtu.be/LzFIPUJghsQ?t=103 "This guy definitely didn't have a script") showing a toilet being flushed, and how the float valve controls the water level in the tank. While the video is good, the person in the video says incorrect things, so please mute while watching.
+
+**Advantages:**  
+1. Very flexible in its uses. Can easily be a component of a more complex system
+2. Can be very compact
+3. Effective
+
+**Disadvantages:**
+1. Doesn't actually create constant flow. It simply allows the water level in a tank to be constant. An orifice or other device would be required in the tank to create constant flow. 
