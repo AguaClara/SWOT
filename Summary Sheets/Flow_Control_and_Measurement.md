@@ -399,9 +399,12 @@ This plot shows the interesting relationship of both water depth and flow over t
 This plot is exactly what we want, $\frac{Q}{Q_0} \approx 1$. While the water depth declines as the tank empties, the flow rate remains roughly constant. Unfortunately, we had to elevate our tank about 50 times its height. So for a standard 1 meter tall tank, it would have to be elevated by 50 meters. This is not realistically feasible. Other solutions must be used for effective and elegant constant head management.
 
 ### Drain System for a Tank  
-While our efforts to understand the 'tank-with-a-valve' scenario did not lead to a great constant head/chemical dosing solution, we can use our understanding to properly design drain systems for flocculators and sedimentation tanks, since there exist systems that are literally 'tank-with-a-valve'. Our goal is to calculate how large to make the drain pipe for flocculators or sed tanks if we want them to drain in a certain amount of time, $t_{Drain}$. Note that $t_{Drain}$ is _not_ the same as $t_{Design}$ from the previous section. The derivation for the following equation is found [here](https://github.com/AguaClara/CEE4540_Master/blob/master/Summary%20Sheets/Derivation_drain_system_design.md):
+While our efforts to understand the 'tank-with-a-valve' scenario did not lead to a great constant head/chemical dosing solution, we can use our understanding to properly design drain systems for flocculators and sedimentation tanks, since there exist systems that are literally 'tank-with-a-valve'. Our goal is to calculate how large to make the drain pipe for flocculators or sed tanks if we want them to drain in a certain amount of time, $t_{Drain}$. Note that $t_{Drain}$ is _not_ the same as $t_{Design}$ from the previous section. The derivation for the following equation is found [here](https://github.com/AguaClara/CEE4540_Master/blob/master/Summary%20Sheets/Derivation_drain_system_design.md), along with a more detailed description of how AguaClara handles draining these tanks.
 
-$$D_{Pipe} = \sqrt{ \frac{8 L_{Tank} W_{Tank}}{\pi t_{Drain}}} {\left( \frac{K_e H_{Tank}}{2g} \right)^{\frac{1}{4}}}$$
+$$D_{Pipe} = \sqrt{ \frac{8 L_{Tank} W_{Tank}}{\pi t_{Drain}}} {\left( \frac{H_{Tank} \sum K_e }{2g} \right)^{\frac{1}{4}}}$$
+
+Such that the variables are as they appear in the image below:  
+![](https://github.com/AguaClara/CEE4540_Master/blob/master/Summary%20Sheets/Images/Pipe%20stub%20drainage%20variables.jpg?raw=true)
 
 
 ## 2.2) Constant Head Devices  
@@ -442,12 +445,11 @@ Marriot bottles are simple yet exceedingly clever devices to ensure constant flo
 **Disadvantages:**  
 - Batch process, adding water requires that the system stop working for some time.
 
-![](https://github.com/AguaClara/CEE4540_Master/blob/master/Summary%20Sheets/Images/marriot%20bottle.jpg?raw=true)
+![](https://github.com/AguaClara/CEE4540_Master/blob/master/Summary%20Sheets/Images/Marriot%20bottle.jpg?raw=true)
 
 ### Float Valve  
 An very clever device, a float valve consists of a float attached to a lever which controls a valve. When there is a low water level, the valve is open. As the water rises, it pushes the float upwards. As the float moves upwards, the lever forces the valve to close, until the float reaches a certain level and the valve closes completely. This can be used to create tanks or bottles with unchanging water levels, even as water exits the tank or bottle. Float valves are a critical part to AguaClara's flow control system. Most toilets found in homes have float valves to ensure that water doesn't spill out of the toilet tank and onto the floor. [Here is a video](https://youtu.be/LzFIPUJghsQ?t=103 "This guy definitely didn't have a script") showing a toilet being flushed, and how the float valve controls the water level in the tank. While the video is good, the person in the video says incorrect things, so please mute while watching.
 
-![Credit to https://www.amazon.com/Kerick-Valve-MA052-Float-Adjustable/dp/B0077RAP1I for the valve image](https://github.com/AguaClara/CEE4540_Master/blob/master/Summary%20Sheets/Images/Float%20valve.jpg?raw=true)
 
 **Advantages:**  
 - Very flexible in its uses. Can easily be a component of a more complex system
@@ -455,3 +457,17 @@ An very clever device, a float valve consists of a float attached to a lever whi
 
 **Disadvantages:**
 - Doesn't actually create constant flow. It simply allows the water level in a tank to be constant, or to rise to an upper limit. An orifice or other device would be required in the tank using a float valve to create constant flow.
+
+![Credit to https://www.amazon.com/Kerick-Valve-MA052-Float-Adjustable/dp/B0077RAP1I for the valve image](https://github.com/AguaClara/CEE4540_Master/blob/master/Summary%20Sheets/Images/Float%20valve.jpg?raw=true)
+
+
+## 2.3) AguaClara Flow Control and Measurement Technologies
+Using all of the acquired knowledge and information above, AguaClara has designed different flow control and measurement technologies for different purposes and scenarios. Each of these has evolved over time as new and creative innovations have improved the original design.
+
+The AguaClara Flow Controller was created to provide a constant dose of chlorine and coagulant to plants while also easily allowing for a manual change in dose if the plant flow rate increased, decreased, or if the water turbidity changed.
+
+The Linear Flow Orifice Meter (LFOM) makes it very easy for an operator to measure how much water is flowing through the plant. It also, critically, forces the level or water in the plant's entrance tank to scale linearly with the amount of water flowing through the plant, hence the 'LF' in LFOM.
+
+Finally, the Linear Dose Controller (often called the 'CDC' for Chemical Dose Controller) brings both previous technologies together to create an elegant solution to consistent chemical dosing, even through varying plant flow rates. It also allows for an increase or decrease in dosing at any given time if the turbidity of the incoming water changes, although this must be done manually by the plant operator.  
+
+### "Almost Linear" Flow Controller
