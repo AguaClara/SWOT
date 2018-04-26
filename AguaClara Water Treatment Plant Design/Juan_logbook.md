@@ -146,7 +146,7 @@ This interim progress report is due to 2 factors. My family and I are going on v
 ### Done  
 1. Transfer from confluence to GitHub is more or less done (Thanks Monroe!). Anything else that was forgotten can be easily moved later on.
 2. New repo structure has been established. [CEE4540_Master](https://github.com/AguaClara/CEE4540_Master) for class material, [CEE4540_DC_2018](https://github.com/AguaClara/CEE4540_DC_2018) for Design Challenges, and a separate, private repository for solutions.
-3. Have advanced to the AguaClara tech section of Flow Control and Measurement summary sheet.
+3. Have advanced to the AguaClara tech section of Flow Control and Measurement summary sheet. Incorporated feedback from Clare and Fletcher.
 
 ### To Do
 1. Finish the Flow Control and Measurement cheat sheet and powerpoint by the end of next week.
