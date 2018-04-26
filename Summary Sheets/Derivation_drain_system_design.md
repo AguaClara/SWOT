@@ -8,7 +8,7 @@ First, it is necessary to understand how AguaClara tank drains work and what the
 
 **Note:** The image below is an example of an AguaClara flocculator drain. A sedimentation tank uses a valve to drain instead of a pipe coupling and piece of pipe. This does not change the derivation at all, the only necessary adjustment is using $D_{Valve}$ instead of $D_{Pipe}$.
 
-![](https://github.com/AguaClara/CEE4540_Master/blob/master/Summary%20Sheets/Images/Pipe%20stub%20drainage.jpg?raw=true)
+![](https://github.com/AguaClara/CEE4540_Master/blob/master/Summary%20Sheets/Images/Pipe_stub_drainage.jpg?raw=true)
 
 While AguaClara sedimentation tanks use valves instead of pipe to begin the process of draining, the actual drain piping system is essentially the same, pipe and an elbow.
 
@@ -33,4 +33,4 @@ $$ D_{Pipe} = \sqrt{ \frac{8 L_{Tank} W_{Tank}}{\pi t_{Drain}}} {\left( \frac{H_
 
 Such that the variables are as the appear in the image below.
 
-![](https://github.com/AguaClara/CEE4540_Master/blob/master/Summary%20Sheets/Images/Pipe%20stub%20drainage%20variables.jpg?raw=true)
+![](https://github.com/AguaClara/CEE4540_Master/blob/master/Summary%20Sheets/Images/Pipe_stub_drainage_variables.jpg?raw=true)

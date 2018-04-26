@@ -39,8 +39,15 @@ Please use this table to control/command find the sections you are looking for.
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - &nbsp;Flow $Q$ and Water Level $h$ as a Function of Time  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - &nbsp;Drain System for a Tank  
 **2.2)** Conventional Flow Control Devices  
-**2.3)**
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - &nbsp;Floats  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - &nbsp;Overflow Tanks  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - &nbsp;Mattiot Bottles  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - &nbsp;Float Valves  
 
+#### **Section 3: AguaClara Flow Control and Measurement Technologies**   
+**3.1)** "Almost Linear" Flow Controller  
+**3.2)** Linear Flow Orifice Meter (LFOM)  
+**3.3)** Linear Dose Controller  
 
 <br>
 <br>
@@ -95,7 +102,7 @@ There are two important distinctions to keep in mind when using head to talk abo
 Going back to the Bernoulli equation, the $\frac{p}{\rho g}$ term is called the pressure head, $z$ the elevation head, and $\frac{V^2}{2g}$ the velocity head. The following diagram shows these various forms of head via a 1 meter deep bucket (left) and a jet of water shooting out of the ground (right).
 
 
-![Anyone getting this?](https://github.com/AguaClara/CEE4540_Master/blob/master/Summary%20Sheets/Images/Different%20forms%20of%20head.jpg?raw=true)
+![](https://github.com/AguaClara/CEE4540_Master/blob/master/Summary%20Sheets/Images/Different_forms_of_head.jpg?raw=true)
 
 
 #### Assumption in using the Bernoulli equation  
@@ -214,13 +221,13 @@ $K_e, \,\, K_e^{'}$ = minor loss coefficients, dimensionless
 
 The $in$ and $out$ subscripts in each of the three forms refer to the diagram that was used for the derivation:
 
-![I really don't think anyone can read this](https://github.com/AguaClara/CEE4540_Master/blob/master/Summary%20Sheets/Images/Minor%20loss%20pipe.jpg?raw=true)
+![](https://github.com/AguaClara/CEE4540_Master/blob/master/Summary%20Sheets/Images/Minor_loss_pipe.jpg?raw=true)
 
 The second and third forms are the ones which you are probably most familiar with. The distinction between them, however, is critical. First, consider the magnitudes of $A_{in}$ and $A_{out}$. $A_{in}$ can never be larger than $A_{out}$, because the flow is expanding. When flow expands, the cross-sectional area it flows through must increase. As a result, both $\frac{A_{out}}{A_{in}} > 1$ and $\frac{A_{in}}{A_{out}} < 1$ must always be true. This means that $K_e$ can never be greater than 1, while $K_e^{'}$ technically has no upper limit.
 
 If you have taken CEE 3310, you have seen tables of minor loss coefficients [like this one](https://www.engineeringtoolbox.com/minor-loss-coefficients-pipes-d_626.html "engineeringtoolbox is the best site ever"), and they almost all have coefficients greater than 1. This implies that these tables use the third form of the minor loss equation as we have defined it, where the velocity is $V_{out}$. There is a good reason for using the third form over the second one: $V_{out}$ is far easier to determine than $V_{in}$. Consider flow through a pipe elbow, as shown in the image below.
 
-![What does this text do again?](https://github.com/AguaClara/CEE4540_Master/blob/master/Summary%20Sheets/Images/Minor%20loss%20elbow.jpg?raw=true)
+![What does this text do again?](https://github.com/AguaClara/CEE4540_Master/blob/master/Summary%20Sheets/Images/Minor_loss_elbow.jpg?raw=true)
 
 In order to find $V_{out}$, we first need to know which point is $out$ and which point is $in$. A simple way to distinguish the two points is that $in$ occurs when the flow is most contracted, and $out$ occurs when the flow has fully expanded after that maximal contraction. Going on these guidelines, point 'B' above would be $in$, since it represents the most contracted flow in the elbow-pipe system. Therefore point 'C' would be $out$, as it is the point where the flow has fully expanded after its compression in 'B.'
 
@@ -244,7 +251,7 @@ _**A vena contracta coefficient is not a minor loss coefficient.**_ Though the e
 ### Origin
 The orifice equation is derived from the Bernoulli equation as applied to the red points in the following image:
 
-![What does this text do again?](https://github.com/AguaClara/CEE4540_Master/blob/master/Summary%20Sheets/Images/Hole%20in%20a%20bucket.jpg?raw=true)
+![What does this text do again?](https://github.com/AguaClara/CEE4540_Master/blob/master/Summary%20Sheets/Images/Hole_in_a_bucket.jpg?raw=true)
 
 At point A, the pressure is atmospheric and the instantaneous velocity is negligible as the water level in the bucket drops slowly. At point B, the pressure is also atmospheric. We define the difference in elevations between the two points, $z_A - z_B$, to be $\Delta h$. With these simplifications ($p_A = V_A = p_B = 0$) and assumptions ($z_A - z_B = \Delta h$), the Bernoulli equation becomes:
 
@@ -267,7 +274,7 @@ $\Delta h$ = elevation difference between orifice and water level
 `pc.flow_orifice(Diam, Height, RatioVCOrifice)` Returns flow through a horizontal orifice.  
 `pc.flow_orifice_vert(Diam, Height, RatioVCOrifice)` Returns flow through a vertical orifice. The height parameter refers to height above the center of the orifice.
 
-![What does this text do again?](https://github.com/AguaClara/CEE4540_Master/blob/master/Summary%20Sheets/Images/Vertical%20and%20Horizontal%20Orifices.jpg?raw=true)
+![What does this text do again?](https://github.com/AguaClara/CEE4540_Master/blob/master/Summary%20Sheets/Images/Vertical_and_Horizontal_Orifices.jpg?raw=true)
 
 There are two configurations for an orifice in the wall of a reservoir of water, horizontal and vertical, as the image above shows. The orifice equation shown in the previous section is for a horizontal orifice, but for a vertical orifice the equation requires integration to return the correct flow. You will explore this in the Flow Control and Measurement Design Challenge.
 
@@ -354,7 +361,7 @@ As evidenced by the orifice equation, a tank of water with a hole poked in the b
 
 The system we are using to gain an understanding of this 'tank-with-a-valve' scenario is shown below. In the image, a hypochlorite solution is slowly dripping and mixing with piped source water, thereby disinfecting it. The valve is almost closed to make sure that the hypochlorite solution drips instead of flows.
 
-![What does this text do again?](https://github.com/AguaClara/CEE4540_Master/blob/master/Summary%20Sheets/Images/complete%20hypochlorinator.jpg?raw=true)
+![What does this text do again?](https://github.com/AguaClara/CEE4540_Master/blob/master/Summary%20Sheets/Images/complete_hypochlorinator.jpg?raw=true)
 
 [Found here](https://github.com/AguaClara/CEE4540_Master/blob/master/Summary%20Sheets/Derivation_flow_through_tank_with_a_valve.md "Hypochlorinator derivation"), the derivation for flow as a function of time yields the following equation:
 
@@ -390,11 +397,11 @@ $h$ = $h(t)$ = elevation of water level with reference to the valve.
 
 With these two equations for flow $Q$ and water level $h$ as a function of time, we can make a plot, shown below, to visualize what's going on. The plot below shows normalized water level (referred to as depth) and flow. Normalized simply refers to the ratio of current/initial, so normalized flow refers to $\frac{Q}{Q_0}$ and normalized depth _in the tank_ refers to $\frac{h}{h_0}$. **The 'tank-in-a-valve' system this plot is based on has the valve at the same elevation as the bottom of the tank**, so $h_{Tank} = h_0$. $t_{Design} = 4$ days
 
-![](https://github.com/AguaClara/CEE4540_Master/blob/master/Summary%20Sheets/Images/Tank%20valve%20not%20elevated.jpg?raw=true)
+![](https://github.com/AguaClara/CEE4540_Master/blob/master/Summary%20Sheets/Images/Tank_valve_not_elevated.jpg?raw=true)
 
 This plot shows the interesting relationship of both water depth and flow over time. The relationship is unfortunate in this case, as normalized flow goes from 1 to 0, which is clearly not _constant_ head. Ideally, the normalized flow $\frac{Q}{Q_0}$ would be a horizontal line, such that  $\frac{Q}{Q_0} = 1$. We can manipulate the equation $\frac{Q}{Q_0} = 1 - \frac{1}{2} \frac{t}{t_{Design}} \frac{h_{Tank}}{h_0}$ to get closer to $\frac{Q}{Q_0} = 1$ by making $\frac{h_{Tank}}{h_{0}}$ very, very large to make the $\frac{1}{2} \frac{t}{t_{Design}} \frac{h_{Tank}}{h_0}$ term drop out. What does this mean in real life? It means having the valve far, far below the bottom of the tank. Since putting the valve underground does not make sense, this solution implies that the tank must be raised far, far above the valve. In the plot below, $h_0 = 50 \cdot h_{Tank}$
 
-![](https://github.com/AguaClara/CEE4540_Master/blob/master/Summary%20Sheets/Images/Tank%20valve%20elevated.jpg?raw=true)
+![](https://github.com/AguaClara/CEE4540_Master/blob/master/Summary%20Sheets/Images/Tank_valve_elevated.jpg?raw=true)
 
 This plot is exactly what we want, $\frac{Q}{Q_0} \approx 1$. While the water depth declines as the tank empties, the flow rate remains roughly constant. Unfortunately, we had to elevate our tank about 50 times its height. So for a standard 1 meter tall tank, it would have to be elevated by 50 meters. This is not realistically feasible. Other solutions must be used for effective and elegant constant head management.
 
@@ -404,7 +411,7 @@ While our efforts to understand the 'tank-with-a-valve' scenario did not lead to
 $$D_{Pipe} = \sqrt{ \frac{8 L_{Tank} W_{Tank}}{\pi t_{Drain}}} {\left( \frac{H_{Tank} \sum K_e }{2g} \right)^{\frac{1}{4}}}$$
 
 Such that the variables are as they appear in the image below:  
-![](https://github.com/AguaClara/CEE4540_Master/blob/master/Summary%20Sheets/Images/Pipe%20stub%20drainage%20variables.jpg?raw=true)
+![](https://github.com/AguaClara/CEE4540_Master/blob/master/Summary%20Sheets/Images/Pipe_stub_drainage_variables.jpg?raw=true)
 
 
 ## 2.2) Constant Head Devices  
@@ -420,7 +427,7 @@ A logical way to ensure constant head is to find a device that moves in accordan
 **Disadvantages:**  
 - Inflexible. What happens when you want to change the distance between the orifice and the float?
 
-![](https://github.com/AguaClara/CEE4540_Master/blob/master/Summary%20Sheets/Images/Different%20Floats.jpg?raw=true)
+![](https://github.com/AguaClara/CEE4540_Master/blob/master/Summary%20Sheets/Images/Different_Floats.jpg?raw=true)
 
 ### Overflow Tanks
 This constant head system requires a pump. It consists of an overhead tank to store water with an orifice or pipe for the constant head of water to flow through. The pump fills the overhead tank as it empties, and provides more water than necessary. This extra water leaves through an overflow pipe, which is why this device is called an overflow tank. An image is shown below. Within the AguaClara lab, the Ram Pump team uses an overflow tank setup, if you would like a closer look.
@@ -433,9 +440,9 @@ This constant head system requires a pump. It consists of an overhead tank to st
 - Requires a pump and therefore electricity
 - Requires lots of vertical space
 
-![](https://github.com/AguaClara/CEE4540_Master/blob/master/Summary%20Sheets/Images/Overflow%20tank.jpg?raw=true)
+![](https://github.com/AguaClara/CEE4540_Master/blob/master/Summary%20Sheets/Images/Overflow_tank.jpg?raw=true)
 
-### Marriot Bottle   
+### Marriot Bottles   
 Marriot bottles are simple yet exceedingly clever devices to ensure constant flow out of a bottle or tank. [This video](https://www.youtube.com/watch?v=y1S5Md0WhNM "1 minute and 21 seconds of pure beauty") provides a great example of one in practice. The only outlet to atmosphere is through the long tube filled with air, as the top of the bottle is completely capped. Therefore the bottom of _both_ tubes is always at atmospheric pressure, even as the water level in the bottle falls.
 
 **Advantages:**  
@@ -445,9 +452,9 @@ Marriot bottles are simple yet exceedingly clever devices to ensure constant flo
 **Disadvantages:**  
 - Batch process, adding water requires that the system stop working for some time.
 
-![](https://github.com/AguaClara/CEE4540_Master/blob/master/Summary%20Sheets/Images/Marriot%20bottle.jpg?raw=true)
+![](https://github.com/AguaClara/CEE4540_Master/blob/master/Summary%20Sheets/Images/Marriot_bottle.jpg?raw=true)
 
-### Float Valve  
+### Float Valves  
 An very clever device, a float valve consists of a float attached to a lever which controls a valve. When there is a low water level, the valve is open. As the water rises, it pushes the float upwards. As the float moves upwards, the lever forces the valve to close, until the float reaches a certain level and the valve closes completely. This can be used to create tanks or bottles with unchanging water levels, even as water exits the tank or bottle. Float valves are a critical part to AguaClara's flow control system. Most toilets found in homes have float valves to ensure that water doesn't spill out of the toilet tank and onto the floor. [Here is a video](https://youtu.be/LzFIPUJghsQ?t=103 "This guy definitely didn't have a script") showing a toilet being flushed, and how the float valve controls the water level in the tank. While the video is good, the person in the video says incorrect things, so please mute while watching.
 
 
@@ -458,10 +465,12 @@ An very clever device, a float valve consists of a float attached to a lever whi
 **Disadvantages:**
 - Doesn't actually create constant flow. It simply allows the water level in a tank to be constant, or to rise to an upper limit. An orifice or other device would be required in the tank using a float valve to create constant flow.
 
-![Credit to https://www.amazon.com/Kerick-Valve-MA052-Float-Adjustable/dp/B0077RAP1I for the valve image](https://github.com/AguaClara/CEE4540_Master/blob/master/Summary%20Sheets/Images/Float%20valve.jpg?raw=true)
+![Credit to https://www.amazon.com/Kerick-Valve-MA052-Float-Adjustable/dp/B0077RAP1I for the valve image](https://github.com/AguaClara/CEE4540_Master/blob/master/Summary%20Sheets/Images/Float_valve.jpg?raw=true)
 
 
-## 2.3) AguaClara Flow Control and Measurement Technologies
+## Section 3: AguaClara Flow Control and Measurement Technologies
+Now that you have the necessary context, you finally get to begin learning about AguaClara's technology and innovations! Each technology or component for this section will have four subsections: **'What it is and does'**, **'How it does it'**, **'Why it is necessary'**, and **'Notes'**.
+
 Using all of the acquired knowledge and information above, AguaClara has designed different flow control and measurement technologies for different purposes and scenarios. Each of these has evolved over time as new and creative innovations have improved the original design.
 
 The AguaClara Flow Controller was created to provide a constant dose of chlorine and coagulant to plants while also easily allowing for a manual change in dose if the plant flow rate increased, decreased, or if the water turbidity changed.
@@ -470,4 +479,13 @@ The Linear Flow Orifice Meter (LFOM) makes it very easy for an operator to measu
 
 Finally, the Linear Dose Controller (often called the 'CDC' for Chemical Dose Controller) brings both previous technologies together to create an elegant solution to consistent chemical dosing, even through varying plant flow rates. It also allows for an increase or decrease in dosing at any given time if the turbidity of the incoming water changes, although this must be done manually by the plant operator.  
 
-### "Almost Linear" Flow Controller
+### Important Terms
+1.
+
+### Important Equations
+1.
+
+## 3.1) "Almost Linear" Flow Controller
+### What it is and does
+**What it is**
+This device consists of a float valve to keep a bottle at a constant water level, a long, flexible tube beginning at the bottom of the bottle, and many precut, precisely located holes in a pipe, as the image below shows. The holes in the pipe hold the other end of the tube that starts at the bottle.
