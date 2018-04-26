@@ -339,11 +339,13 @@ $$Q = \Pi_{vc} A_{or} \sqrt{2g\Delta h}$$
 
 ## Section 2: Introduction to Flow Control: The Search for Constant Head   
 
-**Constant head** implies constant flow. It is as if the orifice equation applied to a hole in the bottom of a bucket, but somehow $\Delta h$ never changes, the water level in the bucket is always the same. Hence, the flow is always the same too.
+The term **constant head** means that flowing water flows with the same energy over time, the flow rate does not change. Constant head implies constant flow. It is as if the orifice equation applied to a hole in the bottom of a bucket, but somehow $\Delta h$ never changes, the water level in the bucket is always the same even though water is flowing out of it. Since the water level is always the same, the flow is always the same too. The challenge is getting the water level to always stay the same, or to create a system that doesn't just use buckets and holes to maintain constant head.
 
-While constant head can now be achieved with pumps and computers, this was not always the case. Getting constant head has been a challenge to engineers for a long time. This problem becomes even harder when considering that we need constant head for dosing purposes. For example, the chlorine concentration in treated water must always be the same, even if the plant flow rate changes over thr course of a day. So the challenge of constant head is not _just_ providing one continuous flow rate, it is also varying that flow rate (chlorine solution) in proportion to another flow rate (flow through a plant).  
+While constant head can now be achieved with pump/computers systems, this was not always the case. Getting constant head has been a challenge to engineers for a long time. This problem becomes even harder when considering that we need constant head for dosing purposes. For example, the chlorine concentration in treated water must always be the same for a particular plant, even if the plant flow rate changes over the course of a day. If the same flow of chlorine is dosed as the flow rate of a plant changes, then the concentration of chlorine in the treated water will not be what it should be. The ideal dosing system accounts for the change of plant flow rate.  
 
-This section introduces the problem of creating constant head  without electricity and presents some historical solutions.
+So the challenge of constant head in chemical dosing is not _just_ providing one continuous flow of chlorine, it is also varying that flow in proportion to the plant flow rate.  
+
+This section presents some historical solutions to creating constant head.
 
 ### Important Terms
 
@@ -352,12 +354,12 @@ This section introduces the problem of creating constant head  without electrici
 3.
 
 ### Important Equations
-1. s
-2.
+1. Tank-with-a-valve / Hole-in-a-bucket equation
+2. Tank Drain equation
 
 ## 2.1) Tank with a Valve  
 ### Flow $Q$ and Water Level $h$ as a Function of Time  
-As evidenced by the orifice equation, a tank of water with a hole poked in the bottom or side does not provide constant flow over time. Why not? In the orifice equation, $Q = \Pi_{vc} A_{or} \sqrt{2g \Delta h}$, flow $Q$ is a function of the height of water above the orifice, $\Delta h$. Since the water drains from the hole over time, the height of water above the orifice necessarily changes. The first approach in the search for a constant flow rate is understanding and manipulating the 'tank-with-a-valve' system, as tightening or loosening a valve is one of the most simple ways of controlling the flow of water.
+As evidenced by the orifice equation, a bucket or tank of water with a hole poked in the bottom or side does not provide constant flow over time. Why not? In the orifice equation, $Q = \Pi_{vc} A_{or} \sqrt{2g \Delta h}$, flow $Q$ is a function of the height of water above the orifice, $\Delta h$. Since the water drains from the hole over time, the height of water above the orifice necessarily changes. The first approach in the search for a constant flow rate is understanding and manipulating the 'tank-with-a-valve' system, as tightening or loosening a valve is one of the most simple ways of controlling the flow of water.
 
 The system we are using to gain an understanding of this 'tank-with-a-valve' scenario is shown below. In the image, a hypochlorite solution is slowly dripping and mixing with piped source water, thereby disinfecting it. The valve is almost closed to make sure that the hypochlorite solution drips instead of flows.
 
@@ -406,9 +408,13 @@ This plot shows the interesting relationship of both water depth and flow over t
 This plot is exactly what we want, $\frac{Q}{Q_0} \approx 1$. While the water depth declines as the tank empties, the flow rate remains roughly constant. Unfortunately, we had to elevate our tank about 50 times its height. So for a standard 1 meter tall tank, it would have to be elevated by 50 meters. This is not realistically feasible. Other solutions must be used for effective and elegant constant head management.
 
 ### Drain System for a Tank  
-While our efforts to understand the 'tank-with-a-valve' scenario did not lead to a great constant head/chemical dosing solution, we can use our understanding to properly design drain systems for flocculators and sedimentation tanks, since there exist systems that are literally 'tank-with-a-valve'. Our goal is to calculate how large to make the drain pipe for flocculators or sed tanks if we want them to drain in a certain amount of time, $t_{Drain}$. Note that $t_{Drain}$ is _not_ the same as $t_{Design}$ from the previous section. The derivation for the following equation is found [here](https://github.com/AguaClara/CEE4540_Master/blob/master/Summary%20Sheets/Derivation_drain_system_design.md), along with a more detailed description of how AguaClara handles draining these tanks.
+While our efforts to understand the 'tank-with-a-valve' scenario did not lead to a great constant head/chemical dosing solution, we can use our understanding to properly design drain systems for AguaClara reactors like flocculators and sedimentation tanks, since they basically tanks with valves. Our goal is to calculate how large to make the drain pipe for flocculators or sed tanks if we want them to drain in a certain amount of time, $t_{Drain}$. Note that $t_{Drain}$ is _not_ the same as $t_{Design}$ from the previous section. The derivation for the following equation is found [here](https://github.com/AguaClara/CEE4540_Master/blob/master/Summary%20Sheets/Derivation_drain_system_design.md), along with more details on AguaClara's pipe stub method for draining tanks. The derived Tank Drain equation is as follows:
 
 $$D_{Pipe} = \sqrt{ \frac{8 L_{Tank} W_{Tank}}{\pi t_{Drain}}} {\left( \frac{H_{Tank} \sum K_e }{2g} \right)^{\frac{1}{4}}}$$
+
+The equation can also be rearranged to solve for the time it would take to drain a tank given its dimensions and a certain drain pipe size:
+
+$$t_{Drain} =  \frac{8 L_{Tank} W_{Tank}}{\pi D_{Pipe}^2} {\left( \frac{H_{Tank} \sum K_e }{2g} \right)^{\frac{1}{2}}}$$
 
 Such that the variables are as they appear in the image below:  
 ![](https://github.com/AguaClara/CEE4540_Master/blob/master/Summary%20Sheets/Images/Pipe_stub_drainage_variables.jpg?raw=true)
@@ -455,11 +461,11 @@ Marriot bottles are simple yet exceedingly clever devices to ensure constant flo
 ![](https://github.com/AguaClara/CEE4540_Master/blob/master/Summary%20Sheets/Images/Marriot_bottle.jpg?raw=true)
 
 ### Float Valves  
-An very clever device, a float valve consists of a float attached to a lever which controls a valve. When there is a low water level, the valve is open. As the water rises, it pushes the float upwards. As the float moves upwards, the lever forces the valve to close, until the float reaches a certain level and the valve closes completely. This can be used to create tanks or bottles with unchanging water levels, even as water exits the tank or bottle. Float valves are a critical part to AguaClara's flow control system. Most toilets found in homes have float valves to ensure that water doesn't spill out of the toilet tank and onto the floor. [Here is a video](https://youtu.be/LzFIPUJghsQ?t=103 "This guy definitely didn't have a script") showing a toilet being flushed, and how the float valve controls the water level in the tank. While the video is good, the person in the video says incorrect things, so please mute while watching.
+A very clever device, a float valve consists of a float attached to a lever which controls a valve. When there is a low water level, the valve is open. As the water rises, it pushes the float upwards. As the float moves upwards, the lever forces the valve to close, until the float reaches its maximum level and the valve closes completely. Float valves can be used to create tanks or bottles with unchanging water levels, even as water exits the tank or bottle. Float valves are a critical part to AguaClara's flow control system. Most toilets found in homes have float valves to ensure that water doesn't spill out of the toilet tank and onto the floor. [Here is a video](https://www.youtube.com/watch?v=hAxAyoSMQhI "This is the best video ever") explaining how a conventional toilet works. Please note the role of the float valve, which is to make sure that the water stops entering the toilet's tank once the water level has reached a specific point.
 
 
 **Advantages:**  
-- Very flexible in its uses. Can easily be a component of a more complex system
+- Very flexible in its uses. Can easily be a component of a more complex system, like toilets
 - Can be very compact
 
 **Disadvantages:**
@@ -469,23 +475,34 @@ An very clever device, a float valve consists of a float attached to a lever whi
 
 
 ## Section 3: AguaClara Flow Control and Measurement Technologies
-Now that you have the necessary context, you finally get to begin learning about AguaClara's technology and innovations! Each technology or component for this section will have four subsections: **'What it is and does'**, **'How it does it'**, **'Why it is necessary'**, and **'Notes'**.
+Now that you have the necessary context, you finally get to begin learning about AguaClara's technologies and innovations! Each technology or component for this section will have four subsections:
+- **What it is and does**
+- **How it does it**
+- **Why it is necessary**
+- **Notes**
 
 Using all of the acquired knowledge and information above, AguaClara has designed different flow control and measurement technologies for different purposes and scenarios. Each of these has evolved over time as new and creative innovations have improved the original design.
 
-The AguaClara Flow Controller was created to provide a constant dose of chlorine and coagulant to plants while also easily allowing for a manual change in dose if the plant flow rate increased, decreased, or if the water turbidity changed.
-
-The Linear Flow Orifice Meter (LFOM) makes it very easy for an operator to measure how much water is flowing through the plant. It also, critically, forces the level or water in the plant's entrance tank to scale linearly with the amount of water flowing through the plant, hence the 'LF' in LFOM.
-
-Finally, the Linear Dose Controller (often called the 'CDC' for Chemical Dose Controller) brings both previous technologies together to create an elegant solution to consistent chemical dosing, even through varying plant flow rates. It also allows for an increase or decrease in dosing at any given time if the turbidity of the incoming water changes, although this must be done manually by the plant operator.  
+Before diving into the technologies, recall the purpose of the chemicals that we are seeking to constantly dose, and why it is important to keep a constant, specific dose. **Coagulant** like alum, PAC, and iron-based coagulants, and **chlorine**, usually in the form of hypochlorite.
+- Coagulant is used to turn small particles into bigger particles, allowing them to be captured more easily. Waters with high [**turbidity**](https://en.wikipedia.org/wiki/Turbidity "Turbidity wikipedia"), or a lot of particles like clay and bacteria, require more coagulant to treat effectively. Additionally, waters with a lot of [**organic matter**](https://en.wikipedia.org/wiki/Organic_matter "Organic matter wikipedia") require large amounts of coagulant to treat.
+- Chlorine is used to disinfect water that has already been fully treated. A proper and consistent chlorine dose is required, as too low of a dose creates a risk of reintroduction of pathogens in the distribution system and too high of a dose increases the risk of carcinogenic [disinfection byproduct](https://en.wikipedia.org/wiki/Disinfection_by-product "DBP wikipedia") formation.
 
 ### Important Terms
-1.
+1. Coagulant
+2. Chlorination
+3. Turbidity
 
 ### Important Equations
 1.
 
 ## 3.1) "Almost Linear" Flow Controller
 ### What it is and does
-**What it is**
-This device consists of a float valve to keep a bottle at a constant water level, a long, flexible tube beginning at the bottom of the bottle, and many precut, precisely located holes in a pipe, as the image below shows. The holes in the pipe hold the other end of the tube that starts at the bottle.
+**What it is**  
+This device consists of a float valve to keep a solution in a bottle at a constant water level, a flexible tube starting at the bottom of the bottle, and many precisely located holes in a pipe, as the image below shows. The holes in the pipe hold the other end of the tube that starts at the bottle.
+
+Chemical solution, either coagulant or chlorine, is stored in a stock tank somewhere above the bottle. A tube connects the stock tank to the float valve within the bottle.
+
+![](https://github.com/AguaClara/CEE4540_Master/blob/master/Summary%20Sheets/Images/Almost_linear_flow_controller.jpg?raw=true)
+
+**What it does**  
+This flow controller provides constant flow of a chemical solution. When the end of the flexible tube is placed in a hole, the elevation difference between the water lever in the bottle and the hole does not change, and a constant flow is provided. When the operator wants to change the flow of chemical as a result of a change in the plant's flow rate or an increase in turbidity,  

@@ -1,6 +1,6 @@
 # Deriving $Q(t)$ for a Tank with a Valve
 
-This document contains the derivation of the flow through a tank-with-a-valve. Our reference will be a simple hypochlorinator, shown in the following image. In the image, a hypochlorite solution is slowly dripping and mixing with piped source water, thereby disinfecting it. The valve is almost closed to make sure that the hypochlorite solution drips instead of flows.
+This document contains the derivation of the flow through a tank-with-a-valve over time, $Q(t)$. Our reference will be a simple hypochlorinator, shown in the following image. In the image, a hypochlorite solution is slowly dripping and mixing with piped source water, thereby disinfecting it. The valve is almost closed to make sure that the hypochlorite solution drips instead of flows.
 
 ![I really don't think anyone can read this](https://github.com/AguaClara/CEE4540_Master/blob/master/Summary%20Sheets/Images/drip_hypochlorinator.jpg?raw=true)
 

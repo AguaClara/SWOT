@@ -5,7 +5,7 @@ This file will contain weekly updates into my work. All changes will be pushed t
 ***
 ##List of Big Ideas and Big Concerns
 1. It is not ideal to have both a confluence and a GitHub page that contain course resources. This will confuse students very much, they will be unable to find or unwilling to look for the simple things, and they will pester the TAs.  
-**¡DONE! Ambitious idea: Move everything to GitHub ¡DONE!**  
+**Ambitious idea: Move everything to GitHub**  
 Confluence, in all its glory, is not well liked by students and has a tendency to get very messy. Despite the fact that it seems like the perfect tool, I've only every heard complaints from students, both in AguaClara and 4540. Documents and information are oftentimes difficult to find
     - Is it possible to make a good looking syllabus on GitHub? Will investigate. Shouldn't be too difficult with table functionality in markdown
 2.
@@ -142,13 +142,7 @@ This interim progress report is due to 2 factors. My family and I are going on v
 
 
 ***
-## Seventh Progress Report: 4/26/2018  
+## Seventh Progress Report: 4/??/2018  
 ### Done  
-1. Transfer from confluence to GitHub is more or less done (Thanks Monroe!). Anything else that was forgotten can be easily moved later on.
-2. New repo structure has been established. [CEE4540_Master](https://github.com/AguaClara/CEE4540_Master) for class material, [CEE4540_DC_2018](https://github.com/AguaClara/CEE4540_DC_2018) for Design Challenges, and a separate, private repository for solutions.
-3. Have advanced to the AguaClara tech section of Flow Control and Measurement summary sheet.
-
-### To Do
-1. Finish the Flow Control and Measurement cheat sheet and powerpoint by the end of next week.
-2. Re-evaluate the my work priorities, considering time. Perhaps I should prioritize creating derivation sheets to remove derivations from powerpoints, and then spruce up the powerpoints before returning to the summary sheets. The summary sheets take a very, very long time to do well :/
-I think that will greatly improve the chance that some things are completely done and what _is_ done is done very well by the beginning of the semester.
+1. Added icons into the syllabus on the CEE4540_DC wiki
+2. Should there be a separate repository for design challenges vs course material? I don't actually think so. It'll just make things more confusing for students. With the way that the wiki is organized, I don't think anything needs to actually change. Most incoming, non-AguaClara students are totally unfamiliar with GitHub, and having two separate repositories has a good chance of confusing them.
