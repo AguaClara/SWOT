@@ -3,7 +3,7 @@
 This document contains the derivation of the minor loss equation using the following image as a reference. The derivation begins with a slightly simplified energy equation, in which $h_P$ and $h_T$ have been eliminated.
 
 
-![I really don't think anyone can read this](https://github.com/AguaClara/CEE4540_Master/blob/master/Summary%20Sheets/Images/Minor_loss_pipe.jpg?raw=true)
+![Image link](https://github.com/AguaClara/CEE4540_Master/blob/master/Summary%20Sheets/Images/Minor_loss_pipe.jpg?raw=true)
 
 $$\frac{p_{in}}{\rho g} + {z_{in}} + \frac{V_{in}^2}{2g} = \frac{p_{out}}{\rho g} + z_{out} + \frac{V_{out}^2}{2g} + h_L$$
 
@@ -17,7 +17,7 @@ $$h_e = \frac{p_{in} - p_{out}}{\rho g} + \frac{V_{in}^2 - V_{out}^2}{2g}$$
 
 This last equation to determine $h_e$ has four variables, and we would like it to have just one or two. Thus, we will invoke conservation of momentum in the horizontal direction across our control volume to remove some variables. The difference in momentum from the $in$ point to the $out$ point is result of the pressure difference between each end of the control volume. We will be considering the pressure at the centroid of our control surfaces, and we will neglect shear along the pipe walls. After these assumptions, our momentum equation becomes the following:
 
-$$M_{in \, x} + M_{out \, x} = F_{p_{in \, x}} + F_{p_{out \, x}}$$
+$$M_{in, \, x} + M_{out, \, x} = F_{p_{in, \, x}} + F_{p_{out, \, x}}$$
 
 Such that:  
 $M_{x}$ = momentum flowing through the control volume in the x-direction, $\frac{[M][L]}{[T]^2}$  

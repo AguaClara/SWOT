@@ -1,8 +1,8 @@
 # Deriving $Q(t)$ for a Tank with a Valve
 
-This document contains the derivation of the flow through a tank-with-a-valve over time, $Q(t)$. Our reference will be a simple hypochlorinator, shown in the following image. In the image, a hypochlorite solution is slowly dripping and mixing with piped source water, thereby disinfecting it. The valve is almost closed to make sure that the hypochlorite solution drips instead of flows.
+This document contains the derivation of the flow through a tank-with-a-valve over time, $Q(t)$. Our reference will be a simple hypochlorinator, shown in the following image. In the image, a hypochlorite solution is slowly dripping and mixing with piped source water, thereby disinfecting it. The valve is almost closed to make sure that the hypochlorite solution drips instead of flows. At the end of this document is an image which shows the variables in the final equation.
 
-![I really don't think anyone can read this](https://github.com/AguaClara/CEE4540_Master/blob/master/Summary%20Sheets/Images/drip_hypochlorinator.jpg?raw=true)
+![Image link](https://github.com/AguaClara/CEE4540_Master/blob/master/Summary%20Sheets/Images/drip_hypochlorinator.jpg?raw=true)
 
 This derivation begins by finding two equations for flow, $Q$, through the hypochlorinator and setting them equal to each other. First, the rate of change of the volume of hypochlorite solution in the tank is equivalent to the flow out of the hypochlorinator. Since the volume of hypochlorite solution in the tank is equal to the tank's cross-sectional area times it height, we get the following equation:
 
@@ -10,8 +10,8 @@ $$Q =  - \frac{d\rlap{-}V}{dt} = - \frac{{A_{Tank}}dh}{dt}$$
 
 Such that:  
 
-$\frac{d\rlap{-}V}{dt}$ = rate of change in volume of solution in the tank, $\frac{[L]^3}{[T]}$  
-$\frac{dh}{dt}$ = rate of change in height of water (hypochlorite solution) level with time, $\frac{[L]}{[T]}$  
+$\frac{d\rlap{-}V}{dt}$ = rate of change in volume of solution in the tank  
+$\frac{dh}{dt}$ = rate of change in height of water (hypochlorite solution) level with time  
 
 Our other equation for flow is the minor loss equation. The only significant minor loss in this system occurs in the almost-closed valve that is dripping the hypochlorite solution:
 
@@ -21,7 +21,23 @@ Bear in mind that this is the second form of the minor loss equation as describe
 
 $$Q = A_{Valve} \sqrt{\frac{2 h_e g}{K_e}}$$  
 
-Before combining the two equations, one important adjustment must be made. The minor loss value $h_e$ must be swapped out for the elevation difference between the water (hypochlorite solution) level in the tank and the elevation of the valve. This elevation difference will be referred to as $h$. Making the swap assumes that all of the driving head in this system, $h$, is dissipated by the minor losses in the valve. This assumption is well founded, as the energy of the trickle of water that leaves the valve is small enough to be negligible compared to $h$. Look below for a diagram showing what $h$ represents. In the diagram, $h_0$ simply refers to $h$ at time 0. Now we can set both equations for $Q$ equal to each other and move them both to one side:
+***
+## Important Clarification
+We are equating the driving head of the system, $h$ (or $h_0$ at time $t=0$), to the head loss $h_L$. To understand how this is possible, consider the simplified energy equation for this scenario, where the elevation difference of the water drives it through the valve:
+
+$h = \frac{V^2}{2g} + h_L$  since major losses are negligible in this system, $h_L = h_e$  
+$h = \frac{V^2}{2g} + h_e$  
+$h = \frac{V^2}{2g} + \left( \sum K_e \right) \frac{V^2}{2g}$  
+From here we simply incorporate the flow term, $\frac{V^2}{2g}$, to the minor loss equation  
+$h = \left( \sum K_e + 1 \right) \frac{V^2}{2g}$  
+$h = h_e$   
+
+To summarize, the head loss is not actually equivalent to all of the driving head. We are putting the term for kinetic energy of the water at the end of our control volume, $\frac{V^2}{2g}$, into the minor loss equation, $\left( \sum K_e \right) \frac{V^2}{2g}$ to simplify the problem. This is known as a 'control volume trick.' As a result of including the kinetic energy into the minor loss term, the sum of minor loss coefficients $\sum K_e$ is 1 more than it would be without this trick.
+
+
+***
+
+With that clarification, we can set both equations for $Q$ equal to each other and move them both to one side:
 
 $$A_{Tank} \frac{dh}{dt} + A_{Valve} \sqrt{\frac{2gh}{K_e}} = 0$$
 
@@ -42,7 +58,7 @@ At this point, the steps and equation substitutions may begin to seem unintuitiv
 
 $$Q = A_{Valve} \sqrt{\frac{2g}{K_e}} \left( \sqrt{h_0}  - t \frac{A_{Valve}}{2 A_{tank}} \sqrt{\frac{2g}{K_e}} \right)$$
 
-Now we can focus on getting rid of the variables like $A_{Valve}$, $K_e$, and $A_{tank}$. By using the minor loss equation once more, we can remove both $A_{Valve}$ and $K_e$. Consider the initial state of the system, when the hypochlorinator is set up and starts dropping its first few drops of hypochlorite solution into the water. The initial flow rate, $Q_0$, and elevation difference between the water level and the valve, $h_0$, can be input into the minor loss equation, which can then be solved for $A_{Valve}$:
+Now we can focus on getting rid of the variables $A_{Valve}$, $K_e$, and $A_{tank}$. By using the minor loss equation once more, we can remove both $A_{Valve}$ and $K_e$. Consider the initial state of the system, when the hypochlorinator is set up and starts dropping its first few drops of hypochlorite solution into the water. The initial flow rate, $Q_0$, and elevation difference between the water level and the valve, $h_0$, can be input into the minor loss equation, which can then be solved for $A_{Valve}$:
 
 $$ A_{Valve} = \frac{Q_{0}}{ \sqrt{ \frac{2 h_0 g}{K_e}} }$$
 
@@ -81,3 +97,5 @@ $t$ = elapsed time
 $t_{Design}$ = time it would take for tank to empty *if* flow stayed constant at $Q_0$, which it does not  
 $h_{Tank}$ = elevation of water level with reference to tank bottom  
 $h_0$ = elevation of water level with reference to the valve  
+
+"How does this 'tank with a valve' scenario differ from the 'hole in a bucket' scenario?" some might ask. If you are interested, you may go through the derivation on your own, using the orifice equation instead of the minor loss equation for the first step. If you do so, you'll find that the equation remains almost the same, the only difference is that the $\frac{h_{Tank}}{h_0}$ term drops out for an orifice, as $h_{Tank} = h_0$. The big difference in the systems lies with the flexibility of having a valve. It can be tightened or loosened to change the flow rate, whereas changing the size of an orifice multiple times in a row is not easy nor recommended.

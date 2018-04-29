@@ -102,7 +102,7 @@ There are two important distinctions to keep in mind when using head to talk abo
 Going back to the Bernoulli equation, the $\frac{p}{\rho g}$ term is called the pressure head, $z$ the elevation head, and $\frac{V^2}{2g}$ the velocity head. The following diagram shows these various forms of head via a 1 meter deep bucket (left) and a jet of water shooting out of the ground (right).
 
 
-![](https://github.com/AguaClara/CEE4540_Master/blob/master/Summary%20Sheets/Images/Different_forms_of_head.jpg?raw=true)
+![Image link](https://github.com/AguaClara/CEE4540_Master/blob/master/Summary%20Sheets/Images/Different_forms_of_head.jpg?raw=true)
 
 
 #### Assumption in using the Bernoulli equation  
@@ -221,7 +221,7 @@ $K_e, \,\, K_e^{'}$ = minor loss coefficients, dimensionless
 
 The $in$ and $out$ subscripts in each of the three forms refer to the diagram that was used for the derivation:
 
-![](https://github.com/AguaClara/CEE4540_Master/blob/master/Summary%20Sheets/Images/Minor_loss_pipe.jpg?raw=true)
+![Image link](https://github.com/AguaClara/CEE4540_Master/blob/master/Summary%20Sheets/Images/Minor_loss_pipe.jpg?raw=true)
 
 The second and third forms are the ones which you are probably most familiar with. The distinction between them, however, is critical. First, consider the magnitudes of $A_{in}$ and $A_{out}$. $A_{in}$ can never be larger than $A_{out}$, because the flow is expanding. When flow expands, the cross-sectional area it flows through must increase. As a result, both $\frac{A_{out}}{A_{in}} > 1$ and $\frac{A_{in}}{A_{out}} < 1$ must always be true. This means that $K_e$ can never be greater than 1, while $K_e^{'}$ technically has no upper limit.
 
@@ -399,11 +399,11 @@ $h$ = $h(t)$ = elevation of water level with reference to the valve.
 
 With these two equations for flow $Q$ and water level $h$ as a function of time, we can make a plot, shown below, to visualize what's going on. The plot below shows normalized water level (referred to as depth) and flow. Normalized simply refers to the ratio of current/initial, so normalized flow refers to $\frac{Q}{Q_0}$ and normalized depth _in the tank_ refers to $\frac{h}{h_0}$. **The 'tank-in-a-valve' system this plot is based on has the valve at the same elevation as the bottom of the tank**, so $h_{Tank} = h_0$. $t_{Design} = 4$ days
 
-![](https://github.com/AguaClara/CEE4540_Master/blob/master/Summary%20Sheets/Images/Tank_valve_not_elevated.jpg?raw=true)
+![Image link](https://github.com/AguaClara/CEE4540_Master/blob/master/Summary%20Sheets/Images/Tank_valve_not_elevated.jpg?raw=true)
 
 This plot shows the interesting relationship of both water depth and flow over time. The relationship is unfortunate in this case, as normalized flow goes from 1 to 0, which is clearly not _constant_ head. Ideally, the normalized flow $\frac{Q}{Q_0}$ would be a horizontal line, such that  $\frac{Q}{Q_0} = 1$. We can manipulate the equation $\frac{Q}{Q_0} = 1 - \frac{1}{2} \frac{t}{t_{Design}} \frac{h_{Tank}}{h_0}$ to get closer to $\frac{Q}{Q_0} = 1$ by making $\frac{h_{Tank}}{h_{0}}$ very, very large to make the $\frac{1}{2} \frac{t}{t_{Design}} \frac{h_{Tank}}{h_0}$ term drop out. What does this mean in real life? It means having the valve far, far below the bottom of the tank. Since putting the valve underground does not make sense, this solution implies that the tank must be raised far, far above the valve. In the plot below, $h_0 = 50 \cdot h_{Tank}$
 
-![](https://github.com/AguaClara/CEE4540_Master/blob/master/Summary%20Sheets/Images/Tank_valve_elevated.jpg?raw=true)
+![Image link](https://github.com/AguaClara/CEE4540_Master/blob/master/Summary%20Sheets/Images/Tank_valve_elevated.jpg?raw=true)
 
 This plot is exactly what we want, $\frac{Q}{Q_0} \approx 1$. While the water depth declines as the tank empties, the flow rate remains roughly constant. Unfortunately, we had to elevate our tank about 50 times its height. So for a standard 1 meter tall tank, it would have to be elevated by 50 meters. This is not realistically feasible. Other solutions must be used for effective and elegant constant head management.
 
@@ -417,7 +417,7 @@ The equation can also be rearranged to solve for the time it would take to drain
 $$t_{Drain} =  \frac{8 L_{Tank} W_{Tank}}{\pi D_{Pipe}^2} {\left( \frac{H_{Tank} \sum K_e }{2g} \right)^{\frac{1}{2}}}$$
 
 Such that the variables are as they appear in the image below:  
-![](https://github.com/AguaClara/CEE4540_Master/blob/master/Summary%20Sheets/Images/Pipe_stub_drainage_variables.jpg?raw=true)
+![Image link](https://github.com/AguaClara/CEE4540_Master/blob/master/Summary%20Sheets/Images/Pipe_stub_drainage_variables.jpg?raw=true)
 
 
 ## 2.2) Constant Head Devices  
@@ -433,7 +433,7 @@ A logical way to ensure constant head is to find a device that moves in accordan
 **Disadvantages:**  
 - Inflexible. What happens when you want to change the distance between the orifice and the float?
 
-![](https://github.com/AguaClara/CEE4540_Master/blob/master/Summary%20Sheets/Images/Different_Floats.jpg?raw=true)
+![Image link](https://github.com/AguaClara/CEE4540_Master/blob/master/Summary%20Sheets/Images/Different_Floats.jpg?raw=true)
 
 ### Overflow Tanks
 This constant head system requires a pump. It consists of an overhead tank to store water with an orifice or pipe for the constant head of water to flow through. The pump fills the overhead tank as it empties, and provides more water than necessary. This extra water leaves through an overflow pipe, which is why this device is called an overflow tank. An image is shown below. Within the AguaClara lab, the Ram Pump team uses an overflow tank setup, if you would like a closer look.
@@ -446,7 +446,7 @@ This constant head system requires a pump. It consists of an overhead tank to st
 - Requires a pump and therefore electricity
 - Requires lots of vertical space
 
-![](https://github.com/AguaClara/CEE4540_Master/blob/master/Summary%20Sheets/Images/Overflow_tank.jpg?raw=true)
+![Image link](https://github.com/AguaClara/CEE4540_Master/blob/master/Summary%20Sheets/Images/Overflow_tank.jpg?raw=true)
 
 ### Marriot Bottles   
 Marriot bottles are simple yet exceedingly clever devices to ensure constant flow out of a bottle or tank. [This video](https://www.youtube.com/watch?v=y1S5Md0WhNM "1 minute and 21 seconds of pure beauty") provides a great example of one in practice. The only outlet to atmosphere is through the long tube filled with air, as the top of the bottle is completely capped. Therefore the bottom of _both_ tubes is always at atmospheric pressure, even as the water level in the bottle falls.
@@ -458,7 +458,7 @@ Marriot bottles are simple yet exceedingly clever devices to ensure constant flo
 **Disadvantages:**  
 - Batch process, adding water requires that the system stop working for some time.
 
-![](https://github.com/AguaClara/CEE4540_Master/blob/master/Summary%20Sheets/Images/Marriot_bottle.jpg?raw=true)
+![Image link](https://github.com/AguaClara/CEE4540_Master/blob/master/Summary%20Sheets/Images/Marriot_bottle.jpg?raw=true)
 
 ### Float Valves  
 A very clever device, a float valve consists of a float attached to a lever which controls a valve. When there is a low water level, the valve is open. As the water rises, it pushes the float upwards. As the float moves upwards, the lever forces the valve to close, until the float reaches its maximum level and the valve closes completely. Float valves can be used to create tanks or bottles with unchanging water levels, even as water exits the tank or bottle. Float valves are a critical part to AguaClara's flow control system. Most toilets found in homes have float valves to ensure that water doesn't spill out of the toilet tank and onto the floor. [Here is a video](https://www.youtube.com/watch?v=hAxAyoSMQhI "This is the best video ever") explaining how a conventional toilet works. Please note the role of the float valve, which is to make sure that the water stops entering the toilet's tank once the water level has reached a specific point.
@@ -475,34 +475,45 @@ A very clever device, a float valve consists of a float attached to a lever whic
 
 
 ## Section 3: AguaClara Flow Control and Measurement Technologies
-Now that you have the necessary context, you finally get to begin learning about AguaClara's technologies and innovations! Each technology or component for this section will have four subsections:
-- **What it is and does**
-- **How it does it**
+Now that you have the necessary context, you finally get to learn about AguaClara's technologies and innovations! Each technology or component for this section will have five subsections:
+- **What it is**  
+- **What it does**  
 - **Why it is necessary**
+- **How it works**
 - **Notes**
 
-Using all of the acquired knowledge and information above, AguaClara has designed different flow control and measurement technologies for different purposes and scenarios. Each of these has evolved over time as new and creative innovations have improved the original design.
+Using all of the acquired knowledge and information from the sections above, AguaClara has designed different flow control and measurement technologies for different purposes and scenarios. Each of these has evolved over time as new and creative innovations have improved the original designs.
 
-Before diving into the technologies, recall the purpose of the chemicals that we are seeking to constantly dose, and why it is important to keep a constant, specific dose. **Coagulant** like alum, PAC, and iron-based coagulants, and **chlorine**, usually in the form of hypochlorite.
-- Coagulant is used to turn small particles into bigger particles, allowing them to be captured more easily. Waters with high [**turbidity**](https://en.wikipedia.org/wiki/Turbidity "Turbidity wikipedia"), or a lot of particles like clay and bacteria, require more coagulant to treat effectively. Additionally, waters with a lot of [**organic matter**](https://en.wikipedia.org/wiki/Organic_matter "Organic matter wikipedia") require large amounts of coagulant to treat.
-- Chlorine is used to disinfect water that has already been fully treated. A proper and consistent chlorine dose is required, as too low of a dose creates a risk of reintroduction of pathogens in the distribution system and too high of a dose increases the risk of carcinogenic [disinfection byproduct](https://en.wikipedia.org/wiki/Disinfection_by-product "DBP wikipedia") formation.
+Before diving into the technologies, recall the purpose of the chemicals that we are seeking to constantly **dose**, and why it is important to keep a constant, specific dose. Also recall that 'dose' means 'concentration of chemical' _in the water we are trying to treat_, not in the stock tanks of the chemicals.
+- [**Coagulant**](https://en.wikipedia.org/wiki/Coagulation_(water_treatment) "Coagulation wikipedia") like alum, PAC, and some iron-based chemicals are used to turn small particles into bigger particles, allowing them to be captured more easily. Waters with high [**turbidity**](https://en.wikipedia.org/wiki/Turbidity "Turbidity wikipedia"), indicative of a lot of particles like clay and bacteria, require more coagulant to treat effectively. Additionally, waters with a lot of [**organic matter**](https://en.wikipedia.org/wiki/Organic_matter "Organic matter wikipedia") require significantly more coagulant to treat.
+- [**Chlorine**](https://en.wikipedia.org/wiki/Water_chlorination "Chlorination wikipedia") is used to disinfect water that has already been fully treated. A proper and consistent chlorine dose is required, as too low of a dose creates a risk of reintroduction of pathogens in the distribution system and too high of a dose increases the risk of carcinogenic [disinfection byproduct](https://en.wikipedia.org/wiki/Disinfection_by-product "DBP wikipedia") formation.
 
-### Important Terms
-1. Coagulant
-2. Chlorination
-3. Turbidity
+### Important Terms  
+1. Dose
+2. Coagulant
+3. Chlorination
+4. Turbidity
+5. Organic Matter
+6. Constant Head Tank
 
 ### Important Equations
 1.
 
 ## 3.1) "Almost Linear" Flow Controller
-### What it is and does
-**What it is**  
-This device consists of a float valve to keep a solution in a bottle at a constant water level, a flexible tube starting at the bottom of the bottle, and many precisely located holes in a pipe, as the image below shows. The holes in the pipe hold the other end of the tube that starts at the bottle.
+### What it is
+This device consists of a bottle of chemical solution (called the **Constant Head Tank**, CHT) a float valve to keep a solution in the CHT at a constant water level, a flexible tube starting at the bottom of the CHT, and many precisely located holes in a pipe, as the image below shows. The holes in the pipe hold the other end of the tube that starts at the CHT.
 
-Chemical solution, either coagulant or chlorine, is stored in a stock tank somewhere above the bottle. A tube connects the stock tank to the float valve within the bottle.
+Chemical solution, either coagulant or chlorine, is stored in a stock tank somewhere above the CHT. A different tube connects the stock tank to the float valve within the CHT.
 
-![](https://github.com/AguaClara/CEE4540_Master/blob/master/Summary%20Sheets/Images/Almost_linear_flow_controller.jpg?raw=true)
+![Image link](https://github.com/AguaClara/CEE4540_Master/blob/master/Summary%20Sheets/Images/Almost_linear_flow_controller.jpg?raw=true)
 
-**What it does**  
-This flow controller provides constant flow of a chemical solution. When the end of the flexible tube is placed in a hole, the elevation difference between the water lever in the bottle and the hole does not change, and a constant flow is provided. When the operator wants to change the flow of chemical as a result of a change in the plant's flow rate or an increase in turbidity,  
+## What it does  
+This flow controller provides a constant flow of chemical solution to the water in the plant. When the end of the flexible tube is placed in a hole, the elevation difference between the water lever in the bottle and the hole is set and does not change unless the tube is then placed in another hole. Thus, a constant flow is provided.   
+
+## Why it is necessary
+As has been mentioned previously, the amount of chlorine and coagulant that must be added to the raw water changes depending on the flow rate of the plant; the change is necessary to keep the dose constant. More water flowing through the plant, more chlorine necessary to maintain the dose of chlorine in the treated water constant. For coagulant, there are also other factors that impact the required dose, including the turbidity of the water and the amount of organic matter in the water. This means that the operator must be able to change the dose of both coagulant and chlorine quickly and easily, and they must be able to know what the new dose they set is. The "Almost Linear" Flow Controller accomplishes this by having a large number of holes in the flow control pipe next to the constant head bottle. These large number of holes let the operator quickly adjust the flow of chemicals into the raw water by moving the end of the flexible tube from one hole to another.
+
+## How it works
+The idea behind this flow controller was to have a linear relationship between the elevation difference in the water level and the end of the flexible tube and the flow rate coming out of the flexible tube, $\Delta h \propto Q$.
+
+As you remember from section 1.4), the summary of Fluids Review, $\Delta h \propto Q$ is only true for major losses and laminar flow. Therefore, we need to make sure that flow is always laminar in the flexible tube that goes between the CHT and the holes while also making sure that major losses far exceed minor losses.  
