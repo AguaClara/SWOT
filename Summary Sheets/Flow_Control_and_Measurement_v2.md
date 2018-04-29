@@ -1,4 +1,4 @@
-tank with a valve# Flow Control and Measurement Summary Sheet
+# Flow Control and Measurement Summary Sheet
 Welcome to the first summary sheet of CEE 4540! These documents will be guides and references for you throughout the semester. Since Professor Monroe's class time is limited, so too is the amount of material he can fit on the slides while ensuring that they remain understandable. Thus, these summary sheets will supplement the powerpoints by going into further detail on the course concepts introduced in the slides.
 
 Equations, universal constants, and other helpful goodies can be found in the [aide_design repository on GitHub](https://github.com/AguaClara/aide_design/tree/master/aide_design "aide_design"). Most equations and constants you find in these summary sheets will already have been coded into aide_design, and will be shown here in the following format:  
@@ -36,13 +36,7 @@ Please use this table to control/command find the sections you are looking for.
 
 #### **Section 2: Introduction to Flow Control: The Search for Constant Head**  
 **2.1)** Tank with a valve  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - &nbsp;Flow $Q$ and Water Level $h$ as a Function of Time  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - &nbsp;Drain System for a Tank  
-**2.2)** Conventional Flow Control Devices  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - &nbsp;Floats  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - &nbsp;Overflow Tanks  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - &nbsp;Mattiot Bottles  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - &nbsp;Float Valves  
+**2.2)** Drain System for a Tank   
 
 #### **Section 3: AguaClara Flow Control and Measurement Technologies**   
 **3.1)** "Almost Linear" Flow Controller  
@@ -339,23 +333,11 @@ $$Q = \Pi_{vc} A_{or} \sqrt{2g\Delta h}$$
 
 ## Section 2: Introduction to Flow Control: The Search for Constant Head   
 
-The term **constant head** means that flowing water flows with the same energy over time, the flow rate does not change. Constant head implies constant flow. It is as if the orifice equation applied to a hole in the bottom of a bucket, but somehow $\Delta h$ never changes, the water level in the bucket is always the same even though water is flowing out of it. Since the water level is always the same, the flow is always the same too. The challenge is getting the water level to always stay the same, or to create a system that doesn't just use buckets and holes to maintain constant head.
+The term **constant head** means that the driving head of a system, $\Delta z$ or $\Delta h$, does not change over time, even as water flows through or out of the system. Constant head implies constant flow, since the driving head does not change.
 
-While constant head can now be achieved with pump/computers systems, this was not always the case. Getting constant head has been a challenge to engineers for a long time. This problem becomes even harder when considering that we need constant head for dosing purposes. For example, the chlorine concentration in treated water must always be the same for a particular plant, even if the plant flow rate changes over the course of a day. If the same flow of chlorine is dosed as the flow rate of a plant changes, then the concentration of chlorine in the treated water will not be what it should be. The ideal dosing system accounts for the change of plant flow rate.  
+The challenge of constant head in chemical dosing for water treatment plants is not _just_ providing one continuous flow of chemicals, it is also varying that flow as the flow rate through the plant changes, to keep the concentration of chemical in the raw water the same.  
 
-So the challenge of constant head in chemical dosing is not _just_ providing one continuous flow of chlorine, it is also varying that flow in proportion to the plant flow rate.  
 
-This section presents some historical solutions to creating constant head.
-
-### Important Terms
-
-1. Constant Head
-2. Chlorination
-3.
-
-### Important Equations
-1. 'Tank with a valve' / 'Hole in a bucket' equation
-2. Tank Drain equation
 
 ## 2.1) Tank with a Valve  
 ### Flow $Q$ and Water Level $h$ as a Function of Time  
@@ -385,7 +367,7 @@ Using this equation and relationship, we make the following plots. On the left, 
 
 ![Image link](https://github.com/AguaClara/CEE4540_Master/blob/master/Summary%20Sheets/Images/Tank_valve_play.jpg?raw=true)
 
-### Drain System for a Tank  
+## 2.2) Drain System for a Tank  
 While the 'tank with a valve' scenario is not a good constant head solution, we can use our understanding of the system to properly design drain systems for AguaClara reactors like flocculators and sedimentation tanks, since they essentially tanks with valves.  The derivation for the following equation is found [here](https://github.com/AguaClara/CEE4540_Master/blob/master/Summary%20Sheets/Derivation_drain_system_design.md), along with more details on AguaClara's pipe stub method for draining tanks. The derived 'Tank Drain' equation is as follows:
 
 $$D_{Pipe} = \sqrt{ \frac{8 L_{Tank} W_{Tank}}{\pi t_{Drain}}} {\left( \frac{H_{Tank} \sum K_e }{2g} \right)^{\frac{1}{4}}}$$
@@ -401,60 +383,6 @@ $t_{Drain}$ = Time it takes to drain the tank
 $\sum K_e$ = Sum of all the minor loss coefficients in the system
 
 ![Image link](https://github.com/AguaClara/CEE4540_Master/blob/master/Summary%20Sheets/Images/Pipe_stub_drainage_variables.jpg?raw=true)
-
-
-## 2.2) Constant Head Devices  
-This section will describe very briefly some common devices and clever systems that can be used to generate constant head. Visualizing these devices in action is extremely helpful to understanding them, which is why you are recommended to view the 'Constant head devices' section in the 'Flow Control and Measurement' powerpoint. Since the powerpoint does a great job of illustrating these devices, this section will be kept very brief.
-
-### Floats  
-A logical way to ensure constant head is to find a device that moves in accordance with the water level- something that floats. The idea is to combine this something that floats, which is usually referred to as just a **float**, with another device that allows the water to flow, usually an orifice. By fixing the orifice to the float such that the orifice is always underwater, constant head can be achieved. No matter what happens to the water level, the float will float and the orifice will always experience constant head. There are many, many possibilities with float systems, two of which are shown below.
-
-**Advantages:**
-- Easy to design and fabricate
-- System does not need to be shut off to add more water to tank
-
-**Disadvantages:**  
-- Inflexible. What happens when you want to change the distance between the orifice and the float?
-
-![Image link](https://github.com/AguaClara/CEE4540_Master/blob/master/Summary%20Sheets/Images/Different_Floats.jpg?raw=true)
-
-### Overflow Tanks
-This constant head system requires a pump. It consists of an overhead tank to store water with an orifice or pipe for the constant head of water to flow through. The pump fills the overhead tank as it empties, and provides more water than necessary. This extra water leaves through an overflow pipe, which is why this device is called an overflow tank. An image is shown below. Within the AguaClara lab, the Ram Pump team uses an overflow tank setup, if you would like a closer look.
-
-**Advantages:**  
-- System does not need to be shut off to add more water to tank
-- Very simple to design if you have an adequate pump available
-
-**Disadvantages:**
-- Requires a pump and therefore electricity
-- Requires lots of vertical space
-
-![Image link](https://github.com/AguaClara/CEE4540_Master/blob/master/Summary%20Sheets/Images/Overflow_tank.jpg?raw=true)
-
-### Marriot Bottles   
-Marriot bottles are simple yet exceedingly clever devices to ensure constant flow out of a bottle or tank. [This video](https://www.youtube.com/watch?v=y1S5Md0WhNM "1 minute and 21 seconds of pure beauty") provides a great example of one in practice. The only outlet to atmosphere is through the long tube filled with air, as the top of the bottle is completely capped. Therefore the bottom of _both_ tubes is always at atmospheric pressure, even as the water level in the bottle falls.
-
-**Advantages:**  
-- Easy to fabricate  
-- Can change the amount of constant head by raising or lowering the end of the tube that is dispensing the water
-
-**Disadvantages:**  
-- Batch process, adding water requires that the system stop working for some time.
-
-![Image link](https://github.com/AguaClara/CEE4540_Master/blob/master/Summary%20Sheets/Images/Marriot_bottle.jpg?raw=true)
-
-### Float Valves  
-A very clever device, a float valve consists of a float attached to a lever which controls a valve. When there is a low water level, the valve is open. As the water rises, it pushes the float upwards. As the float moves upwards, the lever forces the valve to close, until the float reaches its maximum level and the valve closes completely. Float valves can be used to create tanks or bottles with unchanging water levels, even as water exits the tank or bottle. Float valves are a critical part to AguaClara's flow control system. Most toilets found in homes have float valves to ensure that water doesn't spill out of the toilet tank and onto the floor. [Here is a video](https://www.youtube.com/watch?v=hAxAyoSMQhI "This is the best video ever") explaining how a conventional toilet works. Please note the role of the float valve, which is to make sure that the water stops entering the toilet's tank once the water level has reached a specific point.
-
-
-**Advantages:**  
-- Very flexible in its uses. Can easily be a component of a more complex system, like toilets
-- Can be very compact
-
-**Disadvantages:**
-- Doesn't actually create constant flow. It simply allows the water level in a tank to be constant, or to rise to an upper limit. An orifice or other device would be required in the tank using a float valve to create constant flow.
-
-![Credit to https://www.amazon.com/Kerick-Valve-MA052-Float-Adjustable/dp/B0077RAP1I for the valve image](https://github.com/AguaClara/CEE4540_Master/blob/master/Summary%20Sheets/Images/Float_valve.jpg?raw=true)
 
 
 ## Section 3: AguaClara Flow Control and Measurement Technologies
