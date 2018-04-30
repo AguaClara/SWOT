@@ -95,8 +95,8 @@ There are two important distinctions to keep in mind when using head to talk abo
 
 Going back to the Bernoulli equation, the $\frac{p}{\rho g}$ term is called the pressure head, $z$ the elevation head, and $\frac{V^2}{2g}$ the velocity head. The following diagram shows these various forms of head via a 1 meter deep bucket (left) and a jet of water shooting out of the ground (right).
 
+<img src="https://github.com/AguaClara/CEE4540_Master/blob/master/Summary%20Sheets/Images/Different_forms_of_head.jpg?raw=true" width=550>
 
-![Image link](https://github.com/AguaClara/CEE4540_Master/blob/master/Summary%20Sheets/Images/Different_forms_of_head.jpg?raw=true)
 
 
 #### Assumption in using the Bernoulli equation  
@@ -188,8 +188,8 @@ The significance of this equation lies in its relationship between $h_{\rm{f}}$ 
 
 In 1944, Lewis Ferry Moody plotted a ridiculous amount of experimental data, gathered by many people, on the Darcy-Weisbach friction factor to create what we now call the [**Moody diagram**](https://en.wikipedia.org/wiki/Moody_chart "Moody wikipedia"). This diagram has the friction factor $\rm{f}$ on the left-hand y-axis, relative pipe roughness $\frac{\epsilon}{D}$ on the right-hand y-axis, and Reynolds number $\rm{Re}$ on the x-axis. The Moody diagram is an alternative to computational methods for finding $\rm{f}$.
 
+<img src="https://github.com/AguaClara/CEE4540_Master/blob/master/Summary%20Sheets/Images/Moody.jpg?raw=true" width=400>
 
-![Moody doody](https://github.com/AguaClara/CEE4540_Master/blob/master/Summary%20Sheets/Images/Moody.jpg?raw=true)
 
 
 ### Minor Losses
@@ -215,13 +215,13 @@ $K_e, \,\, K_e^{'}$ = minor loss coefficients, dimensionless
 
 The $in$ and $out$ subscripts in each of the three forms refer to the diagram that was used for the derivation:
 
-![Image link](https://github.com/AguaClara/CEE4540_Master/blob/master/Summary%20Sheets/Images/Minor_loss_pipe.jpg?raw=true)
+<img src="https://github.com/AguaClara/CEE4540_Master/blob/master/Summary%20Sheets/Images/Minor_loss_pipe.jpg?raw=true" width=650>
 
 The second and third forms are the ones which you are probably most familiar with. The distinction between them, however, is critical. First, consider the magnitudes of $A_{in}$ and $A_{out}$. $A_{in}$ can never be larger than $A_{out}$, because the flow is expanding. When flow expands, the cross-sectional area it flows through must increase. As a result, both $\frac{A_{out}}{A_{in}} > 1$ and $\frac{A_{in}}{A_{out}} < 1$ must always be true. This means that $K_e$ can never be greater than 1, while $K_e^{'}$ technically has no upper limit.
 
 If you have taken CEE 3310, you have seen tables of minor loss coefficients [like this one](https://www.engineeringtoolbox.com/minor-loss-coefficients-pipes-d_626.html "engineeringtoolbox is the best site ever"), and they almost all have coefficients greater than 1. This implies that these tables use the third form of the minor loss equation as we have defined it, where the velocity is $V_{out}$. There is a good reason for using the third form over the second one: $V_{out}$ is far easier to determine than $V_{in}$. Consider flow through a pipe elbow, as shown in the image below.
 
-![What does this text do again?](https://github.com/AguaClara/CEE4540_Master/blob/master/Summary%20Sheets/Images/Minor_loss_elbow.jpg?raw=true)
+<img src="https://github.com/AguaClara/CEE4540_Master/blob/master/Summary%20Sheets/Images/Minor_loss_elbow.jpg?raw=true" width=400>
 
 In order to find $V_{out}$, we first need to know which point is $out$ and which point is $in$. A simple way to distinguish the two points is that $in$ occurs when the flow is most contracted, and $out$ occurs when the flow has fully expanded after that maximal contraction. Going on these guidelines, point 'B' above would be $in$, since it represents the most contracted flow in the elbow-pipe system. Therefore point 'C' would be $out$, as it is the point where the flow has fully expanded after its compression in 'B.'
 
@@ -245,7 +245,7 @@ _**A vena contracta coefficient is not a minor loss coefficient.**_ Though the e
 ### Origin
 The orifice equation is derived from the Bernoulli equation as applied to the red points in the following image:
 
-![What does this text do again?](https://github.com/AguaClara/CEE4540_Master/blob/master/Summary%20Sheets/Images/Hole_in_a_bucket.jpg?raw=true)
+<img src="https://github.com/AguaClara/CEE4540_Master/blob/master/Summary%20Sheets/Images/Hole_in_a_bucket.jpg?raw=true" width=350>
 
 At point A, the pressure is atmospheric and the instantaneous velocity is negligible as the water level in the bucket drops slowly. At point B, the pressure is also atmospheric. We define the difference in elevations between the two points, $z_A - z_B$, to be $\Delta h$. With these simplifications ($p_A = V_A = p_B = 0$) and assumptions ($z_A - z_B = \Delta h$), the Bernoulli equation becomes:
 
@@ -268,7 +268,7 @@ $\Delta h$ = elevation difference between orifice and water level
 `pc.flow_orifice(Diam, Height, RatioVCOrifice)` Returns flow through a horizontal orifice.  
 `pc.flow_orifice_vert(Diam, Height, RatioVCOrifice)` Returns flow through a vertical orifice. The height parameter refers to height above the center of the orifice.
 
-![What does this text do again?](https://github.com/AguaClara/CEE4540_Master/blob/master/Summary%20Sheets/Images/Vertical_and_Horizontal_Orifices.jpg?raw=true)
+<img src="https://github.com/AguaClara/CEE4540_Master/blob/master/Summary%20Sheets/Images/Vertical_and_Horizontal_Orifices.jpg?raw=true" width=500>
 
 There are two configurations for an orifice in the wall of a reservoir of water, horizontal and vertical, as the image above shows. The orifice equation shown in the previous section is for a horizontal orifice, but for a vertical orifice the equation requires integration to return the correct flow. You will explore this in the Flow Control and Measurement Design Challenge.
 
@@ -353,7 +353,7 @@ $t_{Design}$ = time it would take for tank to empty if flow stayed constant at $
 $h_{Tank}$ = elevation of water level with reference to tank bottom at time $t$ = 0  
 $h_0$ = elevation of water level with reference to the valve at time $t$ = 0   
 
-![Image link](https://github.com/AguaClara/CEE4540_Master/blob/master/Summary%20Sheets/Images/complete_hypochlorinator.jpg?raw=true)
+<img src="https://github.com/AguaClara/CEE4540_Master/blob/master/Summary%20Sheets/Images/complete_hypochlorinator.jpg?raw=true" width=500>
 
 This equation has historically give students some trouble, and while its nuances are explained in the derivation, they will be quickly summarized below:
 
@@ -365,7 +365,7 @@ We can use the proportionality $Q \propto \sqrt{h}$, which applies to both minor
 
 Using this equation and relationship, we make the following plots. On the left, the valve is at the same elevation as the bottom of the tank, $h_{Tank} = h_0$. Our attempt to get a continuous flow rate out of this system is to make $\frac{h_{Tank}}{h_0}$ very small by elevating the tank far above the valve. On the right, $\frac{h_{Tank}}{h_0} = \frac{1}{50}$. While the plot looks good, elevating the tank by 50 times its height is not realistic. The 'tank with a valve' is not a solution to the constant head problem.
 
-![Image link](https://github.com/AguaClara/CEE4540_Master/blob/master/Summary%20Sheets/Images/Tank_valve_play.jpg?raw=true)
+<img src="https://github.com/AguaClara/CEE4540_Master/blob/master/Summary%20Sheets/Images/Tank_valve_play.jpg?raw=true" width=600>
 
 ## 2.2) Drain System for a Tank  
 While the 'tank with a valve' scenario is not a good constant head solution, we can use our understanding of the system to properly design drain systems for AguaClara reactors like flocculators and sedimentation tanks, since they essentially tanks with valves.  The derivation for the following equation is found [here](https://github.com/AguaClara/CEE4540_Master/blob/master/Summary%20Sheets/Derivation_drain_system_design.md), along with more details on AguaClara's pipe stub method for draining tanks. The derived 'Tank Drain' equation is as follows:
@@ -382,7 +382,7 @@ $L_{Tank}, W_{Tank}, H_{Tank}$ = Tank dimensions
 $t_{Drain}$ = Time it takes to drain the tank  
 $\sum K_e$ = Sum of all the minor loss coefficients in the system
 
-![Image link](https://github.com/AguaClara/CEE4540_Master/blob/master/Summary%20Sheets/Images/Pipe_stub_drainage_variables.jpg?raw=true)
+<img src="https://github.com/AguaClara/CEE4540_Master/blob/master/Summary%20Sheets/Images/Pipe_stub_drainage_variables.jpg?raw=true" width=500>
 
 
 ## Section 3: AguaClara Flow Control and Measurement Technologies
@@ -440,7 +440,7 @@ It is easy to design for laminar flow, but the "Almost Linear" Flow Controller w
 ### What it is
 The LFOM is a weir shape cut into a pipe. It was meant to imitate the [**Sutro Weir**](http://www.nptel.ac.in/courses/105106114/pdfs/Unit14/14_3b.pdf "Proportional weirs") while being far easier to build. The LFOM is a pipe with rows of holes, or orifices, drilled into it. There are progressively fewer holes per row as you move up the LFOM, as the shape is meant to resemble half a parabola on each side. The size of all holes is the same, and the amount of holes per row are precisely calculated.
 
-![Image link](https://github.com/AguaClara/CEE4540_Master/blob/master/Summary%20Sheets/Images/Sutro_v_LFOM.jpg?raw=true)
+<img src="https://github.com/AguaClara/CEE4540_Master/blob/master/Summary%20Sheets/Images/Sutro_v_LFOM.jpg?raw=true" width=500>
 
 ### What it does
 Water in the entrance tank flows into and down the LFOM, towards the rapid mix and flocculator. **The LFOM does just one thing: create a linear relationship between water level in the entrance tank and the flow out of the entrance tank.** It does not _control_ the flow through the plant, if the LFOM were replaced with a hole in the bottom of the entrance tank, the same flow rate would go through the plant, but the water level in the entrance tank would scale with flow squared instead, $h \propto Q^2$. For example, if an LFOM has 10 rows of holes and has been designed for a plant whose flow rate is 10 L/s, then the operator knows that the number of rows submerged in water is equal to the flow rate of the plant in L/s. So if the water were up to the third row of holes, there would be 3 L/s of water flowing through the plant.  
