@@ -160,10 +160,11 @@ I think that will greatly improve the chance that some things are completely don
 ### Done  
 1. Make sure to check for consistency in these things in the final read-through:  
     1. Consistency in $Q \propto h$ vs $h \propto Q$
+    2. Consistency in $h$ vs $\Delta h$ vs $z$
 
 2. Change image insertion from markdown style to html to allow for resizing- silly markdown
 
 ### To Do
 1. Questions/confirmations for Monore
     1. There is one slider for chlorine and one for coagulant
-    2. 
+    2.

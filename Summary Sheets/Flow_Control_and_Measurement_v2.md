@@ -29,10 +29,11 @@ Please use this table to control/command find the sections you are looking for.
 **1.2)** Head Loss  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - &nbsp;Minor losses  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - &nbsp;Major losses  
-**1.3)** The Orifice Equation  
+**1.3)** Head Loss = Elevation Difference Trick  
+**1.4)** The Orifice Equation  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - &nbsp;Vena Contracta    
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - &nbsp;Origin  
-**1.4)** Section Review
+**1.5)** Section Review
 
 #### **Section 2: Introduction to Flow Control: The Search for Constant Head**  
 **2.1)** Tank with a valve  
@@ -227,7 +228,40 @@ In order to find $V_{out}$, we first need to know which point is $out$ and which
 
 $V_{out}$ is easy to determine because it is the velocity of the fluid as it flows through the entire area of the pipe. Thus, $V_{out}$ can be found with the continuity equation, since the flow through the pipe and its diameter are easy to measure, $V_{out} = \frac{4 Q}{\pi D^2}$. On the other hand, $V_{in}$ is difficult to find, as the area of the contracted flow is dependent on the exact geometry of the elbow. This is why the third form of the minor loss equation, as we have defined it, is the most common.
 
-## 1.3) The Orifice Equation
+## 1.3) Head Loss = Elevation Difference Trick  
+This trick, also called the 'control volume trick,' or more colloquially, the 'head loss trick,' is incredibly useful for simplifying hydraulic systems and is used all the time in this class.
+
+Consider the following image, which was taken from the Flow Control and Measurement powerpoint.
+
+<img src="https://github.com/AguaClara/CEE4540_Master/blob/master/Summary%20Sheets/Images/Head_loss_trick.jpg?raw=true" width=500>
+
+
+This image is violating the energy equation by saying that the elevation difference between the water in the tank and the end of the tube is $h_L$. It implies that all of the driving head $\Delta z$ is lost to head loss and therefore that no water is flowing out of the tubing, which is not true. Let's apply the energy equation between the two red points. Pressures are atmospheric at both points and the velocity of water at the top of tank is negligible.
+
+$$\rlap{\Bigg/}\frac{p_{1}}{\rho g} + z_{1} + \rlap{\Bigg/}\frac{V_{1}^2}{2g} = \rlap{\Bigg/}\frac{p_{2}}{\rho g} + z_{2} + \frac{V_{2}^2}{2g} + h_L$$  
+
+We now get:
+
+$$\Delta z = \frac{V_2^2}{2g} + h_L$$
+
+This contradicts the image above, which says that $\Delta z = h_L$ and neglects $\frac{V_2^2}{2g}$. The image above is correct, however, if you apply the head loss trick. The  trick incorporates the $\frac{V_2^2}{2g}$ term _into_ the $h_L$ term as a minor loss. See the math below:
+
+$$\Delta z = \frac{V_2^2}{2g} + h_e + h_f$$
+
+$$\Delta z = \frac{V_2^2}{2g} + \left( \sum K_e \right) \frac{V_2^2}{2g} + h_f$$
+
+$$\Delta z = \left( 1 + \sum K_e \right) \frac{V_2^2}{2g} + h_f$$
+
+This last step incorporated the kinetic energy term of the energy equation, $\frac{V_2^2}{2g}$, into the minor loss equation by saying that its $K_e$ is 1. From here, we reverse our steps to get $\Delta z = h_L$
+
+$$\Delta z = h_e + h_f$$
+
+$$\Delta z = h_L$$
+
+By applying the head loss trick, you are considering the flow of water out of a system, control volume, or streamline, as energy lost. This is just an algebraic trick, the only thing to remember when applying this trick is that $\sum K_e$ will always be at least 1, even if there are no 'real' minor losses in the system.
+
+
+## 1.4) The Orifice Equation
 
 This equation is one that you'll see again and again throughout this class. Understanding it now will be invaluable, as future concepts will use and build on this equation.
 
@@ -272,7 +306,7 @@ $\Delta h$ = elevation difference between orifice and water level
 
 There are two configurations for an orifice in the wall of a reservoir of water, horizontal and vertical, as the image above shows. The orifice equation shown in the previous section is for a horizontal orifice, but for a vertical orifice the equation requires integration to return the correct flow. You will explore this in the Flow Control and Measurement Design Challenge.
 
-## 1.4) Section Summary
+## 1.5) Section Summary
 1. **Bernoulli vs energy equations:** The Bernoulli equation assumes that energy is conserved throughout a streamline or control volume. The Energy equation assumes that there is energy loss, or head loss $h_L$. This head loss is composed of major losses, $h_{\rm{f}}$, and minor losses, $h_e$.
 
 Bernoulli equation:
@@ -316,7 +350,9 @@ $$h_e = \frac{V_{out}^2}{2g}{\left( {\frac{A_{out}}{A_{in}}} -1 \right)^2} = \,\
 |        Laminar         |     $Q$      |    $Q^2$     |
 |       Turbulent        |    $Q^2$     |    $Q^2$     |
 
-5. **Orifice equation and vena contractas:** The orifice equation is used to determine the flow out of an orifice given the elevation of water above the orifice. This equation introduces the concept of a vena contracta, which describes flow contraction due to the inability of streamlines to make sharp turns. The equation shows that the flow out of an orifice is proportional to the square root of the driving head, $Q \propto \sqrt{\Delta h}$. Depending on the orientation of the orifice, vertical (like a hole in the side of a bucket) or horizontal (like a hole in the bottom of a bucket), a different equation in aide_design should be used.
+5. The **head loss trick**, also called the control volume trick, can be used to incorporate the 'kinetic energy out' term of the energy equation, $\frac{V_2^2}{2g}$, into head loss as a minor loss with $K_e = 1$, so the minor loss equation becomes $\left( 1 + \sum K_e \right) \frac{V^2}{2g}$. This is used to be able to say that $\Delta z = h_L$ and makes many equation simplifications possible in the future.
+
+6. **Orifice equation and vena contractas:** The orifice equation is used to determine the flow out of an orifice given the elevation of water above the orifice. This equation introduces the concept of a vena contracta, which describes flow contraction due to the inability of streamlines to make sharp turns. The equation shows that the flow out of an orifice is proportional to the square root of the driving head, $Q \propto \sqrt{\Delta h}$. Depending on the orientation of the orifice, vertical (like a hole in the side of a bucket) or horizontal (like a hole in the bottom of a bucket), a different equation in aide_design should be used.
 
 The Orifice Equation:
 $$Q = \Pi_{vc} A_{or} \sqrt{2g\Delta h}$$
@@ -389,8 +425,7 @@ $\sum K_e$ = Sum of all the minor loss coefficients in the system
 Each technology or component for this section will have five subsections:
 
 - **What it is**  
-- **What it does**  
-- **Why it is necessary**
+- **What it does and why**
 - **How it works**
 - **Notes**
 
@@ -418,14 +453,13 @@ Chemical solution, either coagulant or chlorine, is stored in a stock tank somew
 
 <img src="https://github.com/AguaClara/CEE4540_Master/blob/master/Summary%20Sheets/Images/Almost_linear_flow_controller.jpg?raw=true" width="600">
 
-### What it does  
-This flow controller provides a constant flow of chemical solution to the water in the plant. When the end of the flexible tube is placed in a hole, the elevation difference between the water lever in the bottle and the hole is set and does not change unless the tube is then placed in another hole. Thus, a constant flow is provided.   
+### What it does and why
+This flow controller provides a constant flow of chemical solution to the water in the plant. When the end of the flexible tube is placed in a hole, the elevation difference between the water lever in the bottle and the hole is set and does not change unless the tube is then placed in another hole. Thus, a constant flow is provided while the end of the tube is not moved.   
 
-### Why it is necessary
-As has been mentioned previously, the amount of chlorine and coagulant that must be added to the raw water changes depending on the flow rate of the plant; the change is necessary to keep the dose constant. More water flowing through the plant, more chlorine necessary to keep the dose of chlorine in the treated water constant. For coagulant, there are also other factors that impact the required dose, including the turbidity and amount of organic matter in the water. The operator must be able to change the dose of both coagulant and chlorine quickly and easily, and they must be able to know the value of the new dose they set. The "Almost Linear" Flow Controller accomplishes this by having a large number of holes in the flow control pipe next to the CHT. This large number of holes let the operator quickly adjust the flow of chemicals into the raw water by moving the end of the flexible tube from one hole to another.
+As has been mentioned previously, the amount of chlorine and coagulant that must be added to the raw water changes depending on the flow rate of the plant; the change is necessary to keep the dose constant. More water flowing through the plant means more chlorine is necessary to maintain the dose of chlorine in the treated water. For coagulant, there are also other factors that impact the required dose, including the turbidity and amount of organic matter in the water. The operator must be able to change the dose of both coagulant and chlorine quickly and easily, and they must be able to know the value of the new dose they set. The "Almost Linear" Flow Controller accomplishes this by having a large number of holes in the flow control pipe next to the CHT. This large number of holes let the operator quickly adjust the flow of chemicals into the raw water by moving the end of the flexible tube from one hole to another.
 
 ### How it works
-The idea behind this flow controller is to have a linear relationship between the elevation difference in the water level and the end of the flexible tube and the flow rate coming out of the flexible tube, $\Delta h \propto Q$.
+The idea behind this flow controller is to have a linear relationship in the elevation difference between the water level and the end of the flexible tube, $\Delta h$ and the flow rate coming out of the flexible tube, $\Delta h \propto Q$.
 
 As you remember from section 1.4), the summary of Fluids Review, $\Delta h \propto Q$ is only true for the combination of major losses and laminar flow, via the Hagen-Poiseuille equation. Therefore, the flow must always be laminar in the flexible tube that goes between the CHT and the holes, and major losses must far exceed minor losses.  
 
@@ -438,15 +472,15 @@ It is easy to design for laminar flow, but the "Almost Linear" Flow Controller w
 
 ## 3.2) Linear Flow Orifice Meter (LFOM)
 ### What it is
-The LFOM is a weir shape cut into a pipe. It was meant to imitate the [**Sutro Weir**](http://www.nptel.ac.in/courses/105106114/pdfs/Unit14/14_3b.pdf "Proportional weirs") while being far easier to build. The LFOM is a pipe with rows of holes, or orifices, drilled into it. There are progressively fewer holes per row as you move up the LFOM, as the shape is meant to resemble half a parabola on each side. The size of all holes is the same, and the amount of holes per row are precisely calculated.
+The LFOM is a weir shape cut into a pipe. It was meant to imitate the [**Sutro Weir**](http://www.nptel.ac.in/courses/105106114/pdfs/Unit14/14_3b.pdf "Proportional weirs") while being far easier to build. The LFOM is a pipe with rows of holes, or orifices, drilled into it. There are progressively fewer holes per row as you move up the LFOM, as the shape is meant to resemble half a parabola on each side. The size of all holes is the same, and the amount of holes per row are precisely calculated. Water in the entrance tank flows into and down the LFOM, towards the rapid mix and flocculator.
 
 <img src="https://github.com/AguaClara/CEE4540_Master/blob/master/Summary%20Sheets/Images/Sutro_v_LFOM.jpg?raw=true" width=500>
 
-### What it does
-Water in the entrance tank flows into and down the LFOM, towards the rapid mix and flocculator. **The LFOM does just one thing: create a linear relationship between water level in the entrance tank and the flow out of the entrance tank.** It does not _control_ the flow through the plant, if the LFOM were replaced with a hole in the bottom of the entrance tank, the same flow rate would go through the plant, but the water level in the entrance tank would scale with flow squared instead, $h \propto Q^2$. For example, if an LFOM has 10 rows of holes and has been designed for a plant whose flow rate is 10 L/s, then the operator knows that the number of rows submerged in water is equal to the flow rate of the plant in L/s. So if the water were up to the third row of holes, there would be 3 L/s of water flowing through the plant.  
+### What it does and why
+The LFOM does one thing and serves two purposes.  
+ **The LFOM creates a linear relationship between water level in the entrance tank and the flow out of the entrance tank.** _It does not control the flow through the plant_. If the LFOM were replaced with a hole in the bottom of the entrance tank, the same flow rate would go through the plant, the only difference being that the water level in the entrance tank would scale with flow squared $h \propto Q^2$ instead of $h \propto Q$. For example, if an LFOM has 10 rows of holes and has been designed for a plant whose flow rate is 10 L/s, then the operator knows that the number of rows submerged in water is equal to the flow rate of the plant in L/s. So if the water were up to the third row of holes, there would be 3 L/s of water flowing through the plant.  
 
-### Why it is necessary
-The LFOM serves two purposes.  
+The LFOM serves two purposes:  
 1. Allow the operator to measure the flow through the plant quickly and easily, explained above.
 2. Allow for the Linear Dose Controller, which will be explained next, to automatically adjust the flow of coagulant/chlorine into the plant as the plant flow rate changes. This means the operator would only need to adjust the flow of coagulant when there is a spike in turbidity or organic matter.
 
@@ -463,6 +497,7 @@ In the case of a [Sutro weir](http://www.engineeringexcelspreadsheets.com/wp-con
 
 ## 3.3) Linear Dose Controller (CDC)
 Since the Linear Dose Controller has become the standard in AguaClara, it is often simply called the Chemical Dose Controller, or CDC for short. It can be confusing to describe with words, be sure to flip through the slides in the powerpoint which contain the diagrams of the Linear Dose Controller.
+
 ### What it is
 The CDC brings together the LFOM and many improvements to the "Almost Linear" Flow Controller. Let's break it down.  
 1. Start at the Constant Head Tank (CHT). This is the same set up as the "Almost Linear" Flow Controller. The stock tank feeds into the CHT, and the float valve makes sure that the water level in the constant head tank is always the same.
@@ -473,4 +508,20 @@ The CDC brings together the LFOM and many improvements to the "Almost Linear" Fl
       2. One tube whose length is equal to the three combined would be too long to fit into the plant.  
 
     - The large-diameter tube on the right of the three thin tubes is where the chemicals flow out. The end of the tube is connected to both a slider and a 'drop tube.' The drop tube allows for supercritical flow; once the chemical enters that tube it falls freely and no longer affects the CDC system.
-3. The slider rests on a lever. This lever is the critical part of the CDC, it connects the water level in the entrance tank to the difference in head between the CHT and the end of the dosing tube, allowing the flow of chemicals to automatically adjust to a change in the plant flow rate. One end of the lever tracks the water level in the entrance tank with a float. The counterweight on the other side of the lever is to make sure the float 'floats,' since it is usually made of PVC which is more dense than water.
+3. The slider rests on a lever. This lever is the critical part of the CDC, it connects the water level in the entrance tank, which is adjusted by the LFOM, to the difference in head between the CHT and the end of the dosing tube. This allows the flow of chemicals to automatically adjust to a change in the plant flow rate. One end of the lever tracks the water level in the entrance tank with a float. The counterweight on the other side of the lever is to make sure the float 'floats,' since it is usually made of PVC and is more dense than water.
+4. The slider itself controls the dose of chemicals. For any given plant flow rate, the slider can be adjusted to increase or decrease the amount of chemical flowing through the plant.
+
+<img src="https://github.com/AguaClara/CEE4540_Master/blob/master/Summary%20Sheets/Images/CDC?labelled.jpg?raw=true" width=500>
+
+### What it does and why
+The CDC makes it easy and accurate to dose chemicals. The flow of chemicals automatically adjusts to changes in the plant flow rate to keep a constant dose, set by the operator. When a turbidity event occurs, the operator can change the dose of coagulant by moving the slider for coagulant on the lever. The slider has labelled marks, so the operator can record the dose accurately.
+
+### How it works
+A lot of design has gone into the CDC. The design equations and their derivations can be found here:
+
+
+
+
+
+<img src="" width=500>
+<img src="" width=500>
