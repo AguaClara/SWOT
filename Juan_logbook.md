@@ -152,3 +152,13 @@ This interim progress report is due to 2 factors. My family and I are going on v
 1. Finish the Flow Control and Measurement cheat sheet and powerpoint by the end of next week.
 2. Re-evaluate the my work priorities, considering time. Perhaps I should prioritize creating derivation sheets to remove derivations from powerpoints, and then spruce up the powerpoints before returning to the summary sheets. The summary sheets take a very, very long time to do well :/
 I think that will greatly improve the chance that some things are completely done and what _is_ done is done very well by the beginning of the semester.
+
+
+
+***
+## Eigth Progress Report: 5/??/2018  
+### Done  
+1. Make sure to check for consistency in these things in the final read-through:  
+    1. Consistency in $Q \propto h$ vs $h \propto Q$
+
+2. Change image insertion from markdown style to html to allow for resizing- silly markdown
