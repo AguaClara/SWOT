@@ -3,13 +3,17 @@ This document will include the equation derivations required to design a CDC sys
 
 We will use the 'head loss trick' that was introduced in the Fluids Review section. Therefore, the elevation difference between the water level in the constant head tank and the end of the tube connected to the slider, $\Delta h$, is equal to the head loss between the two points, $h_L$. Thus, $\Delta h = h_L = h_e + h_f$.
 
-**Note:** This document contains colored equations. If you are viewing this in Atom, which is recommended, consider using a 'Light' syntax theme. To do so, open your settings with `ctrl` + `,`, select 'Themes', and change 'Syntax Theme'
+**Note:** There are a lot of equations in this document, and they may quickly get confusing. They are color coded in an attempt to make them easier to follow. All final design equations will be written in $\color{purple}{\rm{purple \, text \, coloring}}$ to make them noticeable.
+
+**Note:** This document contains colored equations. If you are viewing this in Atom, which is recommended, consider using a 'Light' syntax theme instead of a 'Dark' one. To do so, open your settings with `ctrl` + `,`, select 'Themes', and change 'Syntax Theme'
 
 <img src="https://github.com/AguaClara/CEE4540_Master/blob/master/Summary%20Sheets/Images/CDC_derivation.jpg?raw=true" width=650>
 
 We begin by defining the head loss through the system $h_L$, which is equivalent to defining the driving head $\Delta h$. Major losses will be coded as red from this point onwards.
 
-$$\color{red}{ h_{\rm{f}} = \frac{128\mu LQ}{\rho g\pi D^4} }$$
+$$\color{red}{
+  h_{\rm{f}} = \frac{128\mu LQ}{\rho g\pi D^4}
+  }$$
 
 Minor losses are equal to:
 
@@ -17,11 +21,15 @@ $$ h_e = \frac{8 Q^2}{g \pi^2 D^4} \sum{K_e} $$
 
 Therefore, the total head loss is a function of flow, and is shown in the following equation. Blue will be used to reference actual head loss from now on.
 
-$$\color{blue}{ h_L(Q) = \left( \frac{128\nu L}{g \pi D^4} + \frac{8Q}{g \pi ^2 D^4} \sum{K_e} \right) Q }$$
+$$\color{blue}{
+  h_L(Q) = \left( \frac{128\nu L}{g \pi D^4} + \frac{8Q}{g \pi ^2 D^4} \sum{K_e} \right) Q
+  }$$
 
-This equation is not linear with respect to flow. We can make it linear by turning the variable $Q$ in the $\frac{8Q}{g \pi ^2 D^4} \sum{K_e}$ term into a constant. To do this, we pick a maximum flow rate of coagulant/chlorine for the dose controller, $Q_{max}$, and put that into the term. The term becomes $\frac{8Q_{max}}{g \pi ^2 D^4} \sum{K_e}$, and our linearized model of head loss, coded as green, becomes:
+This equation is not linear with respect to flow. We can make it linear by turning the variable $Q$ in the $\frac{8Q}{g \pi ^2 D^4} \sum{K_e}$ term into a constant. To do this, we pick a maximum flow rate of coagulant/chlorine for the dose controller, $Q_{Max}$, and put that into the term. The term becomes $\frac{8Q_{Max}}{g \pi ^2 D^4} \sum{K_e}$, and our linearized model of head loss, coded as green, becomes:
 
-$$\color{green}{ h_{L_{linear}}(Q) = \left( \frac{128\nu L}{g \pi D^4} + \frac{8Q_{max}}{g \pi ^2 D^4} \sum{K_e} \right) Q }$$
+$$\color{green}{
+  h_{L_{linear}}(Q) = \left( \frac{128\nu L}{g \pi D^4} + \frac{8Q_{Max}}{g \pi ^2 D^4} \sum{K_e} \right) Q
+  }$$
 
 Here is a plot of the three colored equations above. Our goal is to minimize the minor losses in the system; to bring the red and blue curves as close as possible to the green one.
 
@@ -54,8 +62,20 @@ $$ - \Pi_{Error} \frac{128 \nu L}{g \pi D^4} + \left( 1 - \Pi_{Error} \right) \f
 
 $$L = \left( \frac{1 - \Pi_{Error}}{\Pi_{Error}} \right) \frac{Q_{Max}}{16 \nu \pi} \sum{K_e} $$
 
-This last equation describes the _minimum_ length of dosing tube necessary to meet our error constraint at _maximum_ flow.  Unfortunately, both of these terms are unknown. We can plug this equation back into the $\color{green} { h_{L_{linear}} }$ and rearrange for $Q_{max}$ to get:
+This last equation describes the _minimum_ length of dosing tube necessary to meet our error constraint at _maximum_ flow.  Unfortunately, both of these terms are unknowns. We can plug this equation for $L$ back into the head loss equation at $Q_{Max}$, which is $h_L = \left( \frac{128\nu L Q_{Max}}{g \pi D^4} + \frac{8Q_{Max}^2}{g \pi ^2 D^4} \sum{K_e} \right)$ and rearrange for $Q_{Max}$ to get the first design equation:
 
-$$ Q_{Max} = \frac{\pi D^2}{4} \sqrt{\frac{2 h_L g \Pi_{Error}}{\sum{K_e} }} $$
+$$\color{purple}{
+ Q_{Max} = \frac{\pi D^2}{4} \sqrt{\frac{2 h_L g \Pi_{Error}}{\sum{K_e} }}
+ }$$
+**Function in aide_design:** `cdc.max_linear_flow(Diam, HeadlossCDC, Ratio_Error, KMinor)` Returns $\color{purple}{Q_{Max}}$
 
-From this equation for $Q_{max}$, we can either get to an equation for $D$ by rearranging algebraically or $V_{max}$ using the continuity equation. 
+
+From this equation for $Q_{Max}$, we can either get to an equation for $V_{Max}$ by using the continuity equation $V_{Max} = \frac{Q_{Max}}{\frac{\pi D^2}{4}}$, or $D$ by rearranging algebraically. Note that this is the _**minimum**_ diamater tube we can use assuming the _shortest_ possible length $L$ that meets the error constraint. If we were to go below this diameter, the tube would not be able to handle a flow as big as $Q_{Max}$. Here are the equations for $D_{Min}$ and $V_{Max}$:
+
+$$D_{Min} = \left[ \frac{8K Q^2}{\Pi_{Error} h_l g \pi^2} \right]^{\frac{1}{4}}$$
+
+$$\color{purple}{
+V_{Max} = \sqrt{ \frac{2 h_L g \Pi_{Error}}{\sum{K_e} }}
+}$$
+
+Now
