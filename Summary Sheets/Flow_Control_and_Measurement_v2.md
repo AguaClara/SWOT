@@ -504,7 +504,7 @@ The CDC brings together the LFOM and many improvements to the "Almost Linear" Fl
 2. Now the tubes. These fix the linearity problems in the "Almost Linear" Flow Controller.
     - The tube connected to the CHT is large diameter to minimize any headloss through it.
     - The three thin tubes are designed to generate a lot of major losses and to minimize minor losses. This is to make sure that major losses far exceed any minor losses, which will ensure that the Hagen-Poiseuille equation is applicable and that flow will be directly proportional to the head. Why are there 3 tubes?  
-      1. **3 short instead of 1 short** Removing 2 of the 3 tubes would mean 3 times the flow through the remaining tube. This means the velocity in the tube would be 3 times as fast. Since minor losses scale with $V^2$ and major losses only scale with $V$, this would decrease the ratio of $\rm{\frac{major \, losses}{minor \, losses}}$, which would be bad.
+      1. **3 short instead of 1 short** Removing 2 of the 3 tubes would mean 3 times the flow through the remaining tube. This means the velocity in the tube would be 3 times as fast. Since minor losses scale with $V^2$ and major losses only scale with $V$, this would increase the ratio of $\rm{\frac{minor \, losses}{major \, losses}}$, which would be bad.
       2. One tube whose length is equal to the three combined would be too long to fit in the plant.  
 
     - The large-diameter tube on the right of the three thin tubes is where the chemicals flow out. The end of the tube is connected to both a slider and a 'drop tube.' The drop tube allows for supercritical flow; once the chemical enters that tube it falls freely and no longer affects the CDC system.
