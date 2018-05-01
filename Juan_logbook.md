@@ -163,6 +163,8 @@ I think that will greatly improve the chance that some things are completely don
     2. Consistency in $h$ vs $\Delta h$ vs $z$
 
 2. Change image insertion from markdown style to html to allow for resizing- silly markdown
+3. Added the head loss trick to fluids Review
+- REMEBER TO CHANGE THE DERIVATION sheets for this and also the $\rlap{\Bigg/}x$ to things
 
 ### To Do
 1. Questions/confirmations for Monore

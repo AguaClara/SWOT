@@ -189,7 +189,7 @@ The significance of this equation lies in its relationship between $h_{\rm{f}}$ 
 
 In 1944, Lewis Ferry Moody plotted a ridiculous amount of experimental data, gathered by many people, on the Darcy-Weisbach friction factor to create what we now call the [**Moody diagram**](https://en.wikipedia.org/wiki/Moody_chart "Moody wikipedia"). This diagram has the friction factor $\rm{f}$ on the left-hand y-axis, relative pipe roughness $\frac{\epsilon}{D}$ on the right-hand y-axis, and Reynolds number $\rm{Re}$ on the x-axis. The Moody diagram is an alternative to computational methods for finding $\rm{f}$.
 
-<img src="https://github.com/AguaClara/CEE4540_Master/blob/master/Summary%20Sheets/Images/Moody.jpg?raw=true" width=400>
+<img src="https://github.com/AguaClara/CEE4540_Master/blob/master/Summary%20Sheets/Images/Moody.jpg?raw=true" width=500>
 
 
 
@@ -401,7 +401,7 @@ We can use the proportionality $Q \propto \sqrt{h}$, which applies to both minor
 
 Using this equation and relationship, we make the following plots. On the left, the valve is at the same elevation as the bottom of the tank, $h_{Tank} = h_0$. Our attempt to get a continuous flow rate out of this system is to make $\frac{h_{Tank}}{h_0}$ very small by elevating the tank far above the valve. On the right, $\frac{h_{Tank}}{h_0} = \frac{1}{50}$. While the plot looks good, elevating the tank by 50 times its height is not realistic. The 'tank with a valve' is not a solution to the constant head problem.
 
-<img src="https://github.com/AguaClara/CEE4540_Master/blob/master/Summary%20Sheets/Images/Tank_valve_play.jpg?raw=true" width=600>
+<img src="https://github.com/AguaClara/CEE4540_Master/blob/master/Summary%20Sheets/Images/Tank_valve_play.jpg?raw=true" width=750>
 
 ## 2.2) Drain System for a Tank  
 While the 'tank with a valve' scenario is not a good constant head solution, we can use our understanding of the system to properly design drain systems for AguaClara reactors like flocculators and sedimentation tanks, since they essentially tanks with valves.  The derivation for the following equation is found [here](https://github.com/AguaClara/CEE4540_Master/blob/master/Summary%20Sheets/Derivation_drain_system_design.md), along with more details on AguaClara's pipe stub method for draining tanks. The derived 'Tank Drain' equation is as follows:
@@ -496,22 +496,22 @@ In the case of a [Sutro weir](http://www.engineeringexcelspreadsheets.com/wp-con
 
 
 ## 3.3) Linear Dose Controller (CDC)
-Since the Linear Dose Controller has become the standard in AguaClara, it is often simply called the Chemical Dose Controller, or CDC for short. It can be confusing to describe with words, be sure to flip through the slides in the powerpoint which contain the diagrams of the Linear Dose Controller.
+Since the Linear Dose Controller has become the standard in AguaClara, it is often simply called the Chemical Dose Controller, or CDC for short. It can be confusing to describe with words, so be sure to flip through the slides in the 'Flow Control and Measurement' powerpoint which contain very, very, helpful diagrams of the Linear Dose Controller.
 
 ### What it is
 The CDC brings together the LFOM and many improvements to the "Almost Linear" Flow Controller. Let's break it down.  
 1. Start at the Constant Head Tank (CHT). This is the same set up as the "Almost Linear" Flow Controller. The stock tank feeds into the CHT, and the float valve makes sure that the water level in the constant head tank is always the same.
 2. Now the tubes. These fix the linearity problems in the "Almost Linear" Flow Controller.
     - The tube connected to the CHT is large diameter to minimize any headloss through it.
-    - The three thin tubes are designed to generate a lot of major losses. This is to make sure that major losses far exceed any minor losses, which will ensure that the Hagen-Poiseuille equation is applicable and that flow will be directly proportional to head. There are three tubes instead of one for two reasons:  
-      1.   
-      2. One tube whose length is equal to the three combined would be too long to fit into the plant.  
+    - The three thin tubes are designed to generate a lot of major losses and to minimize minor losses. This is to make sure that major losses far exceed any minor losses, which will ensure that the Hagen-Poiseuille equation is applicable and that flow will be directly proportional to the head. Why are there 3 tubes?  
+      1. **3 short instead of 1 short** Removing 2 of the 3 tubes would mean 3 times the flow through the remaining tube. This means the velocity in the tube would be 3 times as fast. Since minor losses scale with $V^2$ and major losses only scale with $V$, this would decrease the ratio of $\rm{\frac{major \, losses}{minor \, losses}}$, which would be bad.
+      2. One tube whose length is equal to the three combined would be too long to fit in the plant.  
 
     - The large-diameter tube on the right of the three thin tubes is where the chemicals flow out. The end of the tube is connected to both a slider and a 'drop tube.' The drop tube allows for supercritical flow; once the chemical enters that tube it falls freely and no longer affects the CDC system.
 3. The slider rests on a lever. This lever is the critical part of the CDC, it connects the water level in the entrance tank, which is adjusted by the LFOM, to the difference in head between the CHT and the end of the dosing tube. This allows the flow of chemicals to automatically adjust to a change in the plant flow rate. One end of the lever tracks the water level in the entrance tank with a float. The counterweight on the other side of the lever is to make sure the float 'floats,' since it is usually made of PVC and is more dense than water.
 4. The slider itself controls the dose of chemicals. For any given plant flow rate, the slider can be adjusted to increase or decrease the amount of chemical flowing through the plant.
 
-<img src="https://github.com/AguaClara/CEE4540_Master/blob/master/Summary%20Sheets/Images/CDC?labelled.jpg?raw=true" width=500>
+<img src="https://github.com/AguaClara/CEE4540_Master/blob/master/Summary%20Sheets/Images/CDC_labelled.jpg?raw=true" width=650>
 
 ### What it does and why
 The CDC makes it easy and accurate to dose chemicals. The flow of chemicals automatically adjusts to changes in the plant flow rate to keep a constant dose, set by the operator. When a turbidity event occurs, the operator can change the dose of coagulant by moving the slider for coagulant on the lever. The slider has labelled marks, so the operator can record the dose accurately.
