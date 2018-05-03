@@ -160,10 +160,16 @@ I think that will greatly improve the chance that some things are completely don
 ### Done  
 1. Make sure to check for consistency in these things in the final read-through:  
     1. Consistency in $Q \propto h$ vs $h \propto Q$
+    2. Consistency in $h$ vs $\Delta h$ vs $z$
 
 2. Change image insertion from markdown style to html to allow for resizing- silly markdown
+3. Added the head loss trick to fluids Review
+- REMEBER TO CHANGE THE DERIVATION sheets for this and also the $\rlap{\Bigg/}x$ to things
 
 ### To Do
 1. Questions/confirmations for Monore
-    1. There is one slider for chlorine and one for coagulant
-    2. 
+    1. In [this minor loss equation derivation](https://github.com/AguaClara/CEE4540_Master/blob/Juan_summary_sheets/Summary%20Sheets/Derivation_minor_loss_equation.md), why is $p_{in}$ with $A_{out}$ instead of $A_{in}$?
+    2. When [deriving the CDC equations](https://github.com/AguaClara/CEE4540_Master/blob/Juan_summary_sheets/Summary%20Sheets/Derivation_designing_the_cdc.md), why do you take the limit as Q approaches 0? Is that when the difference between the actual head loss and the linearized model is the greatest, percentage-wise?
+    3. Is this equation ever actually used in the flow control design??
+        $$L = \frac{\left( 1 - \Pi_{Error} \right) D^2}{64 \nu} \sqrt{ \frac{2 h_L g \sum{K_e}}{\Pi_{Error}} } $$
+    4.
