@@ -7,7 +7,7 @@ We will use the 'head loss trick' that was introduced in the Fluids Review secti
 
 **Note:** There are a lot of equations in this document, and they may quickly get confusing. They are color coded in an attempt to make them easier to follow. There are two final design equations, $\color{purple}{V_{Max}}$ and $\color{purple}{L_{Min}}$, and they will be written in $\color{purple}{\rm{purple \, text \, coloring}}$ to make them noticeable.
 
-<img src="https://github.com/AguaClara/CEE4540_Master/blob/master/Summary%20Sheets/Images/CDC_derivation.jpg?raw=true" width=650>
+<img src="https://github.com/AguaClara/CEE4540_Master/blob/master/AguaClara%20Water%20Treatment%20Plant%20Design/Chapter%202_Flow%20Control%20and%20Measurement/Images/CDC_derivation.jpg?raw=true" width=650>
 
 ## CDC Design Equation Derivation
 **When designing the CDC, there are a few parameters which are picked and set initially, before applying any equations. These parameters are:**  
@@ -48,7 +48,7 @@ $$\color{green}{
 
 Here is a plot of the three colored equations above. Our goal is to minimize the minor losses in the system; to bring the red and blue curves as close as possible to the green one.
 
-<img src="https://github.com/AguaClara/CEE4540_Master/blob/master/Summary%20Sheets/Images/CDC_linearity_model.jpg?raw=true" width=650>
+<img src="https://github.com/AguaClara/CEE4540_Master/blob/master/AguaClara%20Water%20Treatment%20Plant%20Design/Chapter%202_Flow%20Control%20and%20Measurement/Images/CDC_linearity_model.jpg?raw=true" width=650>
 
 **The first step in the design is to find the _maximum_ flow velocity through the dosing tube(s) to ensure that major losses far exceed minor losses.**
 
@@ -136,7 +136,7 @@ D_{Min, \, Laminar} = \frac{4 Q_{Max}}{\pi \nu {\rm{Re}}_{Max}}
 
 Combined with the discrete amount of tubing sizes (shown in dark green), we can create a graph of the three diameter constraints:
 
-<img src="https://github.com/AguaClara/CEE4540_Master/blob/master/Summary%20Sheets/Images/CDC_diameter_model.jpg?raw=true" width=650>
+<img src="https://github.com/AguaClara/CEE4540_Master/blob/master/AguaClara%20Water%20Treatment%20Plant%20Design/Chapter%202_Flow%20Control%20and%20Measurement/Images/CDC_diameter_model.jpg?raw=true" width=650>
 
 
 ## CDC Dosing Tube(s) Length $L_{Min}$ Plots
