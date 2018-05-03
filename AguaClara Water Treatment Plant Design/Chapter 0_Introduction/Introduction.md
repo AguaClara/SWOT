@@ -5,7 +5,12 @@ During the later half of the 20th century surface water treatment technologies e
 
 Mechanized and automated water treatment plants performed reasonably well in communities with ready access to technical support services and supply chains that could reliably deliver replacement parts. In the global south mechanized municipal water treatment plants didn't fare as well.
 
-The AguaClara program was founded in 2005 with the goal of creating a new generation of sustainable technologies that would perform well even in the rugged settings of rural communities. The goal wasn't simply to create technologies that would work for communities with very limited resources. The goal was to create the next generation of technologies that would be resilient so they could perform well in communities with limited resources and would be the highest performing technologies on multiple metrics for all communities.
+The AguaClara Cornell program was founded in 2005 with the goal of creating a new generation of sustainable technologies that would perform well even in the rugged settings of rural communities. The goal wasn't simply to create technologies that would work for communities with very limited resources. The goal was to create the next generation of technologies that would be resilient so they could perform well in communities with limited resources and would be the highest performing technologies on multiple metrics for all communities.
+
+## Empirical Design
+For the past several decades surface water treatment technologies have been considered "mature" and when I (Monroe) little room for further innovation. This perspective is remarkable given that with the exception of lamellar sedimentation there were no equations describing the core treatment processes. Design standards such as the [Great Lakes - Upper Mississippi River Board 10 States Standards](http://10statesstandards.com/) evolved slowly and retain an empirical approach to design. The empirical design methodology is a direct result of two confounding factors. 
+
+## Design for the Context vs Design for the Designer
 
 ## Design Bifurcations
 Seemingly small decisions can have a profound effect on the evolution of design. Traditionally in tropical and temperate climates, flocculation and sedimentation units are built without an enclosing building. Without protection from the sun the materials used for plant construction must be UV resistant and thus plastic can't be used. This requires use of heavier and more expensive materials such stainless steel and aluminum. Metal plate settlers are heavy and thus they can't be easily removed by the plant operator.
