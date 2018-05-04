@@ -3,7 +3,7 @@
 This document contains the derivation of the minor loss equation using the following image as a reference. The derivation begins with a slightly simplified energy equation, in which $h_P$ and $h_T$ have been eliminated.
 
 
-![Image link](https://github.com/AguaClara/CEE4540_Master/blob/master/Summary%20Sheets/Images/Minor_loss_pipe.jpg?raw=true)
+![Image link](https://github.com/AguaClara/CEE4540_Master/blob/master/AguaClara%20Water%20Treatment%20Plant%20Design/Chapter%201_Fluids%20Review/Images/Minor_loss_pipe.jpg?raw=true)
 
 $$\frac{p_{in}}{\rho g} + {z_{in}} + \frac{V_{in}^2}{2g} = \frac{p_{out}}{\rho g} + z_{out} + \frac{V_{out}^2}{2g} + h_L$$
 

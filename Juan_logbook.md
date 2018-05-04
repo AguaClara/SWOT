@@ -164,7 +164,8 @@ I think that will greatly improve the chance that some things are completely don
 
 2. Change image insertion from markdown style to html to allow for resizing- silly markdown
 3. Added the head loss trick to fluids Review
-- REMEBER TO CHANGE THE DERIVATION sheets for this and also the $\rlap{\Bigg/}x$ to things
+    - REMEBER TO CHANGE THE DERIVATION sheets for this and also the $\rlap{\Bigg/}x$ to things
+4. Reorganized CEE4540_Master repo by chapter to make organizing a book easier and avoid enormous image folders. 
 
 ### To Do
 1. Questions/confirmations for Monore
