@@ -21,7 +21,7 @@ Please use this table to control/command find the sections you are looking for.
 #### **Section 3: AguaClara Flow Control and Measurement Technologies**  
 **3.1)** "Almost Linear" Flow Controller  
 **3.2)** Linear Flow Orifice Meter (LFOM)  
-**3.3)** Linear Dose Controller (CDC)  
+**3.3)** Linear Chemical Dose Controller (CDC)  
 
 <br>
 <br>
@@ -108,6 +108,8 @@ Before diving into the technologies, recall the purpose of the chemicals that we
 - [**Coagulant**](https://en.wikipedia.org/wiki/Coagulation_(water_treatment) "Coagulation wikipedia") like alum, PAC, and some iron-based chemicals are used to turn small particles into bigger particles, allowing them to be captured more easily. Waters with high [**turbidity**](https://en.wikipedia.org/wiki/Turbidity "Turbidity wikipedia"), indicative of a lot of particles like clay and bacteria, require more coagulant to treat effectively. Additionally, waters with a lot of [**organic matter**](https://en.wikipedia.org/wiki/Organic_matter "Organic matter wikipedia") require significantly more coagulant to treat.
 - [**Chlorine**](https://en.wikipedia.org/wiki/Water_chlorination "Chlorination wikipedia") is used to disinfect water that has already been fully treated. A proper and consistent chlorine dose is required, as too low of a dose creates a risk of reintroduction of pathogens in the distribution system and too high of a dose increases the risk of carcinogenic [disinfection byproduct](https://en.wikipedia.org/wiki/Disinfection_by-product "DBP wikipedia") formation.
 
+**Important Note** This section will often refer to the proportionality between flow $Q$ and head $\Delta h$ (recall that $\Delta h = h_L$ after applying the head loss trick) by using the 'proportional to' symbol, $\propto$. It is important to remember that it doesn't necessarily matter whether $Q$ or $h_L$ goes first, $Q \propto \sqrt{h_L}$ is equivalent to saying that $h_L \propto Q^2$.
+
 ### Important Terms
 1. Dose
 2. Coagulant
@@ -119,6 +121,7 @@ Before diving into the technologies, recall the purpose of the chemicals that we
 
 ### Important Equations
 1.
+
 
 ## 3.1) "Almost Linear" Flow Controller
 ### What it is
@@ -134,9 +137,9 @@ This flow controller provides a constant flow of chemical solution to the water 
 As has been mentioned previously, the amount of chlorine and coagulant that must be added to the raw water changes depending on the flow rate of the plant; the change is necessary to keep the dose constant. More water flowing through the plant means more chlorine is necessary to maintain the dose of chlorine in the treated water. For coagulant, there are also other factors aside from plant flow rate that impact the required dose, including the turbidity and amount of organic matter in the water. The operator must be able to change the dose of both coagulant and chlorine quickly and easily, and they must be able to know the value of the new dose they set. The "Almost Linear" Flow Controller accomplishes this by having a large number of holes in the flow control pipe next to the CHT. This large number of holes gives the operator many options for adjusting the dose, and let them quickly change the flow of chemicals into the raw water by moving the end of the flexible tube from one hole to another.
 
 ### How it works
-The idea behind this flow controller is to have a linear relationship between $\Delta h$ and $Q$, which can be written as $\Delta h \propto Q$. Here, $\Delta h$ is the elevation difference between the water level in the CHT and the end of the flexible tube and $Q$ is the flow of chemicals out of the flexible tube.
+The idea behind this flow controller is to have a linear relationship between $Q$ and $h_L$ (remember that $h_L$ is equal to $\Delta h$ when we apply the head loss trick), which can be written as $Q \propto h_L$. Here, $Q$ is the flow of chemicals out of the flexible tube, and $h_L$ is the elevation difference between the water level in the CHT and the end of the flexible tube.
 
-As you remember from section 1.5), the summary of Fluids Review, $\Delta h \propto Q$ is only true for the combination of major losses and laminar flow, via the Hagen-Poiseuille equation. Therefore, the flow must always be laminar in the flexible tube that goes between the CHT and the holes, and major losses must far exceed minor losses.
+As you remember from section 1.5, the summary of Fluids Review, $Q \propto \Delta h$, or $\Delta h \propto Q$ as it was written in the section summary, is only true for the combination of major losses and laminar flow, which makes applicable the Hagen-Poiseuille equation. Therefore, the flow must always be laminar in the flexible tube that goes between the CHT and the holes, and major losses must far exceed minor losses.
 
 It is easy to design for laminar flow, but the "Almost Linear" Flow Controller was unable to make major losses far exceed minor losses. The bending in the flexible tube caused a lot of minor losses which changed in magnitude depending on exactly how the tube was bent. This made the flow controller "almost linear," but that wasn't good enough.
 
@@ -157,21 +160,21 @@ The LFOM does one thing and serves two purposes.
 
 The LFOM serves two purposes:
 1. Allows the operator to measure the flow through the plant quickly and easily, explained above.
-2. Allows for the Linear Dose Controller, which will be explained next, to automatically adjust the flow of coagulant/chlorine into the plant as the plant flow rate changes. This means the operator would only need to adjust the flow of coagulant when there is a change in turbidity or organic matter.
+2. Allows for the Linear Chemical Dose Controller, which will be explained next, to automatically adjust the flow of coagulant/chlorine into the plant as the plant flow rate changes. This means the operator would only need to adjust the flow of coagulant when there is a change in turbidity or organic matter.
 
 ### How it works
-This is best understood with examples. By shaping a weir differently, different relationships between $h$ and $Q$ are formed:
-In the case of a [rectangular weir](https://swmm5.files.wordpress.com/2016/09/image00124.jpg), $h \propto Q^{\frac{2}{3}}$.
-In the case of a [v-notch  weir](https://swmm5.files.wordpress.com/2016/09/image0096.jpg), $h \propto Q^{\frac{2}{5}}$.
-In the case of a [Sutro weir](http://www.engineeringexcelspreadsheets.com/wp-content/uploads/2012/11/Sutro-Weir-Diagram1.jpg "couldn't find a pretty picture") and thus LFOM, $h \propto Q$.
+This is best understood with examples. By shaping a weir differently, different relationships between $Q$ and $h$ are formed:  
+In the case of a [rectangular weir](https://swmm5.files.wordpress.com/2016/09/image00124.jpg), $Q \propto h^{\frac{3}{2}}$.  
+In the case of a [v-notch  weir](https://swmm5.files.wordpress.com/2016/09/image0096.jpg), $Q \propto h^{\frac{5}{2}}$.  
+In the case of a [Sutro weir](http://www.engineeringexcelspreadsheets.com/wp-content/uploads/2012/11/Sutro-Weir-Diagram1.jpg "couldn't find a pretty picture") and thus LFOM, $Q \propto h$.  
 
 ### Notes
 - The LFOM is not perfect. Before the water level reaches the second row of holes, the LFOM is simulating a rectangular weir, and thus $h \not\propto Q$. The Sutro weir also experiences this problem.
 - If the water level exceeds the topmost row of the LFOM's orifices, the linearity also breaks down. The entire LFOM begins to act like an orifice, the exponent of $Q$ in $h \propto Q$ becomes greater than 1. This is because the LFOM approaches orifice behavior, and for orifices, $h \propto Q^2$.
 
 
-## 3.3) Linear Dose Controller (CDC)
-Since the Linear Dose Controller has become the standard in AguaClara, it is often simply called the Chemical Dose Controller, **or CDC for short**. It can be confusing to describe with words, so be sure to flip through the slides in the 'Flow Control and Measurement' powerpoint, as they contain very, very, helpful diagrams of the Linear Dose Controller/CDC.
+## 3.3) Linear Chemical Dose Controller (CDC)
+Since the Linear Chemical Dose Controller has become the standard in AguaClara, it is often simply called the Chemical Dose Controller, **or CDC for short**. It can be confusing to describe with words, so be sure to flip through the slides in the 'Flow Control and Measurement' powerpoint, as they contain very, very, helpful diagrams of the CDC.
 
 ### What it is
 The CDC brings together the LFOM and many improvements to the "Almost Linear" Flow Controller. Let's break it down, with the image below as a guide.
@@ -219,7 +222,7 @@ $$ L_{Min} = \left( \frac{g h_L \pi D^4}{128 \nu Q_{Max}} - \frac{Q_{Max}}{16 \p
 
 6. Finally, select the dosing tube diameter, flow rate, and stock concentration corresponding to the selected tube length.
 
-
+### Notes
 
 
 <img src="" width=500>
