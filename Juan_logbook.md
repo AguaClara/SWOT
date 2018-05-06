@@ -171,4 +171,4 @@ I think that will greatly improve the chance that some things are completely don
 1. Questions/confirmations for Monore
     1. In [this minor loss equation derivation](https://github.com/AguaClara/CEE4540_Master/blob/Juan_summary_sheets/Summary%20Sheets/Derivation_minor_loss_equation.md), why is $p_{in}$ with $A_{out}$ instead of $A_{in}$?
     2. When [deriving the CDC equations](https://github.com/AguaClara/CEE4540_Master/blob/Juan_summary_sheets/Summary%20Sheets/Derivation_designing_the_cdc.md), why do you take the limit as Q approaches 0? Is that when the difference between the actual head loss and the linearized model is the greatest, percentage-wise?
-    3.
+    3. Revise step 6 in the CDC design algorithm. I thought that Stock Concentration was set in the beginning? I understand why it makes sense to set at the end, but everything else in the design process does not account for this. Seems to come out of the blue, high confusing potential
