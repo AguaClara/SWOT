@@ -174,4 +174,4 @@ I think that will greatly improve the chance that some things are completely don
     3. Revise step 6 in the CDC design algorithm. I thought that Stock Concentration was set in the beginning? I understand why it makes sense to set at the end, but everything else in the design process does not account for this. Seems to come out of the blue, high confusing potential
     4. In the powerpoint 'Drinking Water Contaminants,' what is the blue star in the corner of the slides supposed to represent? Extras? There are a lot of them
 2. Add the CDC accuracy concerns into the **Notes** page of the summary sheets
-3. Deal with the powerpoint extras...
+3. Should the flow control summary sheet include constant head devices?? If so, see the 'TOO LONG' version. Should these be included as is or changed? 
