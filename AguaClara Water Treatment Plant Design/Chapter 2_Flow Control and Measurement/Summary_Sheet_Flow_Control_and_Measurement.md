@@ -208,7 +208,7 @@ The CDC makes it easy and accurate to dose chemicals. The flow of chemicals auto
 #### **How it works**
 A lot of design has gone into the CDC. The design equations and their derivations can be [found here](https://github.com/AguaClara/CEE4540_Master/blob/master/AguaClara%20Water%20Treatment%20Plant%20Design/Chapter%202_Flow%20Control%20and%20Measurement/Derivation_designing_the_cdc.md "CDC Design Derivation"), and you are very, very strongly encouraged to read them.
 
-The CDC can be designed manually using the equations from the derivation linked above or via aide_design, using the equations found in [cdc_functions.py](https://github.com/AguaClara/aide_design/blob/master/aide_design/cdc_functions.py). Either way, the design algorithm is the same:  
+The CDC can be designed manually using the equations from the derivation linked above or via aide_design, using the equations found in [cdc_functions.py](https://github.com/AguaClara/aide_design/blob/master/aide_design/cdc_functions.py). Either way, the design algorithm is roughly the same:  
 
 1. Calculate the maximum flow rate, $Q_{Max, \, Tube}$, through each available dosing tube diameter that keeps error due to minor losses below 10% of total head loss. Recall that tubing diameter is an array, as there are many to choose from. This means that for each step, there will be as many solutions as there are diameters available.
 
