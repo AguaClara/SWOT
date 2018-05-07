@@ -165,11 +165,13 @@ I think that will greatly improve the chance that some things are completely don
 2. Change image insertion from markdown style to html to allow for resizing- silly markdown
 3. Added the head loss trick to fluids Review
 4. Reorganized CEE4540_Master repo by chapter to make organizing a book easier and avoid enormous image folders.
+5. Cleaning up the 4 intro powerpoints. Added clickable overviews to all of them and organized their extras.
 
 ### To Do
 1. Questions/confirmations for Monroe
     1. In [this minor loss equation derivation](https://github.com/AguaClara/CEE4540_Master/blob/master/AguaClara%20Water%20Treatment%20Plant%20Design/Chapter%201_Fluids%20Review/Derivation_minor_loss_equation.md), why is $p_{in}$ with $A_{out}$ instead of $A_{in}$?
     2. When [deriving the CDC equations](https://github.com/AguaClara/CEE4540_Master/blob/master/AguaClara%20Water%20Treatment%20Plant%20Design/Chapter%202_Flow%20Control%20and%20Measurement/Derivation_designing_the_cdc.md), why do you take the limit as Q approaches 0? Is that when the difference between the actual head loss and the linearized model is the greatest, percentage-wise?
     3. Revise step 6 in the CDC design algorithm. I thought that Stock Concentration was set in the beginning? I understand why it makes sense to set at the end, but everything else in the design process does not account for this. Seems to come out of the blue, high confusing potential
+    4. In the powerpoint 'Drinking Water Contaminants,' what is the blue star in the corner of the slides supposed to represent? Extras? There are a lot of them
 2. Add the CDC accuracy concerns into the **Notes** page of the summary sheets
 3. Deal with the powerpoint extras...

@@ -155,7 +155,7 @@ L_{Min} = L_{Min, \, head loss} = \left( \frac{g h_{L_{Max}} \pi D^4}{128 \nu Q_
  By rearranging  $Q_{Max} = \frac{\pi D^2}{4} \sqrt{\frac{2 h_L g \Pi_{Error}}{\sum K_e }}$, we can solve for $D$ to get the _minimum_ diameter we can use assuming the shortest tube possible that meets the error constraint, $\color{red}{L_{Min, \, \Pi_{Error}}}$. If we use a diameter smaller than $D_{Min, \, \Pi_{Error}}$, we will not be able to simultaneously reach $Q_{Max}$ and meet the error constraint $\Pi_{Error}$.
 
 $$\color{blue}{
-D_{Min, \, \Pi_{Error}} = \left[ \frac{8 Q^2 \sum K_e}{\Pi_{Error} h_l g \pi^2} \right]^{\frac{1}{4}}
+D_{Min, \, \Pi_{Error}} = \left[ \frac{8 Q_{Max}^2 \sum K_e}{\Pi_{Error} h_l g \pi^2} \right]^{\frac{1}{4}}
 }$$
 
 We can also find the minimum diameter needed to guarantee laminar flow, which is another critical condition in the CDC design. We can do this by combining the equation for Reynolds number at the maximum $\rm{Re}$ for laminar flow, ${\rm{Re}}_{Max} = 2100$ with the continuity equation at maximum flow:
