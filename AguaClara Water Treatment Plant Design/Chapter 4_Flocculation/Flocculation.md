@@ -1,6 +1,13 @@
 # Flocculation
-Flocculation is gravity-powered
-says Monroe Weber-Shirk
+Flocculation transform inorganic (clays such as [kaolinite, smectite, etc. and metallic oxy-hydroxides such as goethite and gibbsite](https://www.sciencedirect.com/science/article/pii/S0048969708010103) ) and organic (viruses, bacteria and protozoa) primary particles into flocs (particle aggregates). Flocculation doesn't remove any particles from suspension. Instead it causes particle aggregation and then floc blankets, lamellar sedimentation, and sand filtration will be used to remove those flocs. Sedimentation can remove flocs more easily than it can remove primary particles because flocs have a higher terminal sedimentation velocity. Floc blankets and sand filtration rely primarily on capture based on interception and interception is much more efficient when the particles are larger.
+
+It is also possible that a difference in a physical property between primary particles and flocs plays a role in enhanced removal of flocs in floc blankets and filters. For example, flocs are deformable and it is possible that deformation plays an important role right at the moment of collision. Presumably the bond strength required to lock the colliding particles together is less if the particles can deform as they are colliding.
+
+## Primary particles can't attach to large flocs
+One of the mysteries of flocculation has been why it is such a slow process and yet it appears to be a very rapid process. Plant operators observe that with high raw water turbidities  that they can see flocculation progressing 
+
+## History
+The mechanism of particle-particle aggregation was thought to be controlled by an average surface charge. Apparently no one was able to develop a model of how that mechanism would influence particle attachment efficiency and the result was that no predictive models for flocculation were developed.
 ```python
 # %%
 from aide_design.play import*
@@ -199,3 +206,8 @@ print('The average velocity is ',V_avg)
 #Calculate pipe length
 L_pipe = (V_avg*theta).to(u.m) #then multiply velocity by residence time to get the required length of pipe
 print('The length of the pipe is ',L_pipe)
+
+```
+
+#references
+[Coagulation and Flocculation in Water and Wastewater Treatment](https://www.iwapublishing.com/news/coagulation-and-flocculation-water-and-wastewater-treatment), iwapublishing
