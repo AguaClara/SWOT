@@ -1,5 +1,5 @@
 # Flow Control and Measurement Summary Sheet
-Welcome to the second summary sheet of CEE 4540! These documents will be guides and references for you throughout the semester. Since Professor Monroe's class time is limited, so too is the amount of material he can fit on the slides while ensuring that they remain understandable. Thus, these summary sheets will supplement the powerpoints by going into further detail on the course concepts introduced in the slides.
+Welcome to the **second** summary sheet of CEE 4540! These documents will be guides and references for you throughout the semester. Since Professor Monroe's class time is limited, so too is the amount of material he can fit on the slides while ensuring that they remain understandable. Thus, these summary sheets will supplement the powerpoints by going into further detail on the course concepts introduced in the slides.
 
 Equations, universal constants, and other helpful goodies can be found in the [aide_design repository on GitHub](https://github.com/AguaClara/aide_design/tree/master/aide_design "aide_design"). Most equations and constants you find in these summary sheets will already have been coded into aide_design, and will be shown here in the following format:  
 
@@ -66,13 +66,13 @@ We first see if the standard and easy 'tank with a valve' system can be adjusted
 
 $$ \frac{Q}{Q_0} = 1 - \frac{1}{2} \frac{t}{t_{Design}} \frac{h_{Tank}}{h_0}$$
 
-Such that:
-$Q$ = $Q(t)$ = flow of hypochlorite through valve at time $t$
-$Q_0$ = flow of hypochlorite through valve at time $t$ = 0
-$t$ = elapsed time
-$t_{Design}$ = time it would take for tank to empty if flow stayed constant at $Q_0$, which it does not
-$h_{Tank}$ = elevation of water level with reference to tank bottom at time $t$ = 0
-$h_0$ = elevation of water level with reference to the valve at time $t$ = 0
+Such that:  
+$Q$ = $Q(t)$ = flow of hypochlorite through valve at time $t$  
+$Q_0$ = flow of hypochlorite through valve at time $t$ = 0  
+$t$ = elapsed time  
+$t_{Design}$ = time it would take for tank to empty if flow stayed constant at $Q_0$, which it does not  
+$h_{Tank}$ = elevation of water level with reference to tank bottom at time $t$ = 0  
+$h_0$ = elevation of water level with reference to the valve at time $t$ = 0  
 
 <img src="https://github.com/AguaClara/CEE4540_Master/blob/master/AguaClara%20Water%20Treatment%20Plant%20Design/Chapter%202_Flow%20Control%20and%20Measurement/Images/complete_hypochlorinator.jpg?raw=true" width=500>
 
