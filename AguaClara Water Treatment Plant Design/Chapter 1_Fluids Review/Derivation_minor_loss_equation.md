@@ -27,7 +27,7 @@ Recall that momentum is mass times velocity, $mV$ with units of $\frac{[M][L]}{[
 
 $$\rho V_{out}^2 A_{out} - \rho V_{in}^2 A_{in} = p_{in} A_{out} - p_{out} A_{out}$$
 
-Note that the area term attached to $p_{in}$ is actually $A_{out}$ instead of $A_{in}$, as one might think. **I NEVER ACTUALLY UNDERSTOOD WHY THIS IS, ANY TAKERS???**
+Note that the area term attached to $p_{in}$ is actually $A_{out}$ instead of $A_{in}$, as one might think. This is because $A_{out} = A_{in}$. We chose our control volume to start a few millimeters into the larger pipe, which means that the cross-sectional area does not change over the course of the control volume.
 
 By dividing both sides of the equation by $A_{out} \rho g$, we obtain the following equation, which contains the very same pressure term as our adjusted energy equation above. This is why we chose a negative sign convention.
 
