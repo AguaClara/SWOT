@@ -68,16 +68,16 @@ $$ \Pi_{Error} = \frac{\color{green}{ h_{Linear} } - \color{blue}{ h_L }}{\color
 
 $$ 1 - \Pi_{Error} = \frac{\color{blue}{ h_L }}{\color{green}{ h_{Linear} }}$$
 
-If we plug $\color{blue}{ h_L(Q) }$ and $\color{green}{ h_{L_{linear}} }$ back into the equation for $1 - \Pi_{Error}$ and take the limit as $Q \rightarrow 0$, we get the following:
+Now we plug $\color{blue}{ h_L(Q) }$ and $\color{green}{ h_{L_{linear}} }$ back into the equation for $1 - \Pi_{Error}$ and take the limit as $Q \rightarrow 0$, as that is when the relative difference between <font color="blue">actual head loss</font> and our <font color="green">linear model for head loss </font> is the greatest.
 
 $$1 - \Pi_{Error} =
   \frac{ \color{blue}{
   \left( \frac{128 \nu L}{g \pi D^4} +
   \rlap{\Bigg/ \Bigg/ \Bigg/ \Bigg/} \frac{8Q}{g \pi^2 D^4} \sum{K_e}
-  \right)
+  \right) Q
   }}   
   {\color{green}{
-  \left( \frac{128 \nu L}{g \pi D^4} + \frac{8 Q_{Max}}{g \pi^2 D^4} \sum{K_e} \right)
+  \left( \frac{128 \nu L}{g \pi D^4} + \frac{8 Q_{Max}}{g \pi^2 D^4} \sum{K_e} \right) Q
   }}     
   =     \frac{\left( \frac{128 \nu L}{g \pi D^4} \right)}{\left( \frac{128 \nu L}{g \pi D^4} + \frac{8 Q_{Max}}{g \pi^2 D^4} \sum{K_e} \right)}$$
 

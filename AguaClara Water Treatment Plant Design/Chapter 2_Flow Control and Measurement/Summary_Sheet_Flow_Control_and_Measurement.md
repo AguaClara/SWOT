@@ -228,7 +228,7 @@ $$ L_{Min} = \left( \frac{g h_L \pi D^4}{128 \nu Q_{Max}} - \frac{Q_{Max}}{16 \p
 
 5. Select a tube length. Pick the longest dosing tube that you can, keeping in mind that the tube(s) must be able to fit in the plant and can't be longer than the length of the plant wall it will be placed along.
 
-6. Finally, select the dosing tube diameter, flow rate, and stock concentration corresponding to the selected tube length.
+6. Finally, select the dosing tube diameter and flow rate corresponding to the selected tube length.
 
 #### **Notes**
 Nothing in life is perfect, and the CDC is no exception. It has a few causes of inaccuracy which go beyond non-zero minor losses:  
