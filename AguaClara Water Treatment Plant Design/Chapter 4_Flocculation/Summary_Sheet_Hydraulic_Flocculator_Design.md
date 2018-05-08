@@ -63,11 +63,31 @@ To increase $V_t$ and make sedimentation more efficient, floccuation aims to inc
 
 So our goal in designing a flocculator is to facilitate particle collisions. How can we do this?
 
-### Collision Potential, $G \theta$
+### Collision Potential, $G \theta$, and Energy Dissipation Rate, $\varepsilon$
 **Collision potential** is a term with a very straightforward name. It is a _dimensionless_ parameter which is often used as a performance metric for flocculators; big values are good and small values are bad. AguaClara aims for a collision potential of 37,000. The value for collision potential is obtained by multiplying $G$, a parameter for fluid shear with units of $\frac{1}{[T]}$, and $\theta$, the residence time of water in the flocculator. $\theta$ is easy to measure, calculate, and understand. $G$ is a bit more difficult. First, an intuitive explanation. See the image below, which shows the velocity profile of flowing water.
 
-<img src="https://github.com/AguaClara/CEE4540_Master/tree/master/AguaClara%20Water%20Treatment%20Plant%20Design/Chapter%204_Flocculation/Images/G_veloctiy_profile.jpg?raw=true" width=500>
+<img src="https://github.com/AguaClara/CEE4540_Master/blob/Juan_summary_sheets/AguaClara%20Water%20Treatment%20Plant%20Design/Chapter%204_Flocculation/Images/G_velocity_profile.jpg?raw=true" width=500>
 
-$G$ measures the magnitude of shear by comparing the velocity gradient of a fluid, in this case water, to the space it spans, $\frac{\Delta V}{\Delta h}$. This is essentially the same thing as the $\frac{\delta u}{\delta y}$ term you learned about in fluid mechanics. The only difference is that $\frac{\delta u}{\delta y}$ considers flow at a boundary, while $\frac{\Delta V}{\Delta g}$ can apply to water at or away from a boundary. 
 
-$G$ represents the average $\frac{\Delta V}{\Delta h}$ for the entire water volume under consideration. Unfortunately, we can't measure $\frac{\Delta V}{\Delta h}$ for every part of the water we care about and take an average. We need to approximate $G$ using measureable parameters.
+$G$ measures the magnitude of shear via the velocity gradient of a fluid, in this case water, in space, $\frac{\Delta V}{\Delta h}$. This is essentially the same thing as the $\frac{\delta u}{\delta y}$ term you learned about in fluid mechanics. The only difference is that $\frac{\delta u}{\delta y}$ considers flow at a boundary, while $\frac{\Delta V}{\Delta h}$ can apply to water at or away from a boundary.
+
+$\bar G$ represents the average $\frac{\Delta V}{\Delta h}$ for the entire water volume under consideration, and is the parameter we will be using from now on. Unfortunately, it is unrealistic to measure $\frac{\Delta V}{\Delta h}$ for every parcel of the water in our flocculator and take an average. We need to approximate $\bar G$ using measureable parameters.
+
+The parameter that serves as the basis for obtaining $\bar G$ is $\varepsilon$, which represents the **energy dissipation** rate of a fluid _normalized by its mass_. The units of $\varepsilon$ are Watts per kilogram:
+
+$$\varepsilon = \left[ \frac{W}{Kg} \right]
+= \left[ \frac{J}{s \cdot Kg} \right]
+= \left[ \frac{N \cdot m}{s \cdot Kg} \right]
+= \left[ \frac{kg \cdot m \cdot m}{s^2 \cdot s \cdot Kg} \right]
+= \left[ \frac{m^2}{s^3} \right]
+= \left[ \frac{[L]^2}{[T]^3} \right]$$
+
+There are at least two ways to think about $\varepsilon$. One is through $G$. Imagine that a fluid has _no viscosity_; there is no internal friction caused by fluid flow. No matter how high $G$ becomes, no energy is dissipated. Now image a honey, which has a very high viscosity. Making honey flow fast requires a lot of energy over a short period of time, so a high energy dissipation rate. Thus, the equation for $\varepsilon$ in terms of $G$ and $\nu$ is as follows:
+
+$$\varepsilon = \nu G^2$$
+
+Which means we can solve for $G$:
+
+$$G = \sqrt{\frac{\varepsilon}{\nu}}$$
+
+Energy dissipation rate, is, fortunately, easier to measure than collision potential. In a reactor like a flocculator, the total energy dissipated is simply the head loss. The amount of time required to dissipate that energy is the residence time, $\theta$
