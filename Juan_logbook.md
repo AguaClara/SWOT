@@ -187,6 +187,13 @@ I suggest putting all effort into the text book. There is some chance that the t
 ### Done
 
 
+<<<<<<< HEAD
 ## To Do
 1. Questions for Monroe  
       1. Do the flocculator baffle modules have a specific name?
+=======
+### To Do
+1. Questions for Monroe:
+    1. Baffle modules for flocculators: What are they called? Do they have a commonly used name?
+    2. For the height of water in the flocculator, it is sometimes referred to as $H$ and sometimes as $H_e$. Is there a difference between the two parameters? This small difference can cause a lot of background, peripheral  confusion for students (like me when I took 4540!)
+>>>>>>> Juan_summary_sheets
