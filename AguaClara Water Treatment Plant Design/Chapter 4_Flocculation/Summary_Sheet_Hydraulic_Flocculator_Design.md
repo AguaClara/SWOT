@@ -46,6 +46,8 @@ Please use this table to control/command find the sections you are looking for.
 ### Important Terms
 1.  Collision potential  
 2. Energy dissipation rate
+3. Baffle
+4. Baffle module
 
 ### Important Equations   
 1.
@@ -105,8 +107,13 @@ $$\bar G \theta = \sqrt{\frac{g h_L \theta}{\nu}}$$
 
 
 ### Generating Head Loss with Baffles
+#### **What are Baffles?**
 Now that we know how to measure collision potential with head loss, we need a way to actually generate head loss. While both major or minor losses can be the design basis, it generally makes more sense to use major losses for low-flow flocculation and minor losses for higher flows, as flocculation with minor losses tends to be more space-efficient.
 
-To generate minor losses, we need to cause flow expansions. AguaClara does this with baffles, which are simply obstructions in the channel of a flocculator to make the flow switch directions by 180°.
+To generate minor losses, we need to create flow expansions. AguaClara does this with **baffles**, which are obstructions in the channel of a flocculator to force the flow switch directions by 180°. Baffles in AguaClara plants are plastic sheets, and all of the baffles in one flocculator channel are connected to form a **baffle module.** Images below show an AguaClara flocculator and the beginnings of a module.
 
-<img src="https://github.com/AguaClara/CEE4540_Master/blob/Juan_summary_sheets/AguaClara%20Water%20Treatment%20Plant%20Design/Chapter%204_Flocculation/Images/AC_flocculator.jpg?raw=true" width=500>
+<img src="https://github.com/AguaClara/CEE4540_Master/blob/Juan_summary_sheets/AguaClara%20Water%20Treatment%20Plant%20Design/Chapter%204_Flocculation/Images/AC_flocculator.JPG?raw=true" width=900>
+
+<img src="https://github.com/AguaClara/CEE4540_Master/blob/Juan_summary_sheets/AguaClara%20Water%20Treatment%20Plant%20Design/Chapter%204_Flocculation/Images/Baffle_module.JPG?raw=true" width=900>
+
+AguaClara flocculators like the one pictured above are called vertical hydraulic flocculators, because the baffles force the flow up and down. If the baffles were instead arranged to force the flow side-to-side, the flocculator would be a horizontal hydraulic flocculator. AguaClara uses vertical flocculators because they are more efficient when considering plant area. They are deeper than horizontal flocculators, which allows them to have a smaller [plan-view area](https://simple.wikipedia.org/wiki/Plan_view).  

@@ -172,4 +172,17 @@ I think that will greatly improve the chance that some things are completely don
     3. Revise step 6 in the [CDC design algorithm](https://github.com/AguaClara/CEE4540_Master/blob/master/AguaClara%20Water%20Treatment%20Plant%20Design/Chapter%202_Flow%20Control%20and%20Measurement/Summary_Sheet_Flow_Control_and_Measurement.md#how-it-works-2). I thought that Stock Concentration was set in the beginning? I can understand why it makes sense to set at the end, but everything document I've looked at does it at the beginning. High student-confusion-potential
     4. In the powerpoint 'Drinking Water Contaminants,' what is the blue star in the corner of the slides supposed to represent? Extras? There are a lot of them
 2. Should the flow control summary sheet include constant head devices?? If so, see the [TOO LONG](https://github.com/AguaClara/CEE4540_Master/blob/master/AguaClara%20Water%20Treatment%20Plant%20Design/Chapter%202_Flow%20Control%20and%20Measurement/Summary_Sheet_TOOLONG_Flow_Control.md#22-constant-head-devices) version. Should these be included as is or changed? If they should be included as is, I think we need some more advantages and disadvantages.
-3. I will now begin to make derivations sheets for flocculation/sedimentation/flocculation while clearing up the powerpoint slides that contain those derivations. Having looked at rapid mix, I think it now makes sense to communicate with Monroe on what should go in the intro vs the summary sheets for each unit processes. This would be best done with a voice/video call. Earliest possible date: May 11th. 
+3. I will now begin to make derivations sheets for flocculation/sedimentation/flocculation while clearing up the powerpoint slides that contain those derivations. Having looked at rapid mix, I think it now makes sense to communicate with Monroe on what should go in the intro vs the summary sheets for each unit processes. This would be best done with a voice/video call. Earliest possible date: May 11th.
+
+
+
+***
+## Ninth Progress Report: 5/??/2018  
+### Done  
+
+
+
+### To Do
+1. Questions for Monroe:
+    1. Baffle modules for flocculators: What are they called? Do they have a commonly used name?
+    2. 
