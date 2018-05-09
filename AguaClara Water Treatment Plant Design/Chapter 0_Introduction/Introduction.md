@@ -58,13 +58,13 @@ The need for drinking water supplies isn't limited to the global south. The Cali
 | Floc blanket | upflow fluidized suspension of flocs | flocculation | public | [1930](https://link.springer.com/chapter/10.1007%2F978-3-642-61196-4_2) |
 | Jet reverser floc blanket | first fully fluidized floc blanket | flocculation | AguaClara Cornell open source | [2012](http://cuaguaclara.blogspot.com/2012/08/the-floc-blanket-quest.html) |
 | Ballasted sedimentation | - | - | [Actiflo Veolia](http://www.veoliawatertechnologies.com.au/medias/topics/focus_actiflo.htm) | [1995](https://patents.google.com/patent/US5840195) |
-| Superpulsator | pulsing flow through floc blanket | rapid mix | [Degremont](http://www.degremont-technologies.com/SUPERPULSATOR-R) | [1991](https://patents.google.com/patent/US5143625) |
+| Superpulsator | pulsing flow through floc blanket | rapid mix | [Degremont](http://www.degremont-technologies.com/SUPERPULSATOR-R) | [1958](https://patents.google.com/patent/US3038608A) [1991](https://patents.google.com/patent/US5143625) |
 | Dissolved air flotation | - | - | - | - |
 See [Pretreatment Processes for Potable Water Treatment Plants by Jeff Lindgren for an excellent overview of available technologies, May 2014 (not including AguaClara innovations)](https://www.pnws-awwa.org/uploads/PDFs/conferences/2014/2.%20PNWS%20AWWA%20WTC%20Precon%2005%2007%202014%20Pretreatment%20by%20B&V%201&2%20-%20R1.pdf)
 
 
 ## Treatment Trains
-The prerequisites in the table above reveal that surface water treatment almost always requires a series of treatment steps. 
+The prerequisites in the table above reveal that surface water treatment almost always requires a series of treatment steps.
 
 ## Design Evolution
 
