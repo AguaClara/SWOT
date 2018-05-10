@@ -156,21 +156,26 @@ I think that will greatly improve the chance that some things are completely don
 
 
 ***
-## Eigth Progress Report: 5/??/2018  
+## Eigth Progress Report: 5/7/2018  
 ### Done  
-1. Make sure to check for consistency in these things in the final read-through:  
-    1. Consistency in $Q \propto h$ vs $h \propto Q$
-    2. Consistency in $h$ vs $\Delta h$ vs $z$
-
-2. Change image insertion from markdown style to html to allow for resizing- silly markdown
-3. Added the head loss trick to fluids Review
-    - REMEBER TO CHANGE THE DERIVATION sheets for this and also the $\rlap{\Bigg/}x$ to things
-4. Reorganized CEE4540_Master repo by chapter to make organizing a book easier and avoid enormous image folders. 
+1. Change image insertion from markdown style to html to allow for resizing- silly markdown
+2. Added the head loss trick to fluids Review
+3. Reorganized CEE4540_Master repo by chapter to make organizing a book easier and avoid enormous image folders.
+4. Cleaned up the 4 intro powerpoints. Added clickable overviews to all of them and organized their extras.
+5. Finished the FCM summary sheet, powerpoint, powerpoint extras, and derivations. Definitely, definitely need another pair of eyes or two, but I think it looks pretty good :D
+6. Starting to look at rapid mix... oh boy
 
 ### To Do
-1. Questions/confirmations for Monore
-    1. In [this minor loss equation derivation](https://github.com/AguaClara/CEE4540_Master/blob/Juan_summary_sheets/Summary%20Sheets/Derivation_minor_loss_equation.md), why is $p_{in}$ with $A_{out}$ instead of $A_{in}$?
-    2. When [deriving the CDC equations](https://github.com/AguaClara/CEE4540_Master/blob/Juan_summary_sheets/Summary%20Sheets/Derivation_designing_the_cdc.md), why do you take the limit as Q approaches 0? Is that when the difference between the actual head loss and the linearized model is the greatest, percentage-wise?
-    3. Is this equation ever actually used in the flow control design??
-        $$L = \frac{\left( 1 - \Pi_{Error} \right) D^2}{64 \nu} \sqrt{ \frac{2 h_L g \sum{K_e}}{\Pi_{Error}} } $$
-    4.
+1. Questions/confirmations for Monroe
+    1. In [this minor loss equation derivation](https://github.com/AguaClara/CEE4540_Master/blob/master/AguaClara%20Water%20Treatment%20Plant%20Design/Chapter%201_Fluids%20Review/Derivation_minor_loss_equation.md), why is $p_{in}$ with $A_{out}$ instead of $A_{in}$?
+    The control surface 1 is drawn in the fluid so that the only solid surfaces inside the control volume are normal to the two control surfaces. In the x direction the only forces on the solid surfaces are shear and that is negligible. The area of control surface 1 is the same as the area of control surface 2. The pressure on control surface 1 is assumed to be uniform (or hydrostatic).
+    2. When [deriving the CDC equations](https://github.com/AguaClara/CEE4540_Master/blob/master/AguaClara%20Water%20Treatment%20Plant%20Design/Chapter%202_Flow%20Control%20and%20Measurement/Derivation_designing_the_cdc.md#designing-for-the-error-constraint-pi_error), why do you take the limit as Q approaches 0? Is that when the difference between the actual head loss and the linearized model is the greatest, percentage-wise?
+    The error is zero at Max Q because we've calibrated at max flow rate. The ratio of actual flow/target flow is maximum as Q approaches zero.
+    3. Revise step 6 in the [CDC design algorithm](https://github.com/AguaClara/CEE4540_Master/blob/master/AguaClara%20Water%20Treatment%20Plant%20Design/Chapter%202_Flow%20Control%20and%20Measurement/Summary_Sheet_Flow_Control_and_Measurement.md#how-it-works-2). I thought that Stock Concentration was set in the beginning? I can understand why it makes sense to set at the end, but everything document I've looked at does it at the beginning. High student-confusion-potential
+    You are right. Remove stock concentration from the final step.
+    4. In the powerpoint 'Drinking Water Contaminants,' what is the blue star in the corner of the slides supposed to represent? Extras? There are a lot of them.
+    Great question. I'm not sure. It almost looks like the opposite of extras. 
+2. Should the flow control summary sheet include constant head devices?? If so, see the [TOO LONG](https://github.com/AguaClara/CEE4540_Master/blob/master/AguaClara%20Water%20Treatment%20Plant%20Design/Chapter%202_Flow%20Control%20and%20Measurement/Summary_Sheet_TOOLONG_Flow_Control.md#22-constant-head-devices) version. Should these be included as is or changed? If they should be included as is, I think we need some more advantages and disadvantages.
+The text should definately include the constant head devices. Given that we don't use them in our designs it might not be necessary to have a summary sheet on them
+3. I will now begin to make derivations sheets for flocculation/sedimentation/flocculation while clearing up the powerpoint slides that contain those derivations. Having looked at rapid mix, I think it now makes sense to communicate with Monroe on what should go in the intro vs the summary sheets for each unit processes. This would be best done with a voice/video call. Earliest possible date: May 11th. 
+I suggest putting all effort into the text book. There is some chance that the text will rapidly become the primary source of information and the lectures will become more discussion focused. I'm going to be exploring options for how to more effectively teach this material in the coming weeks.
