@@ -1,16 +1,39 @@
-# Flocculation
-Flocculation is gravity-powered
-says Monroe Weber-Shirk
 ```python
 # %%
 from aide_design.play import*
-from aide_design import floc_model as floc
+from aguaclara_research.play import*
 from pytexit import py2tex
 from sympy import*
 from scipy.optimize import root
 from scipy.optimize import brentq
 import pandas as pd
 ```
+# Flocculation
+Flocculation transform inorganic (clays such as [kaolinite, smectite, etc. and metallic oxy-hydroxides such as goethite and gibbsite](https://www.sciencedirect.com/science/article/pii/S0048969708010103) ) and organic (viruses, bacteria and protozoa) primary particles into flocs (particle aggregates). Flocculation doesn't remove any particles from suspension. Instead it causes particle aggregation and then floc blankets, lamellar sedimentation, and sand filtration will be used to separate those flocs from the water. Sedimentation can remove flocs more easily than it can remove primary particles because flocs have a higher terminal sedimentation velocity. Floc blankets and sand filtration rely primarily on capture based on interception and interception is much more efficient when the particles are larger. Thus the purpose of flocculation is to join **all** of the primary particles together into flocs.
+
+It is also possible that a difference in a physical property between primary particles and flocs plays a role in enhanced removal of flocs in floc blankets and filters. For example, the many relatively weak connection points between the primary particles in the flocs enables the flocs to deform. It is possible that deformation plays an important role right at the moment of collision. Presumably the bond strength required to lock the colliding particles together is less if the particles can deform as they are colliding.
+
+## Primary particles can't attach to large flocs
+One of the mysteries of flocculation has been why it is such a slow process and yet it appears to be a very rapid process. Plant operators observe that with high raw water turbidities that they can see flocculation progressing after about 0.5 minutes of flocculation. We can estimate the collision potential, $G\theta$ that corresponds to making visible flocs.
+$$\bar G = \sqrt{ \frac{g h_e}{\theta \nu}}$$
+
+```python
+HL_floc = 43*u.cm
+HRT = 8 * u.min
+Temperature =20 * u.degC
+G_floc = ((pc.gravity*HL_floc/(HRT*pc.viscosity_kinematic(Temperature)))**0.5).to_base_units()
+print(G_floc)
+Gt_floc = G_floc*HRT
+HRT_floc_visible = 0.5*u.min
+Gt_floc_visible = (G_floc*HRT_floc_visible).to_base_units()
+print(Gt_floc_visible)
+```
+Here initial flocculation is visible at a $Gl/theta$ of less than 3000. Given that flocculation is visible at this low collision potential, it is unclear why recommended $Gl/theta$ are as high as 100,000. This is one of the great mysteries that motivated the search for a flocculation model that was based on hypotheses that were consistent with laboratory and field observations.
+## History
+The mechanism of particle-particle aggregation was thought to be controlled by an average surface charge. Apparently no one was able to develop a model of how that mechanism would influence particle attachment efficiency and the result was that no predictive models for flocculation were developed. There were several observations that were at odds with conventional explanations of flocculation.
+1. Efficient flocculation at coagulant dosages that led to positive surface charge. This led to a second flocculation mechanism that was called "sweep floc" and that was used to describe any observations that didn't fit the charge neutralization flocculation hypotheses
+1. Flocculation time for highly turbid suspensions was expected to proceed very rapidly and produce very low turbidity settled water. This expectation was not observed and led to the hypothesis that flocs were continually breaking up and producing primary particles or at least very small flocs.
+1. The floc break up hypotheses led to the expectation that high turbidity suspensions would have significantly higher settled water turbidity than low turbidity suspensions. This expectation was also not observed.
 
 
 
@@ -199,3 +222,8 @@ print('The average velocity is ',V_avg)
 #Calculate pipe length
 L_pipe = (V_avg*theta).to(u.m) #then multiply velocity by residence time to get the required length of pipe
 print('The length of the pipe is ',L_pipe)
+
+```
+
+#references
+[Coagulation and Flocculation in Water and Wastewater Treatment](https://www.iwapublishing.com/news/coagulation-and-flocculation-water-and-wastewater-treatment), iwapublishing
