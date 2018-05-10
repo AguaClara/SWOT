@@ -69,7 +69,7 @@ So our goal in designing a flocculator is to facilitate particle collisions. How
 ### Collision Potential, $G \theta$, and Energy Dissipation Rate, $\varepsilon$
 **Collision potential $(G \theta)$** is a term with a very straightforward name. It represents the magnitude of potential particle collisions in a fluid. It is a _dimensionless_ parameter which is often used as a performance metric for flocculators; big $G \theta$ values indicate lots of collisions (good) while small values indicate fewer collisions (not so good). AguaClara flocculators usually aim for a collision potential of 37,000. _**WHY DO WE SHOOT FOR 37,000?**_ The value for collision potential is obtained by multiplying $G$, a parameter for fluid shear with units of $\frac{1}{[T]}$, and $\theta$, the residence time of water in the flocculator, with units of $[T]$. $\theta$ is intuitive to measure, calculate, and understand. $G$ is a bit more difficult. First, an intuitive explanation. See the image below, which shows the velocity profile of flowing water.
 
-<img src="https://github.com/AguaClara/CEE4540_Master/blob/Juan_summary_sheets/AguaClara%20Water%20Treatment%20Plant%20Design/Chapter%204_Flocculation/Images/G_velocity_profile.jpg?raw=true" width=500>
+<img src="https://github.com/AguaClara/CEE4540_Master/blob/master/AguaClara%20Water%20Treatment%20Plant%20Design/Chapter%204_Flocculation/Images/G_velocity_profile.jpg?raw=true" width=500>
 
 
 $G$ measures the magnitude of shear by using the velocity gradient of a fluid in space, $\frac{\Delta V}{\Delta h}$. This is essentially the same as the $\frac{\delta u}{\delta y}$ term in fluid mechanics, which is found in the ubiquitous [fluid-shear problem](http://polymerdatabase.com/polymer%20physics/images/Visc.png "sourced from http://polymerdatabase.com/polymer%20physics/Viscosity.html").
@@ -112,13 +112,13 @@ Now that we know how to measure collision potential with head loss, we need a wa
 
 To generate minor losses, we need to create flow expansions. AguaClara does this with **baffles**, which are obstructions in the channel of a flocculator to force the flow switch directions by 180°. Baffles in AguaClara plants are plastic sheets, and all of the baffles in one flocculator channel are connected to form a **baffle module.** Images below show an AguaClara flocculator and the beginnings of a module.
 
-<img src="https://github.com/AguaClara/CEE4540_Master/blob/Juan_summary_sheets/AguaClara%20Water%20Treatment%20Plant%20Design/Chapter%204_Flocculation/Images/AC_flocculator.JPG?raw=true" width=900>
+<img src="https://github.com/AguaClara/CEE4540_Master/blob/master/AguaClara%20Water%20Treatment%20Plant%20Design/Chapter%204_Flocculation/Images/AC_flocculator.JPG?raw=true" width=900>
 
 <br/>  
 <br/>  
 <br/>
 
-<img src="https://github.com/AguaClara/CEE4540_Master/blob/Juan_summary_sheets/AguaClara%20Water%20Treatment%20Plant%20Design/Chapter%204_Flocculation/Images/Baffle_module.JPG?raw=true" width=600>
+<img src="https://github.com/AguaClara/CEE4540_Master/blob/master/AguaClara%20Water%20Treatment%20Plant%20Design/Chapter%204_Flocculation/Images/Baffle_module.JPG?raw=true" width=600>
 
 <br/>
 <br/>
@@ -128,14 +128,14 @@ AguaClara flocculators, like the one pictured above, are called **vertical hydra
 #### **Finding the Minor Loss of a Baffle**  
 Before beginning this section, it is important to make sure that the physical parameters of the flocculator are well defined. This is done in the following image:
 
-<img src="https://github.com/AguaClara/CEE4540_Master/blob/Juan_summary_sheets/AguaClara%20Water%20Treatment%20Plant%20Design/Chapter%204_Flocculation/Images/Flocculator_physical_parameters.jpg?raw=true" width=900>
+<img src="https://github.com/AguaClara/CEE4540_Master/blob/master/AguaClara%20Water%20Treatment%20Plant%20Design/Chapter%204_Flocculation/Images/Flocculator_physical_parameters.jpg?raw=true" width=900>
 
 <br/>
 <br/>
 
 Since baffles are the source of head loss via minor losses, we need to find the minor loss coefficient of one baffle. To do this, we apply fluid mechanics intuition and check it against a computational fluid dynamics (CFD) simulation. Flow around a 90° bend has a vena contracta value of around $\Pi_{vc} = 0.62$ (_**NEED A CITATION ON THIS!!**_). Flow around a 180° bend therefore has a value of $\Pi_{vc, \, baffle} = \Pi_{vc}^2 = 0.384$. This number is roughly confirmed with CFD, as shown in the image below. ***Ahhhhhhhhhhhhhh I need to make sure this is legit***
 
-<img src="https://github.com/AguaClara/CEE4540_Master/blob/Juan_summary_sheets/AguaClara%20Water%20Treatment%20Plant%20Design/Chapter%204_Flocculation/Images/CFD_vc_baffle.jpg?raw=true" width=60>
+<img src="https://github.com/AguaClara/CEE4540_Master/blob/master/AguaClara%20Water%20Treatment%20Plant%20Design/Chapter%204_Flocculation/Images/CFD_vc_baffle.jpg?raw=true" width=60>
 
 We can therefore state with reasonable accuracy that, when most contracted, the flow around a baffle goes through 38.4% of the area it does when expanded, or $A_{contracted} = \Pi_{vc, \, baffle} A_{expanded}$. Through the [third form of the minor loss equation](https://github.com/AguaClara/CEE4540_Master/blob/master/AguaClara%20Water%20Treatment%20Plant%20Design/Chapter%201_Fluids%20Review/Summary_Sheet_Fluid_Review.md#minor-losses), $h_e = K_e^{'} \frac{V_{out}^2}{2g}$ and its equation for the minor loss coefficient, $K_e^{'} = \left( \frac{A_{out}}{A_{in}} -1 \right)^2$, we can determine a $K_e^{'}$ for flow around a single baffle:
 
@@ -160,6 +160,6 @@ To get around this problem, AguaClara included 'obstacles' after the flow expand
 
 These obstacles serve as 'pseudo-baffles'. They allow for $\frac{H}{S}$ to exceed 6, while maintaining maximum flocculator efficiency since $\frac{H_e}{S}$ can still be between 3 and 6. The following images show these obstacles and how they affect the flow in a flocculator.
 
-<img src="https://github.com/AguaClara/CEE4540_Master/blob/Juan_summary_sheets/AguaClara%20Water%20Treatment%20Plant%20Design/Chapter%204_Flocculation/Images/Floc_module_with_obstacles.jpg?raw=true" width=800>
+<img src="https://github.com/AguaClara/CEE4540_Master/blob/master/AguaClara%20Water%20Treatment%20Plant%20Design/Chapter%204_Flocculation/Images/Floc_module_with_obstacles.jpg?raw=true" width=800>
 
-<img src="https://github.com/AguaClara/CEE4540_Master/blob/Juan_summary_sheets/AguaClara%20Water%20Treatment%20Plant%20Design/Chapter%204_Flocculation/Images/Floc_flow_with_obstacles.jpg?raw=true" width=500>
+<img src="https://github.com/AguaClara/CEE4540_Master/blob/master/AguaClara%20Water%20Treatment%20Plant%20Design/Chapter%204_Flocculation/Images/Floc_flow_with_obstacles.jpg?raw=true" width=500>
