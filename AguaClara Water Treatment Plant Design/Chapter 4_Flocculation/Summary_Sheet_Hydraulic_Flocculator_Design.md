@@ -108,33 +108,43 @@ $$\bar G \theta = \sqrt{\frac{g h_L \theta}{\nu}}$$
 
 ### Generating Head Loss with Baffles
 #### **What are Baffles?**
-Now that we know how to measure collision potential with head loss, we need a way to actually generate head loss. While both major or minor losses can be the design basis, it generally makes more sense to use major losses for low-flow flocculation and minor losses for higher flows, as flocculation with minor losses tends to be more space-efficient.
+Now that we know how to measure collision potential with head loss, we need a way to actually generate head loss. While both major or minor losses can be the design basis, it generally makes more sense to use major losses for low-flow flocculation and minor losses for higher flows, as flocculation with minor losses tends to be more space-efficient. Since this book focuses on town and village-scale water treatment (5 L/S to 120 L/S), we will use minor losses as our design basis.
 
 To generate minor losses, we need to create flow expansions. AguaClara does this with **baffles**, which are obstructions in the channel of a flocculator to force the flow switch directions by 180°. Baffles in AguaClara plants are plastic sheets, and all of the baffles in one flocculator channel are connected to form a **baffle module.** Images below show an AguaClara flocculator and the beginnings of a module.
 
 <img src="https://github.com/AguaClara/CEE4540_Master/blob/Juan_summary_sheets/AguaClara%20Water%20Treatment%20Plant%20Design/Chapter%204_Flocculation/Images/AC_flocculator.JPG?raw=true" width=900>
 
-
+<br/>  
+<br/>  
+<br/>
 
 <img src="https://github.com/AguaClara/CEE4540_Master/blob/Juan_summary_sheets/AguaClara%20Water%20Treatment%20Plant%20Design/Chapter%204_Flocculation/Images/Baffle_module.JPG?raw=true" width=600>
 
-AguaClara flocculators, like the one pictured above, are called vertical hydraulic flocculators, because the baffles force the flow up and down. If the baffles were instead arranged to force the flow side-to-side, the flocculator would be a horizontal hydraulic flocculator. AguaClara uses vertical flocculators because they are more efficient when considering plant area. They are deeper than horizontal flocculators, which allows them to have a smaller [plan-view area](https://simple.wikipedia.org/wiki/Plan_view) and thus to be cheaper.  
+<br/>
+<br/>
+
+AguaClara flocculators, like the one pictured above, are called **vertical hydraulic flocculators**, because the baffles force the flow up and down. If the baffles were instead arranged to force the flow side-to-side, the flocculator would be a **horizontal hydraulic flocculator**. AguaClara uses vertical flocculators because they are more efficient when considering plant area. They are deeper than horizontal flocculators, which allows them to have a smaller [plan-view area](https://simple.wikipedia.org/wiki/Plan_view) and thus to be cheaper.  
 
 #### **Finding the Minor Loss of a Baffle**  
-Before beginning this section, it is important to make sure that the physical parameters of the flocculator are well defined. This is done in the following image/
+Before beginning this section, it is important to make sure that the physical parameters of the flocculator are well defined. This is done in the following image:
 
 <img src="https://github.com/AguaClara/CEE4540_Master/blob/Juan_summary_sheets/AguaClara%20Water%20Treatment%20Plant%20Design/Chapter%204_Flocculation/Images/Flocculator_physical_parameters.jpg?raw=true" width=900>
 
-Since the baffles produce minor losses, we need to find the minor loss coefficient of one baffle. To do this, we apply fluid mechanics intuition and check it against computational fluid dynamics (CFD). Flow around a 90° bend has a vena contracta value of around $\Pi_{vc} = 0.62$ (_**NEED A CITATION ON THIS!!**_). Flow around a 180° bend therefore has a $\Pi_{vc, \, baffle} = \Pi_{vc}^2 = 0.384$. This number is roughly confirmed with CFD, as shown in the image below.
+<br/>
+<br/>
+
+Since the baffles produce minor losses, we need to find the minor loss coefficient of one baffle. To do this, we apply fluid mechanics intuition and check it against a computational fluid dynamics (CFD) simulation. Flow around a 90° bend has a vena contracta value of around $\Pi_{vc} = 0.62$ (_**NEED A CITATION ON THIS!!**_). Flow around a 180° bend therefore has a value of $\Pi_{vc, \, baffle} = \Pi_{vc}^2 = 0.384$. This number is roughly confirmed with CFD, as shown in the image below.
 
 <img src="https://github.com/AguaClara/CEE4540_Master/blob/Juan_summary_sheets/AguaClara%20Water%20Treatment%20Plant%20Design/Chapter%204_Flocculation/Images/CFD_vc_baffle.jpg?raw=true" width=60>
 
-We can therefore state with reasonable accuracy that, when most contracted, the flow around a baffle goes through 38.4% of the area it normally does, $A_{contracted} = \Pi_{vc, \, baffle} A_{expanded}$. Using the [third for of the minor loss equation](https://github.com/AguaClara/CEE4540_Master/blob/master/AguaClara%20Water%20Treatment%20Plant%20Design/Chapter%201_Fluids%20Review/Summary_Sheet_Fluid_Review.md#minor-losses), $h_e = K_e^{'} \frac{V_{out}^2}{2g}$ and the equation for the minor loss coefficient, $K_e^{'} = \left( \frac{A_{out}}{A_{in}} -1 \right)^2$, we can determine a minor loss coefficient for flow around a single baffle:
+We can therefore state with reasonable accuracy that, when most contracted, the flow around a baffle goes through 38.4% of the area it does when expanded, or $A_{contracted} = \Pi_{vc, \, baffle} A_{expanded}$. Through the [third form of the minor loss equation](https://github.com/AguaClara/CEE4540_Master/blob/master/AguaClara%20Water%20Treatment%20Plant%20Design/Chapter%201_Fluids%20Review/Summary_Sheet_Fluid_Review.md#minor-losses), $h_e = K_e^{'} \frac{V_{out}^2}{2g}$ and its equation for the minor loss coefficient, $K_e^{'} = \left( \frac{A_{out}}{A_{in}} -1 \right)^2$, we can determine a $K_e^{'}$ for flow around a single baffle:
 
 $$K_{e, \, baffle}^{'} = \left( \frac{A_{expanded}}{A_{contracted}} -1 \right)^2$$
 
-$$K_{e, \, baffle}^{'} = \left( \frac{\rlap{////////} A_{expanded}}{\Pi_{vc, \, baffle} \rlap{////////} A_{expanded}} -1 \right)^2$$
+$$K_{e, \, baffle}^{'} = \left( \frac{\rlap{\Big/} A_{expanded}}{\Pi_{vc, \, baffle} \rlap{\Big/} A_{expanded}} -1 \right)^2$$
 
 $$K_{e, \, baffle}^{'} = \left( \frac{1}{0.384} -1 \right)^2$$
 
 $$K_{e, \, baffle}^{'} = 2.56$$
+
+If we use this $K_{e, \, baffle}^{'}$, we must make sure that the assumptions behind it are true. This means that we must make sure that the flow fully expands before it reaches the next baffle and begins to contract again.
