@@ -148,3 +148,16 @@ $$K_{e, \, baffle}^{'} = \left( \frac{1}{0.384} -1 \right)^2$$
 $$K_{e, \, baffle}^{'} = 2.56$$
 
 If we use this $K_{e, \, baffle}^{'}$, we must make sure that the assumptions behind it are true. This means that we must make sure that the flow fully expands before it reaches the next baffle and begins to contract again.
+ahhhhhhhhhhh
+
+_**<span style="color:red">Shit I need some of Monroe's insights to write this section with any semblance of legitimacy</span>**_
+
+## 4.2) Vertical Hydraulic Flocculator Design
+### Obstacles
+Knowing that the ideal ratio of $\frac{H}{S}$ lies between 3 and 6, we need to understand how that impacts the flocculator design. Keeping $\frac{H}{S}$ between two specific values limits the number of baffles and their spacing in the flocculator, given that the flocculator has certain size constraints before beginning its design. These limitations also place an upper limit on the amount of head loss that a baffled flocculator can generate, as there are can only be a certain amount of baffles to generate head loss. This is unfortunate, it means that baffled flocculators under certain size specifications can't be design to generate certain values of $\varepsilon$ and $G$ _while remaining efficient_.
+
+To get around this problem, AguaClara included 'obstacles' after the flow has expanded around one baffle and before it has reached the next baffle. The purpose of these obstacles is to serve as extras 'baffles' in between baffles, to generate more minor losses. The following images show these obstacles and how they affect the flow in a flocculator.
+
+<img src="https://github.com/AguaClara/CEE4540_Master/blob/Juan_summary_sheets/AguaClara%20Water%20Treatment%20Plant%20Design/Chapter%204_Flocculation/Images/Floc_module_with_obstacles.jpg?raw=true" width=500>
+
+<img src="https://github.com/AguaClara/CEE4540_Master/blob/Juan_summary_sheets/AguaClara%20Water%20Treatment%20Plant%20Design/Chapter%204_Flocculation/Images/Floc_flow_with_obstacles.jpg?raw=true" width=500>
