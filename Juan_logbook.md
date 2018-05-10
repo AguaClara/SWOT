@@ -188,6 +188,16 @@ I suggest putting all effort into the text book. There is some chance that the t
 
 
 ### To Do
-1. Questions for Monroe:
+1. Questions for Monroe: Oh man I got lots
     1. Baffle modules for flocculators: What are they called? Do they have a commonly used name?
+        - **Monroe's Answer:**
     2. For the height of water in the flocculator, it is sometimes referred to as $H$ and sometimes as $H_e$. Is there a difference between the two parameters? This small difference can cause a lot of background, peripheral  confusion for students (like me when I took 4540!)
+        - **Monroe's Answer:**
+    3. How thoroughly have we tested/confirmed that the minor loss coefficient of a baffle is 2.56? Do we have sources to cite? Do we have sources to cite for the VC being 0.384? [What you cited for that in a slide's comments](https://confluence.cornell.edu/display/AGUACLARA/Validation+Studies+for+ANSYS+Fluent+Turbulence+Model+Simulations) has been taken over by Michel Kors ads, somehow.
+        - **Monroe's Answer:**
+    4. Where did we get the 'Jets expand in width at the rate of approximately 1 unit in width per 10 units forward' rule? Based on this rule, which leads to the equation $\frac{y}{10} = x - x_0$, flow would fully expand after $6.16 S$. But the contracted flow is some depth into the flocculator. So wouldn't you need $6.16 S$ _**plus**_ whatever the depth to maximum contraction is of water height $H$? Wouldn't $\frac{H}{S}$ need to be at least 7 or 8 without obstacles? Why is it ok to say that $\frac{H}{S}$ can be as low as 3? If the rule of jet expansion is true, there's no way that the flow fully expands by then. To me, this means that the actual minor loss coefficient would be much lower than 2.56. This is directly contradicted by the comment on the following slide. I can understand if the flow doesn't follow the rule of 1-10 expansion, but then we shouldn't tell students that it does.
+    <img src="https://github.com/AguaClara/CEE4540_Master/blob/Juan_summary_sheets/AguaClara%20Water%20Treatment%20Plant%20Design/Chapter%204_Flocculation/Images/I_need_some_clarity.JPG?raw=true" width=400>
+        - **Monroe's Answer:**
+    5. AguaClara flocculators have a Max/ave EDR of 1?!?!?! I don't think that this is true! That seems impossible is most any reactor. This again points to my question number 3., do we have any data for how these baffles or baffles with obstacles are performing when compared to our models/predictions?
+    <img src="https://github.com/AguaClara/CEE4540_Master/blob/Juan_summary_sheets/AguaClara%20Water%20Treatment%20Plant%20Design/Chapter%204_Flocculation/Images/Max_ave_EDR_of_1.JPG?raw=true" width=400>
+        - **Monroe's Answer:**
