@@ -26,7 +26,8 @@ Please use this table to control/command find the sections you are looking for.
 #### **Section 4: Hydraulic Flocculators, the AguaClara Approach**    
 **4.1)** Introduction to Hydraulic Flocculation   
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - &nbsp;Collision Potential, $G \theta$  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - &nbsp;Generating Head Loss with Baffles  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - &nbsp;Generating Head Loss with Baffles    
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - &nbsp;Flocculator Efficiency  
 **4.2)**   
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - &nbsp;  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - &nbsp;  
@@ -150,15 +151,18 @@ $$K_{e, \, baffle}^{'} = 2.56$$
 If we use this $K_{e, \, baffle}^{'}$, we must make sure that the assumptions behind it are true. This means that we must make sure that the flow fully expands before it reaches the next baffle and begins to contract again.
 ahhhhhhhhhhh
 
+### Flocculator Efficiency
+
 _**<span style="color:red">Shit I need some of Monroe's insights to write this section with any semblance of legitimacy. This section should include, amongst other things, why $\frac{H}{S}$ is important, and it should contain CFD images of flocculators with different $\frac{H}{S}$ ratios.</span>**_
 
+<img src="https://github.com/AguaClara/CEE4540_Master/blob/master/AguaClara%20Water%20Treatment%20Plant%20Design/Chapter%204_Flocculation/Images/CFD_baffle_image.jpg?raw=true" width=350>
 
-### Obstacles
-Knowing that efficient flocculators require an $\frac{H}{S}$ ratio that lies between 3 and 6, we need to understand how that impacts the flocculator design. Keeping $\frac{H}{S}$ between two specific values limits the options for baffle spacing and quantity, due to the flocculator having certain size constraints before beginning the design of the baffles. These limitations also place an upper limit on the amount of head loss that a baffled flocculator can generate, since the number of baffles is limited and baffles are what generate head loss. This is unfortunate, it means that baffled flocculators under certain size specifications can't be design to generate certain values of $\bar \varepsilon$ and $\bar G$ _while remaining efficient_.
+#### **Obstacles**
+Knowing that efficient flocculators require an $\frac{H}{S}$ ratio that lies between 3 and 6, we need to understand how that impacts the flocculator design. Keeping $\frac{H}{S}$ between two specific values limits the options for baffle spacing and quantity, due to the flocculator having certain size constraints before beginning the design of the baffles. These limitations also place an upper limit on the amount of head loss that a baffled flocculator can generate, since the number of baffles is limited and baffles are what cause head loss. This is unfortunate, it means that baffled flocculators under certain size specifications can't be designed to generate certain values of $\bar \varepsilon$ and $\bar G$ _while remaining efficient_.
 
-To get around this problem, AguaClara included 'obstacles' after the flow expands around one baffle and before it reaches the next baffle. The purpose of these obstacles is to provide extra head loss in between baffles. They generate head loss via minor losses, _and are designed to have the same $K_e{'}$ as baffles_. The inclusion of obstacles introduces a new ratio, $\frac{H_e}{S}$, where $H_e$ represents the distance traveled by the water between flow expansions. In a flocculator where there are just baffles and no obstacles, then  $\frac{H_e}{S} = \frac{H}{S}$, since the height of water in the flocculator is equal to the distance between expansions, $H_e = H$. But when obstacles are added, then $H_e = \frac{H}{1 + n_{obstacles}}$, where $n_{obstacles}$ is the amount of obstacles per baffle.
+To get around this problem, AguaClara included 'obstacles,' or half-pipes to contract the flow, after the flow expands around one baffle and before it reaches the next baffle. The purpose of these obstacles is to provide extra head loss in between baffles. They generate head loss via minor losses, _and one obstacle is designed to have the same $K_e{'}$ one baffle_. The inclusion of obstacles introduces a new ratio, $\frac{H_e}{S}$, where $H_e$ represents the distance traveled by the water between flow expansions. In a flocculator where there are just baffles and no obstacles, then  $\frac{H_e}{S} = \frac{H}{S}$, since the height of water in the flocculator is equal to the distance between expansions, $H_e = H$. But when obstacles are added, then $H_e = \frac{H}{1 + n_{obstacles}}$, where $n_{obstacles}$ is the amount of obstacles between two baffles.
 
-These obstacles serve as 'pseudo-baffles'. They allow for $\frac{H}{S}$ to exceed 6, while maintaining maximum flocculator efficiency since $\frac{H_e}{S}$ can still be between 3 and 6. The following images show these obstacles and how they affect the flow in a flocculator.
+These obstacles serve as 'pseudo-baffles'. They allow for $\frac{H}{S}$ to exceed 6, while maintaining maximum flocculator efficiency since, $\frac{H_e}{S}$ can still be between 3 and 6. The following images show these obstacles and how they affect the flow in a flocculator.
 
 <img src="https://github.com/AguaClara/CEE4540_Master/blob/master/AguaClara%20Water%20Treatment%20Plant%20Design/Chapter%204_Flocculation/Images/Floc_module_with_obstacles.jpg?raw=true" width=800>
 
