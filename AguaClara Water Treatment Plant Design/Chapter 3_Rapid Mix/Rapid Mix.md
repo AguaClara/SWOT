@@ -23,7 +23,9 @@ Nanoparticle application includes multiple steps that must occur before the raw 
 1. The precipitating $Al_{13}$ molecules aggregates with other nearby $Al_{13}$ molecules to form aluminum hydroxide nanoparticles.
 1. The Al nanoparticles collide with dissolved species that may attach to the Al nanoparticles and the Al nanoparticles attach to inorganic particles such as clay.
 
+<img src="https://github.com/AguaClara/CEE4540_Master/raw/master/AguaClara%20Water%20Treatment%20Plant%20Design/Chapter%203_Rapid%20Mix/Images/rapid%20mix%20macro%20to%20nano%20scale.png" width="800">
 
+Figure x.
 
 Let's begin by describing the coagulant injection for a 60 L/s plant. We will use a linear flow orifice meter with 20 cm of head loss.
 
@@ -35,8 +37,23 @@ SDR_LFOM = 26
 from aide_design.unit_process_design.prefab import lfom_prefab_functional as lfom
 ND_LFOM = lfom.nom_diam_lfom_pipe(Q_plant,HL_LFOM,Pi_LFOM_safety,SDR_LFOM)
 print(ND_LFOM, '(',ND_LFOM.to(u.cm), ')')
+
+pipe.ID_SDR(ND_LFOM,SDR_LFOM)
+V_lfom = (Q_plant/pc.area_circle(pipe.ID_SDR(ND_LFOM,SDR_LFOM))).to_base_units()
+print(V_lfom)
+
 ```
-The LFOM requires a 16 inch diameter pipe. Next we will determine a typical flow rate of coagulant. **Aluminum** concentrations for polyaluminum chloride (PACl) typically range from 1 to 10 mg/L. The maximum PACl stock solution concentration is about 70 g/L.
+The LFOM requires a 16 inch diameter pipe. How long will it take for turbulent eddies to mix the coagulant across the area of the pipe? We will use a rule of thumb that the velocity of the largest eddies is about 10% of the mean velocity. We can use the eddy velocity to estimate how long it will take for an eddy to cross the diameter of the pipe.
+```python
+
+V_lfom = (Q_plant/pc.area_circle(pipe.ID_SDR(ND_LFOM,SDR_LFOM))).to_base_units()
+print(V_lfom)
+t_large_scale_mix = (pipe.ID_SDR(ND_LFOM,SDR_LFOM)/(0.1*V_lfom)).to_base_units()
+print(t_large_scale_mix)
+```
+The time required for mixing at the scale of the flow in the plant is thus accomplished in a few seconds. This ends up being the fastest part of the transport of the coagulant nanoparticles on their way to attachment to the clay particles.
+
+Next we will determine a typical flow rate of coagulant. **Aluminum** concentrations for polyaluminum chloride (PACl) typically range from 1 to 10 mg/L. The maximum PACl stock solution concentration is about 70 g/L as **Al**.
 
 ```python
 C_PACl_stock = 70 *u.g/u.L
@@ -48,7 +65,7 @@ We can estimate the diameter of the injection port by setting the kinetic energy
 
 ```python
 HL_Coag_injection = 10 * u.cm
-V_Coag_injection = ((2 * pc.gravity * HL_Coag_injection)**0.5).to(u.m/u.s)
+V_Coag_injection = ((2 * u.gravity * HL_Coag_injection)**0.5).to(u.m/u.s)
 print(V_Coag_injection)
 D_Coag_injection_min = pc.diam_circle(Q_PACl_max/V_Coag_injection)
 print(D_Coag_injection_min.to(u.mm))
@@ -156,6 +173,8 @@ plt.show()
 
 Figure x. Eddies can cause fluid mixing down to the scale of a few millimeters for energy dissipation rates used in rapid mix units and flocculators.
 
+### Length scales of coagulant nanoparticles and clay
+
 The coagulant nanoparticles eventually will attach to clay particles. The clay particles have a diameter of approximately $5 \mu m$ and thus it is clear from the length scale in the figure above that turbulent eddies aren't able to transport all the way to attachment to clay.
 
 # Diffusion and Shear Transport Coagulant Nanoparticles to Clay
@@ -193,6 +212,12 @@ $$\Lambda_{Clay} = \left[ {\rm{L}} \right]
 
 
 ### Diffusion band thickness
+
+
+<img src="https://github.com/AguaClara/CEE4540_Master/raw/master/AguaClara%20Water%20Treatment%20Plant%20Design/Chapter%203_Rapid%20Mix/Images/Diffusion%20length%20scale.png" width="400">
+
+Figure x. The time required for shear to transport all of the fluid past the clay so that diffusion can transport the coagulant nanoparticles to the clay surface is significant.
+
 $$D_{Diffusion} = \frac{k_B T}{3 \pi \, \mu \, d_P}$$
 
 $$L_{Diff} \approx \sqrt{D_{Diffusion} t_{Diffusion}} $$
@@ -222,6 +247,9 @@ ax.set(xlabel='Velocity gradient (Hz)', ylabel='Diffusion band thickness ($nm$)'
 fig.savefig(imagepath+'Diffusion_band_thickness')
 plt.show()
 ```
+<img src="https://github.com/AguaClara/CEE4540_Master/raw/master/AguaClara%20Water%20Treatment%20Plant%20Design/Chapter%203_Rapid%20Mix/Images/Diffusion_band_thickness.png" width="400">
+
+Figure x.
 ### Collision Rates
 $${\rlap{-} V_{\rm{Cleared}}} \approx \pi d_{Clay} L_{Diff_{NC}} v_r t$$
 
@@ -302,7 +330,7 @@ plt.show()
 ```
 <img src="https://github.com/AguaClara/CEE4540_Master/raw/master/AguaClara%20Water%20Treatment%20Plant%20Design/Chapter%203_Rapid%20Mix/Images/Coag_attach_time.png" width="400">
 
-Figure x. An estimate of the time required for 50% of the coagulant nanoparticles to attach to clay particles given a raw water turbidity of 10 NTU.
+Figure x. An estimate of the time required for 80% of the coagulant nanoparticles to attach to clay particles given a raw water turbidity of 10 NTU.
 
 ### Energy tradeoff for coagulant transport
 $$  \Delta h =   \frac{G^2 \nu \theta}{g} $$
@@ -327,6 +355,9 @@ fig.savefig(imagepath+'Coag_attach_head_loss')
 plt.show()
 
 ```
+<img src="https://github.com/AguaClara/CEE4540_Master/raw/master/AguaClara%20Water%20Treatment%20Plant%20Design/Chapter%203_Rapid%20Mix/Images/Coag_attach_head_loss.png" width="400">
+
+Figure x  The total energy required to attach coagulant nanoparticles to raw water inorganic particles increases rapidly with the velocity gradient used in the rapid mix process.
 
 There is often a tradeoff between reactor volume and energy input. The reactor volume results in a higher capital cost and the energy input requires both higher operating costs and higher capital costs. This provides an opportunity to optimize rapid mix design once we have a confirmed model characterizing the process.
 
@@ -365,7 +396,7 @@ def G_max_head_loss(pC_NC,C_clay,HL_nano_transport,Temperature):
 # Note the use of to_base_units BEFORE raising to the fractional power.
 # This prevents a rounding error in the unit exponent.
 
-G_max = G_max_head_loss(pC_NC,C_clay,HL_nano_transport[0],Temperature)
+G_max = G_max_head_loss(pC_NC,C_clay,20*u.cm,Temperature)
 print(G_max)
 
 #The time required?
@@ -373,6 +404,10 @@ Nano_attach_time = Nano_coag_attach_time(pC_NC,C_clay,G_max,Temperature)
 print(Nano_attach_time)
 print(G_max*Nano_attach_time)
 ```
+According to the analysis above, the maximum velocity gradient that can be used to achieve 80% coagulant nanoparticle attachment using only 20 cm of head loss is 142 Hz. This requires a residence time of 100 seconds. These model results must be experimentally verified and it is very likely that the model will need to be modified.
+
+The analysis of the time required for shear and diffusion to transport the coagulant nanoparticles the last few millimeters suggests that it is this last step that requires the most time. Indeed, the time required for coagulant nanoparticle attachment to raw water particles is comparable to the time that will be required for the next step in the processs, flocculation.
+
 
 ### Coagulant attachment mechanism
 * Surface charge neutralization hypothesis
