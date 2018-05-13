@@ -156,3 +156,6 @@ Pathogens are particles
 Natural Organic Matter (NOM) plays a supersized role in influencing performance of surface water treatment plants.
 Discuss charge density.
 Observed stabilization of inorganic particles
+# History (chlorine saved the world)
+
+<img src="https://github.com/AguaClara/CEE4540_Master/raw/master/AguaClara%20Water%20Treatment%20Plant%20Design/Chapter%200_Introduction/Images/US_infectious_diseases_death_rate.gif" width="600"> from https://www.cdc.gov/mmwr/preview/mmwrhtml/mm4829a1.htm
