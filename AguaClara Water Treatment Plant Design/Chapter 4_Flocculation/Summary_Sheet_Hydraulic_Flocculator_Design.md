@@ -28,10 +28,10 @@ Please use this table to control/command find the sections you are looking for.
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - &nbsp;Collision Potential, $G \theta$  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - &nbsp;Generating Head Loss with Baffles    
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - &nbsp;Flocculator Efficiency  
-**4.2)**   
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - &nbsp;  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - &nbsp;  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - &nbsp;
+**4.2)**  AguaClara Design of Hydraulic, Vertical flow Flocculators  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - &nbsp;Input Parameters    
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - &nbsp;Designing for Flocculator Dimensions  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - &nbsp;Designing for Baffle Modules
 
 <br>
 <br>
@@ -96,7 +96,7 @@ $$G = \sqrt{\frac{\varepsilon}{\nu}}$$
 
 Energy dissipation rate is, fortunately, easier to determine than collision potential. This is due to the second way to think about $\varepsilon$, which is using head loss. In any reactor, a flocculator in this case, the total energy dissipated is simply the head loss, $h_L$. The amount of time required to dissipate that energy is the residence time of the water in the reactor, $\theta$. Accounting for the fact that 'head' energy is due to gravity $g$, we have all the parameters needed to determine another equation for energy dissipation rate:
 
-$$ \bar \varepsilon = \frac{g h_L}{\theta} $$
+$$ \bar \varepsilon = \frac{g h_L}{\theta}$$
 
 Note that the equation above is for $\bar \varepsilon$, not $\varepsilon$. Since the head loss term we are using, $h_L$, occurs over the entire reactor, it can only be used to find an average energy dissipation rate for the entire reactor. Combining the equations above, $G = \sqrt{\frac{\varepsilon}{\nu}}$ and $\bar \varepsilon = \frac{g h_L}{\theta}$, we can get an equation for $\bar G$ in terms of easily measureable parameters:
 
@@ -106,12 +106,14 @@ We can use this to obtain a final equation for collision potential of a reactor:
 
 $$\bar G \theta = \sqrt{\frac{g h_L \theta}{\nu}}$$
 
+**Note:** When we say $G \theta$ we are almost always referring to $\bar G \theta$.
+
 
 ### Generating Head Loss with Baffles
 #### **What are Baffles?**
 Now that we know how to measure collision potential with head loss, we need a way to actually generate head loss. While both major or minor losses can be the design basis, it generally makes more sense to use major losses for low-flow flocculation and minor losses for higher flows, as flocculation with minor losses tends to be more space-efficient. Since this book focuses on town and village-scale water treatment (5 L/S to 120 L/S), we will use minor losses as our design basis.
 
-To generate minor losses, we need to create flow expansions. AguaClara does this with **baffles**, which are obstructions in the channel of a flocculator to force the flow switch directions by 180°. Baffles in AguaClara plants are plastic sheets, and all of the baffles in one flocculator channel are connected to form a **baffle module.** Images below show an AguaClara flocculator and the beginnings of a module.
+To generate minor losses, we need to create flow expansions. AguaClara does this with **baffles**, which are obstructions in the channel of a flocculator to force the flow to switch directions by 180°. Baffles in AguaClara plants are plastic sheets, and all of the baffles in one flocculator channel are connected to form a **baffle module.** Images below show an AguaClara flocculator and the beginnings of a module.
 
 <img src="https://github.com/AguaClara/CEE4540_Master/blob/master/AguaClara%20Water%20Treatment%20Plant%20Design/Chapter%204_Flocculation/Images/AC_flocculator.JPG?raw=true" width=900>
 
@@ -162,10 +164,82 @@ _**<span style="color:red">I need some of Monroe's insights to write this sectio
 #### **Obstacles**
 Knowing that efficient flocculators require an $\frac{H}{S}$ ratio that lies between 3 and 6, we need to understand how that impacts the flocculator design. Keeping $\frac{H}{S}$ between two specific values limits the options for baffle spacing and quantity, due to the flocculator having certain size constraints before beginning the design of the baffles. These limitations also place an upper limit on the amount of head loss that a baffled flocculator can generate, since the number of baffles is limited and baffles are what cause head loss. This is unfortunate, it means that baffled flocculators under certain size specifications can't be designed to generate certain values of $\bar \varepsilon$ and $\bar G$ _while remaining efficient_.
 
-To get around this problem, AguaClara included 'obstacles,' or half-pipes to contract the flow, after the flow expands around one baffle and before it reaches the next baffle. The purpose of these obstacles is to provide extra head loss in between baffles. They generate head loss via minor losses, _and one obstacle is designed to have the same $K_e{'}$ one baffle_. The inclusion of obstacles introduces a new ratio, $\frac{H_e}{S}$, where $H_e$ represents the distance traveled by the water between flow expansions. In a flocculator where there are just baffles and no obstacles, then  $\frac{H_e}{S} = \frac{H}{S}$, since the height of water in the flocculator is equal to the distance between expansions, $H_e = H$. But when obstacles are added, then $H_e = \frac{H}{1 + n_{obstacles}}$, where $n_{obstacles}$ is the amount of obstacles between two baffles.
+To get around this problem, AguaClara included 'obstacles,' or half-pipes to contract the flow, after the flow expands around one baffle and before it reaches the next baffle. The purpose of these obstacles is to provide extra head loss in between baffles. They generate head loss via minor losses, _and one obstacle is designed to have the same $K_e{'}$ as one baffle_. The inclusion of obstacles introduces a new ratio, $\frac{H_e}{S}$, where $H_e$ represents the distance traveled by the water between flow expansions, where a flow expansion can be caused by either a baffle or an obstacle. In a flocculator where there are just baffles and no obstacles, then  $\frac{H_e}{S} = \frac{H}{S}$, since the height of water in the flocculator is equal to the distance between expansions, $H_e = H$. But when obstacles are added, then $H_e = \frac{H}{1 + n_{obstacles}}$, where $n_{obstacles}$ is the amount of obstacles between two baffles.
 
 These obstacles serve as 'pseudo-baffles'. They allow for $\frac{H}{S}$ to exceed 6, while maintaining maximum flocculator efficiency since, $\frac{H_e}{S}$ can still be between 3 and 6. The following images show these obstacles and how they affect the flow in a flocculator.
 
 <img src="https://github.com/AguaClara/CEE4540_Master/blob/master/AguaClara%20Water%20Treatment%20Plant%20Design/Chapter%204_Flocculation/Images/Floc_module_with_obstacles.jpg?raw=true" width=800>
 
 <img src="https://github.com/AguaClara/CEE4540_Master/blob/master/AguaClara%20Water%20Treatment%20Plant%20Design/Chapter%204_Flocculation/Images/Floc_flow_with_obstacles.jpg?raw=true" width=900>
+
+## 4.2) AguaClara Design of Hydraulic, Vertical flow Flocculators  
+AguaClara's approach to flocculator design is the same as it is for any other unit process. First, critical design criteria, called inputs, are established. These criteria represent the priorities that the rest of the design will be based around. Once these parameters are established, then the other parameters of the design, which are dependent on the inputs, are calculated.
+Take the CDC as an example of this design process; its design inputs are $h_{L_{Max}}$, $\sum K_e$, $\Pi_{Error}$, and the discrete dosing tube diameters $D$ that are available at hardware stores or pipe suppliers. Its dependent variables include the number and length of the dosing tubes and the flow through the CDC system.
+
+The flocculator is more complex to design than the CDC, as it has more details and parameters, and the equations for those details and parameters are very interdependent. Therefore, there are many ways to design an AguaClara flocculator, and many different sets of critical design criteria to begin with. Enumerated below is the current AguaClara approach.
+
+1. Input parameters
+    - Specify:
+      - $h_{L_{floc}}$, head loss  
+      - $\bar G \theta$, collision potential   
+      - $Q$, plant flow rate     
+      - $H$, height of water _at the end of the flocculator_    
+      - $L_{Max, \, sed}$, max length of a flocculator channel based on sedimentation tank length  
+      - $W_{Min, \, human}$ minimum width based on the width of the average human hip (someone's got to go down there...)
+    - Find:  
+      - $\bar G$, average velocity gradient  
+      - $\theta$, hydraulic retention time   
+      - $\rlap{-}V_{floc}$, flocculator volume
+2. Physical dimensions
+    - Find:
+      - $n_{channels}$, amount of channels
+      - $W_{channel}$, actual channel width
+      - $L_{channel}$, actual channel length
+3. Hydraulic parameters
+    - Find:
+      - $H_{e_{Max}}$, maximum distance between baffle/obstacle expansions
+      - $n_{obstacles}$, amount of obstacles per baffle spacing
+      - $S$, baffle spacing
+      -
+
+### Input Parameters    
+#### **Specify**
+We start by making sure that our flocculator will be able to flocculate effectively by defining $h_{L_{floc}}$ and $\bar G \theta$. Fixing these two parameters initially allows us to easily find all other parameters which determine flocculator performance. Here are the current standards in AguaClara flocculators:
+- $h_{L_{floc}} = 40 {\rm cm}$
+- $\bar G \theta = 37,000$
+
+The plant flow rate $Q$ is defined by the needs of the community that the plant is being desiged for. Additionally, the height of water _at the end_ of the flocculator, $H$, and the _maximum_ length of the flocculator based on the length of the sedimentation tank length, $L_{Max}$, are also defined initially. Ordinarilly in AguaClara plants, the flocculator occupies the same length dimension as the sedimentation tanks, which is why this length constraint exists. See the image below for a representation of how the flocculator and sedimentation tanks are placed in a plant.
+
+- $H = 2 {\rm m}$
+- $L_{Max, \, sed} = {\rm 6m}$
+
+<img src="https://github.com/AguaClara/CEE4540_Master/blob/master/AguaClara%20Water%20Treatment%20Plant%20Design/Chapter%204_Flocculation/Images/Physical_design_criteria.jpg?raw=true" width=500>
+
+#### **Find**
+We can rearrange the equation for $\bar G$ from the section on collision potential, $\bar G = \sqrt{\frac{g h_L}{\nu \theta}}$, to solve for $\bar G$ in terms of $\bar G \theta$:
+
+$$\bar G = \frac{g h_{L_{floc}}}{\nu (\bar G \theta)}$$
+
+Now that we have $\bar G$, we can very easily find $\theta$:
+
+$$\theta = \frac{\bar G \theta}{\bar G}$$
+
+Finally, we take retention time $\theta$ over plant flow rate $Q$ to get the required volume of the flocculator:
+
+$$\rlap{-} V_{floc} = \frac{\theta}{Q}$$
+
+Now that we have the basic parameters defined, we can start to design the details of the flocculator, starting from the physical dimensions.
+
+### Physical Dimensions
+Deriving the equations required to find the physical dimensions now and the hydraulic parameters (baffle/obstacle design) in the next section requires many steps. To simplify this design explanation, [the equation derivations will all be in the derivation sheet](https://github.com/AguaClara/CEE4540_Master/blob/master/AguaClara%20Water%20Treatment%20Plant%20Design/Chapter%204_Flocculation/Derivation_flocculator_design_equations.md). This summary sheet will take all of the subsequent equations from that document.
+#### **Length**
+Flocculator length must meet two constraints: it must be less than or equal to the length of the sedimentation tanks it will be next to, $L_{Max, \, sed}$. Next, the flocculator must be long enough to make sure the target volume of the flocculator is met, $L_{Max, \, \rlap{-} V}$. **The constraint that wins out is the one that results in the _smaller_ length value**.
+
+$$L_{Max, \, sed} = 6 \, {\rm m}$$
+$$L_{Max, \, \rlap{-}V} = \frac{\rlap{-} V}{n_{Min, \, channels} W_{Min, \, human} H}$$
+Such that:  
+$n_{Min, \, channels} = 2$
+
+The reason why $W_{Min, \, human}$ is used is because it represents the absolute minimum of flocculator channel width. If the width ends up being larger, the length will decrease. $n_{Min, \, channels} = 2$  to make sure that the flow ends up on the correct side of the sedimentation tank.
+
+<img src="https://github.com/AguaClara/CEE4540_Master/blob/master/AguaClara%20Water%20Treatment%20Plant%20Design/Chapter%204_Flocculation/Images/Floc_channels.jpg?raw=true" width=500>

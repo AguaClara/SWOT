@@ -188,7 +188,8 @@ I suggest putting all effort into the text book. There is some chance that the t
 
 
 ### To Do
-1. Questions for Monroe: Oh man I got lots
+1. How do I handle the $K_e^{'} vs K_e$? I think that I switch them so as not to have to change everything later on.... 
+2. Questions for Monroe: Oh man I got lots
     1. What is our basis for using 37,000 as collision potential?
         - **Monroe's Answer:**   
 
