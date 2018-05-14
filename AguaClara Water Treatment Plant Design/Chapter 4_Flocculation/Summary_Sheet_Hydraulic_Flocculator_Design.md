@@ -136,7 +136,7 @@ Before beginning this section, it is important to make sure that the physical pa
 
 Since baffles are the source of head loss via minor losses, we need to find the minor loss coefficient of one baffle. To do this, we apply fluid mechanics intuition and check it against a computational fluid dynamics (CFD) simulation. Flow around a 90° bend has a vena contracta value of around $\Pi_{vc} = 0.62$ (_**NEED A CITATION ON THIS!!**_). Flow around a 180° bend therefore has a value of $\Pi_{vc, \, baffle} = \Pi_{vc}^2 = 0.384$. This number is roughly confirmed with CFD, as shown in the image below. ***Ahhhhhhhhhhhhhh I need to make sure this is legit***
 
-<img src="https://github.com/AguaClara/CEE4540_Master/blob/master/AguaClara%20Water%20Treatment%20Plant%20Design/Chapter%204_Flocculation/Images/CFD_vc_baffle.jpg?raw=true" width=60>
+<center><img src="https://github.com/AguaClara/CEE4540_Master/blob/master/AguaClara%20Water%20Treatment%20Plant%20Design/Chapter%204_Flocculation/Images/CFD_vc_baffle.jpg?raw=true" width=60></center>
 
 We can therefore state with reasonable accuracy that, when most contracted, the flow around a baffle goes through 38.4% of the area it does when expanded, or $A_{contracted} = \Pi_{vc, \, baffle} A_{expanded}$. Through the [third form of the minor loss equation](https://github.com/AguaClara/CEE4540_Master/blob/master/AguaClara%20Water%20Treatment%20Plant%20Design/Chapter%201_Fluids%20Review/Summary_Sheet_Fluid_Review.md#minor-losses), $h_e = K_e^{'} \frac{V_{out}^2}{2g}$ and its equation for the minor loss coefficient, $K_e^{'} = \left( \frac{A_{out}}{A_{in}} -1 \right)^2$, we can determine a $K_e^{'}$ for flow around a single baffle:
 
@@ -153,9 +153,11 @@ ahhhhhhhhhhh
 
 ### Flocculator Efficiency
 
-_**<span style="color:red">Shit I need some of Monroe's insights to write this section with any semblance of legitimacy. This section should include, amongst other things, why $\frac{H}{S}$ is important, and it should contain CFD images of flocculators with different $\frac{H}{S}$ ratios.</span>**_
+_**<span style="color:red">I need some of Monroe's insights to write this section with legitimacy. This section should include, amongst other things, why $\frac{H}{S}$ is important, $\Pi_{\bar \varepsilon}^{\varepsilon_{Max}}$ and it should contain CFD images of flocculators with different $\frac{H}{S}$ ratios. I could write some stuff here, and have it be true, but it would take a lot of leaps of faith. Time is better spent elsewhere until I have a solid understanding </span>**_
 
 <img src="https://github.com/AguaClara/CEE4540_Master/blob/master/AguaClara%20Water%20Treatment%20Plant%20Design/Chapter%204_Flocculation/Images/CFD_baffle_image.jpg?raw=true" width=350>
+
+<img src="https://github.com/AguaClara/CEE4540_Master/blob/master/AguaClara%20Water%20Treatment%20Plant%20Design/Chapter%204_Flocculation/Images/CFD_full_channel.jpg?raw=true" width=350>
 
 #### **Obstacles**
 Knowing that efficient flocculators require an $\frac{H}{S}$ ratio that lies between 3 and 6, we need to understand how that impacts the flocculator design. Keeping $\frac{H}{S}$ between two specific values limits the options for baffle spacing and quantity, due to the flocculator having certain size constraints before beginning the design of the baffles. These limitations also place an upper limit on the amount of head loss that a baffled flocculator can generate, since the number of baffles is limited and baffles are what cause head loss. This is unfortunate, it means that baffled flocculators under certain size specifications can't be designed to generate certain values of $\bar \varepsilon$ and $\bar G$ _while remaining efficient_.
