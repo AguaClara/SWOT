@@ -3,7 +3,7 @@
 This file will contain weekly updates into my work. All changes will be pushed to a non-master branch, and I will only have one branch at a time for whatever project I am working on. Every week (the day depends on my work schedule that week), I will send Monroe an email containing a link to this file's page on GitHub in addition to supplementary material. For example, this first week I will send him the example of the 'extra' slides for his viewing pleasure (or displeasure).
 
 ***
-##List of Big Ideas and Big Concerns
+## List of Big Ideas and Big Concerns
 1. It is not ideal to have both a confluence and a GitHub page that contain course resources. This will confuse students very much, they will be unable to find or unwilling to look for the simple things, and they will pester the TAs.  
 **¡DONE! Ambitious idea: Move everything to GitHub ¡DONE!**  
 Confluence, in all its glory, is not well liked by students and has a tendency to get very messy. Despite the fact that it seems like the perfect tool, I've only every heard complaints from students, both in AguaClara and 4540. Documents and information are oftentimes difficult to find
@@ -183,22 +183,51 @@ I suggest putting all effort into the text book. There is some chance that the t
 
 
 ***
-## Ninth Progress Report: 5/??/2018  
+## Ninth Progress Report: 5/15/2018  
 ### Done
+1. Got to the end of Flocculation design. By no means finished, needs lots of polishing, reordering, rewriting, and all that.
 
 
 ### To Do
 1. Questions for Monroe: Oh man I got lots
     1. What is our basis for using 37,000 as collision potential?
+
+        - **Monroe's Answer:**   
+
     2. Baffle modules for flocculators: What are they called? Do they have a commonly used name?
-        - **Monroe's Answer:**
-    3. For the height of water in the flocculator, it is sometimes referred to as $H$ and sometimes as $H_e$. Is there a difference between the two parameters? This small difference can cause a lot of background, peripheral  confusion for students (like me when I took 4540!)
-        - **Monroe's Answer:**
+
+        - **Monroe's Answer:**      
+
+    3. Where did the equations for $G$ and $\varepsilon$ come from? Without knowing how these came to be, I can't fully wrap my head around flocculation- $\bar G = \sqrt{ \frac{\bar \varepsilon}{\nu}}$ and $\bar \varepsilon = \frac{g h_L}{\theta}$
+
+        - **Monroe's Answer:**   
+
     4. How thoroughly have we tested/confirmed that the minor loss coefficient of a baffle is 2.56? Do we have sources to cite? Do we have sources to cite for the VC being 0.384? [What you cited for that in a slide's comments](https://confluence.cornell.edu/display/AGUACLARA/Validation+Studies+for+ANSYS+Fluent+Turbulence+Model+Simulations) has been taken over by Michel Kors ads, somehow.
-        - **Monroe's Answer:**
-    5. Where did we get the 'Jets expand in width at the rate of approximately 1 unit in width per 10 units forward' rule? Based on this rule, which leads to the equation $\frac{y}{10} = x - x_0$, flow would fully expand after $6.16 S$. But the contracted flow is some depth into the flocculator. So wouldn't you need $6.16 S$ _**plus**_ whatever the depth to maximum contraction is of water height $H$? Wouldn't $\frac{H}{S}$ need to be at least 7 or 8 without obstacles? Why is it ok to say that $\frac{H}{S}$ can be as low as 3? If the rule of jet expansion is true, there's no way that the flow fully expands by then. To me, this means that the actual minor loss coefficient would be much lower than 2.56. This is directly contradicted by the comment on the following slide. I can understand if the flow doesn't follow the rule of 1-10 expansion, but then we shouldn't tell students that it does.  
-    <img src="https://github.com/AguaClara/CEE4540_Master/blob/master/AguaClara%20Water%20Treatment%20Plant%20Design/Chapter%204_Flocculation/Images/I_need_some_clarity.JPG?raw=true" width=400>  
-        - **Monroe's Answer:**  
-    6. AguaClara flocculators have a Max/ave EDR of 1?!?!?! I don't think that this is true! That seems impossible in just about any reactor. This again points to my question number 3., do we have any data for how these baffles or baffles with obstacles are performing when compared to our models/predictions?  
+
+        - **Monroe's Answer:**   
+
+    5. Where did we get the 'Jets expand in width at the rate of approximately 1 unit in width per 10 units forward' rule? How sure are we that the flow fully expands in our flocculators?  Based on the jet expansion rule, how does $\frac{H_e}{S} = 3$ allow for full jet expansion?   
+    <img src="https://github.com/AguaClara/CEE4540_Master/blob/master/AguaClara%20Water%20Treatment%20Plant%20Design/Chapter%204_Flocculation/Images/I_need_some_clarity.JPG?raw=true" width=400>    
+
+        - **Monroe's Answer:**     
+
+    6. AguaClara flocculators have a Max/ave EDR of 1?!?!?! How can this be true?? That seems impossible in just about any reactor. This again points to my question number 4., do we have any data for how these baffles or baffles with obstacles are performing when compared to our models/predictions?   
     <img src="https://github.com/AguaClara/CEE4540_Master/blob/master/AguaClara%20Water%20Treatment%20Plant%20Design/Chapter%204_Flocculation/Images/Max_ave_EDR_of_1.JPG?raw=true" width=400>    
-        - **Monroe's Answer:**
+
+        - **Monroe's Answer:**       
+
+    7. should we transition everything from saying $G \theta$ over to $\bar G \theta$? It is more correct and elminiates another potential source of confusion.
+
+        - **Monroe's Answer:**  
+
+    8. Is the minimum width for fitting a human into the flocculator channel 45 cm?
+
+        - **Monroe's Answer:**  
+
+    9. Why do we solve for $H_{e_{Max}}$ and round $H_e$ down instead of solving for $H_{e_{Min}}$ and roundin $H_e$ up? Is it because getting $\frac{H_e}{S}$ closer to 5 or 6 is closer to full expansion and we don't know the physics yet?
+
+        - **Monroe's Answer:**  
+
+    10. How tall should the baffles be? Should there be $S$ distance between the floor of the flocculator and the bottom of a top baffle? How does the 40 cm of head loss affect this for the flow over and around a bottom baffle?
+
+        - **Monroe's Answer:**  
