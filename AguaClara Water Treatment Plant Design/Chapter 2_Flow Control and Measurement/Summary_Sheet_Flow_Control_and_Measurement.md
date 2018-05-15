@@ -30,8 +30,8 @@ Please use this table to control/command find the sections you are looking for.
 **2.2)** AguaClara Flow Control and Measurement Technologies  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - &nbsp;"Almost Linear" Flow Controller  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - &nbsp;Linear Flow Orifice Meter (LFOM)  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - &nbsp;Linear Chemical Dose Controller (CDC)
-
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - &nbsp;Linear Chemical Dose Controller (CDC)  
+**2.3)** Section Summary
 <br>
 <br>
 
@@ -235,6 +235,21 @@ Nothing in life is perfect, and the CDC is no exception. It has a few causes of 
 -  Float valves are not perfect. There will still be minor fluctuations of the fluid level in the CHT which will result in imperfect dosing.  
 - Surface tension may resist the flow of chemicals from the dosing tube into the drop tube during low flows. Since the CDC design does not consider surface tension, this is a potential source of error.
 - The lever and everything attached to it are not weightless. Changing the dose of coagulant or chlorine means moving the slider along the lever. Since the slider and tubes attached to it (drop tube, dosing tube) have mass, moving the slider means that the torque of the lever is altered. This means that the depth that the float is submerged is changed, which affects $\Delta h$ of the system. This can be remedied by making the float's diameter as large as possible, which makes these fluctuations small. This problem can not be avoided entirely.
+
+## 2.3) Section Summary
+1. **Tank with a valve:**
+$$ \frac{Q}{Q_0} = 1 - \frac{1}{2} \frac{t}{t_{Design}} \frac{h_{Tank}}{h_0}$$
+This equation describes flow $Q$ as a function of time $t$ of a fluid leaving a tank through a valve. Attempting to get this 'tank with a valve' system to yield constant head means raising the tank far, far above the valve that controls the flow. This is unreasonable when designing a flow control system for constant dosing, but can be used to design systems to drain a tank. See the section above for a description of the variables in the equation.
+
+2. **LFOM:** The LFOM makes the water level in the entrance tank linear with respect to the flow out of the entrance tank. This is useful in measuring the flow and is a critical component in AguaClara's chemical dosing system. The LFOM _measures_ the flow through the plant, it does not _control_ the flow through the plant.
+
+3. **The Linear Chemical Dose Controller (CDC)** combines the:
+      - linear relationship between water level and flow in the entrance tank caused by the LFOM,
+      - linear relationship between elevation difference and flow caused by the Hagen-Poiseuille equation, which is only valid for major losses under laminar flow, and
+      - a lever to link the two linear relationships
+
+   To keep the chemical dose constant by automatically adjusting the addition of coagulant and chlorine as the plant flow rate varies.  Two sliders on the lever allows the operator to change the dose of coagulant and chlorine independently of the plant flow rate.
+
 
 <img src="" width=500>
 <img src="" width=500>

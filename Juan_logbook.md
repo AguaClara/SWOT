@@ -183,14 +183,13 @@ I suggest putting all effort into the text book. There is some chance that the t
 
 
 ***
-## Ninth Progress Report: 5/??/2018  
+## Ninth Progress Report: 5/15/2018  
 ### Done
+1. Got to the end of Flocculation design. By no means finished, needs lots of polishing, reordering, rewriting, and all that.
 
 
 ### To Do
-1. How do I handle the $K_e^{'} \, {\rm vs} \, K_e$? I think that I switch them so as not to have to change everything later on....
-2. Need to add a section summary for the flow control and measurement summary sheet
-3. Questions for Monroe: Oh man I got lots
+1. Questions for Monroe: Oh man I got lots
     1. What is our basis for using 37,000 as collision potential?
 
         - **Monroe's Answer:**   
@@ -232,4 +231,3 @@ I suggest putting all effort into the text book. There is some chance that the t
     10. How tall should the baffles be? Should there be $S$ distance between the floor of the flocculator and the bottom of a top baffle? How does the 40 cm of head loss affect this for the flow over and around a bottom baffle?
 
         - **Monroe's Answer:**  
-    -

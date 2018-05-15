@@ -55,8 +55,8 @@ $$ {\rm{ \mathbf{First \, form:} }} \,\,\, h_e = \frac{\left( V_{in}  - V_{out} 
 
 From here, the two other forms of the minor loss equation can be derived by solving for either $V_{in}$ or $V_{out}$ using the ubiquitous continuity equation $V_{in} A_{in} = V_{out} A_{out}$:
 
-$$ {\rm{ \mathbf{Second \, form:} }} \,\,\, h_e = \frac{V_{in}^2}{2g}{\left( {1 - \frac{A_{in}}{A_{out}}} \right)^2} = \frac{V_{in}^2}{2g} \mathbf{K_e}$$
+$$ {\rm{ \mathbf{Second \, form:} }} \,\,\, h_e = \frac{V_{in}^2}{2g}{\left( {1 - \frac{A_{in}}{A_{out}}} \right)^2} = \frac{V_{in}^2}{2g} \mathbf{K_e^{'}}$$
 
-$$ {\rm{ \mathbf{Third \, form:} }} \,\,\, h_e = \frac{V_{out}^2}{2g}{\left( {\frac{A_{out}}{A_{in}}} -1 \right)^2} = \frac{V_{out}^2}{2g} \mathbf{K_e^{'}}$$
+$$ {\rm{ \mathbf{Third \, form:} }} \,\,\, h_e = \frac{V_{out}^2}{2g}{\left( {\frac{A_{out}}{A_{in}}} -1 \right)^2} = \frac{V_{out}^2}{2g} \mathbf{K_e}$$
 
 Being familiar with these three forms and how they are used will be of great help throughout the class.
