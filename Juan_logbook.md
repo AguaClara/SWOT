@@ -188,18 +188,23 @@ I suggest putting all effort into the text book. There is some chance that the t
 
 
 ### To Do
-1. How do I handle the $K_e^{'} vs K_e$? I think that I switch them so as not to have to change everything later on.... 
-2. Questions for Monroe: Oh man I got lots
+1. How do I handle the $K_e^{'} \, {\rm vs} \, K_e$? I think that I switch them so as not to have to change everything later on....
+2. Need to add a section summary for the flow control and measurement summary sheet
+3. Questions for Monroe: Oh man I got lots
     1. What is our basis for using 37,000 as collision potential?
+
         - **Monroe's Answer:**   
 
     2. Baffle modules for flocculators: What are they called? Do they have a commonly used name?
+
         - **Monroe's Answer:**      
 
     3. Where did the equations for $G$ and $\varepsilon$ come from? Without knowing how these came to be, I can't fully wrap my head around flocculation- $\bar G = \sqrt{ \frac{\bar \varepsilon}{\nu}}$ and $\bar \varepsilon = \frac{g h_L}{\theta}$
+
         - **Monroe's Answer:**   
 
     4. How thoroughly have we tested/confirmed that the minor loss coefficient of a baffle is 2.56? Do we have sources to cite? Do we have sources to cite for the VC being 0.384? [What you cited for that in a slide's comments](https://confluence.cornell.edu/display/AGUACLARA/Validation+Studies+for+ANSYS+Fluent+Turbulence+Model+Simulations) has been taken over by Michel Kors ads, somehow.
+
         - **Monroe's Answer:**   
 
     5. Where did we get the 'Jets expand in width at the rate of approximately 1 unit in width per 10 units forward' rule? How sure are we that the flow fully expands in our flocculators?  Based on the jet expansion rule, how does $\frac{H_e}{S} = 3$ allow for full jet expansion?   
@@ -207,9 +212,24 @@ I suggest putting all effort into the text book. There is some chance that the t
 
         - **Monroe's Answer:**     
 
-    6. AguaClara flocculators have a Max/ave EDR of 1?!?!?! I don't think that this is true! That seems impossible in just about any reactor. This again points to my question number 4., do we have any data for how these baffles or baffles with obstacles are performing when compared to our models/predictions?  
+    6. AguaClara flocculators have a Max/ave EDR of 1?!?!?! How can this be true?? That seems impossible in just about any reactor. This again points to my question number 4., do we have any data for how these baffles or baffles with obstacles are performing when compared to our models/predictions?   
     <img src="https://github.com/AguaClara/CEE4540_Master/blob/master/AguaClara%20Water%20Treatment%20Plant%20Design/Chapter%204_Flocculation/Images/Max_ave_EDR_of_1.JPG?raw=true" width=400>    
 
         - **Monroe's Answer:**       
 
     7. should we transition everything from saying $G \theta$ over to $\bar G \theta$? It is more correct and elminiates another potential source of confusion.
+
+        - **Monroe's Answer:**  
+
+    8. Is the minimum width for fitting a human into the flocculator channel 45 cm?
+
+        - **Monroe's Answer:**  
+
+    9. Why do we solve for $H_{e_{Max}}$ and round $H_e$ down instead of solving for $H_{e_{Min}}$ and roundin $H_e$ up? Is it because getting $\frac{H_e}{S}$ closer to 5 or 6 is closer to full expansion and we don't know the physics yet?
+
+        - **Monroe's Answer:**  
+
+    10. How tall should the baffles be? Should there be $S$ distance between the floor of the flocculator and the bottom of a top baffle? How does the 40 cm of head loss affect this for the flow over and around a bottom baffle?
+
+        - **Monroe's Answer:**  
+    -
