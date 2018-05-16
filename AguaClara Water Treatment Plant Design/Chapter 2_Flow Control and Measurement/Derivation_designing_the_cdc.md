@@ -7,7 +7,7 @@ We will use the 'head loss trick' that was introduced in the Fluids Review secti
 
 **Note:** There are a lot of equations in this document, and they may quickly get confusing. They are color coded in an attempt to make them easier to follow. There are two final design equations, $\color{purple}{V_{Max}}$ and $\color{purple}{L_{Min}}$, and they will be written in $\color{purple}{\rm{purple \, text \, coloring}}$ to make them noticeable.
 
-<center><img src="https://github.com/AguaClara/CEE4540_Master/blob/master/AguaClara%20Water%20Treatment%20Plant%20Design/Chapter%202_Flow%20Control%20and%20Measurement/Images/CDC_derivation.jpg?raw=true" width=650>
+<center><img src="https://github.com/AguaClara/CEE4540_Master/blob/master/AguaClara%20Water%20Treatment%20Plant%20Design/Chapter%202_Flow%20Control%20and%20Measurement/Images/CDC_derivation.jpg?raw=true" width=650></center>
 
 ## CDC Design Equation Derivation
 **When designing the CDC, there are a few parameters which are picked and set initially, before applying any equations. These parameters are:**  
@@ -56,7 +56,7 @@ $$\color{green}{
 
 Here is a plot of the three colored equations above. Our goal is to minimize the minor losses in the system; to bring the red and blue curves as close as possible to the green one.
 
-<center><img src="https://github.com/AguaClara/CEE4540_Master/blob/master/AguaClara%20Water%20Treatment%20Plant%20Design/Chapter%202_Flow%20Control%20and%20Measurement/Images/CDC_linearity_model.jpg?raw=true" width=850>
+<center><img src="https://github.com/AguaClara/CEE4540_Master/blob/master/AguaClara%20Water%20Treatment%20Plant%20Design/Chapter%202_Flow%20Control%20and%20Measurement/Images/CDC_linearity_model.jpg?raw=true" width=850></center>
 
 ### Designing for the error constraint, $\Pi_{Error}$
 
@@ -136,7 +136,7 @@ To visualize the distinction between $\color{red}{
 L_{Min, \, head loss}}$, see the following plot. $\color{green}{
 L_{Min, \, head loss}}$ is discontinuous because it takes in the smallest allowable tube diameter as an input. As the chemical flow rate through the dosing tube(s) decreases, the dosing tube diameter does as well. Whenever you see a jump in the green points, that means the tubing diameter has changed.
 
-<center><img src="https://github.com/AguaClara/CEE4540_Master/blob/master/AguaClara%20Water%20Treatment%20Plant%20Design/Chapter%202_Flow%20Control%20and%20Measurement/Images/CDC_length_model.jpg?raw=true" width=800>
+<center><img src="https://github.com/AguaClara/CEE4540_Master/blob/master/AguaClara%20Water%20Treatment%20Plant%20Design/Chapter%202_Flow%20Control%20and%20Measurement/Images/CDC_length_model.jpg?raw=true" width=800></center>
 
 As you can see, the head loss constraint is more limiting than the linearity constraint when designing for tube length. Therefore, the design equation for tube length is the one which accounts for head loss. This is the second and final design equation for designing the CDC:
 
@@ -172,4 +172,4 @@ D_{Min, \, Laminar} = \frac{4 Q_{Max}}{\pi \nu {\rm{Re}}_{Max}}
 
 Combined with the discrete amount of tubing sizes (shown in dark green), we can create a graph of the three diameter constraints:
 
-<center><img src="https://github.com/AguaClara/CEE4540_Master/blob/master/AguaClara%20Water%20Treatment%20Plant%20Design/Chapter%202_Flow%20Control%20and%20Measurement/Images/CDC_diameter_model.jpg?raw=true" width=800>
+<center><img src="https://github.com/AguaClara/CEE4540_Master/blob/master/AguaClara%20Water%20Treatment%20Plant%20Design/Chapter%202_Flow%20Control%20and%20Measurement/Images/CDC_diameter_model.jpg?raw=true" width=800></center>

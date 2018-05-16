@@ -74,7 +74,7 @@ $t_{Design}$ = time it would take for tank to empty if flow stayed constant at $
 $h_{Tank}$ = elevation of water level with reference to tank bottom at time $t$ = 0  
 $h_0$ = elevation of water level with reference to the valve at time $t$ = 0  
 
-<center><img src="https://github.com/AguaClara/CEE4540_Master/blob/master/AguaClara%20Water%20Treatment%20Plant%20Design/Chapter%202_Flow%20Control%20and%20Measurement/Images/complete_hypochlorinator.jpg?raw=true" width=500>
+<center><img src="https://github.com/AguaClara/CEE4540_Master/blob/master/AguaClara%20Water%20Treatment%20Plant%20Design/Chapter%202_Flow%20Control%20and%20Measurement/Images/complete_hypochlorinator.jpg?raw=true" width=500></center>
 
 This equation has historically give students some trouble, and while its nuances are explained in the derivation, they will be quickly summarized below:
 
@@ -86,7 +86,7 @@ We can use the proportionality $Q \propto \sqrt{h}$, which applies to both minor
 
 Using this equation and relationship, we make the following plots. On the left, the valve is at the same elevation as the bottom of the tank, $h_{Tank} = h_0$. Our attempt to get a continuous flow rate out of this system is to make $\frac{h_{Tank}}{h_0}$ very small by elevating the tank far above the valve. On the right, $\frac{h_{Tank}}{h_0} = \frac{1}{50}$. While the plot looks good, elevating the tank by 50 times its height is not realistic. The 'tank with a valve' is not a solution to the constant head problem.
 
-<center><img src="https://github.com/AguaClara/CEE4540_Master/blob/master/AguaClara%20Water%20Treatment%20Plant%20Design/Chapter%202_Flow%20Control%20and%20Measurement/Images/Tank_valve_play.jpg?raw=true" width=750>
+<center><img src="https://github.com/AguaClara/CEE4540_Master/blob/master/AguaClara%20Water%20Treatment%20Plant%20Design/Chapter%202_Flow%20Control%20and%20Measurement/Images/Tank_valve_play.jpg?raw=true" width=750></center>
 
 ### Drain System for a Tank
 While the 'tank with a valve' scenario is not a good constant head solution, we can use our understanding of the system to properly design drain systems for AguaClara reactors like flocculators and sedimentation tanks, since they essentially tanks with valves.  The derivation for the following equation is found [here](https://github.com/AguaClara/CEE4540_Master/blob/master/AguaClara%20Water%20Treatment%20Plant%20Design/Chapter%202_Flow%20Control%20and%20Measurement/Derivation_drain_system_design.md), along with more details on AguaClara's pipe stub method for draining tanks. The derived 'Tank Drain' equation is as follows:
@@ -103,7 +103,7 @@ $L_{Tank}, W_{Tank}, H_{Tank}$ = Tank dimensions
 $t_{Drain}$ = Time it takes to drain the tank
 $\sum K_e$ = Sum of all the minor loss coefficients in the system
 
-<center><img src="https://github.com/AguaClara/CEE4540_Master/blob/master/AguaClara%20Water%20Treatment%20Plant%20Design/Chapter%202_Flow%20Control%20and%20Measurement/Images/Pipe_stub_drainage_variables.jpg?raw=true" width=500>
+<center><img src="https://github.com/AguaClara/CEE4540_Master/blob/master/AguaClara%20Water%20Treatment%20Plant%20Design/Chapter%202_Flow%20Control%20and%20Measurement/Images/Pipe_stub_drainage_variables.jpg?raw=true" width=500></center>
 
 <br>
 <br>
@@ -159,7 +159,7 @@ It is easy to design for laminar flow, but the "Almost Linear" Flow Controller w
 #### **What it is**
 The LFOM is a weir shape cut into a pipe. It was meant to imitate the [**Sutro Weir**](http://www.nptel.ac.in/courses/105106114/pdfs/Unit14/14_3b.pdf "Proportional weirs") while being far easier to build. The LFOM is a pipe with rows of holes, or orifices, drilled into it. There are progressively fewer holes per row as you move up the LFOM, as the shape is meant to resemble half a parabola on each side. The size of all holes is the same, and the amount of holes per row are precisely calculated. Water in the entrance tank flows into and down the LFOM, towards the rapid mix and flocculator.
 
-<center><img src="https://github.com/AguaClara/CEE4540_Master/blob/master/AguaClara%20Water%20Treatment%20Plant%20Design/Chapter%202_Flow%20Control%20and%20Measurement/Images/Sutro_v_LFOM.jpg?raw=true" width=500>
+<center><img src="https://github.com/AguaClara/CEE4540_Master/blob/master/AguaClara%20Water%20Treatment%20Plant%20Design/Chapter%202_Flow%20Control%20and%20Measurement/Images/Sutro_v_LFOM.jpg?raw=true" width=500></center>
 
 #### **What it does and why**
 The LFOM does one thing and serves two purposes.  
@@ -200,7 +200,7 @@ The CDC brings together the LFOM and many improvements to the "Almost Linear" Fl
 
 4. The slider itself controls the dose of chemicals. For any given plant flow rate, the slider can be adjusted to increase or decrease the amount of chemical flowing through the plant.
 
-<center><img src="https://github.com/AguaClara/CEE4540_Master/blob/master/AguaClara%20Water%20Treatment%20Plant%20Design/Chapter%202_Flow%20Control%20and%20Measurement/Images/CDC_labelled.jpg?raw=true" width=650>
+<center><img src="https://github.com/AguaClara/CEE4540_Master/blob/master/AguaClara%20Water%20Treatment%20Plant%20Design/Chapter%202_Flow%20Control%20and%20Measurement/Images/CDC_labelled.jpg?raw=true" width=650></center>
 
 #### **What it does and why**
 The CDC makes it easy and accurate to dose chemicals. The flow of chemicals automatically adjusts to changes in the plant flow rate to keep a constant dose, set by the operator. When a turbidity event occurs, the operator can change the dose of coagulant by moving the coagulant slider _lower_ on the lever to increase the dose. The slider has labelled marks so the operator can record the dose accurately.
@@ -251,5 +251,5 @@ This equation describes flow $Q$ as a function of time $t$ of a fluid leaving a 
    To keep the chemical dose constant by automatically adjusting the addition of coagulant and chlorine as the plant flow rate varies.  Two sliders on the lever allows the operator to change the dose of coagulant and chlorine independently of the plant flow rate.
 
 
-<center><img src="" width=500>
-<center><img src="" width=500>
+<center><img src="" width=500></center>
+<center><img src="" width=500></center>
