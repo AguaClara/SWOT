@@ -445,7 +445,26 @@ This is all about deforming the fluid.
 
 ### Jet Mixing
 
-In both mixing for the application of coagulant nanoparticles and for flocculation we have the goal of deforming the fluid to
+In both mixing for the application of coagulant nanoparticles and for flocculation we have the goal of deforming the fluid to facilitate collisions between particles. As engineers we need to design reactors that deform the fluid. There are several approaches
+* coiled tube flocculators (laminar flow)
+* rotating propellers
+* hydraulic jet
+
+Coiled tube flocculators are commonly used by AguaClara Cornell researchers for small laboratory scale (a few mL/s) experiments.
+
+[add equations here for coiled flocculators]
+
+Rotating propellers can either be installed in open tanks or enclosed in pipes. From a mixing and fluids perspective it doesn't make any difference whether the tank is open to the atmosphere or not. The parameters of interest are the rate of fluid deformation and the residence time in the mixing zone.
+
+
+<img src="https://github.com/AguaClara/CEE4540_Master/raw/master/AguaClara%20Water%20Treatment%20Plant%20Design/Chapter%203_Rapid%20Mix/Images/Backmix.jpg" width="400">
+
+Figure x.	Open tank, backmix system that uses a relatively large tank with a submerged impeller.  
+
+<img src="https://github.com/AguaClara/CEE4540_Master/raw/master/AguaClara%20Water%20Treatment%20Plant%20Design/Chapter%203_Rapid%20Mix/Images/Inline.jpg" width="400">
+
+Figure x.	Enclosed mix system that uses a relatively small volume.
+
 
 
 Chemical Engineering Science, Vol. 50, No. 12, pp. 1877-1880, 1995

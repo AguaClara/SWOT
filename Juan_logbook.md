@@ -150,7 +150,7 @@ This interim progress report is due to 2 factors. My family and I are going on v
 
 ### To Do
 1. Finish the Flow Control and Measurement cheat sheet and powerpoint by the end of next week.
-2. Re-evaluate the my work priorities, considering time. Perhaps I should prioritize creating derivation sheets to remove derivations from powerpoints, and then spruce up the powerpoints before returning to the summary sheets. The summary sheets take a very, very long time to do well :/
+2. Re-evaluate my work priorities, considering time. Perhaps I should prioritize creating derivation sheets to remove derivations from powerpoints, and then spruce up the powerpoints before returning to the summary sheets. The summary sheets take a very, very long time to do well :/
 I think that will greatly improve the chance that some things are completely done and what _is_ done is done very well by the beginning of the semester.
 
 
@@ -192,42 +192,52 @@ I suggest putting all effort into the text book. There is some chance that the t
 1. Questions for Monroe: Oh man I got lots
     1. What is our basis for using 37,000 as collision potential?
 
-        - **Monroe's Answer:**   
+        - Tradition? This is approximately the value we have used for design for the past 8? years or so. We are also experimenting with a $G\theta$ of 20,000 for the 1 L/s plant. We are far from the ability to create an optimized design for a water treatment plant and thus this value will undoubtedly change. For now it is providing reasonable plant performance especially given that it is followed by a floc blanket.
 
     2. Baffle modules for flocculators: What are they called? Do they have a commonly used name?
 
-        - **Monroe's Answer:**      
+        - We have to invent the nomenclature. As far as I know we invented baffle modules. Now is a great opportunity to name them.
+
+       Potential names
+        - Baffle modules
+        - you idea here
 
     3. Where did the equations for $G$ and $\varepsilon$ come from? Without knowing how these came to be, I can't fully wrap my head around flocculation- $\bar G = \sqrt{ \frac{\bar \varepsilon}{\nu}}$ and $\bar \varepsilon = \frac{g h_L}{\theta}$
 
-        - **Monroe's Answer:**   
+        - $\bar \varepsilon = \nu\bar G^2$  I don't know how to argue for this equation from first principles. See [this paper](https://www.tandfonline.com/doi/pdf/10.1080/19942060.2009.11015267) for the equation. This relationship is the basis of mechanical flocculator design. Perhaps this is best viewed as the definition of  $\bar G$. There would be more than one way to define an average for the velocity gradient and this is the simple definition that we use.
+        - $\bar \varepsilon \theta = g h_L$ This states that the rate of conversion of mechanical energy to heat * the time over which that conversion is happening is equal to the total amount of mechanical energy that is converted.
 
     4. How thoroughly have we tested/confirmed that the minor loss coefficient of a baffle is 2.56? Do we have sources to cite? Do we have sources to cite for the VC being 0.384? [What you cited for that in a slide's comments](https://confluence.cornell.edu/display/AGUACLARA/Validation+Studies+for+ANSYS+Fluent+Turbulence+Model+Simulations) has been taken over by Michel Kors ads, somehow.
 
-        - **Monroe's Answer:**   
+        - We have not yet been able to do a good measurement in the field to confirm this value. The measured head loss may very well be different than this value because of the complicated effect of the interactions between sequential flow expansions
+        - Shulz and Okun give a wide range for this number. I don't know of a good reference. I invented the approach to estimate the vena contracta based on the angle of the change in flow direction. That has not been confirmed with experimentation.
 
     5. Where did we get the 'Jets expand in width at the rate of approximately 1 unit in width per 10 units forward' rule? How sure are we that the flow fully expands in our flocculators?  Based on the jet expansion rule, how does $\frac{H_e}{S} = 3$ allow for full jet expansion?   
     <img src="https://github.com/AguaClara/CEE4540_Master/blob/master/AguaClara%20Water%20Treatment%20Plant%20Design/Chapter%204_Flocculation/Images/I_need_some_clarity.JPG?raw=true" width=400>    
 
-        - **Monroe's Answer:**     
+        -  b = 0.107 s where b is the jet width and s is the distance along the centerline of the jet. I've added a powerpoint on Jets & plumes into the "other and previous" lectures. This reference is on slide 16 and comes from course notes from Gerhart Jirka who studied jets and plumes at Cornell.
+        - The flocculator design goal is to create uniform velocity gradients. Thus we don't want the flow to fully expand because at that point turbulence generation is over, energy dissipation falls off quickly, and velocity gradients decrease.
+        - Thus we want to avoid high $\frac{H_e}{S}$ values. We estimate full expansion by $\frac{H_e}{S}$ of 6. We also need a range of acceptable values of $\frac{H_e}{S}$ because our tank depth is set by other constraints and thus we can't specify an exact value of $\frac{H_e}{S}$. It turns out that we need a range that is over a factor of 2 so that we can go from 1 flow expansion to 2 flow expansions per flocculator depth (and 2 is 2*1!).
 
     6. AguaClara flocculators have a Max/ave EDR of 1?!?!?! How can this be true?? That seems impossible in just about any reactor. This again points to my question number 4., do we have any data for how these baffles or baffles with obstacles are performing when compared to our models/predictions?   
     <img src="https://github.com/AguaClara/CEE4540_Master/blob/master/AguaClara%20Water%20Treatment%20Plant%20Design/Chapter%204_Flocculation/Images/Max_ave_EDR_of_1.JPG?raw=true" width=400>    
 
-        - **Monroe's Answer:**       
+        - NO. Max/ave EDR is 2 for a well designed hydraulic flocculator. That means that Gmax/Gave is $ \sqrt{2} $   
+        - See [Harhoff Figure 8](https://www.environmental-expert.com/Files/5302/articles/9777/Towardsoptimaldesignparametersforaround-the-end.pdf)  where they find the minimum value of Gmax over Gave to be 1.4.
+        - The slide that you show was addressing the question of efficiency of energy use for creating collisions. If the Gmax/Gave value is very large, then energy is not being used efficiently. The most energy efficient reactor has a uniform energy dissipation rate throughout the reactor. With a Gmax/Gava of 1.4 we get very close to the ideal efficiency and so we ignore this effect. We previously designed inefficient flocculators with high H/s ratios and thus we used to account for this inefficiency. Now we design all flocculators to be efficient with 3<H/s<6 and thus we can ignore this efficiency factor.
 
-    7. should we transition everything from saying $G \theta$ over to $\bar G \theta$? It is more correct and elminiates another potential source of confusion.
+    7. should we transition everything from saying $G \theta$ over to $\bar G \theta$? It is more correct and eliminates another potential source of confusion.
 
-        - **Monroe's Answer:**  
+        - Yes. let's switch to $\bar G$  
 
     8. Is the minimum width for fitting a human into the flocculator channel 45 cm?
 
-        - **Monroe's Answer:**  
+        - yes  
 
     9. Why do we solve for $H_{e_{Max}}$ and round $H_e$ down instead of solving for $H_{e_{Min}}$ and roundin $H_e$ up? Is it because getting $\frac{H_e}{S}$ closer to 5 or 6 is closer to full expansion and we don't know the physics yet?
 
-        - **Monroe's Answer:**  
+        - No. We are simply minimizing the number of expansions that we have to build. There is little difference between H/s of 3 and 6 and thus we are happy with an H/s anywhere in that range. Using an H/s closer to 6 reduces the number of obstacles that we build.   
 
     10. How tall should the baffles be? Should there be $S$ distance between the floor of the flocculator and the bottom of a top baffle? How does the 40 cm of head loss affect this for the flow over and around a bottom baffle?
 
-        - **Monroe's Answer:**  
+        - I think our current design is to have 1.5s of space below the bottom of the upper baffle. My understanding is that there is little performance difference between an opening of 1s and 1.5s. We don't currently have any method of efficiently using the added triangle of water that builds up due to head loss. We have to keep our bottom baffles well below this so that the plant works under low flow conditions when head loss is dramatically reduced. Thus the water in the triangle may be relatively stagnant and we don't assume that the residence time in that triangle is helpful.  
