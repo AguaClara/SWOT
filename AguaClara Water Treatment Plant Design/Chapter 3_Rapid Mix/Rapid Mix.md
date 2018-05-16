@@ -1,14 +1,93 @@
+
+<!-- TOC depthFrom:1 depthTo:6 withLinks:1 updateOnSave:1 orderedList:0 -->
+
+	- [Conventional Rapid Mix](#conventional-rapid-mix)
+- [Coagulant nanoparticle application](#coagulant-nanoparticle-application)
+	- [Transport steps](#transport-steps)
+	- [Length and time scales for each of the processes](#length-and-time-scales-for-each-of-the-processes)
+	- [Mixing length scale and transport mechanisms](#mixing-length-scale-and-transport-mechanisms)
+		- [Length scales of coagulant nanoparticles and clay](#length-scales-of-coagulant-nanoparticles-and-clay)
+		- [Diffusion and Shear Transport Coagulant Nanoparticles to Clay](#diffusion-and-shear-transport-coagulant-nanoparticles-to-clay)
+		- [Diffusion band thickness](#diffusion-band-thickness)
+	- [Collision Rates](#collision-rates)
+		- [Collision Rate and Particle Removal](#collision-rate-and-particle-removal)
+		- [Integrate the coagulant transport model](#integrate-the-coagulant-transport-model)
+		- [Energy tradeoff for coagulant transport](#energy-tradeoff-for-coagulant-transport)
+	- [Coagulant attachment mechanism](#coagulant-attachment-mechanism)
+	- [Design for Mixing](#design-for-mixing)
+		- [Jet Mixing](#jet-mixing)
+		- [Orifice Diameter to obtain Target Mixing](#orifice-diameter-to-obtain-target-mixing)
+		- [Rapid Mix Head Loss](#rapid-mix-head-loss)
+
+<!-- /TOC -->
+
+## Conventional Rapid Mix
+
+Conventional rapid mix units use mechanical or potential energy to generate intense turbulence to begin the mixing process. Conventional design is based on the use of G (an average velocity gradient) as a design parameter. We don’t yet know what the design objective is for rapid mix and thus it isn’t clear which parameters matter. We hypothesize that both velocity gradients that cause deformation of the fluid and time for molecular diffusion are required to ultimately transport coagulant nanoparticles to the surfaces of clay particles.
+
+The velocity gradient can be obtained from the rate at which mechanical energy is being dissipated and converted to heat by viscosity.
+
+$$ \epsilon = G^2 \nu $$
+
+where $\epsilon$ is the energy dissipation rate, $G$ is the velocity gradient, and $\nu$ is the kinematic viscosity of water.
+We can estimate the power input required to create a target energy dissipation rate for a conventional design by noting that power is simple the energy dissipation rate times the mass of water in the rapid mix unit.
+
+$$P = \epsilon \rlap{--}V \rho $$
+
+$$ P = G^2 \nu \rlap{--}V \rho $$
+
+We can relate reactor volume to a hydraulic residence time, $\theta$, and volumetric flow rate, Q.
+
+$$ P = \rho G^2 \nu Q \theta $$
+
+This equation is perfectly useful for estimating electrical motor sizing requirements for mechanical rapid mix units. For gravity powered hydraulic rapid mix units it would be more intuitive to use the change in water surface elevation, $\Delta h$ instead of power input.
+
+$$P = \rho g Q \Delta h$$
+
+Combining the two equations we obtain.
+
+$$  \Delta h =   \frac{G^2 \nu \theta}{g} $$
+
+Typical values for residence time and average velocity gradient are given below.
+
+| Residence Time (s) | Velocity gradient G (1/s) | Energy dissipation rate (W/kg)  | Equivalent height (m)* |
+| - | - | - | - |
+| 0.5 | 4000 | 16 | 0.8 |
+| 10 - 20 | 1500 | 2.25 | 2.3 - 4.6 |
+| 20 - 30 | 950 | 0.9 | 1.8 - 2.8 |
+| 30 - 40 | 850 | 0.72 | 2.2 - 2.9 |
+| 40 - 130 | 750 | 0.56 | 2.3 - 7.5 |
+From Environmental Engineering: A Design Approach by Sincero and Sincero. 1996. page 267.
 ```python
-# %% importing
+""" importing """
 from aide_design.play import*
 from aguaclara_research.play import*
 import aguaclara_research.floc_model as fm
 import matplotlib.pyplot as plt
 from matplotlib.ticker import FormatStrFormatter
 imagepath = 'AguaClara Water Treatment Plant Design/Chapter 3_Rapid Mix/Images/'
-```
+Temperature = 15*u.degC
+pc.viscosity_kinematic(Temperature)
+Mix_HRT = np.array([0.5,15,25,35,85])*u.s
+Mix_G = np.array([4000,1500,950,850,750])/u.s
+Mix_CP = np.multiply(Mix_HRT, np.sqrt(Mix_G))
+Mix_Gt = np.multiply(Mix_HRT, Mix_G)
+Mix_EDR = (Mix_G**2*pc.viscosity_kinematic(Temperature))
 
-# Nanoparticle application
+fig, ax = plt.subplots()
+ax.plot(Mix_G.to(1/u.s),Mix_HRT.to(u.s),'o')
+ax.yaxis.set_major_formatter(FormatStrFormatter('%.f'))
+ax.xaxis.set_major_formatter(FormatStrFormatter('%.f'))
+ax.set(xlabel='Velocity gradient (Hz)', ylabel='Residence time (s)')
+fig.savefig(imagepath+'Mechanical_RM_Gt')
+plt.show()
+
+```
+<img src="https://github.com/AguaClara/CEE4540_Master/raw/master/AguaClara%20Water%20Treatment%20Plant%20Design/Chapter%203_Rapid%20Mix/Images/Mechanical_RM_Gt.png" width="400">
+
+Figure x. Mechanical rapid mix units use a wide range of velocity gradients and residence times.
+
+# Coagulant nanoparticle application
 Rapid mix is where aggregation of both suspended particles and dissolved substances begins.
 
 Nanoparticle application: The process of adding a sticky solid phase material (adhesive nanoparticles) that attaches to raw water particles as well as to some dissolved species (the topic of these notes)
@@ -27,6 +106,16 @@ Nanoparticle application includes multiple steps that must occur before the raw 
 
 Figure x.
 
+## Transport steps
+* Turbulence
+  * Large scale eddies
+  * Inner viscous length scale
+* Shear-diffusion transport
+  * Estimate diffusion time scale
+  * Einstein's diffusion equation
+
+
+## Length and time scales for each of the processes
 Let's begin by describing the coagulant injection for a 60 L/s plant. We will use a linear flow orifice meter with 20 cm of head loss.
 
 ```python
@@ -34,8 +123,8 @@ Q_plant = 60 * u.L/u.s
 HL_LFOM = 20 * u.cm
 Pi_LFOM_safety = 1.2
 SDR_LFOM = 26
-from aide_design.unit_process_design.prefab import lfom_prefab_functional as lfom
-ND_LFOM = lfom.nom_diam_lfom_pipe(Q_plant,HL_LFOM,Pi_LFOM_safety,SDR_LFOM)
+from aide_design.unit_process_design import lfom as lfom
+ND_LFOM = lfom.nom_diam_lfom_pipe(Q_plant,HL_LFOM)
 print(ND_LFOM, '(',ND_LFOM.to(u.cm), ')')
 
 pipe.ID_SDR(ND_LFOM,SDR_LFOM)
@@ -70,63 +159,7 @@ print(V_Coag_injection)
 D_Coag_injection_min = pc.diam_circle(Q_PACl_max/V_Coag_injection)
 print(D_Coag_injection_min.to(u.mm))
 ```   
-## Conventional Rapid Mix
 
-Conventional rapid mix units use mechanical or potential energy to generate intense turbulence to begin the mixing process. Conventional design is based on the use of G (an average velocity gradient) as a design parameter. We don’t yet know what the design objective is for rapid mix and thus it isn’t clear which parameters matter. We hypothesize that both velocity gradients that cause deformation of the fluid and time for molecular diffusion are required to ultimately transport coagulant nanoparticles to the surfaces of clay particles.
-
-The velocity gradient can be obtained from the rate at which mechanical energy is being dissipated and converted to heat by viscosity.
-
-$$ \epsilon = G^2 \nu $$
-
-where $\epsilon$ is the energy dissipation rate, $G$ is the velocity gradient, and $\nu$ is the kinematic viscosity of water.
-We can estimate the power input required to create a target energy dissipation rate for a conventional design by noting that power is simple the energy dissipation rate times the mass of water in the rapid mix unit.
-
-$$ P = \epsilon \rlap{--}V \rho $$
-
-$$ P = G^2 \nu \rlap{--}V \rho $$
-
-We can relate reactor volume to a hydraulic residence time, $\theta$, and volumetric flow rate, Q.
-
-$$ P = \rho G^2 \nu Q \theta $$
-
-This equation is perfectly useful for estimating electrical motor sizing requirements for mechanical rapid mix units. For gravity powered hydraulic rapid mix units it would be more intuitive to use the change in water surface elevation, $\Delta h$ instead of power input.
-
-$$P = \rho g Q \Delta h$$
-
-Combining the two equations we obtain.
-
-$$  \Delta h =   \frac{G^2 \nu \theta}{g} $$
-
-Typical values for residence time and average velocity gradient are given below.
-
-| Residence Time (s) | Velocity gradient G (1/s) | Energy dissipation rate (W/kg)  | Equivalent height (m)* |
-| - | - | - | - |
-| 0.5 | 4000 | 16 | 0.8 |
-| 10 - 20 | 1500 | 2.25 | 2.3 - 4.6 |
-| 20 - 30 | 950 | 0.9 | 1.8 - 2.8 |
-| 30 - 40 | 850 | 0.72 | 2.2 - 2.9 |
-| 40 - 130 | 750 | 0.56 | 2.3 - 7.5 |
-From Environmental Engineering: A Design Approach by Sincero and Sincero. 1996. page 267.
-```python
-Temperature = 15*u.degC
-pc.viscosity_kinematic(Temperature)
-Mix_HRT = np.array([0.5,15,25,35,85])*u.s
-Mix_G = np.array([4000,1500,950,850,750])/u.s
-Mix_CP = np.multiply(Mix_HRT, np.sqrt(Mix_G))
-Mix_Gt = np.multiply(Mix_HRT, Mix_G)
-Mix_EDR = (Mix_G**2*pc.viscosity_kinematic(Temperature))
-print(Mix_EDR.magnitude,'W/kg')
-plt.plot(Mix_G.to(1/u.s),Mix_HRT.to(u.s),'o')
-plt.xlabel('Velocity Gradient (Hz)')
-plt.ylabel('Residence time (s)')
-plt.savefig(imagepath+'Mechanical_RM_Gt')
-
-plt.show()
-
-```
-<img src="https://github.com/AguaClara/CEE4540_Master/raw/master/AguaClara%20Water%20Treatment%20Plant%20Design/Chapter%203_Rapid%20Mix/Images/Mechanical_RM_Gt.png" width="400">
-
-Figure x. Mechanical rapid mix units use a wide range of velocity gradients and residence times.
 
 ## Mixing length scale and transport mechanisms
 
@@ -155,20 +188,16 @@ Temperature = 20*u.degC
 fm.RATIO_KOLMOGOROV
 Inner_viscous = fm.RATIO_KOLMOGOROV * fm.eta_kolmogorov(EDR, Temperature)
 
-
-
-plt.plot(EDR.to(u.mW/u.kg),Inner_viscous.to(u.mm))
-plt.xscale('log')
-plt.ylabel('Inner viscous length scale (mm)')
-plt.xlabel('Energy dissipation rate (W/kg)')
-plt.text(30, 6, 'Eddies cause mixing', fontsize=12,rotation=-30)
-plt.text(1, 5, 'Shear and diffusion cause mixing', fontsize=12,rotation=-30)
-plt.savefig(imagepath+'Inner_viscous_vs_EDR')
-
+fig, ax = plt.subplots()
+ax.semilogx(EDR.to(u.mW/u.kg),Inner_viscous.to(u.mm))
+ax.yaxis.set_major_formatter(FormatStrFormatter('%.f'))
+ax.xaxis.set_major_formatter(FormatStrFormatter('%.f'))
+ax.set(xlabel='Energy dissipation rate (W/kg)', ylabel='Inner viscous length scale (mm)')
+ax.text(30, 6, 'Eddies cause mixing', fontsize=12,rotation=-30)
+ax.text(1, 5, 'Shear and diffusion cause mixing', fontsize=12,rotation=-30)
+fig.savefig(imagepath+'Inner_viscous_vs_EDR')
 plt.show()
 ```
-
-
 <img src="https://github.com/AguaClara/CEE4540_Master/raw/master/AguaClara%20Water%20Treatment%20Plant%20Design/Chapter%203_Rapid%20Mix/Images/Inner_viscous_vs_EDR.png" width="400">
 
 Figure x. Eddies can cause fluid mixing down to the scale of a few millimeters for energy dissipation rates used in rapid mix units and flocculators.
@@ -177,7 +206,7 @@ Figure x. Eddies can cause fluid mixing down to the scale of a few millimeters f
 
 The coagulant nanoparticles eventually will attach to clay particles. The clay particles have a diameter of approximately $5 \mu m$ and thus it is clear from the length scale in the figure above that turbulent eddies aren't able to transport all the way to attachment to clay.
 
-# Diffusion and Shear Transport Coagulant Nanoparticles to Clay
+### Diffusion and Shear Transport Coagulant Nanoparticles to Clay
 
 The time required for shear and diffusion to transport coagulant nanoparticles to clay has previously been assumed to be a rapid process. The
 
@@ -250,7 +279,7 @@ plt.show()
 <img src="https://github.com/AguaClara/CEE4540_Master/raw/master/AguaClara%20Water%20Treatment%20Plant%20Design/Chapter%203_Rapid%20Mix/Images/Diffusion_band_thickness.png" width="400">
 
 Figure x.
-### Collision Rates
+## Collision Rates
 $${\rlap{-} V_{\rm{Cleared}}} \approx \pi d_{Clay} L_{Diff_{NC}} v_r t$$
 
 $$t_c = \frac{\Lambda_{NC}^3}{\pi d_{Clay} L_{Diff_{NC} v_r}}$$
@@ -295,9 +324,9 @@ The time required for the coagulant to be transported to clay surfaces is strong
 Below we estimate the time required to achieve 80% attachment of nanoparticles in a 10 NTU clay suspension.
 
 ```python
-#I needed to attach units to material properties due to a bug in floc_model. This will need to be fixed when floc_model is updated.
+"""I needed to attach units to material properties due to a bug in floc_model. This will need to be fixed when floc_model is updated."""
 def Nano_coag_attach_time(pC_NC,C_clay,G,Temperature):
-  # We assume that 70% of nanoparticles attach in the average time for one collision.
+  """We assume that 70% of nanoparticles attach in the average time for one collision."""
   k_nano = 1-np.exp(-1)
   num=2.3*pC_NC*(fm.sep_dist_clay(C_clay,fm.Clay))**2
   den = np.pi * G* k_nano * fm.Clay.Diameter*u.m * L_Diff(Temperature,G)
@@ -306,7 +335,7 @@ def Nano_coag_attach_time(pC_NC,C_clay,G,Temperature):
 C_Al = 2 * u.mg/u.L
 C_clay = 10 * u.NTU
 pC_NC = -np.log10(1-0.8)
-# apply 80% of the coagulant nanoparticles to the clay
+"""apply 80% of the coagulant nanoparticles to the clay"""
 
 G = np.arange(50,5000,10)*u.Hz
 
@@ -317,16 +346,12 @@ for i in range(len(T_graph)):
 
 ax.semilogx(Mix_G.to(1/u.s),Mix_HRT.to(u.s),'o')
 ax.legend([*T_graph, "Conventional rapid mix"])
-# * is used to unpack T_graph so that units are preserved when
-# adding another legend item.
+"""* is used to unpack T_graph so that units are preserved when adding another legend item."""
 ax.yaxis.set_major_formatter(FormatStrFormatter('%.f'))
 ax.xaxis.set_major_formatter(FormatStrFormatter('%.f'))
 ax.set(xlabel='Velocity gradient (Hz)', ylabel='Nanoparticle attachment time (s)')
 fig.savefig(imagepath+'Coag_attach_time')
 plt.show()
-
-
-
 ```
 <img src="https://github.com/AguaClara/CEE4540_Master/raw/master/AguaClara%20Water%20Treatment%20Plant%20Design/Chapter%203_Rapid%20Mix/Images/Coag_attach_time.png" width="400">
 
@@ -349,9 +374,7 @@ ax.legend(T_graph)
 ax.yaxis.set_major_formatter(FormatStrFormatter('%.f'))
 ax.xaxis.set_major_formatter(FormatStrFormatter('%.f'))
 ax.set(xlabel='Velocity gradient (Hz)', ylabel='Head loss (cm)')
-
 fig.savefig(imagepath+'Coag_attach_head_loss')
-
 plt.show()
 
 ```
@@ -384,7 +407,7 @@ $$  \Delta h =  \frac{G^\frac{4}{3} \nu}{g} \frac{2.3p C_{NC} \, \Lambda_{Clay}^
 $$  G =  d_{Clay}\left(\frac{\pi k \,g\Delta h }{2.3p C_{NC} \, \Lambda_{Clay}^2 \nu} \right)^\frac{3}{4} \left( \frac{2k_B T }{3 \pi \,\mu  \, d_{NC} }\right)^\frac{1}{4}$$
 
 ```python
-#find G for target head loss
+"""find G for target head loss"""
 HL_nano_transport = np.linspace(10,100,10)*u.cm
 def G_max_head_loss(pC_NC,C_clay,HL_nano_transport,Temperature):
   k_nano = 1-np.exp(-1)
@@ -393,13 +416,13 @@ def G_max_head_loss(pC_NC,C_clay,HL_nano_transport,Temperature):
   num2 = 2 * u.boltzmann_constant * Temperature
   den2 = 3 * np.pi * pc.viscosity_dynamic(Temperature) * (fm.PACl.Diameter*u.m)
   return fm.Clay.Diameter*u.m*((((num/den)**(3) * (num2/den2)).to_base_units())**(1/4))
-# Note the use of to_base_units BEFORE raising to the fractional power.
-# This prevents a rounding error in the unit exponent.
+"""Note the use of to_base_units BEFORE raising to the fractional power.
+This prevents a rounding error in the unit exponent."""
 
 G_max = G_max_head_loss(pC_NC,C_clay,20*u.cm,Temperature)
 print(G_max)
 
-#The time required?
+"""The time required?"""
 Nano_attach_time = Nano_coag_attach_time(pC_NC,C_clay,G_max,Temperature)
 print(Nano_attach_time)
 print(G_max*Nano_attach_time)
@@ -409,7 +432,7 @@ According to the analysis above, the maximum velocity gradient that can be used 
 The analysis of the time required for shear and diffusion to transport the coagulant nanoparticles the last few millimeters suggests that it is this last step that requires the most time. Indeed, the time required for coagulant nanoparticle attachment to raw water particles is comparable to the time that will be required for the next step in the processs, flocculation.
 
 
-### Coagulant attachment mechanism
+## Coagulant attachment mechanism
 * Surface charge neutralization hypothesis
   * coagulant nanoparticles attach to each other
   *
@@ -417,11 +440,87 @@ The analysis of the time required for shear and diffusion to transport the coagu
   * Electronegativity reveals that the aluminum - oxygen bond is more polar than the hydrogen - oxygen bond
   * The bond between a coagulant nanoparticle and a clay surface can potentially be stronger than the bond between a water molecule and the clay surface.
 
+## Design for Mixing
+This is all about deforming the fluid.
+
+### Jet Mixing
+
+In both mixing for the application of coagulant nanoparticles and for flocculation we have the goal of deforming the fluid to facilitate collisions between particles. As engineers we need to design reactors that deform the fluid. There are several approaches
+* coiled tube flocculators (laminar flow)
+* rotating propellers
+* hydraulic jet
+
+Coiled tube flocculators are commonly used by AguaClara Cornell researchers for small laboratory scale (a few mL/s) experiments.
+
+[add equations here for coiled flocculators]
+
+Rotating propellers can either be installed in open tanks or enclosed in pipes. From a mixing and fluids perspective it doesn't make any difference whether the tank is open to the atmosphere or not. The parameters of interest are the rate of fluid deformation and the residence time in the mixing zone.
 
 
-### Transport steps
-* Einstein's diffusion equation
-* Estimate diffusion time scale
-* Kolmogorov length scale
-* Possibly introduce model for shear-diffusion transport of coagulant nanoparticles to clay
-* Provide estimates of the time scales for each of the processes
+<img src="https://github.com/AguaClara/CEE4540_Master/raw/master/AguaClara%20Water%20Treatment%20Plant%20Design/Chapter%203_Rapid%20Mix/Images/Backmix.jpg" width="400">
+
+Figure x.	Open tank, backmix system that uses a relatively large tank with a submerged impeller.  
+
+<img src="https://github.com/AguaClara/CEE4540_Master/raw/master/AguaClara%20Water%20Treatment%20Plant%20Design/Chapter%203_Rapid%20Mix/Images/Inline.jpg" width="400">
+
+Figure x.	Enclosed mix system that uses a relatively small volume.
+
+
+
+Chemical Engineering Science, Vol. 50, No. 12, pp. 1877-1880, 1995
+THE INFLUENCE OF VISCOSITY ON MIXING IN JET REACTORS
+Jo BALDYGA, J. R. BOURNE* and R. V. GHOLAP
+Technisch-Chemisches Laboratorium, ETH-Zentrum, CH-8092 Zurich, Switzerland
+
+$$ \varepsilon_{Centerline} \cong \frac{50 D_{Jet}^3 V_{Jet}^3}{ \left( x - 2 D_{Jet} \right)^4}$$
+
+$$ \varepsilon_{Max} \cong \frac{\left( \frac{50}{\left( 5 \right)^4} \right) V_{Jet}^3}{D_{Jet}}$$
+
+$$ \varepsilon_{Max} \cong \frac{\left( \Pi_{RoundJet} V_{Jet} \right)^3}{D_{Jet}}$$
+
+$$\Pi_{RoundJet} \cong 0.5$$
+
+```python
+def Energy_dissipation_jet_centerline(D_jet,V_jet,x):
+  return (50 * D_jet**3*V_jet**3/(x-2*D_jet)**4).to_base_units()
+
+def Energy_dissipation_jet_max(D_jet,V_jet):
+  return (con.RATIO_JET_ROUND * V_jet)**3/D_jet
+
+V_jet = 1 * u.m/u.s
+D_jet = 0.1 * u.m
+EDR_max = Energy_dissipation_jet_max(D_jet,V_jet)
+x=np.linspace(7,20,24)*D_jet
+fig, ax = plt.subplots()
+ax.plot(x/D_jet,Energy_dissipation_jet_centerline(D_jet,V_jet,x))
+ax.set(xlabel='Jet diameters downstream', ylabel='Energy dissipation rate (W/kg)')
+fig.savefig(imagepath+'Jet_centerline_EDR')
+plt.show()
+```
+
+<img src="https://github.com/AguaClara/CEE4540_Master/raw/master/AguaClara%20Water%20Treatment%20Plant%20Design/Chapter%203_Rapid%20Mix/Images/Jet_centerline_EDR.png" width="400">
+### Orifice Diameter to obtain Target Mixing
+$$ A_{Orifice} \Pi_{vc} = A_{Jet}$$
+
+$$ D_{Orifice} \sqrt{\Pi_{vc}} = D_{Jet}$$
+
+$$ \varepsilon_{Max} \cong \frac{ \left( \Pi_{JetRound} \frac{4Q}{\pi D_{Jet}^2} \right)^3}{D_{Jet}}$$
+
+$$ D_{Orifice} \cong \left( \frac{4 Q \Pi_{JetRound}}{\varepsilon_{Max}^{\frac{1}{3}} \pi} \right)^{\frac{3}{7}} \frac{1}{\sqrt{\Pi_{vc} }}$$
+
+**Off-slide**
+$$\varepsilon_{Max} \cong  \frac{ \left( \Pi_{Jet} \frac{4 Q_{Jet}}{\pi} \right)^3 }{D_{Orifice}^7 \sqrt{\Pi_{vc}^7} }
+$$
+
+
+### Rapid Mix Head Loss
+$$ D_{Orifice} \cong \left( \frac{4 Q \Pi_{JetRound}}{\varepsilon_{Max}^{\frac{1}{3}} \pi} \right)^{\frac{3}{7}}$$
+
+$$V_{Jet} \cong \frac{\left( D_{Jet} \, \varepsilon_{Max} \right)^{\frac{1}{3}}}{\Pi_{JetRound}}$$
+
+$$h_e = \frac{ \left( D_{Jet} \, \varepsilon_{Max} \right)^{\frac{2}{3}}}{ 2g \Pi_{JetRound}^2}$$
+
+$$h_e = \frac{ \left( \frac{4 \Pi_{JetRound} Q \varepsilon_{Max}^2}{\pi} \right)^{\frac{2}{7}}}{2 g \Pi_{JetRound}^2}$$
+
+**Off-slide**
+$$Q = \frac{D_{Jet}^{\frac{7}{3}} \pi \varepsilon_{Max}^{\frac{1}{3}}}{4 \Pi_{Jet}}$$
