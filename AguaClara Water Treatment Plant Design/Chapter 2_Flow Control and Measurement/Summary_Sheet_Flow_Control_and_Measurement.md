@@ -25,12 +25,12 @@ For the most part, [hyperlinks in these documents will contain supplementary inf
 Please use this table to control/command find the sections you are looking for.
 #### **Section 2: Introduction to Flow Control: The Search for Constant Head**    
 **2.1)** Tank with a valve  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - &nbsp;Flow $Q$ and Water Level $h$ as a Function of Time  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - &nbsp;Drain System for a Tank  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - &nbsp;Flow $Q$ and Water Level $h$ as a Function of Time  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - &nbsp;Drain System for a Tank  
 **2.2)** AguaClara Flow Control and Measurement Technologies  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - &nbsp;"Almost Linear" Flow Controller  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - &nbsp;Linear Flow Orifice Meter (LFOM)  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - &nbsp;Linear Chemical Dose Controller (CDC)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - &nbsp;"Almost Linear" Flow Controller  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - &nbsp;Linear Flow Orifice Meter (LFOM)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - &nbsp;Linear Chemical Dose Controller (CDC)  
 **2.3)** Section Summary
 <br>
 <br>

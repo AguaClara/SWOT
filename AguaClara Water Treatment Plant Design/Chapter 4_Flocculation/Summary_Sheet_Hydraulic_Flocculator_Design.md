@@ -25,17 +25,17 @@ For the most part, [hyperlinks in these documents will contain supplementary inf
 Please use this table to control/command find the sections you are looking for.
 #### **Section 4: Hydraulic Flocculators, the AguaClara Approach**    
 **4.1)** Introduction to Hydraulic Flocculation   
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - &nbsp;Collision Potential, $\bar G \theta$, and Energy Dissipation Rate, $\varepsilon$  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - &nbsp;Generating Head Loss with Baffles    
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - &nbsp;Flocculator Efficiency  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - &nbsp;Collision Potential, $\bar G \theta$, and Energy Dissipation Rate, $\varepsilon$  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - &nbsp;Generating Head Loss with Baffles    
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - &nbsp;Flocculator Efficiency  
 **4.2)**  AguaClara Design of Hydraulic, Vertical Flow Flocculators  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - &nbsp;Input Parameters    
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - &nbsp;Designing Physical Dimensions  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - &nbsp;Designing Hydraulic Parameters  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - &nbsp;Input Parameters    
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - &nbsp;Designing Physical Dimensions  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - &nbsp;Designing Hydraulic Parameters  
 **4.3)** Checking the Flocculator Design  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - &nbsp;Total Baffle Spaces Check  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - &nbsp;Average Velocity in the Flocculator Check  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - &nbsp;Residence Time of Water in the Flocculator Check  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - &nbsp;Total Baffle Spaces Check  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - &nbsp;Average Velocity in the Flocculator Check  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - &nbsp;Residence Time of Water in the Flocculator Check  
 
 
 
@@ -76,7 +76,7 @@ To increase $V_t$ and make sedimentation more efficient, floccuation aims to inc
 So our goal in designing a flocculator is to facilitate particle collisions. How can we do this?
 
 ### Collision Potential, $\bar G \theta$, and Energy Dissipation Rate, $\varepsilon$
-**Collision potential $(G \theta)$** is a term with a very straightforward name. It represents the magnitude of potential particle collisions in a fluid. It is a _dimensionless_ parameter which is often used as a performance metric for flocculators; big $G \theta$ values indicate lots of collisions (good) while small values indicate fewer collisions (not so good). AguaClara flocculators usually aim for a collision potential of 37,000. _**WHY DO WE SHOOT FOR 37,000?**_ The value for collision potential is obtained by multiplying $G$, a parameter for fluid shear with units of $\frac{1}{[T]}$, and $\theta$, the residence time of water in the flocculator, with units of $[T]$. $\theta$ is intuitive to measure, calculate, and understand. $G$ is a bit more difficult. First, an intuitive explanation. See the image below, which shows the velocity profile of flowing water.
+**Collision potential $(\bar G \theta)$** is a term with a very straightforward name. It represents the magnitude of potential particle collisions in a fluid. It is a _dimensionless_ parameter which is often used as a performance metric for flocculators; big $G \theta$ values indicate lots of collisions (good) while small values indicate fewer collisions (not so good). AguaClara flocculators usually aim for a collision potential of 37,000, which has worked well in AguaClara plants historically. However, this value may change as research continues. The value for collision potential is obtained by multiplying $\bar G$, a parameter for average fluid shear with units of $\frac{1}{[T]}$, and $\theta$, the residence time of water in the flocculator, with units of $[T]$. $\theta$ is intuitive to measure, calculate, and understand. $\bar G$ is a bit more difficult. First, an intuitive explanation. See the image below, which shows the velocity profile of flowing water.
 
 <center><img src="https://github.com/AguaClara/CEE4540_Master/blob/master/AguaClara%20Water%20Treatment%20Plant%20Design/Chapter%204_Flocculation/Images/G_velocity_profile.jpg?raw=true" width=500></center>
 
@@ -94,7 +94,7 @@ $$\varepsilon = \left[ \frac{W}{Kg} \right]
 = \left[ \frac{m^2}{s^3} \right]
 = \left[ \frac{[L]^2}{[T]^3} \right]$$
 
-There are at least two ways to think about $\varepsilon$. One is through $G$. Imagine that a fluid has _no viscosity_; there is no internal friction caused by fluid flow. No matter how high $G$ becomes, no energy is dissipated. Now image a honey, which has a very high viscosity. Making honey flow fast requires a lot of energy over a short period of time, which means a high energy dissipation rate. This explanation allows us to understand the equation for $\varepsilon$ in terms of $G$ and $\nu$:
+There are at least two ways to think about $\varepsilon$. One is through $G$. Imagine that a fluid has _no viscosity_; there is no internal friction caused by fluid flow. No matter how high $G$ becomes, no energy is dissipated. Now image a honey, which has a very high viscosity. Making honey flow fast requires a lot of energy over a short period of time, which means a high energy dissipation rate. This explanation allows us to understand the equation for $\varepsilon$ in terms of $G$ and $\nu$. [See this paper](https://www.tandfonline.com/doi/pdf/10.1080/19942060.2009.11015267) for the derivation of the following equation:
 
 $$\varepsilon = \nu G^2$$
 
@@ -119,7 +119,7 @@ $$\bar G \theta = \sqrt{\frac{g h_L \theta}{\nu}}$$
 
 ### Generating Head Loss with Baffles
 #### **What are Baffles?**
-Now that we know how to measure collision potential with head loss, we need a way to actually generate head loss. While both major or minor losses can be the design basis, it generally makes more sense to use major losses for low-flow flocculation and minor losses for higher flows, as flocculation with minor losses tends to be more space-efficient. Since this book focuses on town and village-scale water treatment (5 L/S to 120 L/S), we will use minor losses as our design basis.
+Now that we know how to measure collision potential with head loss, we need a way to actually generate head loss. While both major or minor losses can be the design basis, it generally makes more sense to use major losses only for very low-flow flocculation and minor losses for higher flows, as flocculation with minor losses tends to be more space-efficient. Since this book focuses on town and village-scale water treatment (5 L/S to 120 L/S), we will use minor losses as our design basis.
 
 To generate minor losses, we need to create flow expansions. AguaClara does this with **baffles**, which are obstructions in the channel of a flocculator to force the flow to switch directions by 180°. Baffles in AguaClara plants are plastic sheets, and all of the baffles in one flocculator channel are connected to form a **baffle module.** Images below show an AguaClara flocculator and the beginnings of a module.
 
@@ -137,33 +137,51 @@ To generate minor losses, we need to create flow expansions. AguaClara does this
 AguaClara flocculators, like the one pictured above, are called **vertical hydraulic flocculators**, because the baffles force the flow up and down. If the baffles were instead arranged to force the flow side-to-side, the flocculator would be a **horizontal hydraulic flocculator**. AguaClara uses vertical flocculators because they are more efficient when considering plant area. They are deeper than horizontal flocculators, which allows them to have a smaller [plan-view area](https://simple.wikipedia.org/wiki/Plan_view) and thus to be cheaper.  
 
 #### **Finding the Minor Loss of a Baffle**  
-Before beginning this section, it is important to make sure that the physical parameters of the flocculator are well defined. This is done in the following image:
+Before beginning this section, it is important to make sure that the we understand how water flows through a baffled flocculator. This is done in the following image:
 
-<center><img src="https://github.com/AguaClara/CEE4540_Master/blob/master/AguaClara%20Water%20Treatment%20Plant%20Design/Chapter%204_Flocculation/Images/Flocculator_physical_parameters.jpg?raw=true" width=900></center>
+<center><img src="https://github.com/AguaClara/CEE4540_Master/blob/master/AguaClara%20Water%20Treatment%20Plant%20Design/Chapter%204_Flocculation/Images/Flocculator_flow.jpg?raw=true" width=900></center>
+
 
 <br/>
 <br/>
 
-Since baffles are the source of head loss via minor losses, we need to find the minor loss coefficient of one baffle. To do this, we apply fluid mechanics intuition and check it against a computational fluid dynamics (CFD) simulation. Flow around a 90° bend has a vena contracta value of around $\Pi_{vc} = 0.62$ (_**NEED A CITATION ON THIS!!**_). Flow around a 180° bend therefore has a value of $\Pi_{vc, \, baffle} = \Pi_{vc}^2 = 0.384$. This number is roughly confirmed with CFD, as shown in the image below. ***Ahhhhhhhhhhhhhh I need to make sure this is legit***
+Since baffles are the source of head loss via minor losses, we need to find the minor loss coefficient of one baffle. To do this, we apply fluid mechanics intuition and check it against a computational fluid dynamics (CFD) simulation. Flow around a 90° bend has a vena contracta value of around $\Pi_{vc} = 0.62$ (_**NEED A CITATION ON THIS!!**_). Flow around a 180° bend therefore has a value of $\Pi_{vc, \, baffle} = \Pi_{vc}^2 = 0.384$. This number is roughly confirmed with CFD, as shown in the image below.
 
 <center><img src="https://github.com/AguaClara/CEE4540_Master/blob/master/AguaClara%20Water%20Treatment%20Plant%20Design/Chapter%204_Flocculation/Images/CFD_vc_baffle.jpg?raw=true" width=60></center></center>
 
-We can therefore state with reasonable accuracy that, when most contracted, the flow around a baffle goes through 38.4% of the area it does when expanded, or $A_{contracted} = \Pi_{vc, \, baffle} A_{expanded}$. Through the [third form of the minor loss equation](https://github.com/AguaClara/CEE4540_Master/blob/master/AguaClara%20Water%20Treatment%20Plant%20Design/Chapter%201_Fluids%20Review/Summary_Sheet_Fluid_Review.md#minor-losses), $h_e = K_e^{'} \frac{V_{out}^2}{2g}$ and its equation for the minor loss coefficient, $K_e^{'} = \left( \frac{A_{out}}{A_{in}} -1 \right)^2$, we can determine a $K_e^{'}$ for flow around a single baffle:
+We can therefore state with reasonable accuracy that, when most contracted, the flow around a baffle goes through 38.4% of the area it does when expanded, or $A_{contracted} = \Pi_{vc, \, baffle} A_{expanded}$. Through the [third form of the minor loss equation](https://github.com/AguaClara/CEE4540_Master/blob/master/AguaClara%20Water%20Treatment%20Plant%20Design/Chapter%201_Fluids%20Review/Summary_Sheet_Fluid_Review.md#minor-losses), $h_e = K_e \frac{V_{out}^2}{2g}$ and its definition of the minor loss coefficient, $K_e = \left( \frac{A_{out}}{A_{in}} -1 \right)^2$, we can determine a $K_e$ for flow around a single baffle:
 
-$$K_{e, \, baffle}^{'} = \left( \frac{A_{expanded}}{A_{contracted}} -1 \right)^2$$
+$$K_{e, \, baffle} = \left( \frac{A_{expanded}}{A_{contracted}} -1 \right)^2$$
 
-$$K_{e, \, baffle}^{'} = \left( \frac{\rlap{\Big/} A_{expanded}}{\Pi_{vc, \, baffle} \rlap{\Big/} A_{expanded}} -1 \right)^2$$
+$$K_{e, \, baffle} = \left( \frac{\rlap{\Big/} A_{expanded}}{\Pi_{vc, \, baffle} \rlap{\Big/} A_{expanded}} -1 \right)^2$$
 
-$$K_{e, \, baffle}^{'} = \left( \frac{1}{0.384} -1 \right)^2$$
+$$K_{e, \, baffle} = \left( \frac{1}{0.384} -1 \right)^2$$
 
-$$K_{e, \, baffle}^{'} = 2.56$$
+$$K_{e, \, baffle} = 2.56$$
 
-If we use this $K_{e, \, baffle}^{'}$, we must make sure that the assumptions behind it are true. This means that we must make sure that the flow fully expands before it reaches the next baffle and begins to contract again.
-ahhhhhhhhhhh
+This $K_e$ has been used to design many flocculators in AguaClara plants. However, this $K_e$ has not yet been rigorously tested in the field. Therefore it might actually deviate from $2.56$. Research and testing the $K_e$ of a baffle is ongoing, but for now the designs made under the assumption that $K_e = 2.56$ are functioning very well in AguaClara plants.
 
 ### Flocculator Efficiency
+When designing an effective and efficient flocculator, there are two main problems that we seek to avoid:  
 
-_**<span style="color:red">I need some of Monroe's insights to write this section with legitimacy. This section should include, amongst other things, why $\frac{H}{S}$ is important, $\Pi_{\bar \varepsilon}^{\varepsilon_{Max}}$ and it should contain CFD images of flocculators with different $\frac{H}{S}$ ratios. I could write some stuff here, and have it be true, but it would take a lot of leaps of faith. Time is better spent elsewhere until I have a solid understanding </span>**_
+1. Having certain sections in the flocculator with such high local $G$ values that our big, fluffy flocs are sheared apart into smaller flocs.
+2. Having dead space. Dead space means volume within the flocculator that is not being used to facilitate collisions. Dead space occurs after the flow has fully expanded from flowing around a baffle and before it reaches the next baffle.
+
+Fortunately for us, both problems can be quantified with a single ratio:
+
+$$\Pi_{\bar G}^{G_{Max}} = \frac{G_{Max}}{\bar G}$$
+
+ High values of $\Pi_{\bar G}^{G_{Max}}$ occur when one or both of the previous problems is present. If certain sections in the flocculator have very high local $G$ values, then $G_{Max}$ becomes large. If the flocculator has a lot of dead space, then $\bar G$ becomes small. Either way, $\Pi_{\bar G}^{G_{Max}}$ becomes larger.
+
+**Note:** Recall the relationship between $G$ and $\varepsilon$: $G = \sqrt{ \frac{\varepsilon}{\nu} }$. From this relationship, we can see that $G \propto \sqrt{\varepsilon}$. Thus, by defining  $\Pi_{\bar G}^{G_{Max}}$, we can also define a ratio for Max to average energy dissipation rate:
+
+$$\Pi_{\bar \varepsilon}^{\varepsilon_{Max}} = \left( \Pi_{\bar G}^{G_{Max}} \right)^2$$
+
+Therefore, by making our $\Pi_{\bar G}^{G_{Max}}$ as small as possible, we can be sure that our flocculator is efficient, and we no longer have to account for the previously mentioned problems. [A paper by Haarhoff and van der Walt in 2001](https://www.environmental-expert.com/Files/5302/articles/9777/Towardsoptimaldesignparametersforaround-the-end.pdf) uses CFD to show that the minimum $\Pi_{\bar G}^{G_{Max}}$ attainable in a hydraulic flocculator is $\Pi_{\bar G}^{G_{Max}} = \sqrt{2} \approx 1.4$ So how do we achieve flocculator optimization?
+
+
+
+_**<span style="color:red">Work in progress!!</span>**_
 
 <center><img src="https://github.com/AguaClara/CEE4540_Master/blob/master/AguaClara%20Water%20Treatment%20Plant%20Design/Chapter%204_Flocculation/Images/CFD_baffle_image.jpg?raw=true" width=500></center>
 
@@ -211,6 +229,7 @@ The flocculator is more complex to design than the CDC, as it has more details a
       - $H_e$, distance between baffle/obstacle induced flow expansions
       - $n_{obstacles}$, amount of obstacles per baffle space
       - $S$, baffle spacing, distance between baffles
+<center><img src="https://github.com/AguaClara/CEE4540_Master/blob/master/AguaClara%20Water%20Treatment%20Plant%20Design/Chapter%204_Flocculation/Images/Flocculator_physical_parameters.jpg?raw=true" width=900></center>
 
 ### Input Parameters    
 #### **Specify**

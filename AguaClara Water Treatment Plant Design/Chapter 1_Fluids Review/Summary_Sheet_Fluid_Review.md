@@ -25,15 +25,15 @@ Please use this table to control/command find the sections you are looking for.
 
 #### **Section 1: Fluids Review**
 **1.1)** The Bernoulli and Energy Equations  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - &nbsp;The Bernoulli Equation  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - &nbsp;The Energy Equation  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - &nbsp;The Bernoulli Equation  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - &nbsp;The Energy Equation  
 **1.2)** Head Loss  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - &nbsp;Major losses  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - &nbsp;Minor losses  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - &nbsp;Major losses  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - &nbsp;Minor losses  
 **1.3)** Head Loss = Elevation Difference Trick  
 **1.4)** The Orifice Equation  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - &nbsp;Vena Contracta    
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - &nbsp;Origin  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - &nbsp;Vena Contracta    
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - &nbsp;Origin  
 **1.5)** Section Summary
 
 

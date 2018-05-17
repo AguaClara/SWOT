@@ -222,7 +222,7 @@ I suggest putting all effort into the text book. There is some chance that the t
     6. AguaClara flocculators have a Max/ave EDR of 1?!?!?! How can this be true?? That seems impossible in just about any reactor. This again points to my question number 4., do we have any data for how these baffles or baffles with obstacles are performing when compared to our models/predictions?   
     <img src="https://github.com/AguaClara/CEE4540_Master/blob/master/AguaClara%20Water%20Treatment%20Plant%20Design/Chapter%204_Flocculation/Images/Max_ave_EDR_of_1.JPG?raw=true" width=400>    
 
-        - NO. Max/ave EDR is 2 for a well designed hydraulic flocculator. That means that Gmax/Gave is $ \sqrt{2} $   
+        - NO. Max/ave EDR is 2 for a well designed hydraulic flocculator. That means that Gmax/Gave is $\sqrt{2}$   
         - See [Harhoff Figure 8](https://www.environmental-expert.com/Files/5302/articles/9777/Towardsoptimaldesignparametersforaround-the-end.pdf)  where they find the minimum value of Gmax over Gave to be 1.4.
         - The slide that you show was addressing the question of efficiency of energy use for creating collisions. If the Gmax/Gave value is very large, then energy is not being used efficiently. The most energy efficient reactor has a uniform energy dissipation rate throughout the reactor. With a Gmax/Gava of 1.4 we get very close to the ideal efficiency and so we ignore this effect. We previously designed inefficient flocculators with high H/s ratios and thus we used to account for this inefficiency. Now we design all flocculators to be efficient with 3<H/s<6 and thus we can ignore this efficiency factor.
 
