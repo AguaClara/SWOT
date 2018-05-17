@@ -139,15 +139,19 @@ AguaClara flocculators, like the one pictured above, are called **vertical hydra
 #### **Finding the Minor Loss of a Baffle**  
 Before beginning this section, it is important to make sure that the we understand how water flows through a baffled flocculator. This is done in the following image:
 
-<center><img src="https://github.com/AguaClara/CEE4540_Master/blob/master/AguaClara%20Water%20Treatment%20Plant%20Design/Chapter%204_Flocculation/Images/Flocculator_flow.jpg?raw=true" width=900></center>
+<center>
+<img src="https://github.com/AguaClara/CEE4540_Master/blob/master/AguaClara%20Water%20Treatment%20Plant%20Design/Chapter%204_Flocculation/Images/Flocculator_flow.jpg?raw=true" width=400>
+</center>
 
 
 <br/>
 <br/>
 
-Since baffles are the source of head loss via minor losses, we need to find the minor loss coefficient of one baffle. To do this, we apply fluid mechanics intuition and check it against a computational fluid dynamics (CFD) simulation. Flow around a 90° bend has a vena contracta value of around $\Pi_{vc} = 0.62$ (_**NEED A CITATION ON THIS!!**_). Flow around a 180° bend therefore has a value of $\Pi_{vc, \, baffle} = \Pi_{vc}^2 = 0.384$. This number is roughly confirmed with CFD, as shown in the image below.
+Since baffles are the source of head loss via minor losses, we need to find the minor loss coefficient of one baffle. To do this, we apply fluid mechanics intuition and check it against a computational fluid dynamics (CFD) simulation. Flow around a 90° bend has a vena contracta value of around $\Pi_{vc} = 0.62$. Flow around a 180° bend therefore has a value of $\Pi_{vc, \, baffle} = \Pi_{vc}^2 = 0.384$. This number is roughly confirmed with CFD, as shown in the image below.
 
-<center><img src="https://github.com/AguaClara/CEE4540_Master/blob/master/AguaClara%20Water%20Treatment%20Plant%20Design/Chapter%204_Flocculation/Images/CFD_vc_baffle.jpg?raw=true" width=60></center></center>
+<center>
+<img src="https://github.com/AguaClara/CEE4540_Master/blob/master/AguaClara%20Water%20Treatment%20Plant%20Design/Chapter%204_Flocculation/Images/CFD_vc_baffle.jpg?raw=true" width=60>
+</center>
 
 We can therefore state with reasonable accuracy that, when most contracted, the flow around a baffle goes through 38.4% of the area it does when expanded, or $A_{contracted} = \Pi_{vc, \, baffle} A_{expanded}$. Through the [third form of the minor loss equation](https://github.com/AguaClara/CEE4540_Master/blob/master/AguaClara%20Water%20Treatment%20Plant%20Design/Chapter%201_Fluids%20Review/Summary_Sheet_Fluid_Review.md#minor-losses), $h_e = K_e \frac{V_{out}^2}{2g}$ and its definition of the minor loss coefficient, $K_e = \left( \frac{A_{out}}{A_{in}} -1 \right)^2$, we can determine a $K_e$ for flow around a single baffle:
 
@@ -179,11 +183,26 @@ $$\Pi_{\bar \varepsilon}^{\varepsilon_{Max}} = \left( \Pi_{\bar G}^{G_{Max}} \ri
 
 Therefore, by making our $\Pi_{\bar G}^{G_{Max}}$ as small as possible, we can be sure that our flocculator is efficient, and we no longer have to account for the previously mentioned problems. [A paper by Haarhoff and van der Walt in 2001](https://www.environmental-expert.com/Files/5302/articles/9777/Towardsoptimaldesignparametersforaround-the-end.pdf) uses CFD to show that the minimum $\Pi_{\bar G}^{G_{Max}}$ attainable in a hydraulic flocculator is $\Pi_{\bar G}^{G_{Max}} = \sqrt{2} \approx 1.4$ So how do we achieve flocculator optimization?
 
+We define and optimize a performance metric, $\frac{H_e}{S} = \Pi_{HS}$, where $H_e$ is the distance between flow expansions and $S$ is the spacing between baffles. Our main concern is eliminating dead space in the flocculator, and we do this by placing an upper limit on $\frac{H_e}{S}$. To determine this upper limit, we need to find the distance it takes for the flow to fully expand after it has contracted around a baffle. We base this on the rule of thumb for flow expansion: a jet doubles its initial diameter/length once it travels 10 times the distance of its original diameter/length. If this is confusing, refer to the equation and image below:
+
+$$\frac{x}{10} = D - D_0 $$
+
+<center><img src="https://github.com/AguaClara/CEE4540_Master/blob/master/AguaClara%20Water%20Treatment%20Plant%20Design/Chapter%204_Flocculation/Images/Jet_expansion_flocculator.jpg?raw=true" width=600></center>
+
+Using the equation and image above, we can find the distance required for the flow to fully expand around a baffle as a function of baffle spacing $S$. We do this by substituting $D_0 = (0.4 S)$ along with $D = S$ to approximate how much distance, $x = H_e$, the contracted flow has to cover.
+
+$$\frac{H_e}{10} = S - (0.4 S)$$
+$$\frac{H_e}{10} = 0.6 S$$
+$$H_e = 6S$$
+$$\frac{H_e}{S} = 6$$
+
+This is the highest allowable $\Pi_{HS}$ that we can design while ensuring that there is no dead space in the flocculator. 
+
 
 
 _**<span style="color:red">Work in progress!!</span>**_
 
-<center><img src="https://github.com/AguaClara/CEE4540_Master/blob/master/AguaClara%20Water%20Treatment%20Plant%20Design/Chapter%204_Flocculation/Images/CFD_baffle_image.jpg?raw=true" width=500></center>
+<center><img src="https://github.com/AguaClara/CEE4540_Master/blob/master/AguaClara%20Water%20Treatment%20Plant%20Design/Chapter%204_Flocculation/Images/CFD_baffle_image.jpg?raw=true" width=600></center>
 
 <center><img src="https://github.com/AguaClara/CEE4540_Master/blob/master/AguaClara%20Water%20Treatment%20Plant%20Design/Chapter%204_Flocculation/Images/CFD_full_channel.jpg?raw=true" width=700></center>
 
