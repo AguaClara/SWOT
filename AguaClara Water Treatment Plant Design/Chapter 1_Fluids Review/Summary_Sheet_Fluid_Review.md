@@ -270,11 +270,11 @@ Before describing the equation, we must first understand the concept of a [**ven
 
 <center><img src="https://github.com/AguaClara/CEE4540_Master/blob/master/AguaClara%20Water%20Treatment%20Plant%20Design/Chapter%201_Fluids%20Review/Images/Minor_loss_elbow.jpg?raw=true" width=400></center>
 
-The flow contracts as the fluid moves from point 'A' to point 'B.' This happens because the fluid can't make a sharp turn at the corner of the elbow. Instead, the streamline closest to the sharp turn makes a slow, gradual change in direction, as shown in the image. As a result of this gradual turn, the cross-sectional area the fluid is flowing through at point 'B' is less than the cross-sectional area it flows through at points 'A' and 'C'. Written as an equation, $A_{pointB} < A_{pointA} = A_{pointC}$. The term 'vena contracta' describes the phenomenon of contracting flow due to streamlines being unable to make sharp turns. $\Pi_{vc}$ is a ratio between the flow area at the vena contracta, $A_{pointB}$, which is when the flow is *maximally* contracted, and the flow area *before* the contraction, $A_{pointA}$. In the image above, the equation for the vena contracta coefficient would be:
+The flow contracts as the fluid moves from point 'A' to point 'B.' This happens because the fluid can't make a sharp turn at the corner of the elbow. Instead, the streamline closest to the sharp turn makes a slow, gradual change in direction, as shown in the image. As a result of this gradual turn, the cross-sectional area the fluid is flowing through at point 'B' is less than the cross-sectional area it flows through at points 'A' and 'C'. Written as an equation, $A_{csB} < A_{csA} = A_{csC}$. The term 'vena contracta' describes the phenomenon of contracting flow due to streamlines being unable to make sharp turns. $\Pi_{vc}$ is a ratio between the flow area at the vena contracta, $A_{csB}$, which is when the flow is *maximally* contracted, and the flow area *before* the contraction, $A_{csA}$. In the image above, the equation for the vena contracta coefficient would be:
 
-$$\Pi_{vc} = \frac{A_{pointB}}{A_{pointA}}$$  
+$$\Pi_{vc} = \frac{A_{csB}}{A_{csA}}$$  
 
-Note that what this class calls $\Pi_{vc}$ is often referred to as a 'Coefficient of Contraction,' $C_c$, in other engineering courses and settings. When the most extreme turn a streamline must make is 90°, the value of the vena contracta coefficient is close to 0.62. This parameter is in aide_design as `pc.RATIO_VC_ORIFICE`. Though there are many vena contracta coefficient values for different geometries like different turn angles, or sharp vs smooth turns, we will only consider a sharp, 90° turn in this class.
+Note that what this class calls $\Pi_{vc}$ is often referred to as a 'Coefficient of Contraction,' $C_c$, in other engineering courses and settings. When the most extreme turn a streamline must make is 90°, the value of the vena contracta coefficient is close to 0.62. This parameter is in aide_design as `pc.RATIO_VC_ORIFICE`. The vena contracta coefficient value is a function of the flow geometry.
 
 _**A vena contracta coefficient is not a minor loss coefficient.**_ Though the equations for the two both involve contracted and non-contracted areas, these coefficients are not the same. Refer to the flow through a pipe elbow image above. The minor loss coefficient equation uses the areas of points 'B' and 'C,' while the vena contracta coefficient uses the areas of points 'A' and 'B.' Additionally, the equations to calculate the coefficients themselves are not the same. Confusing the two coefficients is common mistake that this paragraph will hopefully help you to avoid.
 
@@ -321,6 +321,8 @@ $$\frac{p_{1}}{\rho g} + z_{1} + \frac{V_{1}^2}{2g} = \frac{p_{2}}{\rho g} + z_{
 2. **Major losses:** Defined as the energy loss due to shear between the walls of the pipe/flow conduit and the fluid. The Darcy-Weisbach equation is used to find major losses in both laminar and turbulent flow regimes. The equation for finding the Darcy friction factor, $\rm{f}$, changes depending on whether the flow is laminar or turbulent. The Moody diagram is a common graphical method for finding $\rm{f}$. During laminar flow, the Hagen-Poiseuille equation, which is just a combination of Darcy-Weisbach, Reynolds number, and ${\rm{f}} = \frac{64}{\rm{Re}}$, can be used
 
 Darcy-Weisbach equation:  
+$$h_{\rm{f}} = {\rm{f}} \frac{L}{D} \frac{V^2}{2g}$$
+For water treatment plant design we tend to use plant flow rate, Q, as our master variable and thus we have.
 $$h_{\rm{f}} = {\rm{f}} \frac{8}{g \pi^2} \frac{LQ^2}{D^5}$$
 
 $\rm{f}$ for laminar flow:
