@@ -196,7 +196,7 @@ $$\frac{H_e}{10} = 0.6 S$$
 $$H_e = 6S$$
 $$\frac{H_e}{S} = 6$$
 
-This is the highest allowable $\Pi_{HS}$ that we can design while ensuring that there is no dead space in the flocculator. 
+This is the highest allowable $\Pi_{HS}$ that we can design while ensuring that there is no dead space in the flocculator.
 
 
 
@@ -248,7 +248,7 @@ The flocculator is more complex to design than the CDC, as it has more details a
       - $H_e$, distance between baffle/obstacle induced flow expansions
       - $n_{obstacles}$, amount of obstacles per baffle space
       - $S$, baffle spacing, distance between baffles
-<center><img src="https://github.com/AguaClara/CEE4540_Master/blob/master/AguaClara%20Water%20Treatment%20Plant%20Design/Chapter%204_Flocculation/Images/Flocculator_physical_parameters.jpg?raw=true" width=900></center>
+<center><img src="https://github.com/AguaClara/CEE4540_Master/blob/master/AguaClara%20Water%20Treatment%20Plant%20Design/Chapter%204_Flocculation/Images/Flocculator_physical_parameters.jpg?raw=true" width=600></center>
 
 ### Input Parameters    
 #### **Specify**
