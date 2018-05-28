@@ -241,3 +241,12 @@ I suggest putting all effort into the text book. There is some chance that the t
     10. How tall should the baffles be? Should there be $S$ distance between the floor of the flocculator and the bottom of a top baffle? How does the 40 cm of head loss affect this for the flow over and around a bottom baffle?
 
         - I think our current design is to have 1.5s of space below the bottom of the upper baffle. My understanding is that there is little performance difference between an opening of 1s and 1.5s. We don't currently have any method of efficiently using the added triangle of water that builds up due to head loss. We have to keep our bottom baffles well below this so that the plant works under low flow conditions when head loss is dramatically reduced. Thus the water in the triangle may be relatively stagnant and we don't assume that the residence time in that triangle is helpful.  
+
+
+
+***
+## Tenth Progress Report: 6/??/2018  
+### Done
+1. Meeting with Monroe, Clare, Zoe, and Fletcher. Discussed the structure of the textbook, design challenges, and work for this summer. Textbook is top priority. I am to continue working on the summary sheets, which are being renamed to `Design` since that is the role that they occupy within the textbook.
+2. Finish standardizing the images for control volume vs streamline notation (arrows vs dotted lines). Red lines imply energy/bernoulli, black is just reference.
+### To Do
