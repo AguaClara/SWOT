@@ -21,6 +21,17 @@
 
 <!-- /TOC -->
 
+```python
+""" importing """
+from aide_design.play import*
+from aguaclara_research.play import*
+import aguaclara_research.floc_model as fm
+import matplotlib.pyplot as plt
+from matplotlib.ticker import FormatStrFormatter
+imagepath = 'AguaClara Water Treatment Plant Design/Chapter 3_Rapid Mix/Images/'
+Temperature = 15*u.degC
+```
+
 ## Introduction
 
 Rapid mix is the term commonly used to describe the processes that occur between the coagulant addition to the raw water and the flocculation tanks. The processes that occur are not well understood and thus design guidelines are empirical.
@@ -44,6 +55,8 @@ Nanoparticle application includes multiple steps that must occur before the raw 
 1. The precipitating $Al_{13}$ molecules aggregates with other nearby $Al_{13}$ molecules to form aluminum hydroxide nanoparticles.
 1. Molecular diffusion and fluid shear cause the Al nanoparticles,  dissolved species, inorganic particles (such as clay) and organic particles (such as viruses, bacteria, and protozoans) to collide and potential attach.
 
+These multiple steps cover a wide range of length scales and it is not clear at the onset which processes might be the rate limiting steps. We will develop time scale estimates for several of these steps to help identify which processes will likely require the most attention to design.   
+
 <img src="https://github.com/AguaClara/CEE4540_Master/raw/master/AguaClara%20Water%20Treatment%20Plant%20Design/Chapter%203_Rapid%20Mix/Images/rapid%20mix%20macro%20to%20nano%20scale.png" width="800">
 
 Figure x.
@@ -60,17 +73,181 @@ Figure x.
 ## Length and time scales for each of the processes
 Let's begin by describing the coagulant injection for a 60 L/s plant. We will use a linear flow orifice meter with 20 cm of head loss.
 
+```python
+Q_plant = 60 * u.L/u.s
+HL_LFOM = 20 * u.cm
+Pi_LFOM_safety = 1.2
+SDR_LFOM = 26
+from aide_design.unit_process_design import lfom as lfom
+ND_LFOM = lfom.nom_diam_lfom_pipe(Q_plant,HL_LFOM)
+print(ND_LFOM, '(',ND_LFOM.to(u.cm), ')')
+
+L_flow = pipe.ID_SDR(ND_LFOM,SDR_LFOM)
+L_flow
+V_lfom = (Q_plant/pc.area_circle(pipe.ID_SDR(ND_LFOM,SDR_LFOM))).to_base_units()
+print(V_lfom)
+```
+
+The LFOM requires a 16 inch diameter pipe. How long will it take for turbulent eddies to mix the coagulant across the area of the pipe? We will use a rule of thumb that the velocity of the largest eddies is about 10% of the mean velocity. We can use the eddy velocity to estimate how long it will take for an eddy to cross the diameter of the pipe.
+
+We will eventually develop designs for hydraulic devices to accomplish the multiple steps of transporting coagulant nanoparticles to interactions with dissolved and suspended contaminants. Initially we will assume that a design has been created that results in an energy dissipation rate of $1\frac{W}{kg}$.
+
+The smallest scale that
+
+We can estimate the characteristic velocity of any size of eddy based on the assumption that the rate of loss of energy
+
+| length scale | Length | Time | Velocity |
+| - | - | - | - |
+|largest eddies | flow dimension perpendicular to the mean velocity |  | |
+
+$\epsilon \sim \frac{u^3}{L}$
+
 
 ```python
-""" importing """
-from aide_design.play import*
-from aguaclara_research.play import*
-import aguaclara_research.floc_model as fm
-import matplotlib.pyplot as plt
-from matplotlib.ticker import FormatStrFormatter
-imagepath = 'AguaClara Water Treatment Plant Design/Chapter 3_Rapid Mix/Images/'
-Temperature = 15*u.degC
-pc.viscosity_kinematic(Temperature)
+
+V_lfom = (Q_plant/pc.area_circle(pipe.ID_SDR(ND_LFOM,SDR_LFOM))).to_base_units()
+print(V_lfom)
+t_large_scale_mix = (pipe.ID_SDR(ND_LFOM,SDR_LFOM)/(0.1*V_lfom)).to_base_units()
+print(t_large_scale_mix)
+```
+The smallest scale at which inertia containing eddies causing mixing is set by the final damping of inertia by viscosity. Turbulence occurs when fluid inertia is too large to be damped by viscosity. The ratio of inertia to viscosity is given by the Reynolds number.
+
+$${\rm{Re}} = \frac{VD}{\nu}$$
+Flows with high Reynolds numbers are turbulent (inertia dominated) and with low Reynolds are laminar (viscosity dominated). The transition Reynolds number is a function of the flow geometry and the velocity and length scale that are used to characterize the flow. In all turbulent flows there is a length scale at which inertia finally loses to viscosity. The scale where viscosity wins is some multiple of the Kolmogorov length scale, which is defined as:
+
+$$\eta_K = \left( \frac{\nu^3}{\varepsilon} \right)^{\frac{1}{4}}$$
+
+where $\eta_K$ is the Kolmogorov length scale. At the Kolmogorov length scale viscosity completely dampens the inertia of the eddies and effectively "kills" the turbulence.
+
+The length scale at which most of the kinetic energy contained in the small eddies is dissipated by viscosity is the inner viscous length scale, $\lambda_v$, which is about [50 times larger than](http://dimotakis.caltech.edu/pdf/Dimotakis_JFM2000.pdf) the Kolmogorov length scale. Thus we have
+
+$$\lambda_\nu = \Pi_{K\nu}\left( \frac{\nu^3}{\varepsilon} \right)^{\frac{1}{4}}$$
+where $\Pi_{K\nu} = 50$
+```python
+EDR_array = np.logspace(0,4,num=50)*u.mW/u.kg
+Temperature = 20*u.degC
+fm.RATIO_KOLMOGOROV
+def Inner_viscous(EDR, Temperature):
+	return fm.RATIO_KOLMOGOROV * fm.eta_kolmogorov(EDR, Temperature)
+
+fig, ax = plt.subplots()
+ax.semilogx(EDR_array.to(u.mW/u.kg),Inner_viscous(EDR_array, Temperature).to(u.mm))
+ax.yaxis.set_major_formatter(FormatStrFormatter('%.f'))
+ax.xaxis.set_major_formatter(FormatStrFormatter('%.f'))
+ax.set(xlabel='Energy dissipation rate (W/kg)', ylabel='Inner viscous length scale (mm)')
+ax.text(30, 6, 'Eddies cause mixing', fontsize=12,rotation=-30)
+ax.text(1, 5, 'Shear and diffusion cause mixing', fontsize=12,rotation=-30)
+fig.savefig(imagepath+'Inner_viscous_vs_EDR')
+plt.show()
+```
+<img src="https://github.com/AguaClara/CEE4540_Master/raw/master/AguaClara%20Water%20Treatment%20Plant%20Design/Chapter%203_Rapid%20Mix/Images/Inner_viscous_vs_EDR.png" width="400">
+
+Figure x. Eddies can cause fluid mixing down to the scale of a few millimeters for energy dissipation rates used in rapid mix units and flocculators.
+
+We are searching for the rate limiting step in the mixing process as we transition from the scale of the flow down to the scale of the coagulant nanoparticles. We can estimate the time required for eddies to mix at their length scales by assuming that the eddies pass all of their energy to smaller scales in the time it takes for an eddy to travel this distance equal to the length scale of the eddy. This time is known as the *[eddy turnover time](http://ceeserver.cee.cornell.edu/eac20/cee637/handouts/TURBFLOW_1.pdf)*.
+
+$$T_{eddy} \sim \frac{L_{eddy}}{u_{eddy}} $$
+
+The rate of energy loss to smaller scales is
+$$ \epsilon \sim\frac{u_{eddy}^2}{T_{eddy}} $$
+
+Combining the two equations
+$$ \epsilon \sim\frac{u_{eddy}^3}{L_{eddy}} $$
+
+We can use this equation to estimate the eddy velocity given an energy dissipation rate.
+$$u_{eddy} \sim \left( \epsilon \, L_{eddy} \right)^\frac{1}{3} $$
+Now we can solve for the eddy turnover time which is a measure of the mixing time at the eddy scale.
+
+$$T_{eddy} \sim \frac{L_{eddy}}{\left( \epsilon \, L_{eddy} \right)^\frac{1}{3}} $$
+
+$$T_{eddy} \sim \left( \frac{L_{eddy}^2}{ \epsilon }\right)^\frac{1}{3} $$
+
+We can plot the eddy turnover time as a function of scale from the inner viscous length scale up to the scale of the flow.
+```python
+EDR_graph = np.array([0.01,0.1,1,10 ])*u.W/u.kg
+Temperature
+"""Use the highest EDR to estimate the smallest length scale"""
+Inner_viscous_graph = Inner_viscous(EDR_graph[2], Temperature)
+Inner_viscous_graph
+L_flow = 0.5*u.m
+L_scale = np.logspace(np.log10(Inner_viscous_graph.magnitude),np.log10(L_flow.magnitude),50)
+L_scale
+fig, ax = plt.subplots()
+for i in range(len(EDR_graph)):
+  ax.semilogx(L_scale,((L_scale**2/EDR_graph[i])**(1/3)).to_base_units())
+
+ax.legend(EDR_graph)
+
+#ax.yaxis.set_major_formatter(FormatStrFormatter('%.f'))
+#ax.xaxis.set_major_formatter(FormatStrFormatter('%.f'))
+ax.set(xlabel='Length (m)', ylabel='Eddy turnover time (s)')
+fig.savefig(imagepath+'Eddy_turnover_time')
+plt.show()
+```
+<img src="https://github.com/AguaClara/CEE4540_Master/raw/master/AguaClara%20Water%20Treatment%20Plant%20Design/Chapter%203_Rapid%20Mix/Images/Eddy_turnover_time.png" width="400">
+
+Figure x. Eddy turnover times as a function of length scale for a range of energy dissipation rates.
+
+The eddy turnover times are longest for the largest eddies and this analysis suggests that it only takes a few seconds for turbulent eddies to mix from the scale of the flow down to the inner viscous length scale.
+
+This large scale mixing time is critical for the design of water treatment plants where after coagulant addition the flow is split into multiple treatment trains. In this case it is critical that the coagulant be mixed equally between all of the treatment trains and thus the mixing times shown in the previous graph represent a minimum time between where the coagulant is added and where the flow is divided into the parallel treatment trains.
+
+##### Example problem: Energy dissipation rate in a straight pipe
+A water treatment plant that is treating 120 L/s of water injects the coagulant into the middle of the pipe that delivers the raw water to the plant and then splits the flow into 2 parallel treatment trains for subsequent flocculation. Estimate the minimum distance between the injection point and the flow split. You may assume the pipe diameter was selected to have less than 10 cm  of head loss per meter of pipe length.
+
+Solution scheme
+1) Use straight pipe head loss equations to estimate the size of the pipe
+1) Round up to the nearest available pipe size that meets the head loss criteria
+1) Calculate the actual head Loss
+$$ \epsilon = \frac{gh_{\rm{f}}}{\theta} $$
+
+The residence time can be expressed as a function of Length and velocity.
+$$ \theta = \frac{L}{V}  $$
+
+$$h_{\rm{f}} = {\rm{f}} \frac{L}{D} \frac{V^2}{2g}$$
+
+Combining the 3 previous equations we obtain the energy dissipation rate for pipe flow
+$$ \epsilon = \frac{\rm{f}}{2} \frac{V^3}{D} $$
+
+For the case of laminar flow in a straight pipe we have
+
+$$\rm{f} = \frac{64}{Re}$$
+
+and thus the energy dissipation rate in a straight pipe under conditions of laminar flow is
+$$ \epsilon =\frac{32}{Re}  \frac{V^3}{D} $$
+
+We can combine the equation that estimates the largest eddy velocity and the
+$$  \epsilon = \frac{\rm{f}}{2} \frac{V^3}{D}  \sim\frac{u_{eddy}^3}{L_{eddy}} $$
+
+Solve for the ratio of the eddy velocity to the mean flow velocity and note that the length scale for the largest eddy is the diameter of the pipe.
+
+$$ N_{D_{pipe}} \sim \frac{V}{u_{eddy}} \sim \left(\frac{2}{\rm{f}} \right)^\frac{1}{3} $$
+
+Where $N_{D_{pipe}}$ is the distance in number of pipe diameters downstream of the injection point where complete mixing will have occurred. The velocity ratio can be used to estimate the distance required for mixing perpendicular to the flow direction in a straight pipe.
+
+#### Design challenge
+Estimate the minimum distance between the injection point and the location where the flow is split into two treatment trains for a 16 inch nominal pipe diameter SDR 26 with a flow of 120 L/s. The pipe is PVC. The water temperature is $0^{\circ}C$.
+
+```python
+T_water=0*u.degC
+Pipe_roughness = mat.PIPE_ROUGH_PVC
+Pipe_roughness
+Nu_water = pc.viscosity_kinematic(T_water)
+Q_pipe = 120 * u.L/u.s
+ND_pipe = 16*u.inch
+SDR_pipe = 26
+ID_pipe = pipe.ID_SDR(ND_pipe,SDR_pipe)
+f_pipe = pc.fric(Q_pipe,ID_pipe,Nu_water,Pipe_roughness)
+N_pipe_diameters = (2/f_pipe)**(1/3)
+N_pipe_diameters
+"""The minimum length for mixing is thus"""
+L_mixing = ID_pipe*N_pipe_diameters
+print('The minimum distance required for mixing across the diameter of the pipe is ',L_mixing.to_base_units())
+```
+The previous analysis provides a minimum distance for sufficient mixing so that equal mass flux of coagulant will end up in both treatment trains. This assumes that the coagulant was injected in the pipe centerline. Injection at the wall of the pipe is a poor practice and would require many more pipe diameters because it takes significant time for the coagulant to be mixed out of the slower fluid at the wall.
+What about {{L_mixing}}
+
+```python
 Mix_HRT = np.array([0.5,15,25,35,85])*u.s
 Mix_G = np.array([4000,1500,950,850,750])/u.s
 Mix_CP = np.multiply(Mix_HRT, np.sqrt(Mix_G))
@@ -91,27 +268,9 @@ plt.show()
 Figure x. Mechanical rapid mix units use a wide range of velocity gradients and residence times.
 
 ```python
-Q_plant = 60 * u.L/u.s
-HL_LFOM = 20 * u.cm
-Pi_LFOM_safety = 1.2
-SDR_LFOM = 26
-from aide_design.unit_process_design import lfom as lfom
-ND_LFOM = lfom.nom_diam_lfom_pipe(Q_plant,HL_LFOM)
-print(ND_LFOM, '(',ND_LFOM.to(u.cm), ')')
-
-pipe.ID_SDR(ND_LFOM,SDR_LFOM)
-V_lfom = (Q_plant/pc.area_circle(pipe.ID_SDR(ND_LFOM,SDR_LFOM))).to_base_units()
-print(V_lfom)
 
 ```
-The LFOM requires a 16 inch diameter pipe. How long will it take for turbulent eddies to mix the coagulant across the area of the pipe? We will use a rule of thumb that the velocity of the largest eddies is about 10% of the mean velocity. We can use the eddy velocity to estimate how long it will take for an eddy to cross the diameter of the pipe.
-```python
 
-V_lfom = (Q_plant/pc.area_circle(pipe.ID_SDR(ND_LFOM,SDR_LFOM))).to_base_units()
-print(V_lfom)
-t_large_scale_mix = (pipe.ID_SDR(ND_LFOM,SDR_LFOM)/(0.1*V_lfom)).to_base_units()
-print(t_large_scale_mix)
-```
 The time required for mixing at the scale of the flow in the plant is thus accomplished in a few seconds. This ends up being the fastest part of the transport of the coagulant nanoparticles on their way to attachment to the clay particles.
 
 Next we will determine a typical flow rate of coagulant. **Aluminum** concentrations for polyaluminum chloride (PACl) typically range from 1 to 10 mg/L. The maximum PACl stock solution concentration is about 70 g/L as **Al**.
@@ -140,39 +299,8 @@ The next step is turbulent eddy shuffling of the fluid packets. Turbulent eddies
 1. The turbulent eddies shuffle the fluid packets down to the scale of the smallest eddies. (We need to figure out what this scale is!)
 1. Fluid deformation (shear) and molecular diffusion cause Al nanoparticles to collide with inorganic particles
 
-Turbulence occurs when fluid inertia is too large to be damped by viscosity. The ratio of inertia to viscosity is given by the Reynolds number.
 
-$${\rm{Re}} = \frac{VD}{\nu}$$
-Flows with high Reynolds numbers are turbulent (inertia dominated) and with low Reynolds
-are laminar (viscosity dominated). The transition Reynolds number is a function of the flow geometry and the velocity and length scale that are used to characterize the flow. In all turbulent flows there is a length scale at which inertia finally loses to viscosity. The scale where viscosity wins is some multiple of the Kolmogorov length scale, which is defined as:
 
-$$\eta_K = \left( \frac{\nu^3}{\varepsilon} \right)^{\frac{1}{4}}$$
-
-where $\eta_K$ is the Kolmogorov length scale. At the Kolmogorov length scale viscosity completely dampens the inertia of the eddies and effectively "kills" the turbulence.
-
-The length scale at which most of the kinetic energy contained in the small eddies is dissipated by viscosity is the inner viscous length scale, $\lambda_v$, which is about [50 times larger than](http://dimotakis.caltech.edu/pdf/Dimotakis_JFM2000.pdf) the Kolmogorov length scale. Thus we have
-
-$$\lambda_\nu = \Pi_{K\nu}\left( \frac{\nu^3}{\varepsilon} \right)^{\frac{1}{4}}$$
-where $\Pi_{K\nu} = 50$
-```python
-EDR = np.logspace(0,4,num=50)*u.mW/u.kg
-Temperature = 20*u.degC
-fm.RATIO_KOLMOGOROV
-Inner_viscous = fm.RATIO_KOLMOGOROV * fm.eta_kolmogorov(EDR, Temperature)
-
-fig, ax = plt.subplots()
-ax.semilogx(EDR.to(u.mW/u.kg),Inner_viscous.to(u.mm))
-ax.yaxis.set_major_formatter(FormatStrFormatter('%.f'))
-ax.xaxis.set_major_formatter(FormatStrFormatter('%.f'))
-ax.set(xlabel='Energy dissipation rate (W/kg)', ylabel='Inner viscous length scale (mm)')
-ax.text(30, 6, 'Eddies cause mixing', fontsize=12,rotation=-30)
-ax.text(1, 5, 'Shear and diffusion cause mixing', fontsize=12,rotation=-30)
-fig.savefig(imagepath+'Inner_viscous_vs_EDR')
-plt.show()
-```
-<img src="https://github.com/AguaClara/CEE4540_Master/raw/master/AguaClara%20Water%20Treatment%20Plant%20Design/Chapter%203_Rapid%20Mix/Images/Inner_viscous_vs_EDR.png" width="400">
-
-Figure x. Eddies can cause fluid mixing down to the scale of a few millimeters for energy dissipation rates used in rapid mix units and flocculators.
 
 ### Length scales of coagulant nanoparticles and clay
 
