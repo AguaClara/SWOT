@@ -252,3 +252,5 @@ I suggest putting all effort into the text book. There is some chance that the t
 
 ### To Do
 1. Re do the opening lines of the summary sheets, which are now to be called the 'design' section of textbooks
+
+2. Get a better reference for the b = 0.107s jet expansion. Gerhart Jirka's notes are the basis for this, but I think we need a better reference than one of Monroe's powerpoints

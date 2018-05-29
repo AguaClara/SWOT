@@ -77,7 +77,7 @@ To increase $V_t$ and make sedimentation more efficient, floccuation aims to inc
 So our goal in designing a flocculator is to facilitate particle collisions. How can we do this?
 
 ### Collision Potential, $\bar G \theta$, and Energy Dissipation Rate, $\varepsilon$
-**Collision potential $(\bar G \theta)$** is a term with a very straightforward name. It represents the magnitude of potential particle collisions in a fluid. It is a _dimensionless_ parameter which is often used as a performance metric for flocculators; big $G \theta$ values indicate lots of collisions (good) while small values indicate fewer collisions (not so good). <font color="red">AguaClara flocculators usually aim for a collision potential of 37,000</font>, which has worked well in AguaClara plants historically. However, this value may change as research continues. The value for collision potential is obtained by multiplying $\bar G$, a parameter for average fluid shear with units of $\frac{1}{[T]}$, and $\theta$, the residence time of water in the flocculator, with units of $[T]$. $\theta$ is intuitive to measure, calculate, and understand. $\bar G$ is a bit more difficult. First, an intuitive explanation. See the image below, which shows the velocity profile of flowing water.
+**Collision potential $(\bar G \theta)$** is a term with a very straightforward name. It represents the magnitude of potential particle collisions in a fluid. It is a _dimensionless_ parameter which is often used as a performance metric for flocculators; big $\bar G \theta$ values indicate lots of collisions (good) while small values indicate fewer collisions (not so good). <font color="red">AguaClara flocculators usually aim for a collision potential of $\bar G \theta = 37,000$</font>, which has worked well in AguaClara plants historically. However, this value may change as research continues. The value for collision potential is obtained by multiplying $\bar G$, a parameter for average fluid shear with units of $\frac{1}{[T]}$, and $\theta$, the residence time of water in the flocculator, with units of $[T]$. $\theta$ is intuitive to measure, calculate, and understand. $\bar G$ is a bit more difficult. First, an intuitive explanation. See the image below, which shows the velocity profile of flowing water.
 
 <center><img src="https://github.com/AguaClara/CEE4540_Master/blob/master/AguaClara%20Water%20Treatment%20Plant%20Design/Chapter%204_Flocculation/Images/G_velocity_profile.jpg?raw=true" width=500></center>
 
@@ -120,7 +120,7 @@ $$\bar G \theta = \sqrt{\frac{g h_L \theta}{\nu}}$$
 
 ### Generating Head Loss with Baffles
 #### **What are Baffles?**
-Now that we know how to measure collision potential with head loss, we need a way to actually generate head loss. While both major or minor losses can be the design basis, it generally makes more sense to use major losses only for very low-flow flocculation and minor losses for higher flows, as flocculation with minor losses tends to be more space-efficient. Since this book focuses on town and village-scale water treatment (5 L/S to 120 L/S), we will use minor losses as our design basis.
+Now that we know how to measure collision potential with head loss, we need a way to actually generate head loss. While both major or minor losses can be the design basis, it generally makes more sense to use major losses only for very low-flow flocculation (lab-scale) and minor losses for higher flows, as flocculation with minor losses tends to be more space-efficient. Since this book focuses on town and village-scale water treatment (5 L/S to 120 L/S), we will use minor losses as our design basis.
 
 To generate minor losses, we need to create flow expansions. AguaClara does this with **baffles**, which are obstructions in the channel of a flocculator to force the flow to switch directions by 180°. Baffles in AguaClara plants are plastic sheets, and all of the baffles in one flocculator channel are connected to form a **baffle module.** Images below show an AguaClara flocculator and the beginnings of a module.
 
@@ -184,9 +184,13 @@ $$\Pi_{\bar G}^{G_{Max}} = \frac{G_{Max}}{\bar G}$$
 
 $$\Pi_{\bar \varepsilon}^{\varepsilon_{Max}} = \left( \Pi_{\bar G}^{G_{Max}} \right)^2$$
 
-Therefore, by making our $\Pi_{\bar G}^{G_{Max}}$ as small as possible, we can be sure that our flocculator is efficient, and we no longer have to account for the previously mentioned problems. [A paper by Haarhoff and van der Walt in 2001](https://www.environmental-expert.com/Files/5302/articles/9777/Towardsoptimaldesignparametersforaround-the-end.pdf) uses CFD to show that the minimum $\Pi_{\bar G}^{G_{Max}}$ attainable in a hydraulic flocculator is $\Pi_{\bar G}^{G_{Max}} = \sqrt{2} \approx 1.4$ So how do we achieve flocculator optimization?
+Therefore, by making our $\Pi_{\bar G}^{G_{Max}}$ as small as possible, we can be sure that our flocculator is efficient, and we no longer have to account for the previously mentioned problems. [A paper by Haarhoff and van der Walt in 2001](https://www.environmental-expert.com/Files/5302/articles/9777/Towardsoptimaldesignparametersforaround-the-end.pdf) uses CFD to show that the minimum $\Pi_{\bar G}^{G_{Max}}$ attainable in a hydraulic flocculator is $\Pi_{\bar G}^{G_{Max}} = \sqrt{2} \approx 1.4$, which means that $\Pi_{\bar \varepsilon}^{\varepsilon_{Max}} = \left( \Pi_{\bar G}^{G_{Max}} \right)^2 \approx 2$. So how do we achieve flocculator optimization?
 
-We define and optimize a performance metric, $\frac{H_e}{S} = \Pi_{HS}$, where $H_e$ is the distance between flow expansions and $S$ is the spacing between baffles. Our main concern is eliminating dead space in the flocculator, and we do this by placing an upper limit on $\frac{H_e}{S}$. To determine this upper limit, we need to find the distance it takes for the flow to fully expand after it has contracted around a baffle. We base this on the rule of thumb for flow expansion: a jet doubles its initial diameter/length once it travels 10 times the distance of its original diameter/length. If this is confusing, refer to the equation and image below:
+We define and optimize a performance metric:
+
+$$\frac{H_e}{S} = \Pi_{HS}$$
+
+Where $H_e$ is the distance between flow expansions in the flocculator and $S$ is the spacing between baffles. Since $G_{Max}$ is determined by the fluid mechanics of flow around a baffle, our main concern is eliminating dead space in the flocculator. We do this by placing an upper limit on $\frac{H_e}{S}$. To determine this upper limit, we need to find the distance it takes for the flow to fully expand after it has contracted around a baffle. We base this on the rule of thumb for flow expansion, _**<font color="red">RESEARCHED BY GERHART JIRKA FIND A REFERENCE THAT'S BETTER THAN ONE OF MONROE'S POWERPOINTS</font>**_: a jet doubles its initial diameter/length once it travels 10 times the distance of its original diameter/length. If this is confusing, refer to the equation and image below:
 
 $$\frac{x}{10} = D - D_0 $$
 
@@ -201,13 +205,16 @@ $$\frac{H_e}{S} = 6$$
 
 This is the highest allowable $\Pi_{HS}$ that we can design while ensuring that there is no dead space in the flocculator.
 
-
-
-_**<span style="color:red">Work in progress!!</span>**_
-
 <center><img src="https://github.com/AguaClara/CEE4540_Master/blob/master/AguaClara%20Water%20Treatment%20Plant%20Design/Chapter%204_Flocculation/Images/CFD_baffle_image.jpg?raw=true" width=600></center>
 
 <center><img src="https://github.com/AguaClara/CEE4540_Master/blob/master/AguaClara%20Water%20Treatment%20Plant%20Design/Chapter%204_Flocculation/Images/CFD_full_channel.jpg?raw=true" width=700></center>
+
+</br>
+</br>
+
+In order to have a robust design process for a baffle module, we need to have some flexibility in the $\Pi_{HS} = \frac{H_e}{S}$ ratio. Since we found the highest allowable $\Pi_{HS}$ previously, we will
+
+_**<span style="color:red">Work in progress!!</span>**_
 
 #### **Obstacles**
 Knowing that efficient flocculators require an $\frac{H}{S}$ ratio that lies between 3 and 6, we need to understand how that impacts the flocculator design. Keeping $\frac{H}{S}$ between two specific values limits the options for baffle spacing and quantity, due to the flocculator having certain size constraints before beginning the design of the baffles. These limitations also place an upper limit on the amount of head loss that a baffled flocculator can generate, since the number of baffles is limited and baffles are what cause head loss. This is unfortunate, it means that baffled flocculators under certain size specifications can't be designed to generate certain values of $\bar \varepsilon$ and $\bar G$ _while remaining efficient_.
