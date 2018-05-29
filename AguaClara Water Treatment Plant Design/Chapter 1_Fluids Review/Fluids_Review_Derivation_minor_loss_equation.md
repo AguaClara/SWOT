@@ -1,6 +1,6 @@
 # Deriving the Minor Loss Equations
 
-This document contains the derivation of the minor loss equation using the following image as a reference. The derivation begins with a slightly simplified energy equation, in which $h_P$ and $h_T$ have been eliminated.
+This document contains the derivation of the minor loss equation using the following image as a reference. The derivation begins with a slightly simplified energy equation across the control volume show. Our energy equation begins with $h_P$ and $h_T$ having been eliminated.
 
 <center><img src="https://github.com/AguaClara/CEE4540_Master/blob/master/AguaClara%20Water%20Treatment%20Plant%20Design/Chapter%201_Fluids%20Review/Images/Minor_loss_pipe.jpg?raw=true" width=600></center>
 

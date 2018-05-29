@@ -249,4 +249,6 @@ I suggest putting all effort into the text book. There is some chance that the t
 ### Done
 1. Meeting with Monroe, Clare, Zoe, and Fletcher. Discussed the structure of the textbook, design challenges, and work for this summer. Textbook is top priority. I am to continue working on the summary sheets, which are being renamed to `Design` since that is the role that they occupy within the textbook.
 2. Finish standardizing the images for control volume vs streamline notation (arrows vs dotted lines). Red lines imply energy/bernoulli, black is just reference.
+
 ### To Do
+1. Re do the opening lines of the summary sheets, which are now to be called the 'design' section of textbooks

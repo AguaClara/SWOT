@@ -13,54 +13,40 @@ Such that:
 $\frac{d\rlap{-}V}{dt}$ = rate of change in volume of solution in the tank  
 $\frac{dh}{dt}$ = rate of change in height of water (hypochlorite solution) level with time  
 
-Our other equation for flow is the minor loss equation. The only significant minor loss in this system occurs in the almost-closed valve that is dripping the hypochlorite solution:
+Our other equation for flow is the head loss equation. Since major losses are negligible for a short pipe-low flow rate system, we only need to consider minor losses. The only real minor loss in this system occurs in the almost-closed valve that is dripping the hypochlorite solution. However, we will also use the head loss trick. Therefore, the total driving head of the system $h$ is equal to the minor losses:
 
-$$h_e = K_e \frac{Q^2}{2gA_{Valve}^2}$$
+$$h = h_e = \left( \sum K_e \right) \frac{Q^2}{2gA_{Valve}^2}$$
 
 Bear in mind that this is the second form of the minor loss equation as described in [this previous derivation](https://github.com/AguaClara/CEE4540_DC/blob/master/AguaClara%20Water%20Treatment%20Plant%20Design/Chapter%202_Flow%20Control%20and%20Measurement/Images/Derivation_minor_loss_equation.md "Minor loss equation derivation"). Rearranging the minor loss equation to solve for $Q$, it looks like this:
 
-$$Q = A_{Valve} \sqrt{\frac{2 h_e g}{K_e}}$$  
-
-***
-## Important Clarification
-We are equating the driving head of the system, $h$ (or $h_0$ at time $t=0$), to the head loss $h_L$. To understand how this is possible, consider the simplified energy equation for this scenario, where the elevation difference of the water drives it through the valve:
-
-$h = \frac{V^2}{2g} + h_L$  since major losses are negligible in this system, $h_L = h_e$  
-$h = \frac{V^2}{2g} + h_e$  
-$h = \frac{V^2}{2g} + \left( \sum K_e \right) \frac{V^2}{2g}$  
-From here we simply incorporate the flow term, $\frac{V^2}{2g}$, to the minor loss equation  
-$h = \left( \sum K_e + 1 \right) \frac{V^2}{2g}$  
-$h = h_e$   
-
-To summarize, the head loss is not actually equivalent to all of the driving head. We are putting the term for kinetic energy of the water at the end of our control volume, $\frac{V^2}{2g}$, into the minor loss equation, $\left( \sum K_e \right) \frac{V^2}{2g}$ to simplify the problem. This is known as a 'control volume trick.' As a result of including the kinetic energy into the minor loss term, the sum of minor loss coefficients $\sum K_e$ is 1 more than it would be without this trick.
+$$Q = A_{Valve} \sqrt{\frac{2 h_e g}{\sum K_e}}$$  
 
 
-***
 
-With that clarification, we can set both equations for $Q$ equal to each other and move them both to one side:
+Now we can set both equations for $Q$ equal to each other and move them both to one side:
 
-$$A_{Tank} \frac{dh}{dt} + A_{Valve} \sqrt{\frac{2gh}{K_e}} = 0$$
+$$A_{Tank} \frac{dh}{dt} + A_{Valve} \sqrt{\frac{2gh}{\sum K_e}} = 0$$
 
 
 From here, calculus and equation substitution dominate the derivation. Separating the variables of the equation immediately above, we get the following integral:
 
-$$\frac{ -A_{Tank}}{{A_{Valve}} \sqrt{\frac{2g}{K_e}} }   \int \limits_{h_0}^h \frac{dh}{\sqrt h} = \int \limits_0^t {dt}$$
+$$\frac{ -A_{Tank}}{{A_{Valve}} \sqrt{\frac{2g}{\sum K_e}} }   \int \limits_{h_0}^h \frac{dh}{\sqrt h} = \int \limits_0^t {dt}$$
 
 Which, when integrated, yields:
 
-$$\frac{ -A_{Tank}}{A_{Valve} \sqrt{ \frac{2g}{K_e}} } \cdot 2 \left( \sqrt{h} - \sqrt{h_0} \right) = t$$
+$$\frac{ -A_{Tank}}{A_{Valve} \sqrt{ \frac{2g}{\sum K_e}} } \cdot 2 \left( \sqrt{h} - \sqrt{h_0} \right) = t$$
 
 And solved for $\sqrt{h}$ returns:
 
-$$\sqrt h  = \sqrt{h_0} - t \frac{A_{Valve}}{2 A_{tank}} \sqrt {\frac{2g}{K_e}}$$
+$$\sqrt h  = \sqrt{h_0} - t \frac{A_{Valve}}{2 A_{tank}} \sqrt {\frac{2g}{\sum K_e}}$$
 
-At this point, the steps and equation substitutions may begin to seem unintuitive. Do not worry if you do not understand why _exactly_ a particular substitution is occurring. Since we determined above that $h_e = h$, our equation above for $\sqrt{h}$ is also an equation for $\sqrt{h_e}$. As such, we will plug the equation above back into the minor loss equation solved for $Q$ from above, $Q = A_{Valve} \sqrt{\frac{2 h_e g}{K_e}}$, to produce:
+At this point, the steps and equation substitutions may begin to seem unintuitive. Do not worry if you do not understand why _exactly_ a particular substitution is occurring. Since we determined above that $h_e = h$, our equation above for $\sqrt{h}$ is also an equation for $\sqrt{h_e}$. As such, we will plug the equation above back into the minor loss equation solved for $Q$ from above, $Q = A_{Valve} \sqrt{\frac{2 h_e g}{\sum K_e}}$, to produce:
 
-$$Q = A_{Valve} \sqrt{\frac{2g}{K_e}} \left( \sqrt{h_0}  - t \frac{A_{Valve}}{2 A_{tank}} \sqrt{\frac{2g}{K_e}} \right)$$
+$$Q = A_{Valve} \sqrt{\frac{2g}{\sum K_e}} \left( \sqrt{h_0}  - t \frac{A_{Valve}}{2 A_{tank}} \sqrt{\frac{2g}{\sum K_e}} \right)$$
 
-Now we can focus on getting rid of the variables $A_{Valve}$, $K_e$, and $A_{tank}$. By using the minor loss equation once more, we can remove both $A_{Valve}$ and $K_e$. Consider the initial state of the system, when the hypochlorinator is set up and starts dropping its first few drops of hypochlorite solution into the water. The initial flow rate, $Q_0$, and elevation difference between the water level and the valve, $h_0$, can be input into the minor loss equation, which can then be solved for $A_{Valve}$:
+Now we can focus on getting rid of the variables $A_{Valve}$, $\sum K_e$, and $A_{tank}$. By using the minor loss equation once more, we can remove both $A_{Valve}$ and $\sum K_e$. Consider the initial state of the system, when the hypochlorinator is set up and starts dropping its first few drops of hypochlorite solution into the water. The initial flow rate, $Q_0$, and elevation difference between the water level and the valve, $h_0$, can be input into the minor loss equation, which can then be solved for $A_{Valve}$:
 
-$$ A_{Valve} = \frac{Q_{0}}{ \sqrt{ \frac{2 h_0 g}{K_e}} }$$
+$$ A_{Valve} = \frac{Q_{0}}{ \sqrt{ \frac{2 h_0 g}{\sum K_e}} }$$
 
 Plugging this equation for $A_{Valve}$ into the equation for $Q$ just above, we get the following two equations, in which the second equation is a simplified version of the first:
 

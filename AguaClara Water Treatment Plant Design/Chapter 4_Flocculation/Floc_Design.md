@@ -10,6 +10,7 @@ The letters before the `.`, in this case `pc`, indicate the file within aide_des
 
 For the most part, [hyperlinks in these documents will contain supplementary information](http://likethis.com/ "This link does not go anywhere"). The information contained in the linked external sites is there in case you don't feel completely comfortable with a concept, but is not necessary to learn thoroughly and will not be tested.
 
+**Important Note:** This chapter introduces <font color="red">uncertainty and empirical design</font>. Some of the parameters used to design AguaClara flocculators are based on what has been shown to work in the field, as opposed to having been derived scientifically. To make sure that the reader is aware of these concepts and parameters that don't have a thorough basis in research, they will be highlighted in red when they appear.  
 
 <br>
 <br>
@@ -76,7 +77,7 @@ To increase $V_t$ and make sedimentation more efficient, floccuation aims to inc
 So our goal in designing a flocculator is to facilitate particle collisions. How can we do this?
 
 ### Collision Potential, $\bar G \theta$, and Energy Dissipation Rate, $\varepsilon$
-**Collision potential $(\bar G \theta)$** is a term with a very straightforward name. It represents the magnitude of potential particle collisions in a fluid. It is a _dimensionless_ parameter which is often used as a performance metric for flocculators; big $G \theta$ values indicate lots of collisions (good) while small values indicate fewer collisions (not so good). AguaClara flocculators usually aim for a collision potential of 37,000, which has worked well in AguaClara plants historically. However, this value may change as research continues. The value for collision potential is obtained by multiplying $\bar G$, a parameter for average fluid shear with units of $\frac{1}{[T]}$, and $\theta$, the residence time of water in the flocculator, with units of $[T]$. $\theta$ is intuitive to measure, calculate, and understand. $\bar G$ is a bit more difficult. First, an intuitive explanation. See the image below, which shows the velocity profile of flowing water.
+**Collision potential $(\bar G \theta)$** is a term with a very straightforward name. It represents the magnitude of potential particle collisions in a fluid. It is a _dimensionless_ parameter which is often used as a performance metric for flocculators; big $G \theta$ values indicate lots of collisions (good) while small values indicate fewer collisions (not so good). <font color="red">AguaClara flocculators usually aim for a collision potential of 37,000</font>, which has worked well in AguaClara plants historically. However, this value may change as research continues. The value for collision potential is obtained by multiplying $\bar G$, a parameter for average fluid shear with units of $\frac{1}{[T]}$, and $\theta$, the residence time of water in the flocculator, with units of $[T]$. $\theta$ is intuitive to measure, calculate, and understand. $\bar G$ is a bit more difficult. First, an intuitive explanation. See the image below, which shows the velocity profile of flowing water.
 
 <center><img src="https://github.com/AguaClara/CEE4540_Master/blob/master/AguaClara%20Water%20Treatment%20Plant%20Design/Chapter%204_Flocculation/Images/G_velocity_profile.jpg?raw=true" width=500></center>
 
@@ -94,7 +95,7 @@ $$\varepsilon = \left[ \frac{W}{Kg} \right]
 = \left[ \frac{m^2}{s^3} \right]
 = \left[ \frac{[L]^2}{[T]^3} \right]$$
 
-There are at least two ways to think about $\varepsilon$. One is through $G$. Imagine that a fluid has _no viscosity_; there is no internal friction caused by fluid flow. No matter how high $G$ becomes, no energy is dissipated. Now image a honey, which has a very high viscosity. Making honey flow fast requires a lot of energy over a short period of time, which means a high energy dissipation rate. This explanation allows us to understand the equation for $\varepsilon$ in terms of $G$ and $\nu$. [See this paper](https://app.knovel.com/web/view/khtml/show.v/rcid:kpMWHWTPD1/cid:kt00AD4KW1/viewerType:khtml/root_slug:mwh-s-water-treatment/url_slug:principles-reactor-analysis?&b-toc-cid=kpMWHWTPD1&b-toc-url-slug=coagulation-flocculation&b-toc-title=MWH%E2%80%99s%20Water%20Treatment%20-%20Principles%20and%20Design%20(3rd%20Edition)&page=80&view=collapsed&zoom=1) for the derivation of the following equation:
+There are at least two ways to think about $\varepsilon$. One is through $G$. Imagine that a fluid has _no viscosity_; there is no internal friction caused by fluid flow. No matter how high $G$ becomes, no energy is dissipated. Now image a honey, which has a very high viscosity. Making honey flow fast requires a lot of energy over a short period of time, which means a high energy dissipation rate. This explanation allows us to understand the equation for $\varepsilon$ in terms of $G$ and $\nu$. [See this textbook](https://app.knovel.com/web/view/khtml/show.v/rcid:kpMWHWTPD1/cid:kt00AD4KW1/viewerType:khtml/root_slug:mwh-s-water-treatment/url_slug:principles-reactor-analysis?&b-toc-cid=kpMWHWTPD1&b-toc-url-slug=coagulation-flocculation&b-toc-title=MWH%E2%80%99s%20Water%20Treatment%20-%20Principles%20and%20Design%20(3rd%20Edition)&page=80&view=collapsed&zoom=1) for the derivation of the following equation:
 
 $$\varepsilon = \nu G^2$$
 
@@ -161,9 +162,11 @@ $$K_{e, \, baffle} = \left( \frac{\rlap{\Big/} A_{expanded}}{\Pi_{vc, \, baffle}
 
 $$K_{e, \, baffle} = \left( \frac{1}{0.384} -1 \right)^2$$
 
-$$K_{e, \, baffle} = 2.56$$
+$$\color{red}{
+K_{e, \, baffle} = 2.56
+}$$
 
-This $K_e$ has been used to design many flocculators in AguaClara plants. However, this $K_e$ has not yet been rigorously tested in the field. Therefore it might actually deviate from $2.56$. Research and testing the $K_e$ of a baffle is ongoing, but for now the designs made under the assumption that $K_e = 2.56$ are functioning very well in AguaClara plants.
+This $K_e$ has been used to design many flocculators in AguaClara plants. However, this $K_e$ has not yet been rigorously tested in the field. Therefore it might actually deviate from $2.56$. Research and testing the $K_e$ of a baffle is ongoing, but for now the designs made under the assumption that $\color{red}{K_e = 2.56}$ are functioning very well in AguaClara plants.
 
 ### Flocculator Efficiency
 When designing an effective and efficient flocculator, there are two main problems that we seek to avoid:  

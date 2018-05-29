@@ -102,18 +102,22 @@ Though there are [many assumptions needed to confirm that the Bernoulli equation
 
 #### Example problems
 
-[Here is a worksheet with very straightforward example problems using the Bernoulli equation.](https://www.teachengineering.org/content/cub_/lessons/cub_bernoulli/cub_bernoulli_lesson01_bepworksheetas_draft4_tedl_dwc.pdf "Bernoulli worksheet") Note that the solutions use the pressure-form of the Bernoulli equation. This just means that every term in the equation is multiplied by $\rho g$, so the pressure term is just $P$. The form of the equation does not affect the solution to the problem it helps solved.
+[Here is a simple worksheet with very straightforward example problems using the Bernoulli equation.](https://www.teachengineering.org/content/cub_/lessons/cub_bernoulli/cub_bernoulli_lesson01_bepworksheetas_draft4_tedl_dwc.pdf "Bernoulli worksheet") Note that the solutions use the pressure-form of the Bernoulli equation. This just means that every term in the equation is multiplied by $\rho g$, so the pressure term is just $P$. The form of the equation does not affect the solution to the problem it helps solved.
 
 ### The Energy Equation
 The assumption necessary to use the Bernoulli equation, which is stated above, represents the key difference between the Bernoulli equation and the energy equation for the purpose of this class. The energy equation accounts for the (L)oss of energy from both the fluid flowing, $h_L$, and the charging of a (T)urbine, $h_T$, as well as energy gain provided by a (P\)ump, $h_P$.
 
 $$\frac{p_{1}}{\rho g} + z_{1} + \alpha_{1} \frac{V_{1}^2}{2g} + h_P = \frac{p_{2}}{\rho g} + z_{2} + {\alpha_{2}} \frac{V_{2}^2}{2g} + h_T + h_L$$
 
-You'll also notice the $\alpha$ term attached to the velocity head. This is a correction factors for kinetic energy, and will be neglected in this class. If you wish to learn more about the correction factors, [click here to sate your curiosity](http://nptel.ac.in/courses/105106114/pdfs/Unit6/6_1.pdf "Correction factor pdf"). Since AguaClara does not use pumps nor turbines, $h_P = h_T = 0$. With these simplifications, the energy equation can be written as follows:
+You'll also notice the $\alpha$ term attached to the velocity head. This is a correction factor for kinetic energy, and will be neglected in this class. If you wish to learn more about the correction factors, [click here to sate your curiosity](http://nptel.ac.in/courses/105106114/pdfs/Unit6/6_1.pdf "Correction factor pdf"). Since AguaClara does not use pumps nor turbines, $h_P = h_T = 0$. With these simplifications, the energy equation can be written as follows:
 
 $$\frac{p_{1}}{\rho g} + z_{1} + \frac{V_{1}^2}{2g} = \frac{p_{2}}{\rho g} + z_{2} + \frac{V_{2}^2}{2g} + h_L$$  
 
 **This is the form of the energy equation that you will see over and over again in CEE 4540.** To summarize, the main difference between the Bernoulli equation and the energy equation for the purposes of this class is energy loss. The energy equation accounts for the fluid's loss of energy over time while the Bernoulli equation does not. So how can the fluid lose energy?
+
+**Important Note:** Many images will be used over the course of this class to show hydraulic systems. A standardized system of lines will be used throughout them all to distinguish reference elevations from control volumes from streamlines. This system is described in the image below.
+
+<center><img src="https://github.com/AguaClara/CEE4540_Master/blob/master/AguaClara%20Water%20Treatment%20Plant%20Design/Chapter%201_Fluids%20Review/Images/Image_control_volumes.jpg?raw=true" width=550></center>
 
 ## 1.2) Head Loss
 **Head (L)oss**, $h_L$ is a term that is ubiquitous in both this class and fluid mechanics in general. Its definition is exactly as it sounds: it refers to the loss of energy of a fluid as it flows through space. There are two components to head loss: major losses caused by pipe-fluid (f)riction, $h_{\rm{f}}$, and minor losses caused by fluid-fluid friction resulting from flow (e)xpansions, $h_e$, such that $h_L = h_{\rm{f}} + h_e$.
@@ -179,7 +183,7 @@ $${\rm{f}} = \frac{64}{\rm{Re}}$$
 
 $${\rm{Re}}=\frac{4Q}{\pi D\nu}$$
 
-To form the **Hagen-Poiseuille equation** for major losses during laminar flow, and *only* during laminar flow:
+To form the [**Hagen-Poiseuille equation**](https://en.wikipedia.org/wiki/Hagen%E2%80%93Poiseuille_equation "Hagen-Poiseuille wikipedia") for major losses during laminar flow, and *only* during laminar flow:
 
 $$h_{\rm{f}} = \frac{128\mu Q}{\rho g\pi D^4}$$
 
