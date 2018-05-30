@@ -72,11 +72,15 @@ Here lies another common source of confusion. $h_{Tank}$ is not the same as $h_{
 
 Finally, our fabricated equivalence, $\frac{Q_0}{A_{Tank}} = \frac{h_{Tank}}{t_{Design}}$ can be plugged into $\frac{Q}{Q_0} = 1 - \frac{t Q_0}{2 A_{Tank} h_0}$ to create the highly useful equation for flow rate as a function of time for a drip hypochlorinator:
 
-$$ \frac{Q}{Q_0} = 1 - \frac{1}{2} \frac{t}{t_{Design}} \frac{h_{Tank}}{h_0}$$
+$$\color{purple}{
+\frac{Q}{Q_0} = 1 - \frac{1}{2} \frac{t}{t_{Design}} \frac{h_{Tank}}{h_0}
+}$$
 
 Which can be slightly rearranged to yield:
 
-$$ Q(t) = Q_0 \left( 1 - \frac{1}{2} \frac{t}{t_{Design}} \frac{h_{Tank}}{h_0} \right)$$
+$$\color{purple}{
+Q(t) = Q_0 \left( 1 - \frac{1}{2} \frac{t}{t_{Design}} \frac{h_{Tank}}{h_0} \right)
+}$$
 
 Such that:  
 $Q = Q(t)$ = flow of hypochlorite through valve at time $t$  
@@ -85,4 +89,4 @@ $t_{Design}$ = time it would take for tank to empty *if* flow stayed constant at
 $h_{Tank}$ = elevation of water level with reference to tank bottom  
 $h_0$ = elevation of water level with reference to the valve  
 
-"How does this 'tank with a valve' scenario differ from the 'hole in a bucket' scenario?" some might ask. If you are interested, you may go through the derivation on your own, using the orifice equation instead of the minor loss equation for the first step. If you do so, you'll find that the equation remains almost the same, the only difference is that the $\frac{h_{Tank}}{h_0}$ term drops out for an orifice, as $h_{Tank} = h_0$. The big difference in the systems lies with the flexibility of having a valve. It can be tightened or loosened to change the flow rate, whereas changing the size of an orifice multiple times in a row is not easy nor recommended.
+"How does this 'tank with a valve' scenario differ from the 'hole in a bucket' scenario?" some might ask. If you are interested, you may go through the derivation on your own using the orifice equation instead of the minor loss equation for the first step. If you do so you'll find that the equation remains almost the same, the only difference being that the $\frac{h_{Tank}}{h_0}$ term drops out for an orifice, as $h_{Tank} = h_0$. The big difference in the systems lies with the flexibility of having a valve. It can be tightened or loosened to change the flow rate, whereas changing the size of an orifice multiple times in a row is not recommended and is usually irreversible.

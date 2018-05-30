@@ -254,3 +254,10 @@ I suggest putting all effort into the text book. There is some chance that the t
 1. Re do the opening lines of the summary sheets, which are now to be called the 'design' section of textbooks
 
 2. Get a better reference for the b = 0.107s jet expansion. Gerhart Jirka's notes are the basis for this, but I think we need a better reference than one of Monroe's powerpoints
+
+3. Haarhoff (the South African guy) actually recommends a slot width of 1S. He also mentions that slot widths used vary depending on the part of the world. 1.5 is common in South America, 1 in South Africa, and 0.5 in India.  
+  <img src="https://github.com/AguaClara/CEE4540_Master/blob/master/AguaClara%20Water%20Treatment%20Plant%20Design/Chapter%204_Flocculation/Images/Slot_width_uncertainty.JPG?raw=true" width=400>
+4. Discuss textbook structure Thursday May 31st
+5. Link Shultz and Okun-- also brings into consideration citations
+6. Make sure that the flocculator design check is correct.
+    - Should we account for head loss in the final residence time check? Monroe mentioned some time ago that the volume of water that is in the 'head loss triangle' doesn't contribute any meaningful shear.
