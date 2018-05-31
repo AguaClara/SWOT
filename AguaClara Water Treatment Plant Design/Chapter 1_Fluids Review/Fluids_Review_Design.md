@@ -180,7 +180,9 @@ $${\rm{Re}}=\frac{4Q}{\pi D\nu}$$
 
 To form the **Hagen-Poiseuille equation** for major losses during laminar flow, and *only* during laminar flow:
 
-$$h_{\rm{f}} = \frac{128\mu Q}{\rho g\pi D^4}$$
+$$h_{\rm{f}} = \frac{128\mu L Q}{\rho g\pi D^4}$$
+
+$$h_{\rm{f}} = \frac{32\nu LV}{ g D^2}$$
 
 The significance of this equation lies in its relationship between $h_{\rm{f}}$ and $Q$. Hagen-Poiseuille shows that the terms are directly proportional ($h_{\rm{f}} \propto Q$) during laminar flow, while Darcy-Weisbach shows that $h_{\rm{f}}$ grows with the square of $Q$ during turbulent flow ($h_{\rm{f}} \propto Q^2$). As you will soon see, minor losses, $h_e$, will grow with the square of $Q$ in both laminar and turbulent flow. This has implications that will be discussed later, in the flow control section.
 

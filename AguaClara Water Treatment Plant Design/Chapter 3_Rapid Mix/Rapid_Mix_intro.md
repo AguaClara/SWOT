@@ -31,6 +31,231 @@ from matplotlib.ticker import FormatStrFormatter
 imagepath = 'AguaClara Water Treatment Plant Design/Chapter 3_Rapid Mix/Images/'
 Temperature = 15*u.degC
 ```
+# Energy dissipation rate, velocity gradients, and mixing
+##Introduction
+
+mixing, collisions between particles, shear that prevents deposition on reactor walls, floc breakup in high shear zones. Each of these processes requires an understanding of fluid dynamics and specifically the relationships between turbulence, fluid deformation, and shear.
+
+Estimation of velocity gradients for various flow geometries is the basis for the design of rapid mix, flocculators, and plate settlers and thus our goal is to define the velocity gradients consistently across the range of possible flow regimes. There are three approaches to calculating the average velocity gradient within a control volume.
+* Use the Navier Stokes equations and solve for the spatially averaged velocity gradient.
+* Use computation fluid dynamics to solve for the spatially averaged velocity gradient.
+* Use the total mechanical energy loss in the control volume to calculate the energy dissipation rate. Calculate the velocity gradient directly from the energy dissipation rate. $\bar G = \sqrt{\frac{\varepsilon}{\nu}}$
+
+The first approach would be ideal but is difficult in practice because Navier Stokes solutions are only available for limited geometries and laminar flow. Computational Fluid Dynamics could be used but is difficult to use as a general engineering design approach given the large number of geometries that are used in drinking water treatment plants. For these reasons we will use the control volume approach to estimate the average velocity gradient. This method incorrectly assumes that the energy dissipation rate is completely uniform in the control volume and hence the velocity gradient was also uniform. This method results in an over estimation of the velocity gradient.    
+
+
+* Average (control volume) estimates
+  * Straight pipe (major losses)
+  * Curved tube (laminar flow)
+  * Series of expansions
+* Maximum velocity gradients
+  * Straight pipe walls (major losses)
+  * Curved tube (laminar flow)
+  * Expansions
+    * Between flat plates
+    * Round jet
+    * Plane jet
+    * Behind a flat plate
+
+#### Output
+* table of equations for velocity gradients
+* table of equations for average energy dissipation rates
+
+Table of equations for control volume averaged values.
+| Geometry | $h_L$ |$ \bar\varepsilon $ | $\bar G(V)$ |  $\bar G(Q)$|
+| - | :-: | :-: | :-: | :-: |
+| Straight pipe | $h_{\rm{f}} = {\rm{f}} \frac{L}{D} \frac{V^2}{2g}$ |$ \bar\varepsilon = \frac{\rm{f}}{2} \frac{V^3}{D} $ |$  \bar G = \left(\frac{\rm{f}}{2\nu} \frac{V^3}{D} \right)^\frac{1}{2}$ |  $  \bar G = \left(\frac{\rm{32f}}{ \pi^3\nu} \frac{Q^3}{D^7} \right)^\frac{1}{2}$ |
+| Straight pipe laminar|$h_{\rm{f}} = \frac{32\nu LV}{ g D^2}$| $ \bar\varepsilon =32\nu \left( \frac{V}{D} \right)^2$ |$ \bar G =4\sqrt2 \frac{V}{D} $ | $ \bar G =\frac{16\sqrt2}{\pi} \frac{Q}{D^3} $ |
+| Coiled Tube | - |- | $\overline{G_{coil}} = \bar G\left[ 1 + 0.033\left(log_{10}De\right)^4  \right]^\frac{1}{2} $ | - |
+| Expansions | $ h_e =  \mathbf{K_e}\frac{V_{out}^2}{2g} $ | $ \bar\varepsilon = \mathbf{K_e}\frac{V_{out}^3}{2H} $ | $ \bar G = V_{out}\sqrt{\frac{\mathbf{K_e}V_{out}}{2H\nu}}$ | - |
+The equations used to convert between columns in the table above are
+$ \bar\varepsilon = \frac{gh_{\rm{L}}}{\theta} $, $ \bar G = \sqrt{\frac{\bar \varepsilon}{\nu}}$, $V=\frac{4Q}{\pi D}$
+
+
+Table of equations for maximum values.
+| Geometry |  $G_{max}$|
+| - | :-: |
+| Straight pipe  | $ G_{wall} =\rm{f}  \frac{V^2}{8\nu} $|
+| Straight pipe laminar | $ G_{wall} =  \frac{8V}{D} $|
+| Coiled pipe | $ \bar G_{wall_{coil}} =\rm{f} \left[ 1 + 0.033\left(log_{10}De\right)^4 \right]  \frac{V^2}{8\nu} $|
+
+
+## Straight pipe (wall shear)
+The average energy dissipation rate, $ \bar\varepsilon$, in a control volume with residence time $\theta$ is
+$$ \bar\varepsilon = \frac{gh_{\rm{L}}}{\theta} $$
+
+The residence time can be expressed as a function of length and velocity.
+$$ \theta = \frac{L}{V}  $$
+
+For straight pipe flow the only head loss is due to wall shear and thus we have the Darcy Weisbach equation.
+
+$$h_{\rm{f}} = {\rm{f}} \frac{L}{D} \frac{V^2}{2g}$$
+
+Combining the 3 previous equations we obtain the energy dissipation rate for pipe flow
+$$ \bar\varepsilon = \frac{\rm{f}}{2} \frac{V^3}{D} $$
+
+The average velocity gradient was defined by Camp as
+
+$$ \bar G = \sqrt{\frac{\bar \varepsilon}{\nu}}$$
+
+where this approximation neglects the fact that square root of an average is not the same as the average of the square root.  
+
+$$  \bar G = \left(\frac{\rm{f}}{2\nu} \frac{V^3}{D} \right)^\frac{1}{2}$$
+
+or in terms of flow rate, we have
+
+$$  \bar G = \left(\frac{\rm{32f}}{ \pi^3\nu} \frac{Q^3}{D^7} \right)^\frac{1}{2}$$
+
+Laboratory scale apparatus is often limited to laminar flow where viscosity effects dominate. The equations describing laminar flow conditions always include viscosity For the case of laminar flow in a straight pipe we have
+
+$$\rm{f} = \frac{64}{Re}$$
+
+Reynolds number is defined as
+$$Re= \frac{VD}{\nu}$$
+
+The Darcy Weisbach head loss equation simplifies to
+
+$$h_{\rm{f}} = \frac{32\nu LV}{gD^2}$$
+
+and thus the energy dissipation rate in a straight pipe under conditions of laminar flow is
+
+$$ \bar\varepsilon =32\nu \left( \frac{V}{D} \right)^2$$
+
+The average velocity gradient in a long straight laminar flow tube is thus
+$$ \bar G^2 =32 \left( \frac{V}{D} \right)^2$$
+$$ \bar G =4\sqrt2 \frac{V}{D} $$
+
+Our estimate of $ \bar G $ based on $\bar \varepsilon$ is an overestimate because it assumes that the energy dissipation is completely uniform through the control volume. The true spatial average velocity gradient for laminar flow in a pipe is
+
+[$$ \overline {G_{spatial}} = \frac{8}{3}\frac{V}{D} $$](https://doi.org/10.1016/0009-2509(81)80126-1)
+
+The our estimate of $ \bar G $ for the case of laminar flow in a pipe is too high by a factor of $\frac{3}{\sqrt2}$.
+
+```python
+3/np.sqrt(2)
+```
+As a function of flow rate we have
+$$ V=\frac{Q}{A} = \frac{4Q}{\pi D^2}$$
+
+$$ \bar G =\frac{16\sqrt2}{\pi} \frac{Q}{D^3} $$
+
+## Coiled tubes
+Coiled tubes are used as flocculators at laboratory scale.
+
+The ratio of the coiled to straight friction factors is given by [Mishra and Gupta](https://doi.org/10.1021/i260069a017)
+
+The Dean number is defined as
+
+$$De = Re\left(\frac{D}{D_c}\right)^\frac{1}{2}  $$
+
+where $D$ is the inner diameter of the tube and $D_c$ is the diameter of the coil. Note that the tubing coils are actually helixes and that for the tubing diameters and coil diameters used for flocculators that the helix doesn't significantly change the radius of curvature.
+
+$$\frac{\rm{f}_{coil}}{\rm{f}} = 1 + 0.033\left(log_{10}De\right)^4  $$
+
+$$h_{\rm{f}_{coil}} = h_{\rm{f}} \left[ 1 + 0.033\left(log_{10}De\right)^4 \right] $$
+
+The average velocity gradient is proportional to the square root of the head loss and thus we obtain
+
+$$\overline{G_{coil}} = \bar G\left[ 1 + 0.033\left(log_{10}De\right)^4  \right]^\frac{1}{2} $$
+
+## Expansions
+
+The average energy dissipation rate for a flow expansion really only has meaning if there is a defined control volume where the mechanical energy is lost. Hydraulic flocculators provide such a case because the same flow expansion is repeated and thus the mechanical energy loss can be assumed to happen in the volume associated with one flow expansion. I this case we have
+
+$$ h_e =  \mathbf{K_e}\frac{V_{out}^2}{2g} $$
+In this equation $\mathbf{K_e}$ represents the fraction of the kinetic energy that is dissipated.
+
+If we define the length of the control volume as $H$ then the residence time is
+$$\theta = \frac{H}{V}$$
+
+$$ \bar\varepsilon = \frac{gh_{\rm{e}}}{\theta} $$
+Combining the previous equations we obtain
+
+$$ \bar\varepsilon = \mathbf{K_e}\frac{V_{out}^3}{2H} $$
+
+
+$$ \bar G = \sqrt{\frac{\bar \varepsilon}{\nu}}$$
+
+$$ \bar G = V_{out}\sqrt{\frac{\mathbf{K_e}V_{out}}{2H\nu}}$$
+
+# Maximum velocity gradients
+## Straight pipe walls (major losses)
+The maximum velocity gradient in
+
+<img src="https://github.com/AguaClara/CEE4540_Master/raw/master/AguaClara%20Water%20Treatment%20Plant%20Design/Chapter%203_Rapid%20Mix/Images/pipe_pressure_shear_force_balance.png" width="400">
+
+Figure x. A fluid flowing from left to right due to a pressure gradient results in wall shear.
+
+A force balance for the case of steady flow in a round pipe requires that sum of the forces in the x direction must equal zero. Given a pipe with diameter, D, and length, L, we obtain
+
+$$ \left(P_{in}- P_{out}\right)\frac{\pi D^2}{4} = \tau_{wall} \pi D L $$
+
+$$ -\Delta P\frac{D}{4} = \tau_{wall} L $$
+For this control volume the energy equation simplifies to
+
+$$-\Delta P=\rho g h_{\rm{f}}$$
+
+The relationship between shear and velocity gradient is
+
+$$\tau_{wall} = \mu \frac{du}{dy}_{wall} = \mu G_{wall} $$
+
+Combining the energy equation, the force balance, and the relationship between shear and velocity gradient we obtain
+$$ \rho g h_{\rm{f}}\frac{D}{4} = \mu G_{wall} L $$
+
+$$ G_{wall} = \frac{g h_{\rm{f}}D}{4\nu L} $$
+This equation is valid for both laminar flow. For  turbulent flow it is necessary to make the approximation that wall shear perpendicular to the direction of flow is insignificant in increasing the magnitude of the wall shear.
+
+$$ G_{wall} =\rm{f}  \frac{V^2}{8\nu} $$
+
+For laminar flow we have
+
+$$ G_{wall} =  \frac{8V}{D} $$
+This equation is useful for finding the velocity gradient at the wall of a tube settler.
+
+## Curved tube (laminar flow)
+The shear on the wall of a coiled tube is not uniform. The outside of the curve has a higher velocity gradient than the inside of the curve and there are secondary currents that results in wall shear that is not purely in the locally defined upstream direction. We do not have a precise equation for the wall shear. The best we can do currently is define an average wall shear in the locally defined direction of flow by combining $ \bar G_{wall_{coil}} =\rm{f_{coil}}  \frac{V^2}{8\nu} $ and $\rm{f}_{coil} = \rm{f} \left[ 1 + 0.033\left(log_{10}De\right)^4 \right] $ to obtain
+
+$$ \bar G_{wall_{coil}} =\rm{f} \left[ 1 + 0.033\left(log_{10}De\right)^4 \right]  \frac{V^2}{8\nu} $$
+## Expansions
+### Round jet
+
+
+
+Chemical Engineering Science, Vol. 50, No. 12, pp. 1877-1880, 1995
+THE INFLUENCE OF VISCOSITY ON MIXING IN JET REACTORS
+Jo BALDYGA, J. R. BOURNE* and R. V. GHOLAP
+Technisch-Chemisches Laboratorium, ETH-Zentrum, CH-8092 Zurich, Switzerland
+
+[$$ \varepsilon_{Centerline} \cong \frac{50 D_{Jet}^3 V_{Jet}^3}{ \left( x - 2 D_{Jet} \right)^4}$$](https://doi.org/10.1016/0009-2509(95)00049-B)
+
+$$ \varepsilon_{Max} \cong \frac{\left( \frac{50}{\left( 5 \right)^4} \right) V_{Jet}^3}{D_{Jet}}$$
+
+$$ \varepsilon_{Max} \cong \frac{\left( \Pi_{RoundJet} V_{Jet} \right)^3}{D_{Jet}}$$
+
+$$\Pi_{RoundJet} \cong 0.5$$
+(The equation for $ \varepsilon_{Max}$ would be more similar to the equation for energy dissipation in a pipe if we defined $\Pi_{RoundJet}$ to be outside the exponent of 3. In that case it would simply be $\frac{50}{5^4}$ = 0.08. Would this require any significant changes in subsequent equations?)
+```python
+def Energy_dissipation_jet_centerline(D_jet,V_jet,x):
+  return (50 * D_jet**3*V_jet**3/(x-2*D_jet)**4).to_base_units()
+
+def Energy_dissipation_jet_max(D_jet,V_jet):
+  return (con.RATIO_JET_ROUND * V_jet)**3/D_jet
+
+V_jet = 1 * u.m/u.s
+D_jet = 0.1 * u.m
+EDR_max = Energy_dissipation_jet_max(D_jet,V_jet)
+x=np.linspace(7,20,24)*D_jet
+fig, ax = plt.subplots()
+ax.plot(x/D_jet,Energy_dissipation_jet_centerline(D_jet,V_jet,x))
+ax.set(xlabel='Jet diameters downstream', ylabel='Energy dissipation rate (W/kg)')
+fig.savefig(imagepath+'Jet_centerline_EDR')
+plt.show()
+```
+
+<img src="https://github.com/AguaClara/CEE4540_Master/raw/master/AguaClara%20Water%20Treatment%20Plant%20Design/Chapter%203_Rapid%20Mix/Images/Jet_centerline_EDR.png" width="400">
+
+### Plane jet
+### Behind a flat plate
 
 ## Introduction
 
@@ -100,7 +325,7 @@ We can estimate the characteristic velocity of any size of eddy based on the ass
 | - | - | - | - |
 |largest eddies | flow dimension perpendicular to the mean velocity |  | |
 
-$\epsilon \sim \frac{u^3}{L}$
+$\varepsilon \sim \frac{u^3}{L}$
 
 
 ```python
@@ -123,6 +348,7 @@ The length scale at which most of the kinetic energy contained in the small eddi
 
 $$\lambda_\nu = \Pi_{K\nu}\left( \frac{\nu^3}{\varepsilon} \right)^{\frac{1}{4}}$$
 where $\Pi_{K\nu} = 50$
+
 ```python
 EDR_array = np.logspace(0,4,num=50)*u.mW/u.kg
 Temperature = 20*u.degC
@@ -149,18 +375,18 @@ We are searching for the rate limiting step in the mixing process as we transiti
 $$T_{eddy} \sim \frac{L_{eddy}}{u_{eddy}} $$
 
 The rate of energy loss to smaller scales is
-$$ \epsilon \sim\frac{u_{eddy}^2}{T_{eddy}} $$
+$$ \varepsilon \sim\frac{u_{eddy}^2}{T_{eddy}} $$
 
 Combining the two equations
-$$ \epsilon \sim\frac{u_{eddy}^3}{L_{eddy}} $$
+$$ \varepsilon \sim\frac{u_{eddy}^3}{L_{eddy}} $$
 
 We can use this equation to estimate the eddy velocity given an energy dissipation rate.
-$$u_{eddy} \sim \left( \epsilon \, L_{eddy} \right)^\frac{1}{3} $$
+$$u_{eddy} \sim \left( \varepsilon \, L_{eddy} \right)^\frac{1}{3} $$
 Now we can solve for the eddy turnover time which is a measure of the mixing time at the eddy scale.
 
-$$T_{eddy} \sim \frac{L_{eddy}}{\left( \epsilon \, L_{eddy} \right)^\frac{1}{3}} $$
+$$T_{eddy} \sim \frac{L_{eddy}}{\left( \varepsilon \, L_{eddy} \right)^\frac{1}{3}} $$
 
-$$T_{eddy} \sim \left( \frac{L_{eddy}^2}{ \epsilon }\right)^\frac{1}{3} $$
+$$T_{eddy} \sim \left( \frac{L_{eddy}^2}{ \varepsilon }\right)^\frac{1}{3} $$
 
 We can plot the eddy turnover time as a function of scale from the inner viscous length scale up to the scale of the flow.
 ```python
@@ -192,32 +418,11 @@ The eddy turnover times are longest for the largest eddies and this analysis sug
 
 This large scale mixing time is critical for the design of water treatment plants where after coagulant addition the flow is split into multiple treatment trains. In this case it is critical that the coagulant be mixed equally between all of the treatment trains and thus the mixing times shown in the previous graph represent a minimum time between where the coagulant is added and where the flow is divided into the parallel treatment trains.
 
-##### Example problem: Energy dissipation rate in a straight pipe
-A water treatment plant that is treating 120 L/s of water injects the coagulant into the middle of the pipe that delivers the raw water to the plant and then splits the flow into 2 parallel treatment trains for subsequent flocculation. Estimate the minimum distance between the injection point and the flow split. You may assume the pipe diameter was selected to have less than 10 cm  of head loss per meter of pipe length.
 
-Solution scheme
-1) Use straight pipe head loss equations to estimate the size of the pipe
-1) Round up to the nearest available pipe size that meets the head loss criteria
-1) Calculate the actual head Loss
-$$ \epsilon = \frac{gh_{\rm{f}}}{\theta} $$
 
-The residence time can be expressed as a function of Length and velocity.
-$$ \theta = \frac{L}{V}  $$
-
-$$h_{\rm{f}} = {\rm{f}} \frac{L}{D} \frac{V^2}{2g}$$
-
-Combining the 3 previous equations we obtain the energy dissipation rate for pipe flow
-$$ \epsilon = \frac{\rm{f}}{2} \frac{V^3}{D} $$
-
-For the case of laminar flow in a straight pipe we have
-
-$$\rm{f} = \frac{64}{Re}$$
-
-and thus the energy dissipation rate in a straight pipe under conditions of laminar flow is
-$$ \epsilon =\frac{32}{Re}  \frac{V^3}{D} $$
 
 We can combine the equation that estimates the largest eddy velocity and the
-$$  \epsilon = \frac{\rm{f}}{2} \frac{V^3}{D}  \sim\frac{u_{eddy}^3}{L_{eddy}} $$
+$$  \bar\varepsilon = \frac{\rm{f}}{2} \frac{V^3}{D}  \sim\frac{u_{eddy}^3}{L_{eddy}} $$
 
 Solve for the ratio of the eddy velocity to the mean flow velocity and note that the length scale for the largest eddy is the diameter of the pipe.
 
@@ -225,8 +430,11 @@ $$ N_{D_{pipe}} \sim \frac{V}{u_{eddy}} \sim \left(\frac{2}{\rm{f}} \right)^\fra
 
 Where $N_{D_{pipe}}$ is the distance in number of pipe diameters downstream of the injection point where complete mixing will have occurred. The velocity ratio can be used to estimate the distance required for mixing perpendicular to the flow direction in a straight pipe.
 
-#### Design challenge
-Estimate the minimum distance between the injection point and the location where the flow is split into two treatment trains for a 16 inch nominal pipe diameter SDR 26 with a flow of 120 L/s. The pipe is PVC. The water temperature is $0^{\circ}C$.
+##### Example problem: Energy dissipation rate in a straight pipe
+A water treatment plant that is treating 120 L/s of water injects the coagulant into the middle of the pipe that delivers the raw water to the plant and then splits the flow into 2 parallel treatment trains for subsequent flocculation. The pipe is PVC 16 inch nominal pipe diameter SDR 26. The water temperature is $0^{\circ}C$. Estimate the minimum distance between the injection point and the flow split.
+
+Solution scheme
+1) Calculate the friction factor
 
 ```python
 T_water=0*u.degC
@@ -245,8 +453,9 @@ L_mixing = ID_pipe*N_pipe_diameters
 print('The minimum distance required for mixing across the diameter of the pipe is ',L_mixing.to_base_units())
 ```
 The previous analysis provides a minimum distance for sufficient mixing so that equal mass flux of coagulant will end up in both treatment trains. This assumes that the coagulant was injected in the pipe centerline. Injection at the wall of the pipe is a poor practice and would require many more pipe diameters because it takes significant time for the coagulant to be mixed out of the slower fluid at the wall.
-What about {{L_mixing}}
 
+
+### Maximum velocity gradients
 ```python
 Mix_HRT = np.array([0.5,15,25,35,85])*u.s
 Mix_G = np.array([4000,1500,950,850,750])/u.s
@@ -556,23 +765,22 @@ Coiled tube flocculators are commonly used by AguaClara Cornell researchers for 
 
 ## Conventional Rapid Mix
 
-Conventional rapid mix units use mechanical or potential energy to generate intense turbulence to begin the mixing process. Conventional design is based on the use of $
-\bar G$ (an average velocity gradient) as a design parameter. We don’t yet know what the design objective is for rapid mix and thus it isn’t clear which parameters matter. We hypothesize that both velocity gradients that cause deformation of the fluid and time for molecular diffusion are required to ultimately transport coagulant nanoparticles to the surfaces of clay particles.
+Conventional rapid mix units use mechanical or potential energy to generate intense turbulence to begin the mixing process. Conventional design is based on the use of $\bar G$ (an average velocity gradient) as a design parameter. We don’t yet know what the design objective is for rapid mix and thus it isn’t clear which parameters matter. We hypothesize that both velocity gradients that cause deformation of the fluid and time for molecular diffusion are required to ultimately transport coagulant nanoparticles to the surfaces of clay particles.
 
 The velocity gradient can be obtained from the rate at which mechanical energy is being dissipated and converted to heat by viscosity.
 
-$$ \epsilon = G^2 \nu $$
+$$ \varepsilon = G^2 \nu $$
 
-where $\epsilon$ is the energy dissipation rate, $G$ is the velocity gradient, and $\nu$ is the kinematic viscosity of water.
+where $\varepsilon$ is the energy dissipation rate, $G$ is the velocity gradient, and $\nu$ is the kinematic viscosity of water.
 We can estimate the power input required to create a target energy dissipation rate for a conventional design by noting that power is simple the energy dissipation rate times the mass of water in the rapid mix unit.
 
-$$P = \epsilon \rlap{--}V \rho $$
+$$P = \bar\varepsilon \rlap{--}V \rho $$
 
-$$ P = G^2 \nu \rlap{--}V \rho $$
+$$ P = \bar G^2 \nu \rlap{--}V \rho $$
 
 We can relate reactor volume to a hydraulic residence time, $\theta$, and volumetric flow rate, Q.
 
-$$ P = \rho G^2 \nu Q \theta $$
+$$ P = \rho \bar G^2 \nu Q \theta $$
 
 This equation is perfectly useful for estimating electrical motor sizing requirements for mechanical rapid mix units. For gravity powered hydraulic rapid mix units it would be more intuitive to use the change in water surface elevation, $\Delta h$ instead of power input.
 
@@ -606,38 +814,7 @@ Figure x.	Enclosed mix system that uses a relatively small volume.
 
 
 
-Chemical Engineering Science, Vol. 50, No. 12, pp. 1877-1880, 1995
-THE INFLUENCE OF VISCOSITY ON MIXING IN JET REACTORS
-Jo BALDYGA, J. R. BOURNE* and R. V. GHOLAP
-Technisch-Chemisches Laboratorium, ETH-Zentrum, CH-8092 Zurich, Switzerland
 
-$$ \varepsilon_{Centerline} \cong \frac{50 D_{Jet}^3 V_{Jet}^3}{ \left( x - 2 D_{Jet} \right)^4}$$
-
-$$ \varepsilon_{Max} \cong \frac{\left( \frac{50}{\left( 5 \right)^4} \right) V_{Jet}^3}{D_{Jet}}$$
-
-$$ \varepsilon_{Max} \cong \frac{\left( \Pi_{RoundJet} V_{Jet} \right)^3}{D_{Jet}}$$
-
-$$\Pi_{RoundJet} \cong 0.5$$
-
-```python
-def Energy_dissipation_jet_centerline(D_jet,V_jet,x):
-  return (50 * D_jet**3*V_jet**3/(x-2*D_jet)**4).to_base_units()
-
-def Energy_dissipation_jet_max(D_jet,V_jet):
-  return (con.RATIO_JET_ROUND * V_jet)**3/D_jet
-
-V_jet = 1 * u.m/u.s
-D_jet = 0.1 * u.m
-EDR_max = Energy_dissipation_jet_max(D_jet,V_jet)
-x=np.linspace(7,20,24)*D_jet
-fig, ax = plt.subplots()
-ax.plot(x/D_jet,Energy_dissipation_jet_centerline(D_jet,V_jet,x))
-ax.set(xlabel='Jet diameters downstream', ylabel='Energy dissipation rate (W/kg)')
-fig.savefig(imagepath+'Jet_centerline_EDR')
-plt.show()
-```
-
-<img src="https://github.com/AguaClara/CEE4540_Master/raw/master/AguaClara%20Water%20Treatment%20Plant%20Design/Chapter%203_Rapid%20Mix/Images/Jet_centerline_EDR.png" width="400">
 ### Orifice Diameter to obtain Target Mixing
 $$ A_{Orifice} \Pi_{vc} = A_{Jet}$$
 
