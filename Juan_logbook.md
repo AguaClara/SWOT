@@ -249,8 +249,7 @@ I suggest putting all effort into the text book. There is some chance that the t
 ### Done
 1. Meeting with Monroe, Clare, Zoe, and Fletcher. Discussed the structure of the textbook, design challenges, and work for this summer. Textbook is top priority. I am to continue working on the summary sheets, which are being renamed to `Design` since that is the role that they occupy within the textbook.
 2. Finish standardizing the images for control volume vs streamline notation (arrows vs dotted lines). Red lines imply energy/bernoulli, black is just reference.
-3. Get rid of chapter number scetions
-4. change all velocities to small v instead of big V
+
 
 ### To Do
 1. Re do the opening lines of the summary sheets, which are now to be called the 'design' section of textbooks
@@ -258,7 +257,7 @@ I suggest putting all effort into the text book. There is some chance that the t
 2. Get a better reference for the b = 0.107s jet expansion. Gerhart Jirka's notes are the basis for this, but I think we need a better reference than one of Monroe's powerpoints
 
 3. Haarhoff (the South African guy) actually recommends a slot width of 1S. He also mentions that slot widths used vary depending on the part of the world. 1.5 is common in South America, 1 in South Africa, and 0.5 in India.  
-  <img src="https://github.com/AguaClara/CEE4540_Master/blob/master/AguaClara%20Water%20Treatment%20Plant%20Design/Chapter%204_Flocculation/Images/Slot_width_uncertainty.JPG?raw=true" width=400>
+  <img src="https://github.com/AguaClara/CEE4540_Master/blob/master/AguaClara%20Water%20Treatment%20Plant%20Design/Chapter%204_Flocculation/Images/Slot_width_uncertainty.JPG?raw=true" width=800>
 4. Discuss textbook structure Thursday May 31st
     - References? Equation numbering?
     -
@@ -272,3 +271,5 @@ I suggest putting all effort into the text book. There is some chance that the t
       - Disinfection
       - Public Health
       - Energy Dissipation and Velocity Gradients
+10. change all velocities to small $\bar v$ instead of $V$ in the entire textbook, both mine and Monroe's files push up to master send email
+11. reference everything with doi's
