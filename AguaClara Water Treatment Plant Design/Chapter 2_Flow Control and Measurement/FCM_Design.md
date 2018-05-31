@@ -46,7 +46,7 @@ Please use this table to control/command find the sections you are looking for.
 
 The term **constant head** means that the driving head of a system, $\Delta z$ or $\Delta h$, does not change over time, even as water flows through or out of the system. Constant head implies constant flow, since the energy driving the flow does not change.
 
-The challenge of constant head in chemical dosing for water treatment plants is not _just_ providing one continuous flow of chemicals, it is also varying that flow of chemicals as the flow rate through the plant changes, so that the concentration of chemicals in the raw water stays the same.
+The challenge of constant head in chemical dosing for water treatment plants is not _just_ providing one continuous flow of chemicals; it is also varying that flow of chemicals as the flow rate through the plant changes, so that the concentration of chemicals in the raw water stays the same.
 
 ### Important Terms
 1. Dose
@@ -62,7 +62,9 @@ The challenge of constant head in chemical dosing for water treatment plants is 
 
 ## 2.1) Tank with a Valve
 ### Flow $Q$ and Water Level $h$ as a Function of Time
-We first see if the standard and easy 'tank with a valve' system can be adjusted to serve as a constant head system. Using the setup of in the image below, we derive the following equation for flow $Q$ through the valve as a function of time $t$. [The derivation is found here,](https://github.com/AguaClara/CEE4540_Master/blob/master/AguaClara%20Water%20Treatment%20Plant%20Design/Chapter%202_Flow%20Control%20and%20Measurement/Derivation_flow_through_tank_with_a_valve.md "Hypochlorinator derivation") you are advised to read through it if you are confused about the equation.
+Our first step is to see if we can get constant head out of a simple system. The most simple flow control system is a bucket or tank with a hole in it. This system is too coarse to provide constant head. One step above that is a bucket or tank with a valve. This is where we begin our search for constant head.
+
+Using the setup of in the image below, we derive the following equation for flow $Q$ through the valve as a function of time $t$. [The derivation is found here,](https://github.com/AguaClara/CEE4540_Master/blob/master/AguaClara%20Water%20Treatment%20Plant%20Design/Chapter%202_Flow%20Control%20and%20Measurement/Derivation_flow_through_tank_with_a_valve.md "Hypochlorinator derivation") you are advised to read through it if you are confused about this equation.
 
 $$ \frac{Q}{Q_0} = 1 - \frac{1}{2} \frac{t}{t_{Design}} \frac{h_{Tank}}{h_0}$$
 
@@ -74,7 +76,7 @@ $t_{Design}$ = time it would take for tank to empty if flow stayed constant at $
 $h_{Tank}$ = elevation of water level with reference to tank bottom at time $t$ = 0  
 $h_0$ = elevation of water level with reference to the valve at time $t$ = 0  
 
-<center><img src="https://github.com/AguaClara/CEE4540_Master/blob/master/AguaClara%20Water%20Treatment%20Plant%20Design/Chapter%202_Flow%20Control%20and%20Measurement/Images/complete_hypochlorinator.jpg?raw=true" width=500></center>
+<center><img src="https://github.com/AguaClara/CEE4540_Master/blob/master/AguaClara%20Water%20Treatment%20Plant%20Design/Chapter%202_Flow%20Control%20and%20Measurement/Images/hypochlorinator_variable_explanation.jpg?raw=true" width=600></center>
 
 This equation has historically give students some trouble, and while its nuances are explained in the derivation, they will be quickly summarized below:
 
@@ -136,7 +138,7 @@ This device consists of a bottle of chemical solution, called the **Constant Hea
 
 Chemical solution, either coagulant or chlorine, is stored in a stock tank somewhere above the CHT. A different tube connects the stock tank to the float valve within the CHT.
 
-<center><img src="https://github.com/AguaClara/CEE4540_Master/blob/master/AguaClara%20Water%20Treatment%20Plant%20Design/Chapter%202_Flow%20Control%20and%20Measurement/Images/Almost_linear_flow_controller.jpg?raw=true" width="600">
+<center><img src="https://github.com/AguaClara/CEE4540_Master/blob/master/AguaClara%20Water%20Treatment%20Plant%20Design/Chapter%202_Flow%20Control%20and%20Measurement/Images/Almost_linear_flow_controller.jpg?raw=true" width="600"></center>
 
 #### **What it does and why**
 This flow controller provides a constant flow of chemical solution to the water in the plant. When the end of the flexible tube is placed in a hole, the elevation difference between the water level in the bottle and the hole is set and does not change unless the tube is then placed in another hole. Thus, a constant flow is provided while the end of the tube is not moved.

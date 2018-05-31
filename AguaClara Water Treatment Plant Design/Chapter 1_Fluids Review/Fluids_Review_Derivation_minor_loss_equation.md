@@ -1,6 +1,6 @@
 # Deriving the Minor Loss Equations
 
-This document contains the derivation of the minor loss equation using the following image as a reference. The derivation begins with a slightly simplified energy equation, in which $h_P$ and $h_T$ have been eliminated.
+This document contains the derivation of the minor loss equation using the following image as a reference. The derivation begins with a slightly simplified energy equation across the control volume show. Our energy equation begins with $h_P$ and $h_T$ having been eliminated.
 
 <center><img src="https://github.com/AguaClara/CEE4540_Master/blob/master/AguaClara%20Water%20Treatment%20Plant%20Design/Chapter%201_Fluids%20Review/Images/Minor_loss_pipe.jpg?raw=true" width=600></center>
 
@@ -57,6 +57,8 @@ From here, the two other forms of the minor loss equation can be derived by solv
 
 $$ {\rm{ \mathbf{Second \, form:} }} \,\,\, h_e = \frac{V_{in}^2}{2g}{\left( {1 - \frac{A_{in}}{A_{out}}} \right)^2} = \frac{V_{in}^2}{2g} \mathbf{K_e^{'}}$$
 
-$$ {\rm{ \mathbf{Third \, form:} }} \,\,\, h_e = \frac{V_{out}^2}{2g}{\left( {\frac{A_{out}}{A_{in}}} -1 \right)^2} = \frac{V_{out}^2}{2g} \mathbf{K_e}$$
+$$\color{purple}{
+{\rm{ \mathbf{Third \, form:} }} \,\,\, h_e = \frac{V_{out}^2}{2g}{\left( {\frac{A_{out}}{A_{in}}} -1 \right)^2} = \frac{V_{out}^2}{2g} \mathbf{K_e}
+}$$
 
-Being familiar with these three forms and how they are used will be of great help throughout the class.
+Being familiar with these three forms and how they are used will be of great help throughout the class. The third form is the one that is most commonly used.

@@ -22,11 +22,19 @@ $$ D_{Pipe} = \sqrt{ \frac{8 A_{Tank}}{\pi t_{Drain}} \sqrt{ \frac{h_0 \sum K_e}
 
 To get the equation in terms of easily measureable tank parameters, we substitute $L_{Tank} W_{Tank}$ for $A_{Tank}$. To maintain consistency in variable names, we substitute $H_{Tank}$ for $h_0$.   
 
-**Note:** By saying that $h_0 = H_{Tank}$, we are making the assumption that the pipe drain is at the same elevation as the bottom of the tank. The pipe drain is actually a little lower than the bottom of the tank, but that would make the tank drain faster than $t_{Drain}$, which is ok. Therefore, we are designing a slight safety factor when we say that $h_0 = H_{Tank}$.
+**Note:** By saying that $h_0 = H_{Tank}$, we are making the assumption that the pipe drain is at the same elevation as the bottom of the tank. The pipe drain is actually a little lower than the bottom of the tank, but that would make the tank drain faster than $t_{Drain}$, which is preferred. Therefore, we are designing a slight safety factor when we say that $h_0 = H_{Tank}$.
 
 Finally, we arrive at the equation for drain pipe sizing:
 
-$$ D_{Pipe} = \sqrt{ \frac{8 L_{Tank} W_{Tank}}{\pi t_{Drain}}} {\left( \frac{H_{Tank} \sum K_{e}}{2g} \right)^{\frac{1}{4}}}$$
+$$\color{purple}{
+D_{Pipe} = \sqrt{ \frac{8 L_{Tank} W_{Tank}}{\pi t_{Drain}}} \left( \frac{H_{Tank} \sum K_{e}}{2g} \right)^{\frac{1}{4}}
+}$$
+
+We can also easily rearrange to find the time required to drain a tank given a drain diameter:
+
+$$\color{purple}{
+t_{Drain} = \frac{8 L_{Tank} W_{Tank}}{\pi D_{Pipe}^2} \sqrt{ \frac{H_{Tank} \sum K_{e}}{2g} }
+}$$
 
 Such that the variables are as the appear in the image below.
 

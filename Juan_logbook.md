@@ -241,3 +241,23 @@ I suggest putting all effort into the text book. There is some chance that the t
     10. How tall should the baffles be? Should there be $S$ distance between the floor of the flocculator and the bottom of a top baffle? How does the 40 cm of head loss affect this for the flow over and around a bottom baffle?
 
         - I think our current design is to have 1.5s of space below the bottom of the upper baffle. My understanding is that there is little performance difference between an opening of 1s and 1.5s. We don't currently have any method of efficiently using the added triangle of water that builds up due to head loss. We have to keep our bottom baffles well below this so that the plant works under low flow conditions when head loss is dramatically reduced. Thus the water in the triangle may be relatively stagnant and we don't assume that the residence time in that triangle is helpful.  
+
+
+
+***
+## Tenth Progress Report: 6/??/2018  
+### Done
+1. Meeting with Monroe, Clare, Zoe, and Fletcher. Discussed the structure of the textbook, design challenges, and work for this summer. Textbook is top priority. I am to continue working on the summary sheets, which are being renamed to `Design` since that is the role that they occupy within the textbook.
+2. Finish standardizing the images for control volume vs streamline notation (arrows vs dotted lines). Red lines imply energy/bernoulli, black is just reference.
+
+### To Do
+1. Re do the opening lines of the summary sheets, which are now to be called the 'design' section of textbooks
+
+2. Get a better reference for the b = 0.107s jet expansion. Gerhart Jirka's notes are the basis for this, but I think we need a better reference than one of Monroe's powerpoints
+
+3. Haarhoff (the South African guy) actually recommends a slot width of 1S. He also mentions that slot widths used vary depending on the part of the world. 1.5 is common in South America, 1 in South Africa, and 0.5 in India.  
+  <img src="https://github.com/AguaClara/CEE4540_Master/blob/master/AguaClara%20Water%20Treatment%20Plant%20Design/Chapter%204_Flocculation/Images/Slot_width_uncertainty.JPG?raw=true" width=400>
+4. Discuss textbook structure Thursday May 31st
+5. Link Shultz and Okun-- also brings into consideration citations
+6. Make sure that the flocculator design check is correct.
+    - Should we account for head loss in the final residence time check? Monroe mentioned some time ago that the volume of water that is in the 'head loss triangle' doesn't contribute any meaningful shear.
