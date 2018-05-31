@@ -266,3 +266,9 @@ I suggest putting all effort into the text book. There is some chance that the t
 6. Make sure that the flocculator design check is correct.
     - Should we account for head loss in the final residence time check? Monroe mentioned some time ago that the volume of water that is in the 'head loss triangle' doesn't contribute any meaningful shear.
 7. Think meaningfully about the ordering of the flocculator design sheet. Where to introduce the physical flocculator parameters? $H$ vs $H_e$? efficiency? Obstacles? Do obstacles _have_ to go after efficiency?
+
+8. Rename all chapter number folders, get rid of numbering in design sheets
+9. Add new chapters  
+      - Disinfection
+      - Public Health
+      - Energy Dissipation and Velocity Gradients
