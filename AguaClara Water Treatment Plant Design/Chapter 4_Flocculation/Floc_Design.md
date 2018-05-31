@@ -221,7 +221,7 @@ AguaClara uses a fairly straightforward way of setting $\Pi_{HS_{Min}}$. It is b
 
 <font color="red">AguaClara uses a slot width ratio of 1.5 for its flocculators</font>. This number has been the topic of much hydraulic flocculation research,  and values between 1 and 1.5 are generally accepted for efficient flocculators. See the following papers for more data on slot width ratios and other hydraulic flocculator parameters: [Haarhoff 1998](https://www.researchgate.net/publication/298057263_Design_of_around-the-end_hydraulic_flocculators " Design of around-the-end hydraulic flocculators"), _**<font color="red">LINK SHULTZ AND OKUN</font>**_. Since AguaClara uses a slot width ratio of 1.5, any $\Pi_{HS}$ values less than $3$, which is twice the slot width ratio, allow for water to flow straight the flocculator without having to bend around the baffles. This means that the flocculator won't be generating nearly any head loss, and the top and bottom of the flocculator will largely be dead space. See the following image for an example:  
 
-<center><img src="https://github.com/AguaClara/CEE4540_Master/blob/master/AguaClara%20Water%20Treatment%20Plant%20Design/Chapter%204_Flocculation/Images/HeS_ratio_min.jpg?raw=true" width=500></center>
+<center><img src="https://github.com/AguaClara/CEE4540_Master/blob/master/AguaClara%20Water%20Treatment%20Plant%20Design/Chapter%204_Flocculation/Images/HeS_ratio_min.jpg?raw=true" width=800></center>
 
 Thus, $\Pi_{HS_{Min}}$ should be twice the slot width ratio.
 
