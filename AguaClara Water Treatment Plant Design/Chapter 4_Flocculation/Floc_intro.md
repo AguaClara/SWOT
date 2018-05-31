@@ -35,6 +35,28 @@ The mechanism of particle-particle aggregation was thought to be controlled by a
 1. Flocculation time for highly turbid suspensions was expected to proceed very rapidly and produce very low turbidity settled water. This expectation was not observed and led to the hypothesis that flocs were continually breaking up and producing primary particles or at least very small flocs.
 1. The floc break up hypotheses led to the expectation that high turbidity suspensions would have significantly higher settled water turbidity than low turbidity suspensions. This expectation was also not observed.
 
+Evidence that the charge neutralization hypothesis doesn't explain flocculation of surface waters has been accumulating for decades. *Sweep* flocculation has been proposed as an alternative category that described common observations that didn't fit the charge neutralization hypothesis. However, similar to the charge neutralization hypothesis, the *sweep* hypothesis didn't result in the development of predictive equations to describe the process.
+
+
+For example, in 1992 Ching, Tanaka, and Elimelech published their research on [Dynamics of coagulation of kaolin particles with ferric chloride](https://doi.org/10.1016/0043-1354(94)90007-8). They found that the electrophoretic mobility which is a measure of the clay particle surface charge was never neutralized at pH 7.8 and was neutralized at $10\mu M$ at pH 6.0. The results were interpreted by the authors to mean that some combination of sweep floc and charge patchiness was responsible for the observed results.
+
+<img src="https://github.com/AguaClara/CEE4540_Master/raw/master/AguaClara%20Water%20Treatment%20Plant%20Design/Chapter%203_Rapid%20Mix/Images/Ching_Electrophoretic_Mobility_vs_Ferric_Chloride" width="400">
+
+[Figure x. Electrophoretic_Mobility for final pH (after coagulant addition) of 6.0 and 7.8 as a function of $FeCl_3$ dose](https://doi.org/10.1016/0043-1354(94)90007-8)
+
+The settled water turbidity was almost independent of pH even though the electrophoretic mobility was quite different for the two pH values tested.
+
+[At pH 6.0 the ferric hydroxide precipitates are positively charged and at pH 7.8 they are close to neutral](https://doi.org/10.1016/0043-1354(94)90007-8). Thus it is apparent that neutralization of the clay surface charge can not explain these results.
+
+<img src="https://github.com/AguaClara/CEE4540_Master/raw/master/AguaClara%20Water%20Treatment%20Plant%20Design/Chapter%203_Rapid%20Mix/Images/Ching Residual_Turbidity_vs_Ferric_Chloride.png" width="400">
+
+[Figure x. Settled water turbidity (jar tests) for final pH (after coagulant addition) of 6.0 and 7.8.](https://doi.org/10.1016/0043-1354(94)90007-8)
+
+Electrostatic charge neutralization hypothesis
+* The coagulant precipitate self aggregates – this is inconsistent with the positive charge that the electrostatic hypothesis asserts will prevent aggregation
+* Electrostatic repulsion extends only a few nm from the surface of a particle – and the coagulant adhesive nanoparticles are many times larger than the reach of the repulsive electrostatic force
+* The hypothesis that London van der Waals forces result in attachment neglects to account for the presence of water in the system. Water molecules will also be attracted to surfaces by London van der Waals forces and thus there will be competition between the coagulant and water. Thus eliminating repulsion is NOT sufficient to produce a bond between the particles. (see [hydration repulsion, page 21](https://vtechworks.lib.vt.edu/bitstream/handle/10919/30137/Chapter1.pdf?sequence=9))
+* [“The theory of DLP was a great step forward in that it appeared to circumvent the whole intractable problem of many body forces through its use of measured bulk dielectric response functions. However, it must be stressed again that it is a perturbation theory. That is, it depends on the assumption that an intervening liquid between interacting surfaces has bulk liquid properties up to a molecular distance from the surfaces. This is thermodynamically inconsistent, being equivalent to the statement that surface energies (or alternatively, the positions of the Gibbs dividing surfaces) are changed infinitesimally with distance of separation. This limits the theory to `large' distances (Young–Laplace vs. Poisson again) where `large' is undefined.”](https://doi.org/10.1016/S0001-8686(99)00008-1)
 
 
 ```python
