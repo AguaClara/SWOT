@@ -62,9 +62,9 @@ The first approach would be ideal but is difficult in practice because Navier St
 * table of equations for average energy dissipation rates
 
 Table of equations for control volume averaged values.
-| Geometry | $h_L$ |$ \bar\varepsilon $ | $\bar G(V)$ |  $\bar G(Q)$|
+| Geometry | $h_L$ |$ \bar\varepsilon $ | $\bar G(\bar v)$ |  $\bar G(Q)$|
 | - | :-: | :-: | :-: | :-: |
-| Straight pipe | $h_{\rm{f}} = {\rm{f}} \frac{L}{D} \frac{V^2}{2g}$ |$ \bar\varepsilon = \rm{f} \frac{V^3}{2D} $ |$  \bar G = \left(\frac{\rm{f}}{\nu} \frac{V^3}{2D} \right)^\frac{1}{2}$ |  $  \bar G = \left(\frac{\rm{32f}}{ \pi^3\nu} \frac{Q^3}{D^7} \right)^\frac{1}{2}$ |
+| Straight pipe | $h_{\rm{f}} = {\rm{f}} \frac{L}{D} \frac{\bar v^2}{2g}$ |$ \bar\varepsilon = \frac{\rm{f}}{2} \frac{V^3}{D} $ |$  \bar G = \left(\frac{\rm{f}}{2\nu} \frac{V^3}{D} \right)^\frac{1}{2}$ |  $  \bar G = \left(\frac{\rm{32f}}{ \pi^3\nu} \frac{Q^3}{D^7} \right)^\frac{1}{2}$ |
 | Straight pipe laminar|$h_{\rm{f}} = \frac{32\nu LV}{ g D^2}$| $ \bar\varepsilon =32\nu \left( \frac{V}{D} \right)^2$ |$ \bar G =4\sqrt2 \frac{V}{D} $ | $ \bar G =\frac{16\sqrt2}{\pi} \frac{Q}{D^3} $ |
 | Coiled Tube | - |- | $\overline{G_{coil}} = \bar G\left[ 1 + 0.033\left(log_{10}De\right)^4  \right]^\frac{1}{2} $ | - |
 | Expansions | $ h_e =  \mathbf{K_e}\frac{V_{out}^2}{2g} $ | $ \bar\varepsilon = \mathbf{K_e}\frac{V_{out}^3}{2H} $ | $ \bar G = V_{out}\sqrt{\frac{\mathbf{K_e}V_{out}}{2H\nu}}$ | - |
@@ -72,17 +72,12 @@ The equations used to convert between columns in the table above are
 $ \bar\varepsilon = \frac{gh_{\rm{L}}}{\theta} $, $ \bar G = \sqrt{\frac{\bar \varepsilon}{\nu}}$, $V=\frac{4Q}{\pi D}$
 
 
-Table of equations for wall velocity gradients.
-| Geometry |  $G_{wall}$|
+Table of equations for maximum values.
+| Geometry |  $G_{max}$|
 | - | :-: |
 | Straight pipe  | $ G_{wall} =\rm{f}  \frac{V^2}{8\nu} $|
 | Straight pipe laminar | $ G_{wall} =  \frac{8V}{D} $|
 | Coiled pipe | $ \bar G_{wall_{coil}} =\rm{f} \left[ 1 + 0.033\left(log_{10}De\right)^4 \right]  \frac{V^2}{8\nu} $|
-
-Table of equations for maximum velocity gradients in flow expansions.
-| Geometry |  $\varepsilon_{max}$| $G_{max}$|
-| - | :-: | :-: |
-| Round jet | $ \varepsilon_{Max} \cong \Pi_{RoundJet}\frac{V_{Jet}^3}{2D_{Jet}}$ |- |
 
 
 ## Straight pipe (wall shear)
@@ -97,7 +92,7 @@ For straight pipe flow the only head loss is due to wall shear and thus we have 
 $$h_{\rm{f}} = {\rm{f}} \frac{L}{D} \frac{V^2}{2g}$$
 
 Combining the 3 previous equations we obtain the energy dissipation rate for pipe flow
-$$ \bar\varepsilon = \rm{f} \frac{V^3}{2D} $$
+$$ \bar\varepsilon = \frac{\rm{f}}{2} \frac{V^3}{D} $$
 
 The average velocity gradient was defined by Camp as
 
@@ -105,7 +100,7 @@ $$ \bar G = \sqrt{\frac{\bar \varepsilon}{\nu}}$$
 
 where this approximation neglects the fact that square root of an average is not the same as the average of the square root.  
 
-$$  \bar G = \left(\frac{\rm{f}}{\nu} \frac{V^3}{2D} \right)^\frac{1}{2}$$
+$$  \bar G = \left(\frac{\rm{f}}{2\nu} \frac{V^3}{D} \right)^\frac{1}{2}$$
 
 or in terms of flow rate, we have
 
@@ -191,7 +186,7 @@ The maximum velocity gradient in
 
 Figure x. A fluid flowing from left to right due to a pressure gradient results in wall shear.
 
-A force balance for the case of steady flow in a horizontal round pipe requires that sum of the forces in the x direction must equal zero. Given a pipe with diameter, D, and length, L, we obtain
+A force balance for the case of steady flow in a round pipe requires that sum of the forces in the x direction must equal zero. Given a pipe with diameter, D, and length, L, we obtain
 
 $$ \left(P_{in}- P_{out}\right)\frac{\pi D^2}{4} = \tau_{wall} \pi D L $$
 
@@ -212,40 +207,11 @@ This equation is valid for both laminar flow. For  turbulent flow it is necessar
 
 $$ G_{wall} =\rm{f}  \frac{V^2}{8\nu} $$
 
-For laminar flow we substitute $\rm{f} = \frac{64}{Re}$ and $Re= \frac{VD}{\nu}$ to obtain
+For laminar flow we have
 
 $$ G_{wall} =  \frac{8V}{D} $$
 This equation is useful for finding the velocity gradient at the wall of a tube settler.
 
-## Flow between parallel (major losses)
-A force balance for the case of steady flow in between  horizontal parallel plates requires that sum of the forces in the x direction must equal zero. Given a plate spacing, S, plate width, W, and plate length, L, we obtain
-
-$$ \left(P_{in}- P_{out}\right) W S = -\Delta P W S  = 2\tau_{wall} L W $$
-
-For this control volume the energy equation simplifies to
-
-$$-\Delta P=\rho g h_{\rm{f}}$$
-
-The relationship between shear and velocity gradient is
-
-$$\tau_{wall} = \mu \frac{du}{dy}_{wall} = \mu G_{wall} $$
-
-Combining the energy equation, the force balance, and the relationship between shear and velocity gradient we obtain
-
-$$\rho g h_{\rm{f}} W S  = 2\mu G_{wall} L W $$
-
-Solving for $G_{wall}$ and switching to kinematic viscosity we obtain
-
-$$G_{wall}=\frac{ g h_{\rm{f}} S}{2\nu  L} $$
-
-This equation is valid for both laminar flow. For  turbulent flow it is necessary to make the approximation that wall shear perpendicular to the direction of flow is insignificant in increasing the magnitude of the wall shear.
-
-$$ G_{wall} = ??? $$
-
-For laminar flow we substitute $\rm{f} = \frac{64}{Re}$ and $Re= \frac{VD}{\nu}$ to obtain
-
-$$ G_{wall} =  \frac{?V}{D} $$
-This equation is useful for finding the velocity gradient at the surface of a plate settler.
 ## Curved tube (laminar flow)
 The shear on the wall of a coiled tube is not uniform. The outside of the curve has a higher velocity gradient than the inside of the curve and there are secondary currents that results in wall shear that is not purely in the locally defined upstream direction. We do not have a precise equation for the wall shear. The best we can do currently is define an average wall shear in the locally defined direction of flow by combining $ \bar G_{wall_{coil}} =\rm{f_{coil}}  \frac{V^2}{8\nu} $ and $\rm{f}_{coil} = \rm{f} \left[ 1 + 0.033\left(log_{10}De\right)^4 \right] $ to obtain
 
@@ -262,17 +228,13 @@ Technisch-Chemisches Laboratorium, ETH-Zentrum, CH-8092 Zurich, Switzerland
 
 [$$ \varepsilon_{Centerline} \cong \frac{50 D_{Jet}^3 V_{Jet}^3}{ \left( x - 2 D_{Jet} \right)^4}$$](https://doi.org/10.1016/0009-2509(95)00049-B)
 
-$$ \varepsilon_{Max} \cong \frac{2\left( \frac{50}{\left( 5 \right)^4} \right) V_{Jet}^3}{2D_{Jet}}$$
+$$ \varepsilon_{Max} \cong \frac{\left( \frac{50}{\left( 5 \right)^4} \right) V_{Jet}^3}{D_{Jet}}$$
 
-$$ \Pi_{RoundJet} \cong 2\left( \frac{50}{\left( 5 \right)^4} \right)= 0.16 $$
+$$ \varepsilon_{Max} \cong \frac{\left( \Pi_{RoundJet} V_{Jet} \right)^3}{D_{Jet}}$$
 
-$$ \varepsilon_{Max} \cong \Pi_{RoundJet}\frac{V_{Jet}^3}{2D_{Jet}}$$
-
-Thus the maximum energy dissipation rate in the jet is equivalent to 16% of the kinetic energy contained in the jet being dissipated in the time that the fluid travels a distance equal to the jet diameter. This maximum rate of energy dissipation is **much** greater than the friction factor for turbulent flow in a pipe. This illustrates how expansion losses usually far exceed wall shear losses.  
-
-
+$$\Pi_{RoundJet} \cong 0.5$$
+(The equation for $ \varepsilon_{Max}$ would be more similar to the equation for energy dissipation in a pipe if we defined $\Pi_{RoundJet}$ to be outside the exponent of 3. In that case it would simply be $\frac{50}{5^4}$ = 0.08. Would this require any significant changes in subsequent equations?)
 ```python
-2*50/5**4
 def Energy_dissipation_jet_centerline(D_jet,V_jet,x):
   return (50 * D_jet**3*V_jet**3/(x-2*D_jet)**4).to_base_units()
 
