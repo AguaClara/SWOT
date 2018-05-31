@@ -249,6 +249,12 @@ I suggest putting all effort into the text book. There is some chance that the t
 ### Done
 1. Meeting with Monroe, Clare, Zoe, and Fletcher. Discussed the structure of the textbook, design challenges, and work for this summer. Textbook is top priority. I am to continue working on the summary sheets, which are being renamed to `Design` since that is the role that they occupy within the textbook.
 2. Finish standardizing the images for control volume vs streamline notation (arrows vs dotted lines). Red lines imply energy/bernoulli, black is just reference.
+3. Rename all chapter number folders, get rid of numbering in design sheets
+4. Add new chapters  
+      - Disinfection
+      - Public Health
+      - Energy Dissipation and Velocity Gradients
+5. change all velocities to small $\bar v$ instead of $V$ in the entire textbook, both mine and Monroe's files push up to master send email
 
 
 ### To Do
@@ -266,10 +272,4 @@ I suggest putting all effort into the text book. There is some chance that the t
     - Should we account for head loss in the final residence time check? Monroe mentioned some time ago that the volume of water that is in the 'head loss triangle' doesn't contribute any meaningful shear.
 7. Think meaningfully about the ordering of the flocculator design sheet. Where to introduce the physical flocculator parameters? $H$ vs $H_e$? efficiency? Obstacles? Do obstacles _have_ to go after efficiency?
 
-8. Rename all chapter number folders, get rid of numbering in design sheets
-9. Add new chapters  
-      - Disinfection
-      - Public Health
-      - Energy Dissipation and Velocity Gradients
-10. change all velocities to small $\bar v$ instead of $V$ in the entire textbook, both mine and Monroe's files push up to master send email
-11. reference everything with doi's
+8. reference everything with doi's
