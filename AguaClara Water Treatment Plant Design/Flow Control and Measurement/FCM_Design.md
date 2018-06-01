@@ -64,7 +64,7 @@ The challenge of constant head in chemical dosing for water treatment plants is 
 ### Flow $Q$ and Water Level $h$ as a Function of Time
 Our first step is to see if we can get constant head out of a simple system. The most simple flow control system is a bucket or tank with a hole in it. This system is too coarse to provide constant head. One step above that is a bucket or tank with a valve. This is where we begin our search for constant head.
 
-Using the setup of in the image below, we derive the following equation for flow $Q$ through the valve as a function of time $t$. [The derivation is found here,](https://github.com/AguaClara/CEE4540_Master/blob/master/AguaClara%20Water%20Treatment%20Plant%20Design/Flow%20Control%20and%20Measurement/Derivation_flow_through_tank_with_a_valve.md "Hypochlorinator derivation") you are advised to read through it if you are confused about this equation.
+Using the setup of in the image below, we derive the following equation for flow $Q$ through the valve as a function of time $t$. [The derivation is found here,](https://github.com/AguaClara/CEE4540_Master/blob/master/AguaClara%20Water%20Treatment%20Plant%20Design/Flow%20Control%20and%20Measurement/FCM_Derivation_flow_through_tank_with_a_valve.md "Hypochlorinator derivation") you are advised to read through it if you are confused about this equation.
 
 $$ \frac{Q}{Q_0} = 1 - \frac{1}{2} \frac{t}{t_{Design}} \frac{h_{Tank}}{h_0}$$
 
@@ -91,7 +91,7 @@ Using this equation and relationship, we make the following plots. On the left, 
 <center><img src="https://github.com/AguaClara/CEE4540_Master/blob/master/AguaClara%20Water%20Treatment%20Plant%20Design/Flow%20Control%20and%20Measurement/Images/Tank_valve_play.jpg?raw=true" width=750></center>
 
 ### Drain System for a Tank
-While the 'tank with a valve' scenario is not a good constant head solution, we can use our understanding of the system to properly design drain systems for AguaClara reactors like flocculators and sedimentation tanks, since they essentially tanks with valves.  The derivation for the following equation is found [here](https://github.com/AguaClara/CEE4540_Master/blob/master/AguaClara%20Water%20Treatment%20Plant%20Design/Flow%20Control%20and%20Measurement/Derivation_drain_system_design.md), along with more details on AguaClara's pipe stub method for draining tanks. The derived 'Tank Drain' equation is as follows:
+While the 'tank with a valve' scenario is not a good constant head solution, we can use our understanding of the system to properly design drain systems for AguaClara reactors like flocculators and sedimentation tanks, since they essentially tanks with valves.  The derivation for the following equation is [found here](https://github.com/AguaClara/CEE4540_Master/blob/master/AguaClara%20Water%20Treatment%20Plant%20Design/Flow%20Control%20and%20Measurement/FCM_Derivation_drain_system_design.md), along with more details on AguaClara's pipe stub method for draining tanks. The derived 'Tank Drain' equation is as follows:
 
 $$D_{Pipe} = \sqrt{ \frac{8 L_{Tank} W_{Tank}}{\pi t_{Drain}}} {\left( \frac{H_{Tank} \sum K_e }{2g} \right)^{\frac{1}{4}}}$$
 
@@ -100,10 +100,10 @@ The equation can also be rearranged to solve for the time it would take to drain
 $$t_{Drain} =  \frac{8 L_{Tank} W_{Tank}}{\pi D_{Pipe}^2} {\left( \frac{H_{Tank} \sum K_e }{2g} \right)^{\frac{1}{2}}}$$
 
 Such that:
-$D_{Pipe}$ = Diameter of the drain piping
-$L_{Tank}, W_{Tank}, H_{Tank}$ = Tank dimensions
-$t_{Drain}$ = Time it takes to drain the tank
-$\sum K_e$ = Sum of all the minor loss coefficients in the system
+$D_{Pipe}$ = Diameter of the drain piping  
+$L_{Tank}, W_{Tank}, H_{Tank}$ = Tank dimensions  
+$t_{Drain}$ = Time it takes to drain the tank  
+$\sum K_e$ = Sum of all the minor loss coefficients in the system  
 
 <center><img src="https://github.com/AguaClara/CEE4540_Master/blob/master/AguaClara%20Water%20Treatment%20Plant%20Design/Flow%20Control%20and%20Measurement/Images/Pipe_stub_drainage_variables.jpg?raw=true" width=500></center>
 
@@ -208,11 +208,11 @@ The CDC brings together the LFOM and many improvements to the "Almost Linear" Fl
 The CDC makes it easy and accurate to dose chemicals. The flow of chemicals automatically adjusts to changes in the plant flow rate to keep a constant dose, set by the operator. When a turbidity event occurs, the operator can change the dose of coagulant by moving the coagulant slider _lower_ on the lever to increase the dose. The slider has labelled marks so the operator can record the dose accurately.
 
 #### **How it works**
-A lot of design has gone into the CDC. The design equations and their derivations can be [found here](https://github.com/AguaClara/CEE4540_Master/blob/master/AguaClara%20Water%20Treatment%20Plant%20Design/Flow%20Control%20and%20Measurement/Derivation_designing_the_cdc.md "CDC Design Derivation"), and you are very, very strongly encouraged to read them.
+A lot of design has gone into the CDC. The design equations and their derivations that the following steps are based on can be [found here](https://github.com/AguaClara/CEE4540_Master/blob/master/AguaClara%20Water%20Treatment%20Plant%20Design/Flow%20Control%20and%20Measurement/FCM_Derivation_designing_the_cdc.md "CDC Design Derivation"), and you are very, very strongly encouraged to read them.
 
 The CDC can be designed manually using the equations from the derivation linked above or via aide_design, using the equations found in [cdc_functions.py](https://github.com/AguaClara/aide_design/blob/master/aide_design/cdc_functions.py). Either way, the design algorithm is roughly the same:  
 
-1. Calculate the maximum flow rate, $Q_{Max, \, Tube}$, through each available dosing tube diameter that keeps error due to minor losses below 10% of total head loss. Recall that tubing diameter is an array, as there are many to choose from. This means that for each step, there will be as many solutions as there are diameters available.
+1. Calculate the maximum flow rate, $Q_{Max, \, Tube}$, through each available dosing tube diameter $D$ that keeps error due to minor losses below 10% of total head loss. Recall that tubing diameter is an array, as there are many diameters available at hardware stores and suppliers. This means that for each step, there will be as many solutions as there are reasonable diameters available.
 
 $$ Q_{Max, \, Tube} = \frac{\pi D^2}{4} \sqrt{\frac{2 h_L g \Pi_{Error}}{\sum{K_e} }} $$
 
@@ -228,7 +228,7 @@ $$n_{Tubes} = {\rm ceil} \left( \frac{Q_{Max, \, CDC}}{Q_{Max, \, Tube}} \right)
 
 $$ L_{Min} = \left( \frac{g h_L \pi D^4}{128 \nu Q_{Max}} - \frac{Q_{Max}}{16 \pi \nu} \sum{K_e} \right)$$
 
-5. Select a tube length. Pick the longest dosing tube that you can, keeping in mind that the tube(s) must be able to fit in the plant and can't be longer than the length of the plant wall it will be placed along.
+5. Select a tube length from your array of solutions. Pick the longest dosing tube that you can, keeping in mind that the tube(s) must be able to fit in the plant and can't be longer than the length of the plant wall it will be placed along.
 
 6. Finally, select the dosing tube diameter and flow rate corresponding to the selected tube length.
 
