@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Energy Dissipation and Velocity Gradients
 
 Water treatment plants at research and municipal scales deploy a wide range of flow geometries. The following list includes the flow geometries that are commonly used for mixing processes and example locations.
@@ -25,6 +26,57 @@ The equations used to convert between columns in the table above are
 
 $ \bar\varepsilon = \frac{gh_{\rm{L}}}{\theta} $, $ G_{CS} = \sqrt{\frac{\bar \varepsilon}{\nu}}$, $\bar v=\frac{4Q}{\pi D}$
 
+=======
+```python
+""" importing """
+from aide_design.play import*
+from aguaclara_research.play import*
+import aguaclara_research.floc_model as fm
+import matplotlib.pyplot as plt
+from matplotlib.ticker import FormatStrFormatter
+imagepath = 'AguaClara Water Treatment Plant Design/Chapter 3_Rapid Mix/Images/'
+Temperature = 15*u.degC
+```
+# Energy dissipation rate, velocity gradients, and mixing
+##Introduction
+
+Mixing, collisions between particles, shear that prevents floc deposition on reactor walls, floc breakup in high shear zones. Each of these processes requires an understanding of fluid dynamics and specifically the relationships between turbulence, fluid deformation, and shear.
+
+Estimation of velocity gradients for various flow geometries is the basis for the design of rapid mix, flocculators, and plate settlers and thus our goal is to define the velocity gradients consistently across the range of possible flow regimes. There are three approaches to calculating the average velocity gradient within a control volume.
+* Use the Navier Stokes equations and solve for the spatially averaged velocity gradient.
+* Use computation fluid dynamics to solve for the spatially averaged velocity gradient.
+* Use the total mechanical energy loss in the control volume to calculate the average energy dissipation rate. Calculate the velocity gradient directly from the energy dissipation rate. $\bar G = \sqrt{\frac{\bar \varepsilon}{\nu}}$
+
+The first approach would be ideal but is difficult in practice because Navier Stokes solutions are only available for limited geometries and laminar flow. Computational Fluid Dynamics could be used but is difficult to use as a general engineering design approach given the large number of geometries that are used in drinking water treatment plants. For these reasons we will use the control volume approach to estimate the average velocity gradient. This method incorrectly assumes that the energy dissipation rate is completely uniform in the control volume and hence the velocity gradient was also uniform. This method results in an over estimation of the velocity gradient.    
+
+
+* Average (control volume) estimates
+  * Straight pipe (major losses)
+  * Curved tube (laminar flow)
+  * Series of expansions
+* Maximum velocity gradients
+  * Straight pipe walls (major losses)
+  * Curved tube (laminar flow)
+  * Expansions
+    * Between flat plates
+    * Round jet
+    * Plane jet
+    * Behind a flat plate
+
+#### Output
+* table of equations for velocity gradients
+* table of equations for average energy dissipation rates
+
+Table of equations for control volume averaged values.
+| Geometry | $h_L$ |$\bar\varepsilon$ | $\bar G(\bar v)$ |  $\bar G(Q)$|
+| - | :-: | :-: | :-: | :-: |
+| Straight pipe (laminar and turbulent) | $h_{\rm{f}} = {\rm{f}} \frac{L}{D} \frac{\bar v^2}{2g}$ |$\bar\varepsilon = \frac{\rm{f}}{2} \frac{\bar v^3}{D}$ |$\bar G = \left(\frac{\rm{f}}{2\nu} \frac{\bar v^3}{D} \right)^\frac{1}{2}$ |  $\bar G = \left(\frac{\rm{32f}}{ \pi^3\nu} \frac{Q^3}{D^7} \right)^\frac{1}{2}$ |
+| Straight pipe laminar|$h_{\rm{f}} = \frac{32\nu L\bar v}{ g D^2}$| $\bar\varepsilon =32\nu \left( \frac{\bar v}{D} \right)^2$ |$\bar G =4\sqrt2 \frac{\bar v}{D}$ | $\bar G =\frac{16\sqrt2}{\pi} \frac{Q}{D^3}$ |
+| Coiled Tube | - |- | $\overline{G_{coil}} = \bar G\left[ 1 + 0.033\left(log_{10}De\right)^4  \right]^\frac{1}{2}$ | - |
+| Expansions | $h_e =  \mathbf{K_e}\frac{\bar v_{out}^2}{2g}$ | $\bar\varepsilon = \mathbf{K_e}\frac{\bar v_{out}^3}{2H}$ | $\bar G = \bar v_{out}\sqrt{\frac{\mathbf{K_e}\bar v_{out}}{2H\nu}}$ | - |
+The equations used to convert between columns in the table above are
+$\bar\varepsilon = \frac{gh_{\rm{L}}}{\theta}$, $\bar G = \sqrt{\frac{\bar \varepsilon}{\nu}}$, $\bar v=\frac{4Q}{\pi D}$
+>>>>>>> master
 
 
 Table of equations for maximum values.
@@ -39,7 +91,6 @@ Table of equations for maximum values.
 The average energy dissipation rate, $ \bar\varepsilon$, in a control volume with residence time $\theta$ is
 $$ \bar\varepsilon = \frac{gh_{\rm{L}}}{\theta} $$
 
-The residence time can be expressed as a function of length and velocity.
 $$ \theta = \frac{L}{\bar v}  $$
 
 For straight pipe flow the only head loss is due to wall shear and thus we have the Darcy Weisbach equation.
@@ -57,11 +108,9 @@ where this approximation neglects the fact that square root of an average is not
 
 $$  G_{CS} = \left(\frac{\rm{f}}{2\nu} \frac{\bar v^3}{D} \right)^\frac{1}{2}$$
 
-or in terms of flow rate, we have
 
 $$  G_{CS} = \left(\frac{\rm{32f}}{ \pi^3\nu} \frac{Q^3}{D^7} \right)^\frac{1}{2}$$
 
-Laboratory scale apparatus is often limited to laminar flow where viscosity effects dominate. The equations describing laminar flow conditions always include viscosity For the case of laminar flow in a straight pipe we have
 
 $$\rm{f} = \frac{64}{Re}$$
 
@@ -80,11 +129,19 @@ The average velocity gradient in a long straight laminar flow tube is thus
 $$ G_{CS}^2 =32 \left( \frac{\bar v}{D} \right)^2$$
 $$ G_{CS} =4\sqrt2 \frac{\bar v}{D} $$
 
+<<<<<<< HEAD
 Our estimate of $ G_{CS} $ based on $\bar \varepsilon$ is an overestimate because it assumes that the energy dissipation is completely uniform through the control volume. The true spatial average velocity gradient for laminar flow in a pipe is
 
 [$$ \bar G = \frac{8}{3}\frac{\bar v}{D} $$](https://doi.org/10.1016/0009-2509(81)80126-1)
 
 The our estimate of $ G_{CS} $ for the case of laminar flow in a pipe is too high by a factor of $\frac{3}{\sqrt2}$.
+=======
+Our estimate of $\bar G$ based on $\bar \varepsilon$ is an overestimate because it assumes that the energy dissipation is completely uniform through the control volume. The true spatial average velocity gradient for laminar flow in a pipe is
+
+[$\overline {G_{spatial}} = \frac{8}{3}\frac{\bar v}{D}$](https://doi.org/10.1016/0009-2509(81)80126-1)
+
+The our estimate of $\bar G$ for the case of laminar flow in a pipe is too high by a factor of $\frac{3}{\sqrt2}$.
+>>>>>>> master
 
 ```python
 3/np.sqrt(2)
@@ -95,11 +152,9 @@ $$ \bar v=\frac{Q}{A} = \frac{4Q}{\pi D^2}$$
 $$ G_{CS} =\frac{16\sqrt2}{\pi} \frac{Q}{D^3} $$
 
 ## Coiled tubes
-Coiled tubes are used as flocculators at laboratory scale.
 
 The ratio of the coiled to straight friction factors is given by [Mishra and Gupta](https://doi.org/10.1021/i260069a017)
 
-The Dean number is defined as
 
 $$De = Re\left(\frac{D}{D_c}\right)^\frac{1}{2}  $$
 
