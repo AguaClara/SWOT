@@ -1,26 +1,3 @@
-
-<!-- TOC depthFrom:1 depthTo:6 withLinks:1 updateOnSave:1 orderedList:0 -->
-
-	- [Conventional Rapid Mix](#conventional-rapid-mix)
-- [Coagulant nanoparticle application](#coagulant-nanoparticle-application)
-	- [Transport steps](#transport-steps)
-	- [Length and time scales for each of the processes](#length-and-time-scales-for-each-of-the-processes)
-	- [Mixing length scale and transport mechanisms](#mixing-length-scale-and-transport-mechanisms)
-		- [Length scales of coagulant nanoparticles and clay](#length-scales-of-coagulant-nanoparticles-and-clay)
-		- [Diffusion and Shear Transport Coagulant Nanoparticles to Clay](#diffusion-and-shear-transport-coagulant-nanoparticles-to-clay)
-		- [Diffusion band thickness](#diffusion-band-thickness)
-	- [Collision Rates](#collision-rates)
-		- [Collision Rate and Particle Removal](#collision-rate-and-particle-removal)
-		- [Integrate the coagulant transport model](#integrate-the-coagulant-transport-model)
-		- [Energy tradeoff for coagulant transport](#energy-tradeoff-for-coagulant-transport)
-	- [Coagulant attachment mechanism](#coagulant-attachment-mechanism)
-	- [Design for Mixing](#design-for-mixing)
-		- [Jet Mixing](#jet-mixing)
-		- [Orifice Diameter to obtain Target Mixing](#orifice-diameter-to-obtain-target-mixing)
-		- [Rapid Mix Head Loss](#rapid-mix-head-loss)
-
-<!-- /TOC -->
-
 ## Introduction
 
 Rapid mix is the term commonly used to describe the processes that occur between the coagulant addition to the raw water and the flocculation tanks. The processes that occur are not well understood and thus design guidelines are empirical.
@@ -59,25 +36,7 @@ Figure x.
   * Einstein's diffusion equation
 
 
-## Length and time scales for each of the processes
-Let's begin by describing the coagulant injection for a 60 L/s plant. We will use a linear flow orifice meter with 20 cm of head loss.
-
-```python
-Q_plant = 60 * u.L/u.s
-HL_LFOM = 20 * u.cm
-Pi_LFOM_safety = 1.2
-SDR_LFOM = 26
-from aide_design.unit_process_design import lfom as lfom
-ND_LFOM = lfom.nom_diam_lfom_pipe(Q_plant,HL_LFOM)
-print(ND_LFOM, '(',ND_LFOM.to(u.cm), ')')
-
-L_flow = pipe.ID_SDR(ND_LFOM,SDR_LFOM)
-L_flow
-v_lfom = (Q_plant/pc.area_circle(pipe.ID_SDR(ND_LFOM,SDR_LFOM))).to_base_units()
-print(v_lfom)
-```
-
-The LFOM requires a 16 inch diameter pipe. How long will it take for turbulent eddies to mix the coagulant across the area of the pipe? We will use a rule of thumb that the velocity of the largest eddies is about 10% of the mean velocity. We can use the eddy velocity to estimate how long it will take for an eddy to cross the diameter of the pipe.
+How long will it take for turbulent eddies to mix the coagulant across the area of the pipe? We will use a rule of thumb that the velocity of the largest eddies is about 10% of the mean velocity. We can use the eddy velocity to estimate how long it will take for an eddy to cross the diameter of the pipe.
 
 We will eventually develop designs for hydraulic devices to accomplish the multiple steps of transporting coagulant nanoparticles to interactions with dissolved and suspended contaminants. Initially we will assume that a design has been created that results in an energy dissipation rate of $1\frac{W}{kg}$.
 
@@ -92,13 +51,6 @@ We can estimate the characteristic velocity of any size of eddy based on the ass
 $\varepsilon \sim \frac{u^3}{L}$
 
 
-```python
-
-v_lfom = (Q_plant/pc.area_circle(pipe.ID_SDR(ND_LFOM,SDR_LFOM))).to_base_units()
-print(v_lfom)
-t_large_scale_mix = (pipe.ID_SDR(ND_LFOM,SDR_LFOM)/(0.1*v_lfom)).to_base_units()
-print(t_large_scale_mix)
-```
 The smallest scale at which inertia containing eddies causing mixing is set by the final damping of inertia by viscosity. Turbulence occurs when fluid inertia is too large to be damped by viscosity. The ratio of inertia to viscosity is given by the Reynolds number.
 
 $${\rm{Re}} = \frac{\bar vD}{\nu}$$
@@ -180,7 +132,7 @@ Figure x. Eddy turnover times as a function of length scale for a range of energ
 
 The eddy turnover times are longest for the largest eddies and this analysis suggests that it only takes a few seconds for turbulent eddies to mix from the scale of the flow down to the inner viscous length scale.
 
-This large scale mixing time is critical for the design of water treatment plants where after coagulant addition the flow is split into multiple treatment trains. In this case it is critical that the coagulant be mixed equally between all of the treatment trains and thus the mixing times shown in the previous graph represent a minimum time between where the coagulant is added and where the flow is divided into the parallel treatment trains.
+The large scale mixing time is critical for the design of water treatment plants where after coagulant addition the flow is split into multiple treatment trains. In this case it is critical that the coagulant be mixed equally between all of the treatment trains and thus the mixing times shown in the previous graph represent a minimum time between where the coagulant is added and where the flow is divided into the parallel treatment trains.
 
 
 
@@ -193,30 +145,6 @@ Solve for the ratio of the eddy velocity to the mean flow velocity and note that
 $$ N_{D_{pipe}} \sim \frac{\bar v}{u_{eddy}} \sim \left(\frac{2}{\rm{f}} \right)^\frac{1}{3} $$
 
 Where $N_{D_{pipe}}$ is the distance in number of pipe diameters downstream of the injection point where complete mixing will have occurred. The velocity ratio can be used to estimate the distance required for mixing perpendicular to the flow direction in a straight pipe.
-
-##### Example problem: Energy dissipation rate in a straight pipe
-A water treatment plant that is treating 120 L/s of water injects the coagulant into the middle of the pipe that delivers the raw water to the plant and then splits the flow into 2 parallel treatment trains for subsequent flocculation. The pipe is PVC 16 inch nominal pipe diameter SDR 26. The water temperature is $0^{\circ}C$. Estimate the minimum distance between the injection point and the flow split.
-
-Solution scheme
-1) Calculate the friction factor
-
-```python
-T_water=0*u.degC
-Pipe_roughness = mat.PIPE_ROUGH_PVC
-Pipe_roughness
-Nu_water = pc.viscosity_kinematic(T_water)
-Q_pipe = 120 * u.L/u.s
-ND_pipe = 16*u.inch
-SDR_pipe = 26
-ID_pipe = pipe.ID_SDR(ND_pipe,SDR_pipe)
-f_pipe = pc.fric(Q_pipe,ID_pipe,Nu_water,Pipe_roughness)
-N_pipe_diameters = (2/f_pipe)**(1/3)
-N_pipe_diameters
-"""The minimum length for mixing is thus"""
-L_mixing = ID_pipe*N_pipe_diameters
-print('The minimum distance required for mixing across the diameter of the pipe is ',L_mixing.to_base_units())
-```
-The previous analysis provides a minimum distance for sufficient mixing so that equal mass flux of coagulant will end up in both treatment trains. This assumes that the coagulant was injected in the pipe centerline. Injection at the wall of the pipe is a poor practice and would require many more pipe diameters because it takes significant time for the coagulant to be mixed out of the slower fluid at the wall.
 
 
 ### Maximum velocity gradients
@@ -244,25 +172,6 @@ Figure x. Mechanical rapid mix units use a wide range of velocity gradients and 
 
 ```
 
-The time required for mixing at the scale of the flow in the plant is thus accomplished in a few seconds. This ends up being the fastest part of the transport of the coagulant nanoparticles on their way to attachment to the clay particles.
-
-Next we will determine a typical flow rate of coagulant. **Aluminum** concentrations for polyaluminum chloride (PACl) typically range from 1 to 10 mg/L. The maximum PACl stock solution concentration is about 70 g/L as **Al**.
-
-```python
-C_PACl_stock = 70 *u.g/u.L
-C_PACl_dose_max = 10 * u.mg/u.L
-Q_PACl_max = (Q_plant*C_PACl_dose_max/C_PACl_stock).to(u.mL/u.s)
-print(Q_PACl_max)
-```
-We can estimate the diameter of the injection port by setting the kinetic energy loss where the coagulant is injected into the main flow to be 10 cm. The amount of energy we invest in injecting the coagulant into the raw water is a compromise between having to raise the entire chemical feed system including the stock tanks to increase the potential energy and a goal of not having pressure fluctuations inside the LFOM pipe cause flow oscillations in the chemical dosing tube. Thus our goal is to have the kinetic energy at the injection point be large compared with the expected pressure fluctuations in the LFOM.
-
-```python
-HL_Coag_injection = 10 * u.cm
-v_Coag_injection = ((2 * u.gravity * HL_Coag_injection)**0.5).to(u.m/u.s)
-print(v_Coag_injection)
-D_Coag_injection_min = pc.diam_circle(Q_PACl_max/v_Coag_injection)
-print(D_Coag_injection_min.to(u.mm))
-```   
 
 
 ## Mixing length scale and transport mechanisms
@@ -538,9 +447,9 @@ $$ \varepsilon = G^2 \nu $$
 where $\varepsilon$ is the energy dissipation rate, $G$ is the velocity gradient, and $\nu$ is the kinematic viscosity of water.
 We can estimate the power input required to create a target energy dissipation rate for a conventional design by noting that power is simple the energy dissipation rate times the mass of water in the rapid mix unit.
 
-$$P = \bar\varepsilon \rlap{-}V \rho $$
+$$P = \bar\varepsilon \rlap{\kern.08em--}V \rho $$
 
-$$ P = \bar G^2 \nu \rlap{-}V \rho $$
+$$ P = \bar G^2 \nu \rlap{\kern.08em--}V \rho $$
 
 We can relate reactor volume to a hydraulic residence time, $\theta$, and volumetric flow rate, Q.
 
