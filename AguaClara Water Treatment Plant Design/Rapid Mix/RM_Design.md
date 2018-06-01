@@ -63,6 +63,7 @@ Figure x.
 
 >>>>>>> master
 ## Length and time scales for each of the processes
+Let's begin by describing the coagulant injection for a 60 L/s plant. We will use a [linear flow orifice meter](https://github.com/AguaClara/CEE4540_Master/blob/master/AguaClara%20Water%20Treatment%20Plant%20Design/Flow%20Control%20and%20Measurement/FCM_Design.md#linear-flow-orifice-meter-lfom) with 20 cm of head loss.
 
 ```python
 Q_plant = 60 * u.L/u.s

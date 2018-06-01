@@ -86,11 +86,17 @@ Table of equations for maximum values.
 | Straight pipe laminar | $G_{wall} =  \frac{8\bar v}{D}$|
 | Coiled pipe | $G_{CS_{wall_{coil}}} =\rm{f} \left[ 1 + 0.033\left(log_{10}De\right)^4 \right]  \frac{\bar v^2}{8\nu}$|
 
+<<<<<<< HEAD
 ## Equation development
 ### Straight pipe (wall shear)
 The average energy dissipation rate, $ \bar\varepsilon$, in a control volume with residence time $\theta$ is
+=======
+## Straight pipe (wall shear)
+The average energy dissipation rate, $\bar\varepsilon$, in a control volume with residence time $\theta$ is
+>>>>>>> master
 $$ \bar\varepsilon = \frac{gh_{\rm{L}}}{\theta} $$
 
+The residence time can be expressed as a function of length and average velocity.
 $$ \theta = \frac{L}{\bar v}  $$
 
 For straight pipe flow the only head loss is due to wall shear and thus we have the Darcy Weisbach equation.
@@ -108,9 +114,11 @@ where this approximation neglects the fact that square root of an average is not
 
 $$  G_{CS} = \left(\frac{\rm{f}}{2\nu} \frac{\bar v^3}{D} \right)^\frac{1}{2}$$
 
+or in terms of flow rate, we have:
 
 $$  G_{CS} = \left(\frac{\rm{32f}}{ \pi^3\nu} \frac{Q^3}{D^7} \right)^\frac{1}{2}$$
 
+Laboratory scale apparatus is often limited to laminar flow where viscosity effects dominate. The equations describing laminar flow conditions always include viscosity. For the case of laminar flow in a straight pipe, we have:
 
 $$\rm{f} = \frac{64}{Re}$$
 
@@ -152,9 +160,13 @@ $$ \bar v=\frac{Q}{A} = \frac{4Q}{\pi D^2}$$
 $$ G_{CS} =\frac{16\sqrt2}{\pi} \frac{Q}{D^3} $$
 
 ## Coiled tubes
+Coiled tubes are used as flocculators at laboratory scale. The one shown below is a doubled coil. A single coil would only go around one cylinder
+
+[<img src="https://github.com/AguaClara/CEE4540_Master/raw/master/AguaClara%20Water%20Treatment%20Plant%20Design/Energy%20Dissipation%20and%20Velocity%20Gradients/Images/Tube_flocculator_AC.JPG" width="500">](https://confluence.cornell.edu/display/AGUACLARA/Laminar+Tube+Floc?preview=/10422268/258146480/ReportLaminarTubeFlocSpring2014.pdf)
 
 The ratio of the coiled to straight friction factors is given by [Mishra and Gupta](https://doi.org/10.1021/i260069a017)
 
+The Dean number is defined as:
 
 $$De = Re\left(\frac{D}{D_c}\right)^\frac{1}{2}  $$
 
