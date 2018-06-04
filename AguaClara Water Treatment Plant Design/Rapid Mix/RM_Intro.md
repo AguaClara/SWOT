@@ -1,4 +1,4 @@
-## <font color="red">Introduction</font>
+**Figure x:**## <font color="red">Introduction</font>
 
 Rapid mix is the term commonly used to describe the processes that occur between the coagulant addition to the raw water and the flocculation tanks. The processes that occur are not well understood and thus design guidelines are empirical.
 
@@ -25,7 +25,7 @@ These multiple steps cover a wide range of length scales and it is not clear at 
 
 <img src="https://github.com/AguaClara/CEE4540_Master/raw/master/AguaClara%20Water%20Treatment%20Plant%20Design/Rapid%20Mix/Images/rapid%20mix%20macro%20to%20nano%20scale.png" width="800">
 
-Figure x.
+**Figure x:**.
 
 ## Transport steps
 * Turbulence
@@ -48,7 +48,6 @@ We can estimate the characteristic velocity of any size of eddy based on the ass
 | - | - | - | - |
 |largest eddies | flow dimension perpendicular to the mean velocity |  | |
 
-$\varepsilon \sim \frac{u^3}{L}$
 
 
 The smallest scale at which inertia containing eddies causes mixing is set by the final damping of inertia by viscosity. Turbulence occurs when fluid inertia is too large to be damped by viscosity. The ratio of inertia to viscosity is given by the Reynolds number, $\rm Re$:
@@ -84,11 +83,11 @@ plt.show()
 ```
 <img src="https://github.com/AguaClara/CEE4540_Master/raw/master/AguaClara%20Water%20Treatment%20Plant%20Design/Rapid%20Mix/Images/Inner_viscous_vs_EDR.png" width="400">
 
-Figure x. Eddies can cause fluid mixing down to the scale of a few millimeters for energy dissipation rates used in rapid mix units and flocculators.
+**Figure x:** Eddies can cause fluid mixing down to the scale of a few millimeters for energy dissipation rates used in rapid mix units and flocculators.
 
-We are searching for the rate limiting step in the mixing process as we transition from the scale of the flow down to the scale of the coagulant nanoparticles. We can estimate the time required for eddies to mix at their length scales by assuming that the eddies pass all of their energy to smaller scales in the time it takes for an eddy to travel this distance equal to the length scale of the eddy. This time is known as the **[eddy turnover time](http://ceeserver.cee.cornell.edu/eac20/cee637/handouts/TURBFLOW_1.pdf)**, $t_{eddy}$. [Please find the short derivation here]().
+We are searching for the rate limiting step in the mixing process as we transition from the scale of the flow down to the scale of the coagulant nanoparticles. We can estimate the time required for eddies to mix at their length scales by assuming that the eddies pass all of their energy to smaller scales in the time it takes for an eddy to travel this distance equal to the length scale of the eddy. This time is known as the **[eddy turnover time](http://ceeserver.cee.cornell.edu/eac20/cee637/handouts/TURBFLOW_1.pdf)**, $t_{eddy}$. [The derivation for the equation below is found here](https://github.com/AguaClara/CEE4540_Master/blob/master/AguaClara%20Water%20Treatment%20Plant%20Design/Rapid%20Mix/RM_Derivations.md#t_eddy).
 
-$$t_{eddy} \sim \frac{L_{eddy}}{v_{eddy}} \sim \left( \frac{L_{eddy}^2}{ \varepsilon }\right)^\frac{1}{3} $$
+$$t_{eddy} \sim \left( \frac{L_{eddy}^2}{ \varepsilon }\right)^\frac{1}{3} $$
 
 We can plot the eddy turnover time as a function of scale from the inner viscous length scale up to the scale of the flow.
 ```python
@@ -114,7 +113,7 @@ plt.show()
 ```
 <img src="https://github.com/AguaClara/CEE4540_Master/raw/master/AguaClara%20Water%20Treatment%20Plant%20Design/Rapid%20Mix/Images/Eddy_turnover_time.png" width="400">
 
-Figure x. Eddy turnover times as a function of length scale for a range of energy dissipation rates.
+**Figure x:** Eddy turnover times as a function of length scale for a range of energy dissipation rates.
 
 The eddy turnover times are longest for the largest eddies and this analysis suggests that it only takes a few seconds for turbulent eddies to mix from the scale of the flow down to the inner viscous length scale.
 
@@ -123,8 +122,9 @@ The large scale mixing time is critical for the design of water treatment plants
 
 
 
-We can combine the equation that estimates the largest eddy velocity and the
-$$  \bar\varepsilon = \frac{\rm{f}}{2} \frac{\bar v^3}{D}  \sim\frac{v_{eddy}^3}{L_{eddy}} $$
+We can combine the equation that estimates the largest eddy velocity and the equation for the energy dissipation rate of an eddy **<font color="red">AH WHERE DID THE FIRST EQUATION COME FROM? WHY ARE THERE \SIMs EVERYWHERE INSTEAD OF EQUALS SIGNS? </font>**
+
+$$ \bar\varepsilon = \frac{\rm{f}}{2} \frac{\bar v^3}{D}  \sim \frac{v_{eddy}^3}{L_{eddy}} $$
 
 Solve for the ratio of the eddy velocity to the mean flow velocity and note that the length scale for the largest eddy is the diameter of the pipe.
 
@@ -152,7 +152,7 @@ plt.show()
 ```
 <img src="https://github.com/AguaClara/CEE4540_Master/raw/master/AguaClara%20Water%20Treatment%20Plant%20Design/Rapid%20Mix/Images/Mechanical_RM_Gt.png" width="400">
 
-Figure x. Mechanical rapid mix units use a wide range of velocity gradients and residence times.
+**Figure x:** Mechanical rapid mix units use a wide range of velocity gradients and residence times.
 
 ```python
 
@@ -172,7 +172,7 @@ The next step is turbulent eddy shuffling of the fluid packets. Turbulent eddies
 
 ### Length scales of coagulant nanoparticles and clay
 
-The coagulant nanoparticles eventually will attach to clay particles. The clay particles have a diameter of approximately $5 \mu m$ and thus it is clear from the length scale in the figure above that turbulent eddies aren't able to transport all the way to attachment to clay.
+The coagulant nanoparticles eventually will attach to clay particles. The clay particles have a diameter of approximately $5 \, \mu m$ and thus it is clear from the length scale in the figure above that turbulent eddies aren't able to transport all the way to attachment to clay.
 
 ### Diffusion and Shear Transport Coagulant Nanoparticles to Clay
 
@@ -186,7 +186,7 @@ The following is a very preliminary estimate of the time required for attachment
 This analysis includes multiple simplifying assumptions and there is a reasonable possibility that some of those assumptions are wrong. However, the core assumptions that coagulant nanoparticles are transported to clay particles by a combination of fluid deformation (shear) and molecular diffusion is reasonable.
 
 The volume of the suspension that is cleared of nanoparticles is proportional to a collision area defined by a ring around the clay particle with width of the diameter of the nanoparticle diffusion band. This diffusion band is the length scale over which diffusion is able to transport coagulant particles to the clay surface during the time that the nanoparticles are sliding past the clay particle.
-$$\propto \pi \, d_{Clay} \, L_{Diff_{NC}}$$
+$$ \propto \pi \, d_{Clay} \, L_{Diff_{NC}}$$
 The volume cleared is proportional to time
 $$ \propto t$$
 The volume cleared is proportional to the relative velocity between clay and nanoparticles. This scaling
@@ -213,7 +213,7 @@ $$\Lambda_{Clay} = \left[ {\rm{L}} \right]
 
 <img src="https://github.com/AguaClara/CEE4540_Master/raw/master/AguaClara%20Water%20Treatment%20Plant%20Design/Rapid%20Mix/Images/Diffusion%20length%20scale.png" width="400">
 
-Figure x. The time required for shear to transport all of the fluid past the clay so that diffusion can transport the coagulant nanoparticles to the clay surface is significant.
+**Figure x:** The time required for shear to transport all of the fluid past the clay so that diffusion can transport the coagulant nanoparticles to the clay surface is significant.
 
 $$D_{Diffusion} = \frac{k_B T}{3 \pi \, \mu \, d_P}$$
 
@@ -246,45 +246,14 @@ plt.show()
 ```
 <img src="https://github.com/AguaClara/CEE4540_Master/raw/master/AguaClara%20Water%20Treatment%20Plant%20Design/Rapid%20Mix/Images/Diffusion_band_thickness.png" width="400">
 
-Figure x.
-## Collision Rates
-$${\rlap{-} V_{\rm{Cleared}}} \approx \pi d_{Clay} L_{Diff_{NC}} v_r t$$
+**Figure x:**  
 
-$$t_c = \frac{\Lambda_{NC}^3}{\pi d_{Clay} L_{Diff_{NC} v_r}}$$
+Using the equation for $L_{Diff}$ above, [we can solve for](https://github.com/AguaClara/CEE4540_Master/blob/master/AguaClara%20Water%20Treatment%20Plant%20Design/Rapid%20Mix/RM_Derivations.md#t_coagulant%20application) the time required to reach a target efficiency of application of coagulant nanoparticles to clay:
 
-$$v_r \approx \Lambda_{Clay} G$$
-
-$$\rlap{-} V_{Occupied} = \Lambda_{Clay}^3$$
-
-This is the average time for a clay particle to have the entire volume of water that it occupies sweep past the clay particle.
-
-$$t_c = \frac{\Lambda_{Clay}^3}{\pi d_{Clay} L_{Diff_{NC}} \Lambda_{Clay} G}$$
+$$t_{coagulant, \, application} = \frac{2.3p C_{NC} \, \Lambda_{Clay}^2}{\pi G k \, d_{Clay}\,  L_{Diff_{NC}} }$$
 
 
-$$dN_c = \pi d_{Clay} L_{Diff_{NC}}{\Lambda^{-2}_{Clay}} G dt$$
-
-
-### Collision Rate and Particle Removal
-A fraction of the remaining coagulant nanoparticles are removed during the time required for one sweep past the clay particle.
-
-$$\frac{dn_{NC}}{ - k \, n_{NC}} = dN_c$$
-
-$$\frac{dn_{NC}}{ - k \, n_{NC}} = \pi d_{Clay} L_{Diff_{NC}}{\Lambda^{-2}_{Clay}} G dt$$
-
-### Integrate the coagulant transport model
-Integrate from the initial coagulant nanoparticle concentration to the concentration at time t.
-$$\int \limits_{n_{NC_0}}^{n_{NC}} n_{NC}^{- 1} \, dn_{NC}  =  - \pi d_{Clay} L_{Diff_{NC}} \Lambda^{-2}_{Clay} G \, k  \int \limits_0^t {dt} $$
-
-Use pC notation to be consistent with how we describe removal efficiency of other contaminants.
-
-$$2.3 p C_{NC} = \pi d_{Clay}\,  L_{Diff_{NC}}\,  \Lambda^{-2}_{Clay}\,  G k  t $$
-
-Solve for the time required to reach a target efficiency of application of coagulant nanoparticles to clay.
-
-$$t = \frac{2.3p C_{NC} \, \Lambda_{Clay}^2}{\pi G k \, d_{Clay}\,  L_{Diff_{NC}} }$$
-
-
-
+**<font color="red">WHAT IS THIS PARAGRAPH BELOW REFERRING TO? I DIDN'T CHANGE THE EQUATION, AND THERE'S NO SQUARE ROOT IN IT</font>**  
 In the equation above, the first fraction after the equal sign is dimensionless and the square root term has dimensions of time. In the aggregation of clay particles (looking ahead to flocculation) the
 
 The time required for the coagulant to be transported to clay surfaces is strongly dependent on the turbidity as indicated by the average spacing of clay particles, $\Lambda_{Clay}$. As turbidity increases the spacing between clay particles decreases and the time required for shear to transport coagulant nanoparticles to the clay decreases. Increasing the shear also results in faster transport of the coagulant nanoparticles to clay surfaces. The times required are strongly influenced by the size of the coagulant nanoparticles because larger nanoparticles diffuse more slowly.
@@ -323,7 +292,7 @@ plt.show()
 ```
 <img src="https://github.com/AguaClara/CEE4540_Master/raw/master/AguaClara%20Water%20Treatment%20Plant%20Design/Rapid%20Mix/Images/Coag_attach_time.png" width="400">
 
-Figure x. An estimate of the time required for 80% of the coagulant nanoparticles to attach to clay particles given a raw water turbidity of 10 NTU.
+**Figure x:** An estimate of the time required for 80% of the coagulant nanoparticles to attach to clay particles given a raw water turbidity of 10 NTU.
 
 ### Energy tradeoff for coagulant transport
 $$  \Delta h =   \frac{G^2 \nu \theta}{g} $$
@@ -348,31 +317,16 @@ plt.show()
 ```
 <img src="https://github.com/AguaClara/CEE4540_Master/raw/master/AguaClara%20Water%20Treatment%20Plant%20Design/Rapid%20Mix/Images/Coag_attach_head_loss.png" width="400">
 
-Figure x  The total energy required to attach coagulant nanoparticles to raw water inorganic particles increases rapidly with the velocity gradient used in the rapid mix process.
+**Figure x:**  The total energy required to attach coagulant nanoparticles to raw water inorganic particles increases rapidly with the velocity gradient used in the rapid mix process.
 
 There is often a tradeoff between reactor volume and energy input. The reactor volume results in a higher capital cost and the energy input requires both higher operating costs and higher capital costs. This provides an opportunity to optimize rapid mix design once we have a confirmed model characterizing the process.
 
 The total potential energy used to operate an AguaClara plant is approximately 2 m. This represents the difference in elevation between where the raw water enters the plant and where the filtered water exits the plant. If we assume that the rapid mix energy budget is a fraction of that total and thus for subsequent analysis we will assume somewhat arbitrarily that the energy available to attach the coagulant nanoparticles to the raw water particles is 50 cm.  
 
-We solve the coagulant transport model for G given a head loss.
-
-$$t = \frac{2.3p C_{NC} \, \Lambda_{Clay}^2}{\pi G k \, d_{Clay}\,  L_{Diff_{NC}} }$$
-
-$$  \Delta h =   \frac{G^2 \nu \theta}{g} $$
-
-Replace $\theta$ with t.
-
-$$  \Delta h =  \frac{G^2 \nu}{g} \frac{2.3p C_{NC} \, \Lambda_{Clay}^2}{\pi G k \, d_{Clay}\,  L_{Diff_{NC}} } $$
-
-$$L_{Diff} \approx \left( \frac{2k_B T d_{Clay}}{3 \pi \,\mu  \, d_{NC} G}\right)^\frac{1}{3} $$
-
-$$  \Delta h =  \frac{G^2 \nu}{g} \frac{2.3p C_{NC} \, \Lambda_{Clay}^2}{\pi G k \, d_{Clay}} \left( \frac{3 \pi \,\mu  \, d_{NC} G}{2k_B T d_{Clay}}\right)^\frac{1}{3}$$
+[We solve the coagulant transport model](), $t_{coagulant, \, application} = \frac{2.3p C_{NC} \, \Lambda_{Clay}^2}{\pi G k \, d_{Clay}\,  L_{Diff_{NC}} }$, for G given a head loss.
 
 
-Solve for the velocity gradient.
-$$  \Delta h =  \frac{G^\frac{4}{3} \nu}{g} \frac{2.3p C_{NC} \, \Lambda_{Clay}^2}{\pi k \, d_{Clay}} \left( \frac{3 \pi \,\mu  \, d_{NC} }{2k_B T d_{Clay}}\right)^\frac{1}{3}$$
-
-$$  G =  d_{Clay}\left(\frac{\pi k \,g\Delta h }{2.3p C_{NC} \, \Lambda_{Clay}^2 \nu} \right)^\frac{3}{4} \left( \frac{2k_B T }{3 \pi \,\mu  \, d_{NC} }\right)^\frac{1}{4}$$
+$$G_{coagulant, \, application} =  d_{Clay}\left(\frac{\pi k \,g\Delta h }{2.3p C_{NC} \, \Lambda_{Clay}^2 \nu} \right)^\frac{3}{4} \left( \frac{2k_B T }{3 \pi \,\mu  \, d_{NC} }\right)^\frac{1}{4}$$
 
 ```python
 """find G for target head loss"""
@@ -465,11 +419,11 @@ Rotating propellers can either be installed in open tanks or enclosed in pipes. 
 
 <img src="https://github.com/AguaClara/CEE4540_Master/raw/master/AguaClara%20Water%20Treatment%20Plant%20Design/Rapid%20Mix/Images/Backmix.jpg" width="400">
 
-Figure x.	Open tank, backmix system that uses a relatively large tank with a submerged impeller.  
+**Figure x:**	Open tank, backmix system that uses a relatively large tank with a submerged impeller.  
 
 <img src="https://github.com/AguaClara/CEE4540_Master/raw/master/AguaClara%20Water%20Treatment%20Plant%20Design/Rapid%20Mix/Images/Inline.jpg" width="400">
 
-Figure x.	Enclosed mix system that uses a relatively small volume.
+**Figure x:**	Enclosed mix system that uses a relatively small volume.
 
 
 
