@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Energy Dissipation and Velocity Gradients
 
 Water treatment plants at research and municipal scales deploy a wide range of flow geometries. The following list includes the flow geometries that are commonly used for mixing processes and example locations.

@@ -1,5 +1,5 @@
 # Energy dissipation rate, velocity gradients, and mixing
-##Introduction
+## Introduction
 
 Drinking water treatment requires
 * mixing chemicals with the water

@@ -1,20 +1,43 @@
 # Introduction to AguaClara Water Treatment Design
 
+## A different kind of textbook
+
+Engineering textbooks provide a venue for authors to share what they've learned, to organize ideas, and to provide a guide for engineers as they design solutions for real world problems. Engineering textbooks are often intended to document the established core of knowledge. It seems reasonable to assume that what is in textbooks and in peer reviewed literature is mostly true.
+
+A challenge for authors is to recognize the difference between what is known with a reasonably high degree of certainty and what is assumed to be true with out a solid basis. We struggle to tell the difference between fact and hypothesis. The time-honored approach in science is to rely on the peer review process. But that process for vetting knowledge has been shown to be flawed.
+
+Your question could be whether the distinction between fact and hypothesis really matters. If the hypothesis is widely accepted as fact and if it has been accepted for decades what benefit is there to calling it a hypothesis rather than a fact?
+
+This question is at the core of our educational philosophy. Is this text the repository of knowledge that we are providing for you to drink or is this text a conversation where invite you to join the effort to discover better ways to provide safe water on tap?
+
+Socrates said "[Education is the kindling of a flame, not the filling of a vessel](https://www.goodreads.com/quotes/69267-education-is-the-kindling-of-a-flame-not-the-filling)." More recently Paulo Freire
+
+Our goal is to bring the spirit of play, discovery, and mystery into the challenge of improving the quality of life of everyone on the planet by sharing better methods to produce safe drinking water.
+
+In We Make the Road by Walking: Conversations on Education and Social Change, Paulo Freire said,
+"[The more we become able to become a child again, to keep ourselves childlike, the more we can understand that because we love the world and we are open to understanding, to comprehension, that when we kill the child in us, we are no longer](https://www.goodreads.com/author/quotes/41108.Paulo_Freire?page=2)".
+
+We commit to playing together in a relationship where we are all learning and we are all teaching. 
+"Education must begin with the solution of the teacher-student contradiction, by reconciling the poles of the contradiction so that both are simultaneously teachers and students." - Paulo Freire
+
+
+The field of drinking water treatment
+
 ## The Global Context
 
 The [Sustainable Development Goals: SDGs](https://www.un.org/sustainabledevelopment/sustainable-development-goals/) and specifically [SDG 6](https://www.un.org/sustainabledevelopment/water-and-sanitation/) provide the context and motivation for this text. The first SDG 6 target is: "By 2030, achieve universal and equitable access to safe and affordable drinking water for all." That goal is daunting and won't be met using the approaches of the past 5 decades. This text is about creating a new paradigm for the design of high performing water treatment technologies.
 
-<img src="https://github.com/AguaClara/CEE4540_Master/raw/master/AguaClara%20Water%20Treatment%20Plant%20Design/Chapter%200_Introduction/Images/SDG6.png" width="200">
+<img src="https://github.com/AguaClara/CEE4540_Master/raw/master/AguaClara%20Water%20Treatment%20Plant%20Design/Introduction/Images/SDG6.png" width="200">
 
 The number of people who currently lack access to reliable safe water on tap is not known. Estimates range from "[1.8 billion who use a source of drinking water that is fecally contaminated](https://www.un.org/sustainabledevelopment/water-and-sanitation/#)" to the Centers for Disease Control recommendations for where it is [usually safe to drink tap water](https://lifehacker.com/know-what-countries-guarantee-drinkable-tap-water-with-1635070463).
 
-<img src="https://github.com/AguaClara/CEE4540_Master/raw/master/AguaClara%20Water%20Treatment%20Plant%20Design/Chapter%200_Introduction/Images/CDC%20Global%20Safe%20Tap%20Water.png" width="600">
+<img src="https://github.com/AguaClara/CEE4540_Master/raw/master/AguaClara%20Water%20Treatment%20Plant%20Design/Introduction/Images/CDC%20Global%20Safe%20Tap%20Water.png" width="600">
 
 Figure 1. There are relatively few countries where it is almost always safe to drink the tap water.
 
 The [UN estimate in 2017](https://www.un.org/sustainabledevelopment/blog/2017/07/billions-around-the-world-lack-safe-water-proper-sanitation-facilities-reveals-un-report/) was that 2.1 billion lack access to safe water. By 2030 there will be an additional [1.2 billion from population growth](https://news.un.org/en/story/2015/07/505352-un-projects-world-population-reach-85-billion-2030-driven-growth-developing).
 
-<img src="https://github.com/AguaClara/CEE4540_Master/raw/master/AguaClara%20Water%20Treatment%20Plant%20Design/Chapter%200_Introduction/Images/Population-Infographic-01.jpg" width="300">
+<img src="https://github.com/AguaClara/CEE4540_Master/raw/master/AguaClara%20Water%20Treatment%20Plant%20Design/Introduction/Images/Population-Infographic-01.jpg" width="300">
 
 
 Thus by 2030 we need to provide safe water for at least 3.3 billion people AND maintain the water supply systems for the 5.2 billion who currently have access to safe water.
@@ -74,7 +97,7 @@ Design standards such as the [Great Lakes - Upper Mississippi River Board 10 Sta
 
 Mechanized and automated water treatment plants performed reasonably well in communities with ready access to technical support services and supply chains that could reliably deliver replacement parts. In the global south municipal water treatment plants haven't faired as well. In 2012, one of the main water treatment plants serving Kathmandu, Nepal had failed chlorine pumps and were using a red garden hose to siphon chlorine from the stock tank. They crimped the end of the hose to control the flow rate of the chlorine solution.
 
-<img src="https://github.com/AguaClara/CEE4540_Master/raw/master/AguaClara%20Water%20Treatment%20Plant%20Design/Chapter%200_Introduction/Images/Kathmandu_chemical_feed_room.png" width="400">
+<img src="https://github.com/AguaClara/CEE4540_Master/raw/master/AguaClara%20Water%20Treatment%20Plant%20Design/Introduction/Images/Kathmandu_chemical_feed_room.png" width="400">
 
 Figure 1. Failed chlorine doing system bypassed with a red tube that siphons the chlorine solution at a plant in Kathmandu, Nepal in 2012.
 
@@ -82,7 +105,7 @@ The ingenious and simple chemical dosing system that uses a siphon to completely
 
 Chemical dosing systems are particularly vulnerable and their failures make plant operation very challenging. Providing the right coagulant dose is critical for efficient removal of particle and dissolved organics. Chemical dosing systems commonly rely on pumps and those pumps require regular maintenance and have relatively short mean times between failures.
 
-<img src="https://github.com/AguaClara/CEE4540_Master/raw/master/AguaClara%20Water%20Treatment%20Plant%20Design/Chapter%200_Introduction/Images/Kathmandu_alum_dosing.jpg" width="200">
+<img src="https://github.com/AguaClara/CEE4540_Master/raw/master/AguaClara%20Water%20Treatment%20Plant%20Design/Introduction/Images/Kathmandu_alum_dosing.jpg" width="200">
 
 Figure 2. Alum dosing system based on the rate that 25 kg block of alum are placed in the inlet channel of the plant.
 
@@ -100,7 +123,7 @@ Design for the client would strive to reduce capital, operating, and maintenance
 
 Design for the client requires empathy and a commitment to listen to and learn from plant operators. It also requires attention to detail and watching how plant operators interact with water treatment plants. Empathy leads to the goal of creating a work environment that makes it easy for the plant operators to do their routine tasks. This isn't just to make the plant operators work easy. A plant that is designed with the plant operator in mind will also engender pride and that pride will lead to better plant performance.
 
-<img src="https://github.com/AguaClara/CEE4540_Master/raw/master/AguaClara%20Water%20Treatment%20Plant%20Design/Chapter%200_Introduction/Images/Improvised%20ladder%20access%20to%20sed%20tank.jpg" width="400">
+<img src="https://github.com/AguaClara/CEE4540_Master/raw/master/AguaClara%20Water%20Treatment%20Plant%20Design/Introduction/Images/Improvised%20ladder%20access%20to%20sed%20tank.jpg" width="400">
 
 Figure x. A plant operator built a makeshift ladder to enable easier access to the flocculation and sedimentation tanks in a package plant. This ladder considerably shortened the distance between the coagulant dose controls and the observation of flocculation.
 
@@ -158,4 +181,4 @@ Discuss charge density.
 Observed stabilization of inorganic particles
 # History (chlorine saved the world)
 
-<img src="https://github.com/AguaClara/CEE4540_Master/raw/master/AguaClara%20Water%20Treatment%20Plant%20Design/Chapter%200_Introduction/Images/US_infectious_diseases_death_rate.gif" width="600"> from https://www.cdc.gov/mmwr/preview/mmwrhtml/mm4829a1.htm
+<img src="https://github.com/AguaClara/CEE4540_Master/raw/master/AguaClara%20Water%20Treatment%20Plant%20Design/Introduction/Images/US_infectious_diseases_death_rate.gif" width="600"> from https://www.cdc.gov/mmwr/preview/mmwrhtml/mm4829a1.htm
