@@ -76,14 +76,14 @@ As explained in CEE 3310 with more details than most of you wanted to know, the 
 ### The Bernoulli Equation
 These three forms of energy expressed above make up the Bernoulli equation:
 
-$$\frac{p_1}{\rho g} + {z_1} + \frac{\bar v_1^2}{2g} = \frac{p_2}{\rho g} + {z_2} + \frac{\bar v_2^2}{2g}$$
+$$\frac{p_1}{\rho g} + {z_1} + \frac{v_1^2}{2g} = \frac{p_2}{\rho g} + {z_2} + \frac{v_2^2}{2g}$$
 
 Such that:  
 $p$ = pressure,  $\frac{[M]}{[L] \cdot [T]^2}$  
 $\rho$ = fluid density, $\frac{[M]}{[L]^3}$    
 $g$ = acceleration due to gravity,  $\frac{[L]}{[T]^2}$, in aide_design as `pc.gravity`  
 $z$ = elevation relative to a reference, $[L]$  
-$\bar v$ = fluid velocity, $\frac{[L]}{[T]}$  
+$v$ = fluid velocity, $\frac{[L]}{[T]}$  
 Where letters in brackets specify units:  
 $[M]$ = mass  
 $[L]$ = length  
@@ -93,7 +93,7 @@ Notice that each term in this form of the Bernoulli equation has units of $[L]$,
 
 There are two important distinctions to keep in mind when using head to talk about energy. First is that head is dependent on the density of the fluid under consideration. Take mercury, for example, which is around 13.6 times more dense than water. 1 meter of mercury head is therefore equivalent to around 13.6 meters of water head. Second is that head is independent of the amount of fluid being considered, *as long as all the fluid is the same density*. Thus, raising 1 liter of water up by one meter and raising 100 liters of water up by one meter are both equivalent to giving the water 1 meter of water head, even though it requires 100 times more energy to raise the hundred liters than to raise the single liter. Since we are concerned mainly with water in this class, we will refer to 'water head' simply as 'head'.
 
-Going back to the Bernoulli equation, the $\frac{p}{\rho g}$ term is called the pressure head, $z$ the elevation head, and $\frac{\bar v^2}{2g}$ the velocity head. The following diagram shows these various forms of head via a 1 meter deep bucket (left) and a jet of water shooting out of the ground (right).
+Going back to the Bernoulli equation, the $\frac{p}{\rho g}$ term is called the pressure head, $z$ the elevation head, and $\frac{v^2}{2g}$ the velocity head. The following diagram shows these various forms of head via a 1 meter deep bucket (left) and a jet of water shooting out of the ground (right).
 
 <center><img src="https://github.com/AguaClara/CEE4540_Master/blob/master/AguaClara%20Water%20Treatment%20Plant%20Design/Fluids%20Review/Images/Different_forms_of_head.jpg?raw=true" width=550></center>
 
@@ -109,7 +109,7 @@ The assumption necessary to use the Bernoulli equation, which is stated above, r
 
 $$\frac{p_{1}}{\rho g} + z_{1} + \alpha_{1} \frac{\bar v_{1}^2}{2g} + h_P = \frac{p_{2}}{\rho g} + z_{2} + {\alpha_{2}} \frac{\bar v_{2}^2}{2g} + h_T + h_L$$
 
-You'll also notice the $\alpha$ term attached to the velocity head. This is a correction factor for kinetic energy, and will be neglected in this class. If you wish to learn more about the correction factors, [click here to sate your curiosity](http://nptel.ac.in/courses/105106114/pdfs/Unit6/6_1.pdf "Correction factor pdf"). Since AguaClara does not use pumps nor turbines, $h_P = h_T = 0$. With these simplifications, the energy equation can be written as follows:
+You'll also notice the $\alpha$ term attached to the velocity head. This is a correction factor for kinetic energy, and will be neglected in this class. If you wish to learn more about the correction factors, [click here to sate your curiosity](http://nptel.ac.in/courses/105106114/pdfs/Unit6/6_1.pdf "Correction factor pdf"). In the Bernoulli equation, the velocity of the streamline of water is considered, $v$. The energy equation, however compares control surfaces instead of streamlines, and the velocities across a control surface many not all be the same. Hence, $\bar v$ is used to represent the average velocity. Since AguaClara does not use pumps nor turbines, $h_P = h_T = 0$. With these simplifications, the energy equation can be written as follows:
 
 $$\frac{p_{1}}{\rho g} + z_{1} + \frac{\bar v_{1}^2}{2g} = \frac{p_{2}}{\rho g} + z_{2} + \frac{\bar v_{2}^2}{2g} + h_L$$  
 
@@ -277,7 +277,9 @@ Before describing the equation, we must first understand the concept of a [**ven
 
 <center><img src="https://github.com/AguaClara/CEE4540_Master/blob/master/AguaClara%20Water%20Treatment%20Plant%20Design/Fluids%20Review/Images/Minor_loss_elbow.jpg?raw=true" width=400></center>
 
-The flow contracts as the fluid moves from point 'A' to point 'B.' This happens because the fluid can't make a sharp turn at the corner of the elbow. Instead, the streamline closest to the sharp turn makes a slow, gradual change in direction, as shown in the image. As a result of this gradual turn, the cross-sectional area the fluid is flowing through at point 'B' is less than the cross-sectional area it flows through at points 'A' and 'C'. Written as an equation, $A_{csB} < A_{csA} = A_{csC}$. The term 'vena contracta' describes the phenomenon of contracting flow due to streamlines being unable to make sharp turns. $\Pi_{vc}$ is a ratio between the flow area at the vena contracta, $A_{csB}$, which is when the flow is *maximally* contracted, and the flow area *before* the contraction, $A_{csA}$. In the image above, the equation for the vena contracta coefficient would be:
+The flow contracts as the fluid moves from point 'A' to point 'B.' This happens because the fluid can't make a sharp turn at the corner of the elbow. Instead, the streamline closest to the sharp turn makes a slow, gradual change in direction, as shown in the image. As a result of this gradual turn, the cross-sectional area the fluid is flowing through at point 'B' is less than the cross-sectional area it flows through at points 'A' and 'C'. Written as an equation, $A_{csB} < A_{csA} = A_{csC}$, where the $_{csA}$ stands for 'control surface $A$' subscript  
+
+The term 'vena contracta' describes the phenomenon of contracting flow due to streamlines being unable to make sharp turns. $\Pi_{vc}$ is a ratio between the flow area at the vena contracta, $A_{csB}$, which is when the flow is *maximally* contracted, and the flow area *before* the contraction, $A_{csA}$. In the image above, the equation for the vena contracta coefficient would be:
 
 $$\Pi_{vc} = \frac{A_{csB}}{A_{csA}}$$  
 

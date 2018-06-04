@@ -266,3 +266,9 @@ I suggest putting all effort into the text book. There is some chance that the t
 
 3. Make sure that the flocculator design check is correct.
     - Should we account for head loss in the final residence time check? Monroe mentioned some time ago that the volume of water that is in the 'head loss triangle' doesn't contribute any meaningful shear.
+
+4. make graphs in python for the cdc equation derivations, change the colors to not be red
+
+5. Make documents for text formatting/coloring and variables/parameters used
+
+6. consolidate all the equation derivations into one sheet.
