@@ -1,4 +1,4 @@
-## Introduction
+## <font color="red">Introduction</font>
 
 Rapid mix is the term commonly used to describe the processes that occur between the coagulant addition to the raw water and the flocculation tanks. The processes that occur are not well understood and thus design guidelines are empirical.
 
@@ -36,11 +36,11 @@ Figure x.
   * Einstein's diffusion equation
 
 
-How long will it take for turbulent eddies to mix the coagulant across the area of the pipe? We will use a rule of thumb that the velocity of the largest eddies is about 10% of the mean velocity. We can use the eddy velocity to estimate how long it will take for an eddy to cross the diameter of the pipe.
+How long will it take for turbulent eddies to mix the coagulant across the area of the pipe? <font color="red"> We will use a rule of thumb that the velocity of the largest eddies is about 10% of the mean velocity. </font> **<font color="red">DO WE HAVE ANYTHING TO CITE FOR THIS?</font>** We can use the eddy velocity to estimate how long it will take for an eddy to cross the diameter of the pipe.
 
 We will eventually develop designs for hydraulic devices to accomplish the multiple steps of transporting coagulant nanoparticles to interactions with dissolved and suspended contaminants. Initially we will assume that a design has been created that results in an energy dissipation rate of $1\frac{W}{kg}$.
 
-The smallest scale that
+The smallest scale that **<font color="red"> WHAT GOES NEXT?</font>**
 
 We can estimate the characteristic velocity of any size of eddy based on the assumption that the rate of loss of energy
 
@@ -51,7 +51,7 @@ We can estimate the characteristic velocity of any size of eddy based on the ass
 $\varepsilon \sim \frac{u^3}{L}$
 
 
-The smallest scale at which inertia containing eddies causing mixing is set by the final damping of inertia by viscosity. Turbulence occurs when fluid inertia is too large to be damped by viscosity. The ratio of inertia to viscosity is given by the Reynolds number.
+The smallest scale at which inertia containing eddies causes mixing is set by the final damping of inertia by viscosity. Turbulence occurs when fluid inertia is too large to be damped by viscosity. The ratio of inertia to viscosity is given by the Reynolds number, $\rm Re$:
 
 $${\rm{Re}} = \frac{\bar vD}{\nu}$$
 Flows with high Reynolds numbers are turbulent (inertia dominated) and with low Reynolds are laminar (viscosity dominated). The transition Reynolds number is a function of the flow geometry and the velocity and length scale that are used to characterize the flow. In all turbulent flows there is a length scale at which inertia finally loses to viscosity. The scale where viscosity wins is some multiple of the Kolmogorov length scale, which is defined as:
@@ -86,23 +86,9 @@ plt.show()
 
 Figure x. Eddies can cause fluid mixing down to the scale of a few millimeters for energy dissipation rates used in rapid mix units and flocculators.
 
-We are searching for the rate limiting step in the mixing process as we transition from the scale of the flow down to the scale of the coagulant nanoparticles. We can estimate the time required for eddies to mix at their length scales by assuming that the eddies pass all of their energy to smaller scales in the time it takes for an eddy to travel this distance equal to the length scale of the eddy. This time is known as the *[eddy turnover time](http://ceeserver.cee.cornell.edu/eac20/cee637/handouts/TURBFLOW_1.pdf)*.
+We are searching for the rate limiting step in the mixing process as we transition from the scale of the flow down to the scale of the coagulant nanoparticles. We can estimate the time required for eddies to mix at their length scales by assuming that the eddies pass all of their energy to smaller scales in the time it takes for an eddy to travel this distance equal to the length scale of the eddy. This time is known as the **[eddy turnover time](http://ceeserver.cee.cornell.edu/eac20/cee637/handouts/TURBFLOW_1.pdf)**, $t_{eddy}$. [Please find the short derivation here]().
 
-$$T_{eddy} \sim \frac{L_{eddy}}{u_{eddy}} $$
-
-The rate of energy loss to smaller scales is
-$$ \varepsilon \sim\frac{u_{eddy}^2}{T_{eddy}} $$
-
-Combining the two equations
-$$ \varepsilon \sim\frac{u_{eddy}^3}{L_{eddy}} $$
-
-We can use this equation to estimate the eddy velocity given an energy dissipation rate.
-$$u_{eddy} \sim \left( \varepsilon \, L_{eddy} \right)^\frac{1}{3} $$
-Now we can solve for the eddy turnover time which is a measure of the mixing time at the eddy scale.
-
-$$T_{eddy} \sim \frac{L_{eddy}}{\left( \varepsilon \, L_{eddy} \right)^\frac{1}{3}} $$
-
-$$T_{eddy} \sim \left( \frac{L_{eddy}^2}{ \varepsilon }\right)^\frac{1}{3} $$
+$$t_{eddy} \sim \frac{L_{eddy}}{v_{eddy}} \sim \left( \frac{L_{eddy}^2}{ \varepsilon }\right)^\frac{1}{3} $$
 
 We can plot the eddy turnover time as a function of scale from the inner viscous length scale up to the scale of the flow.
 ```python
@@ -138,11 +124,11 @@ The large scale mixing time is critical for the design of water treatment plants
 
 
 We can combine the equation that estimates the largest eddy velocity and the
-$$  \bar\varepsilon = \frac{\rm{f}}{2} \frac{\bar v^3}{D}  \sim\frac{u_{eddy}^3}{L_{eddy}} $$
+$$  \bar\varepsilon = \frac{\rm{f}}{2} \frac{\bar v^3}{D}  \sim\frac{v_{eddy}^3}{L_{eddy}} $$
 
 Solve for the ratio of the eddy velocity to the mean flow velocity and note that the length scale for the largest eddy is the diameter of the pipe.
 
-$$ N_{D_{pipe}} \sim \frac{\bar v}{u_{eddy}} \sim \left(\frac{2}{\rm{f}} \right)^\frac{1}{3} $$
+$$ N_{D_{pipe}} \sim \frac{\bar v}{v_{eddy}} \sim \left(\frac{2}{\rm{f}} \right)^\frac{1}{3} $$
 
 Where $N_{D_{pipe}}$ is the distance in number of pipe diameters downstream of the injection point where complete mixing will have occurred. The velocity ratio can be used to estimate the distance required for mixing perpendicular to the flow direction in a straight pipe.
 
