@@ -1,28 +1,3 @@
-<<<<<<< HEAD
-=======
-
-<!-- TOC depthFrom:1 depthTo:6 withLinks:1 updateOnSave:1 orderedList:0 -->
-
-- [Conventional Rapid Mix](#conventional-rapid-mix)
-- [Coagulant nanoparticle application](#coagulant-nanoparticle-application)
-	- [Transport steps](#transport-steps)
-	- [Length and time scales for each of the processes](#length-and-time-scales-for-each-of-the-processes)
-	- [Mixing length scale and transport mechanisms](#mixing-length-scale-and-transport-mechanisms)
-		- [Length scales of coagulant nanoparticles and clay](#length-scales-of-coagulant-nanoparticles-and-clay)
-		- [Diffusion and Shear Transport Coagulant Nanoparticles to Clay](#diffusion-and-shear-transport-coagulant-nanoparticles-to-clay)
-		- [Diffusion band thickness](#diffusion-band-thickness)
-	- [Collision Rates](#collision-rates)
-		- [Collision Rate and Particle Removal](#collision-rate-and-particle-removal)
-		- [Integrate the coagulant transport model](#integrate-the-coagulant-transport-model)
-		- [Energy tradeoff for coagulant transport](#energy-tradeoff-for-coagulant-transport)
-	- [Coagulant attachment mechanism](#coagulant-attachment-mechanism)
-	- [Design for Mixing](#design-for-mixing)
-		- [Jet Mixing](#jet-mixing)
-		- [Orifice Diameter to obtain Target Mixing](#orifice-diameter-to-obtain-target-mixing)
-		- [Rapid Mix Head Loss](#rapid-mix-head-loss)
-
-<!-- /TOC -->
-
 ## Introduction
 
 Rapid mix is the term commonly used to describe the processes that occur between the coagulant addition to the raw water and the flocculation tanks. The processes that occur are not well understood and thus design guidelines are empirical.
