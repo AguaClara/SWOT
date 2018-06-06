@@ -8,9 +8,13 @@ Drinking water treatment requires:
 * prevention of floc breakup in high shear zones
 * and possibly, shear that prevents coagulant nanoparticle deposition on reactor walls
 
-Each of these processes requires an understanding of fluid dynamics and specifically the relationships between turbulence, fluid deformation, energy dissipation, velocity gradients, and shear.
+Each of these processes requires an understanding of fluid dynamics and specifically the relationships between turbulence, velocity gradients (fluid deformation), viscosity, shear, and the energy dissipation rate.
 
-The energy dissipation rate is the rate that mechanical energy is being converted to heat. In a control volume that does not include pumps or turbines the mechanical energy lost is $g h_L$. That energy is lost in the time that the fluid is in the control volume, $\theta$.
+The energy dissipation rate is the rate that mechanical energy is being converted to heat. Energy dissipation rate is a very useful concept because the last step of converting mechanical energy into heat is accomplished by viscosity. Viscosity converts the kinetic energy associated with fluid deformation into heat. Thus there is a direct connection between the rate that mechanical energy is being dissipated and the rate that the fluid is being deformed.
+
+Fluid deformation plays an important role in mixing and of causing suspended particles to collide with each other. Aspects of fluid deformation, velocity gradients, and energy dissipation rates will be important for our understanding of mixing processes, collisions of particles in flocculation, and even in understanding failure modes of plate settlers and terminal head loss of sand filters.
+
+We will begin by defining the concept of energy dissipation rate for a control volume. In a control volume that does not include pumps or turbines the mechanical energy lost (and represented as a change in elevation indicating potential energy) is $g h_L$. That mechanical energy is lost in the time that the fluid is in the control volume, $\theta$.
 
 $$ \bar\varepsilon \theta = g h_L$$
 
@@ -43,11 +47,11 @@ The Camp-Stein estimate of $G_{CS}$ is based on a control volume where the veloc
 
 $$\tau = \mu \frac{v}{H} = \mu G = \nu\rho G$$
 
-Where $\tau$ is force required per unit plan view area. The power per unit area required to move the fluid at velocity $v$ is $\tau v$. The mass per unit area is $\rho H$. Thus the energy dissipation rate or the power per mass is
+Where $\tau$ is the force required per unit plan view area. The power per unit area required to move the fluid at velocity $v$ is $\tau v$. The mass per unit area is $\rho H$. Thus the energy dissipation rate or the power per mass is
 
 $$\varepsilon = \frac{P}{M} = \frac{\tau v}{\rho H} = \frac{\nu \rho G v}{\rho H} = \nu G^2 $$
 
-This equation has no approximations, but has one very important assumption. We derived this equation for a control volume where the velocity gradient was uniform. The reactors and control volumes that we will be using as we design water treatment plants will not have uniform velocity gradients. Indeed, several of the water treatment processes will be turbulent and thus the velocity gradients in the fluid will vary in both space and time. Even in laminar flow in a pipe the velocity gradient is far from uniform with high velocity gradients at the wall and zero velocity gradient at the center of the pipe.
+This equation has no approximations, but has one very important assumption. We derived this equation for a control volume where the velocity gradient was **uniform**. The reactors and control volumes that we will be using as we design water treatment plants will **not** have uniform velocity gradients. Indeed, several of the water treatment processes will be turbulent and thus the velocity gradients in the fluid will vary in both space and time. Even in laminar flow in a pipe the velocity gradient is far from uniform with high velocity gradients at the wall and zero velocity gradient at the center of the pipe.
 
 We'd like to know if we can apply the previous equation
 $$\varepsilon = \nu G^2 $$
@@ -56,7 +60,7 @@ to the case where the energy dissipation rate and velocity gradients are nonunif
 
 $$\bar\varepsilon \overset{?}{=} \nu \bar G^2 $$
 
-Consider a hypothetical reactor (case 2) that is 4 times as large in plan view area as the uniform velocity gradient case explored above (case 1). In addition, assume that 3/4 of the reactor has a velocity gradient of zero. The average energy dissipation rate for case 1 is
+We will test this option with a simple case. Consider a hypothetical reactor (case 2) that is 4 times as large in plan view area as the uniform velocity gradient case explored above (case 1). In addition, assume that 3/4 of the reactor has a velocity gradient of zero. The average energy dissipation rate for case 1 is
 
 $$\bar \varepsilon_1 = \frac{P_1}{M_1} =  \nu \bar G_1^2 $$
 
@@ -82,10 +86,12 @@ Given that the energy dissipation rate is proportional to the square of the velo
 
 $$\bar G =\Pi_{CS}\sqrt{\frac{\bar\varepsilon}{\nu}}$$
 
-where $\Pi_{CS}$ is 1 for a uniform velocity gradient and is less than one for non uniform velocity gradients. We can think $\Pi_{CS}$ as a measure of the efficiency of using energy to deform the fluid. We can calculate $\Pi_{CS}$ for cases where we have either a Navier Stokes  or a computation fluid dynamics estimate of $\bar G$.
+where $\Pi_{CS}$ is 1 for a uniform velocity gradient and is less than one for non uniform velocity gradients. We can think $\Pi_{CS}$ as a measure of the efficiency of using energy to deform the fluid. We can calculate $\Pi_{CS}$ for cases where we have either a Navier Stokes or a computation fluid dynamics estimate of $\bar G$.
 
 The conventional approach to design of flocculators uses the Camp Stein definition of
+
 $$G_{CS} = \sqrt{\frac{\bar\varepsilon}{\nu}}$$
+
 where $G_{CS}$ is **not** the average velocity gradient, but is larger than the average velocity gradient by a factor of $\Pi_{CS}$. Thus we have
 
 $$G_{CS} = \Pi_{CS}\bar G $$
@@ -99,33 +105,6 @@ We will demonstrate later that mechanically mixed reactors typically have a much
 We will use the Camp Stein definition $G_{CS} = \sqrt{\frac{\bar\varepsilon}{\nu}}$ as the design parameter of convenience in this textbook.
 
 # Different Geometries
-Mixing, collisions between particles, shear that prevents floc deposition on reactor walls, floc breakup in high shear zones. Each of these processes requires an understanding of fluid dynamics and specifically the relationships between turbulence, fluid deformation, and shear.
-
-Estimation of velocity gradients for various flow geometries is the basis for the design of rapid mix, flocculators, and plate settlers and thus our goal is to define the velocity gradients consistently across the range of possible flow regimes. There are three approaches to calculating the average velocity gradient within a control volume.
-* Use the Navier Stokes equations and solve for the spatially averaged velocity gradient.
-* Use computation fluid dynamics to solve for the spatially averaged velocity gradient.
-* Use the total mechanical energy loss in the control volume to calculate the average energy dissipation rate. Calculate the velocity gradient directly from the energy dissipation rate. $G_{CS} = \sqrt{\frac{\bar \varepsilon}{\nu}}$
-
-The first approach would be ideal but is difficult in practice because Navier Stokes solutions are only available for limited geometries and laminar flow. Computational Fluid Dynamics could be used but is difficult to use as a general engineering design approach given the large number of geometries that are used in drinking water treatment plants. For these reasons we will use the control volume approach to estimate the average velocity gradient. This method incorrectly assumes that the energy dissipation rate is completely uniform in the control volume and hence the velocity gradient was also uniform. This method results in an over estimation of the velocity gradient.    
-
-
-* Average (control volume) estimates
-  * Straight pipe (major losses)
-  * Curved tube (laminar flow)
-  * Series of expansions
-* Maximum velocity gradients
-  * Straight pipe walls (major losses)
-  * Curved tube (laminar flow)
-  * Expansions
-    * Between flat plates
-    * Round jet
-    * Plane jet
-    * Behind a flat plate
-
-#### Output
-* table of equations for velocity gradients
-* table of equations for average energy dissipation rates
-
 Water treatment plants at research and municipal scales deploy a wide range of flow geometries. The following list includes the flow geometries that are commonly used for mixing processes and example locations.
 
 * Straight pipe (wall shear) - [uncommon, but included for completeness]
@@ -149,27 +128,21 @@ Summary table of equations for control volume averaged values.
 
 The equations used to convert between columns in the table above are:
 
-$$\bar\varepsilon = \frac{gh_{\rm{L}}}{\theta}
-\, \, \, \, \, \, \, \, \, \, \, \, \, \, \, \, \, \,
-G_{CS} = \sqrt{\frac{\bar \varepsilon}{\nu}}
-\, \, \, \, \, \, \, \, \, \, \, \, \, \, \, \, \, \,
+$$\bar\varepsilon = \frac{gh_{\rm{L}}}{\theta} \qquad\qquad
+G_{CS} = \sqrt{\frac{\bar \varepsilon}{\nu}} \qquad\qquad
 \bar v=\frac{4Q}{\pi D}$$
 
-Table of equations for maximum values.
-| Geometry |  $G_{max}$|
-| - | :-: |
-| Straight pipe  | $G_{wall} =\rm{f}  \frac{\bar v^2}{8\nu}$|
-| Straight pipe laminar | $G_{wall} =  \frac{8\bar v}{D}$|
-| Coiled pipe | $G_{CS_{wall_{coil}}} =\rm{f} \left[ 1 + 0.033\left(log_{10}De\right)^4 \right]  \frac{\bar v^2}{8\nu}$|
+Table of equations for maximum wall velocity gradients.
+| Geometry | $\varepsilon_{max}$ | $G_{max}$|
+| - | :-: |:-: |
+| Straight pipe  | - | $G_{wall} =\rm{f}  \frac{\bar v^2}{8\nu}$|
+| Straight pipe laminar | - | $G_{wall} =  \frac{8\bar v}{D}$|
+| parallel plates | - | $G_{wall} =  ??$|
+| Coiled pipe | - | $G_{CS_{wall_{coil}}} =\rm{f} \left[ 1 + 0.033\left(log_{10}De\right)^4 \right]  \frac{\bar v^2}{8\nu}$|
 
-
-```python
-""" importing """
-from aide_design.play import*
-from aguaclara_research.play import*
-import aguaclara_research.floc_model as fm
-import matplotlib.pyplot as plt
-from matplotlib.ticker import FormatStrFormatter
-imagepath = 'AguaClara Water Treatment Plant Design/Chapter 3_Rapid Mix/Images/'
-Temperature = 15*u.degC
-```
+Table of equations for maximum flow expansion velocity gradients.
+| Geometry |$\Pi_{Jet}$ | $\varepsilon_{max}$ | $G_{max}$|
+| - | :-: |:-: |:-: |
+| Round jet |0.08 | $\varepsilon_{Max} = \Pi_{JetRound}\frac{   \bar v_{Jet} ^3}{D_{Jet}}$ | ??? |
+| Plane jet |0.0124| $\varepsilon_{Max} = \Pi_{JetPlane} \frac{  \bar v_{Jet} ^3}{S_{Jet}}$ | ?? |
+| Behind a flat plate |:-: | - | ?? |
