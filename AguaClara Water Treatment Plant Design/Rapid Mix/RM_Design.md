@@ -1,46 +1,17 @@
-## Introduction
+## Rapid Mix Design
 
-Rapid mix is the term commonly used to describe the processes that occur between the coagulant addition to the raw water and the flocculation tanks. The processes that occur are not well understood and thus design guidelines are empirical.
-
-“In summary, little is known about rapid mix, much less any sensitivity to scale. However, the models and data reviewed suggest the need to be on the lookout for certain effects. From what is presently known, it can be speculated that since coagulant precipitation is sensitive to both micro- and macro-mixing, scale-up must consider not only energy dissipation rate, but also the reaction injection point and the contacting method.”
- - [Mixing in Coagulation and Flocculation 1991 page 292](https://books.google.com/books/about/Mixing_in_coagulation_and_flocculation.html?id=dkFSAAAAMAAJ)
-
-Rapid mix units often require significant energy and this has led some municipal water treatment plant operators to experiment with turning off rapid mix units. There is a need to understand the physical and chemical processes that occur when a concentrated liquid coagulant is added to water.
-
-# Coagulant nanoparticle application
-Rapid mix sets the stage for aggregation of both suspended particles and dissolved substances. Particle and dissolve substance aggregation is mediated by coagulant nanoparticles. The nanoparticles attach to raw water particles as well as to some dissolved species (the topic of these notes). After the nanoparticles have been mixed with the raw water and have attached to raw water particles the next process, flocculation, can begin. Flocculation is the process of producing collisions between particles to create flocs (aggregates) (next set of notes).
-
-Nanoparticle application includes multiple steps that must occur before the raw water particles can begin to aggregate. The sticky nanoparticles can be aluminum $(Al^{+3})$ or iron $(Fe^{+3})$ based and in either case the nanoparticles are formed from precipitated hydroxide species $(Al(OH)_3)$ or $(Fe(OH)_3)$. The series of events that are contained in the broad designation of "rapid mix" are:
-
-1. Liquid coagulant with a low pH is injected into the raw water
-1. Large scale eddies mix the coagulant with the raw water by creating large fluid deformations. This stretching and turning of the raw water and coagulant is analogous to shuffling a deck of cards. The cards are randomized, but the cards maintain their identity. The original liquids retain their chemical composition.
-1. Turbulent eddies disintegrate into smaller and smaller eddies.
-1. At a very small scale (Kolmogorov length scale) viscosity becomes significant and the kinetic energy of the eddies is converted to heat by viscosity.  
-1. Molecular diffusion causes true blending of the two fluids  
-1. The coagulant is diluted by the raw water, the pH of the mixture is higher and the higher pH causes the coagulant to begin to precipitate as $Al_{12}AlO_4(OH)_{24}(H_2O)_{12}^{7+}$, an $Al_{13}$ nanoparticle.
-1. The precipitating $Al_{13}$ molecules aggregates with other nearby $Al_{13}$ molecules to form aluminum hydroxide nanoparticles.
-1. Molecular diffusion and fluid shear cause the Al nanoparticles,  dissolved species, inorganic particles (such as clay) and organic particles (such as viruses, bacteria, and protozoans) to collide and potential attach.
-
-These multiple steps cover a wide range of length scales and it is not clear at the onset which processes might be the rate limiting steps. We will develop time scale estimates for several of these steps to help identify which processes will likely require the most attention to design.   
-
-<img src="https://github.com/AguaClara/CEE4540_Master/raw/master/AguaClara%20Water%20Treatment%20Plant%20Design/Rapid%20Mix/Images/rapid%20mix%20macro%20to%20nano%20scale.png" width="800">
-
-Figure x.
-
-## Transport steps
-* Turbulence
-  * Large scale eddies
-  * Inner viscous length scale
-* Shear-diffusion transport
-  * Estimate diffusion time scale
-  * Einstein's diffusion equation
-
-
->>>>>>> master
 ## Length and time scales for each of the processes
 Let's begin by describing the coagulant injection for a 60 L/s plant. We will use a [linear flow orifice meter](https://github.com/AguaClara/CEE4540_Master/blob/master/AguaClara%20Water%20Treatment%20Plant%20Design/Flow%20Control%20and%20Measurement/FCM_Design.md#linear-flow-orifice-meter-lfom) with 20 cm of head loss.
 
 ```python
+""" importing """
+from aide_design.play import*
+from aguaclara_research.play import*
+import aguaclara_research.floc_model as fm
+import matplotlib.pyplot as plt
+from matplotlib.ticker import FormatStrFormatter
+imagepath = 'AguaClara Water Treatment Plant Design/Rapid Mix/Images/'
+
 Q_plant = 60 * u.L/u.s
 HL_LFOM = 20 * u.cm
 Pi_LFOM_safety = 1.2

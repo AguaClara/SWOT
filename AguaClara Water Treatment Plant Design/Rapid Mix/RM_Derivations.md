@@ -7,24 +7,24 @@ Eddy turnover time, $t_{eddy}$, is the time it takes for the eddy to travel a di
 $$t_{eddy} \sim \frac{L_{eddy}}{v_{eddy}}$$
 
 The rate of energy loss to smaller scales is
-$$ \varepsilon \sim\frac{v_{eddy}^2}{t_{eddy}} $$
+$$ \bar\varepsilon \sim\frac{v_{eddy}^2}{t_{eddy}} $$
 
 Combining the two equations
-$$ \varepsilon \sim\frac{v_{eddy}^3}{L_{eddy}} $$
+$$ \bar\varepsilon \sim\frac{v_{eddy}^3}{L_{eddy}} $$
 
 We can use this equation to estimate the eddy velocity given an energy dissipation rate.
-$$v_{eddy} \sim \left( \varepsilon \, L_{eddy} \right)^\frac{1}{3} $$
+$$v_{eddy} \sim \left( \bar\varepsilon \, L_{eddy} \right)^\frac{1}{3} $$
 Now we can solve for the eddy turnover time which is a measure of the mixing time at the eddy scale.
 
 $$\color{purple}{
-  t_{eddy} \sim \frac{L_{eddy}}{\left( \varepsilon \, L_{eddy} \right)^\frac{1}{3}} \sim \left( \frac{L_{eddy}^2}{ \varepsilon }\right)^\frac{1}{3}
+  t_{eddy} \sim \frac{L_{eddy}}{\left( \bar\varepsilon \, L_{eddy} \right)^\frac{1}{3}} \sim \left( \frac{L_{eddy}^2}{ \bar\varepsilon }\right)^\frac{1}{3}
 }$$
 
 ## $t_{coagulant, \, application}$
 ## Collision Rates
-$${\rlap{-} V_{\rm{Cleared}}} \approx \pi d_{Clay} L_{Diff_{NC}} v_r t_c$$
+$${\rlap{\kern.08em--}V_{\rm{Cleared}}} \approx \pi d_{Clay} L_{Diff_{NC}} v_r t_c$$
 
-Where $\rlap{-} V_{Occupied} = \Lambda_{Clay}^3$. Solve for $t_c$:
+Where $\rlap{\kern.08em--}V_{Occupied} = \Lambda_{Clay}^3$. Solve for $t_c$:
 
 $$t_c = \frac{\Lambda_{NC}^3}{\pi d_{Clay} L_{Diff_{NC}} v_r}$$
 
