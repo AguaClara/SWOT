@@ -1,4 +1,4 @@
-# Energy Dissipation Rate and Velocity Gradient Derivations
+# Average Energy Dissipation Rate and Camp-Stein Velocity Gradient Derivations
 ## Straight pipe (wall shear)
 The average energy dissipation rate, $\bar\varepsilon$, in a control volume with residence time $\theta$ is
 $$ \bar\varepsilon = \frac{gh_{\rm{L}}}{\theta} $$
@@ -47,7 +47,7 @@ $$\color{purple}{
   \bar\varepsilon =32\nu \left( \frac{\bar v}{D} \right)^2
 }$$
 
-The Camp Stein velocity gradient in a long straight laminar flow tube is thus
+The Camp-Stein velocity gradient in a long straight laminar flow tube is thus
 
 $$ G_{CS}^2 =32 \left( \frac{\bar v}{D} \right)^2$$
 
@@ -67,7 +67,114 @@ $$ \bar v=\frac{Q}{A} = \frac{4Q}{\pi D^2}$$
 
 $$ G_{CS} =\frac{16\sqrt2}{\pi} \frac{Q}{D^3} $$
 
-The ratio of
+## Parallel plates Laminar
+
+Flow between parallel plates occurs in plate settlers in the sedimentation tank. We will derive the velocity gradient at the wall using the Navier Stokes equation.
+
+<img src="https://github.com/AguaClara/CEE4540_Master/raw/master/AguaClara%20Water%20Treatment%20Plant%20Design/Energy%20Dissipation%20and%20Velocity%20Gradients/Images/Parallel_Plate_schematic.png" width="400">
+
+Figure x. A fluid flowing from left to right due to a pressure gradient results in wall shear on the parallel plates. This flow profile is for the case when $\frac{dp}{dx}$ is negative.
+
+We start with the Navier-Stokes equation written for flow in the x direction.
+
+$$\frac{y^2}{2} \frac{dp}{dx} + Ay + B = \mu u$$
+where $u$ is the velocity in the x direction.
+
+Apply the no slip condition at bottom plate.
+
+$$u=0 \quad at \quad y=0$$
+
+Thus the constant $B=0$.
+
+Apply the no slip condition at top plate.
+$$u=0 \quad at \quad y=S$$
+
+Thus the constant $A = \frac{- S}{2} \frac{dp}{dx}$
+
+Substitute the values for constants $A$ and $B$ into the original equation.
+
+$$\frac{y^2}{2} \frac{dp}{dx} - \frac{S}{2} \frac{dp}{dx} y = \mu \,u$$
+
+Simply the equation to obtain
+
+$$u = \frac{y \left( y - S \right)}{2 \mu} \frac{dp}{dx}$$
+
+We need a relationship between average velocity and $\frac{dp}{dx}$. We can obtain this by integrating from 0 to $S$.
+
+$${\bar v } = \frac{q}{S}
+= \frac{1}{S}\int\limits_0^S u dy
+= \frac{1}{S} \int\limits_0^S
+\left(
+  \frac{y^2 - S y}{2 \mu} \left( \frac{dp}{dx} \right)
+\right) dy$$
+
+$$\bar v = - \frac{S^2}{12 \mu} \frac{dp}{dx}$$
+
+Solving for $\frac{dp}{dx}$
+
+$$\frac{dp}{dx} = - \frac{12 \mu \bar v}{S^2}$$
+
+From the Navier Stokes equation after integrating once we get
+
+$$\mu \,\left( \frac{du}{dy} \right) = y \frac{dp}{dx} + A$$
+
+Substituting our boundary condition, $A = \frac{- S}{2} \frac{dp}{dx}$ we obtain
+
+$$\frac{du}{dy}_{y = 0} = - \frac{S}{2 \mu} \frac{dp}{dx}$$
+
+Substituting the result for $\frac{dp}{dx}$ we obtain
+
+$$\frac{du}{dy}_{y = 0} = \frac{6 \bar v}{S}$$
+
+Therefore in velocity gradient notation we have
+
+$$G_{wall} = \frac{6 \bar v}{S}$$
+
+The energy dissipation rate at the wall
+
+$$\varepsilon_{wall} = G_{wall}^2 \nu$$
+
+$$\varepsilon_{wall} = \left( \frac{6 \bar v}{S}\right)^2 \nu$$
+
+Head loss due to shear on the plates is obtained from a force balance on a control volume between two parallel plates.
+<img src="https://github.com/AguaClara/CEE4540_Master/raw/master/AguaClara%20Water%20Treatment%20Plant%20Design/Energy%20Dissipation%20and%20Velocity%20Gradients/Images/pipe_pressure_shear_force_balance.png" width="400">
+
+Figure x. A fluid flowing between parallel plates from left to right due to a pressure gradient results in wall shear.
+
+A force balance gives
+
+$$2 \tau L W = -\Delta P W S$$
+
+$$\Delta P = -\frac{2 \tau L}{S}$$
+
+The equation relating shear and velocity gradient is
+
+$$\tau = \nu \rho \frac{du}{dy} = \nu \rho G$$
+
+The velocity gradient at the wall is
+
+$$G_{wall} = \frac{6 \bar v}{S}$$
+
+$$\tau  = \nu \rho \frac{6 \bar v}{S}$$
+
+Substituting into the force balance equation
+
+$$\Delta P = -\frac{2 \nu \rho 6 \bar v L}{S^2}$$
+
+The head loss for horizontal flow at uniform velocity simplifies too
+
+$$h_{\rm{f}} = \frac{-\Delta P}{\rho g}$$
+
+$$h_{\rm{f}} = 12\frac{ \nu \bar v L}{gS^2}$$
+
+The average energy dissipation rate is
+
+$$ \bar\varepsilon = \frac{gh_{\rm{L}}}{\theta} $$
+
+$$ \bar\varepsilon = 12 \nu \left(\frac{  \bar v}{S} \right)^2  $$
+
+The Camp-Stein velocity gradient for laminar flow between parallel plates is
+$$G_{CS} = 2\sqrt{3}\frac{  \bar v}{S}$$
 
 ## Coiled tubes (laminar flow)
 Coiled tubes are used as flocculators at laboratory scale. The one shown below is a doubled coil. A single coil would only go around one cylinder
@@ -86,12 +193,26 @@ where $D$ is the inner diameter of the tube and $D_c$ is the diameter of the coi
 
 $$\frac{\rm{f}_{coil}}{\rm{f}} = 1 + 0.033\left(log_{10}De\right)^4  $$
 
-$$h_{\rm{f}_{coil}} = h_{\rm{f}} \left[ 1 + 0.033\left(log_{10}De\right)^4 \right] $$
+$$h_{L_{coil}} = h_{\rm{f}} \left[ 1 + 0.033\left(log_{10}De\right)^4 \right] $$
+
+where $h_{\rm{f}} = \frac{32\nu L\bar v}{ g D^2}$. Note that we switch from major losses to total head loss here because the head loss from flowing around the coil is no longer simply due to shear on the wall.
+
+$$h_{L_{coil}} = \frac{32\nu L\bar v}{ g D^2} \left[ 1 + 0.033\left(log_{10}De\right)^4 \right] $$
+
+The average energy dissipation rate is
+
+$$\bar\varepsilon = 32\nu \left( \frac{\bar v}{D} \right)^2 \left[ 1 + 0.033\left(log_{10}De\right)^4 \right]$$
 
 The average velocity gradient is proportional to the square root of the head loss and thus we obtain
 
-$$\color{purple}{
+$$
   G_{CS_{coil}} = G_{CS}\left[ 1 + 0.033\left(log_{10}De\right)^4  \right]^\frac{1}{2}
+$$
+
+where $G_{CS} =4\sqrt2 \frac{\bar v}{D}$ for laminar flow in a straight pipe.
+
+$$\color{purple}{
+  G_{CS_{coil}} = 4\sqrt2 \frac{\bar v}{D}\left[ 1 + 0.033\left(log_{10}De\right)^4  \right]^\frac{1}{2}
 }$$
 
 ## Expansions
@@ -154,6 +275,10 @@ $$\color{purple}{
   G_{wall} =\rm{f}  \frac{\bar v^2}{8\nu}
 }$$
 
+The energy dissipation rate at the wall is
+$$\varepsilon_{wall} = G_{wall}^2 \nu$$
+$$\varepsilon_{wall} = \frac{1}{\nu}\left(\rm{f}  \frac{\bar v^2}{8} \right)^2 $$
+
 For laminar flow we can substitute $ f = \frac{64}{Re} $ and the definition of the Reynolds number to obtain
 
 $$\color{purple}{
@@ -161,7 +286,12 @@ $$\color{purple}{
 }$$
 This equation is useful for finding the velocity gradient at the wall of a tube settler.
 
-## Curved tube (laminar flow)
+The energy dissipation rate at the wall is
+$$\varepsilon_{wall} = G_{wall}^2 \nu$$
+$$\varepsilon_{wall} = \left(\frac{8\bar v}{D} \right)^2 \nu$$
+
+
+## Coiled tubes (laminar flow)
 The shear on the wall of a coiled tube is not uniform. The outside of the curve has a higher velocity gradient than the inside of the curve and there are secondary currents that results in wall shear that is not purely in the locally defined upstream direction. We do not have a precise equation for the wall shear. The best we can do currently is define an average wall shear in the locally defined direction of flow by combining $G_{{CS}_{wall_{coil}}} =\rm{f_{coil}}  \frac{\bar v^2}{8\nu}$ and $\rm{f}_{coil} = \rm{f} \left[ 1 + 0.033\left(log_{10}De\right)^4 \right]$ to obtain
 
 $$\color{purple}{
@@ -169,9 +299,9 @@ $$\color{purple}{
 }$$
 
 ## Expansions
+Flow expansions are used intentionally or unavoidable in multiple locations in hydraulically optimized water treatment plants. Rapid mix and hydraulic flocculation use flow expansions to generate fluid mixing and collisions between particles.
+
 ### Round jet
-
-
 
 Chemical Engineering Science, Vol. 50, No. 12, pp. 1877-1880, 1995
 THE INFLUENCE OF VISCOSITY ON MIXING IN JET REACTORS
@@ -188,7 +318,7 @@ $$\Pi_{RoundJet} = 0.08$$
 
 The maximum velocity gradient in a jet is thus
 
-$$ G_{Max} = \sqrt{\frac{\Pi_{RoundJet} \bar v_{Jet} ^3}{D_{Jet}\nu}}$$
+$$ G_{Max} = \bar v_{Jet} \sqrt{\frac{\Pi_{RoundJet} \bar v_{Jet} }{\nu D_{Jet}}}$$
 
 Below we plot the Baldyga et al. equation for the energy dissipation rate as a function of distance from the discharge location for the case of a round jet that is discharging into a large tank.
 
@@ -223,12 +353,19 @@ plt.show()
 
 <img src="https://github.com/AguaClara/CEE4540_Master/raw/master/AguaClara%20Water%20Treatment%20Plant%20Design/Energy%20Dissipation%20and%20Velocity%20Gradients/Images/Jet_centerline_EDR.png" width="400">
 
+Figure x. The centerline energy dissipation rate downstream from a round jet. The distance downstream is measured in units of jet diameters. The energy dissipation rate between the jet and 7 jet diameters is developing as the shear between the stationary fluid and the jet propagates toward the center of the jet and turbulence is generated.
+
 ### Plane jet
-Plane jets occur in hydraulic flocculators and in the sedimentation tank inlet jet system. We haven't been able to find a literature estimate of the maximum energy dissipation rate in a plane jet.
+Plane jets occur in hydraulic flocculators and in the sedimentation tank inlet jet system. We haven't been able to find a literature estimate of the maximum energy dissipation rate in a plane jet. Original measurements of a plane turbulent jet have been made by [Heskestad in 1965](http://dx.doi.org/10.1115/1.3627309) and it may be possible to use that data to get a better estimate of $\Pi_{JetPlane} $ from that source.
 
 $$\Pi_{\bar \epsilon}^{\epsilon_{Max}} = \frac{\varepsilon_{Max}}{\bar \varepsilon}$$
 
 $$\varepsilon_{Max} = \Pi_{JetPlane}  \frac{  \bar v_{Jet} ^3}{S_{Jet}}$$
+
+The maximum velocity gradient is thus
+
+$$G_{Max} = \bar v_{Jet}\sqrt{\frac{\Pi_{JetPlane} \bar v_{Jet}}{\nu S_{Jet}}}$$
+
 
 $$\bar v = \frac{Q}{SW}$$
 
@@ -236,7 +373,7 @@ $$\bar v_{Jet} = \frac{\bar v}{\Pi_{VCBaffle}}$$
 
 $$S_{Jet} = S \Pi_{VCBaffle}$$
 
-The average hyraulic residence time for the fluid between two baffles is
+The average hydraulic residence time for the fluid between two baffles is
 
 $$\theta_B = \frac{H}{\bar v}$$
 
@@ -265,7 +402,7 @@ $$\Pi_{JetPlane} = \left(
 
 $$\Pi_{JetPlane} = 0.0124$$
 
-The value of $\Pi_{JetPlane}$ is 1.55 times the value of $\Pi_{JetRound}$. Is this a coincidence that this factor is very close to $\pi/2$ = 1.57?
+
 
 
 
@@ -277,3 +414,29 @@ Ratio_Jet_Plane
 con.RATIO_VC_ORIFICE**8*con.K_MINOR_FLOC_BAFFLE/Ratio_Jet_Plane
 ```
 ### Behind a flat plate
+A flat plate normal to the direction of flow could be used in a hydraulic flocculator. In vertical flow flocculators it would create a space where flocs can settle and thus it is not a recommended design.
+
+The impellers used in mechanical flocculators could be modeled as a rotating flat plate. The energy dissipation rate in the wake behind the flat plate is often quite high in mechanical flocculators and this may be responsible for breaking previously formed flocs.
+
+Ariane Walker-Horn modeled the flat plate using Fluent in 2015.
+<img src="https://github.com/AguaClara/CEE4540_Master/raw/master/AguaClara%20Water%20Treatment%20Plant%20Design/Energy%20Dissipation%20and%20Velocity%20Gradients/Images/CFD_Flat_Plate.png" width="600">
+
+Figure x. The energy dissipation rate and streamlines for a 1 m wide plate in two dimensional flow with an approach velocity of $1 m/s$. The maximum energy dissipation rate was approximately $0.04 W/kg$.
+
+
+$$\varepsilon _{Max} = \Pi_{Plate}\frac{\bar v^3}{W_{Plate}}$$
+
+The maximum velocity gradient is thus
+
+$$G_{Max} = \bar v\sqrt{\frac{\Pi_{Plate} \bar v}{\nu W_{Plate}}}$$
+
+$$\Pi_{Plate} = \frac{ \left( \varepsilon_{Max} W_{Plate} \right)}{\bar v^3}$$
+
+```python
+"""CFD analysis setup used by Ariane Walker-Horn in 2015"""
+EDR_Max = 0.04*u.W/u.kg
+v = 1*u.m/u.s
+W = 1*u.m
+Ratio_Jet_Plate = (EDR_Max * W/v**3).to_base_units()
+print(Ratio_Jet_Plate)
+```
