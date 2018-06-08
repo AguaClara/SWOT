@@ -4,20 +4,20 @@
 
 Eddy turnover time, $t_{eddy}$, is the time it takes for the eddy to travel a distance equal to its length-scale. We assume that the energy of the large eddy is dissipated into smaller length scales in the time $t_{eddy}$:
 
-$$t_{eddy} \sim \frac{L_{eddy}}{v_{eddy}}$$
+$$t_{eddy} \approx \frac{L_{eddy}}{v_{eddy}}$$
 
 The rate of energy loss to smaller scales is
-$$ \bar\varepsilon \sim\frac{v_{eddy}^2}{t_{eddy}} $$
+$$ \bar\varepsilon \approx\frac{v_{eddy}^2}{t_{eddy}} $$
 
 Combining the two equations
-$$ \bar\varepsilon \sim\frac{v_{eddy}^3}{L_{eddy}} $$
+$$ \bar\varepsilon \approx\frac{v_{eddy}^3}{L_{eddy}} $$
 
 We can use this equation to estimate the eddy velocity given an energy dissipation rate.
-$$v_{eddy} \sim \left( \bar\varepsilon \, L_{eddy} \right)^\frac{1}{3} $$
+$$v_{eddy} \approx \left( \bar\varepsilon \, L_{eddy} \right)^\frac{1}{3} $$
 Now we can solve for the eddy turnover time which is a measure of the mixing time at the eddy scale.
 
 $$\color{purple}{
-  t_{eddy} \sim \frac{L_{eddy}}{\left( \bar\varepsilon \, L_{eddy} \right)^\frac{1}{3}} \sim \left( \frac{L_{eddy}^2}{ \bar\varepsilon }\right)^\frac{1}{3}
+  t_{eddy} \approx \frac{L_{eddy}}{\left( \bar\varepsilon \, L_{eddy} \right)^\frac{1}{3}} \approx \left( \frac{L_{eddy}^2}{ \bar\varepsilon }\right)^\frac{1}{3}
 }$$
 
 ## $t_{coagulant, \, application}$

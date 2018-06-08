@@ -42,17 +42,21 @@ These multiple steps cover a wide range of length scales and it is not clear at 
 #### Large scale eddies at the dimension of flow
 The first step in mixing is at the large scale of the dimension of the largest eddies where the dimension of the largest eddies is the smallest dimension normal to the direction of flow. Thus in a pipe the dimension of the largest eddies is set by the pipe diameter. In a open channel the dimension of the largest eddies is usually the water depth although it could be the width of the channel for the case of a narrow tall channel.
 
-We can use the eddy velocity to estimate how long it will take for an eddy to cross the smallest dimension of flow. Eddy velocity is $v_{eddy} \sim \left( \bar\varepsilon \, L_{eddy} \right)^\frac{1}{3} $ and thus in a pipe we have
-$$v_{eddy} \sim \left( \bar\varepsilon \, D \right)^\frac{1}{3} $$
+We can use the eddy velocity to estimate how long it will take for an eddy to cross the smallest dimension of flow. Eddy velocity is $v_{eddy} \approx \left( \bar\varepsilon \, L_{eddy} \right)^\frac{1}{3} $. The "$\approx$" indicates that this relationship is the same order of magnitude.  In a pipe we have
+$$v_{eddy} \approx \left( \bar\varepsilon \, D \right)^\frac{1}{3} $$
 
 For a long straight pipe
 $\bar\varepsilon = \frac{\rm{f}}{2} \frac{\bar v^3}{D}$ and thus we can obtain the ratio between mean velocity and the velocity of the large scale eddies.
 
-$$v_{eddy} \sim \left( \frac{\rm{f}}{2} \frac{\bar v^3}{D} \, D \right)^\frac{1}{3} $$
+$$v_{eddy} \approx \left( \frac{\rm{f}}{2} \frac{\bar v^3}{D} \, D \right)^\frac{1}{3} $$
 
-$$\frac{v_{eddy}}{\bar v} \sim \left( \frac{\rm{f}}{2}   \right)^\frac{1}{3} $$
+$$\frac{v_{eddy}}{\bar v} \approx \left( \frac{\rm{f}}{2}   \right)^\frac{1}{3} $$
 
-Given a friction factor of 0.02, the eddy velocity is approximately 20% of the mean velocity.
+Given a friction factor of 0.02, the eddy velocity is approximately 20% of the mean velocity. We can use this ratio to estimate how many pipe diameters downstream from an injection point will the coagulant be mixed across the diameter of the pipe.
+
+$$ N_{D_{pipe}} \approx \frac{\bar v}{v_{eddy}} \approx \left(\frac{2}{\rm{f}} \right)^\frac{1}{3} $$
+
+Where $N_{D_{pipe}}$ is the distance in number of pipe diameters downstream of the injection point where complete mixing will have occurred. This estimate is a minimum distance and a factor of safety of 2 or more would reasonably be applied. In addition it is best practice to inject the coagulant in the center of the pipe. Injecting the coagulant at the side of the pipe will require considerably greater distance downstream for mixing across the pipe.
 
 ```python
 print((0.02/2)**(1/3))
@@ -73,7 +77,13 @@ where $\eta_K$ is the Kolmogorov length scale. At the Kolmogorov length scale vi
 The length scale at which most of the kinetic energy contained in the small eddies is dissipated by viscosity is the inner viscous length scale, $\lambda_v$, which is about [50 times larger than](http://dimotakis.caltech.edu/pdf/Dimotakis_JFM2000.pdf) the Kolmogorov length scale. Thus we have
 
 $$\lambda_\nu = \Pi_{K\nu}\left( \frac{\nu^3}{\varepsilon} \right)^{\frac{1}{4}}$$
+{#eq:inner_viscous_length}
+
 where $\Pi_{K\nu} = 50$
+
+At length scales larger than the inner viscous length scale, $\lambda_v$, the dominant transport mechanism is by turbulent eddies. At length scales smaller than $\lambda_v$ the dominant transport mechanism is fluid deformation due to shear. If the flow regime is completely laminar such as in a small diameter tube flocculator, then the dominant transport mechanism is fluid deformation due to shear at length scales all the way up to the diameter of the tubing.
+
+The dividing line between eddy transport and fluid deformation controlled by viscosity can be calculated as a function of the energy dissipation rate using [@eq:inner_viscous_length].
 
 ```python
 """ importing """
@@ -104,11 +114,11 @@ plt.show()
 
 ### Turbulent mixing time as a function of scale
 
-We are searching for the rate limiting step in the mixing process as we transition from the scale of the flow down to the scale of the coagulant nanoparticles. We can estimate the time required for eddies to mix at their length scales by assuming that the eddies pass all of their energy to smaller scales in the time it takes for an eddy to travel this distance equal to the length scale of the eddy. This time is known as the **[eddy turnover time](http://ceeserver.cee.cornell.edu/eac20/cee637/handouts/TURBFLOW_1.pdf)**, $t_{eddy}$. [The derivation for the equation below is found here](https://github.com/AguaClara/CEE4540_Master/blob/master/AguaClara%20Water%20Treatment%20Plant%20Design/Rapid%20Mix/RM_Derivations.md#t_eddy).
+We are searching for the rate limiting step in the mixing process as we transition from the scale of the flow down to the scale of the coagulant nanoparticles. We can estimate the time required for eddies to mix at their length scales by assuming that the eddies pass all of their energy to smaller scales in the time it takes for an eddy to travel the distance equal to the length scale of the eddy. This time is known as the **[eddy turnover time](http://ceeserver.cee.cornell.edu/eac20/cee637/handouts/TURBFLOW_1.pdf)**, $t_{eddy}$. [The derivation for the equation below is found here](https://github.com/AguaClara/CEE4540_Master/blob/master/AguaClara%20Water%20Treatment%20Plant%20Design/Rapid%20Mix/RM_Derivations.md#t_eddy).
 
-$$t_{eddy} \sim \left( \frac{L_{eddy}^2}{ \bar\varepsilon }\right)^\frac{1}{3} $$
+$$t_{eddy} \approx \left( \frac{L_{eddy}^2}{ \bar\varepsilon }\right)^\frac{1}{3} $$
 
-We can plot the eddy turnover time as a function of scale from the inner viscous length scale up to the scale of the flow.
+We can plot the eddy turnover time as a function of scale from the inner viscous length scale up to the scale of the flow. We will discover whether large scale mixing by eddies is faster or slower than small scale mixing by eddies.
 ```python
 EDR_graph = np.array([0.01,0.1,1,10 ])*u.W/u.kg
 Temperature
@@ -136,25 +146,94 @@ plt.show()
 
 The eddy turnover times are longest for the largest eddies and this analysis suggests that it only takes a few seconds for turbulent eddies to mix from the scale of the flow down to the inner viscous length scale.
 
-The large scale mixing time is critical for the design of water treatment plants where after coagulant addition the flow is split into multiple treatment trains. In this case it is critical that the coagulant be mixed equally between all of the treatment trains and thus the mixing times shown in the previous graph represent a minimum time between where the coagulant is added and where the flow is divided into the parallel treatment trains.
+The large scale mixing time is critical for the design of water treatment plants for the case where  the flow is split into multiple treatment trains after coagulant addition. In this case it is critical that the coagulant be mixed equally between all of the treatment trains and thus the mixing times shown in the previous graph represent a minimum time between where the coagulant is added and where the flow is divided into the parallel treatment trains.
 
-
-
-
-We can combine the equation that estimates the largest eddy velocity and the equation for the energy dissipation rate of an eddy **<font color="red">AH WHERE DID THE FIRST EQUATION COME FROM? WHY ARE THERE \SIMs EVERYWHERE INSTEAD OF EQUALS SIGNS? </font>**
-
-$$ \bar\varepsilon = \frac{\rm{f}}{2} \frac{\bar v^3}{D}  \sim \frac{v_{eddy}^3}{L_{eddy}} $$
-
-Solve for the ratio of the eddy velocity to the mean flow velocity and note that the length scale for the largest eddy is the diameter of the pipe.
-
-$$ N_{D_{pipe}} \sim \frac{\bar v}{v_{eddy}} \sim \left(\frac{2}{\rm{f}} \right)^\frac{1}{3} $$
-
-Where $N_{D_{pipe}}$ is the distance in number of pipe diameters downstream of the injection point where complete mixing will have occurred. The velocity ratio can be used to estimate the distance required for mixing perpendicular to the flow direction in a straight pipe.
-
+It is likely this process of mixing from the scale of the flow down to the inner viscous length scale is commonly referred to as "rapid mix." Here we showed that this mixing is indeed rapid and is really only a concern in the case where the coagulant injection point is very close to the location where the flow is split into multiple treatment trains.
 
 ### Shear-diffusion transport
+After the first few seconds in which mixing occurs from the length scale of the flow down to the inner viscous length scale the next step in the transport process is blending of the coagulant uniformly with the raw water. At the end of the turbulent transport the coagulant stock has been stretched out into thin bands throughout the raw water, but the two fluids are not actually blended together by turbulence. The blending is accomplished by fluid deformation.  
+
+#### Fluid deformation by Shear
+
+The time scale for fluid deformation is $1/G$ where $G$ is the velocity gradient. This simple relationship is because the velocity of fluid deformation is proportional to the length scale and thus the time to travel any given distance is always the same. Velocity gradients in conventional mechanized rapid mix units are order 1000 Hz and thus the time for fluid deformation to blur concentration gradients is approximately 1 ms. This confirms the idea that blending the coagulant with the raw water is actually a very fast process with the slowest phase being the transport at the scale of reactor.
+
+
 #### Einstein's diffusion equation
+
+We can estimate the length scale at which fluid shear and diffusion provide transport at the same rate. Einstein's diffusion equation is
+
+$$D_{Diffusion} = \frac{k_B T}{3 \pi \mu d_P}$$
+
+where $k_B$ is the Boltzmann constant and $d_P$ is the diameter of the particle that is diffusion in a fluid with viscosity $\nu$ and density $\rho$. The diffusion coefficient $D_{Diffusion}$ has dimensions of $\frac{[L^2]}{[T]}$ and can be understood as the velocity of the particle multiplied by the length of the mean free path.
+
+
+From dimensional analysis the time for diffusion to blur a concentration gradient over a length scale, $L_{Diffusion}$ is
+
+$$ t_{Diffusion} \approx \frac{L_{Diffusion}^2}{D_{Diffusion}}  $$ {#eq:t_Diffusion}
+
+The shear time scale is $1/G$ and thus we can solve for the length scale at which diffusion and shear have equivalent transport rates.
+
+$$ 1/G \approx t_{Diffusion} \approx \frac{L_{Diffusion}^2}{D_{Diffusion}}  $$
+
+Substitute Einstein's diffusion equation and solve for the length scale that transitions between shear and diffusion transport.
+
+$$L_{Diffusion}^{Shear} \approx \sqrt{\frac{k_B T}{3 G \pi \mu  d_P}}  $$
+
+```python
+def L_Shear_Diffusion(G,Temperature,d_particle):
+  return np.sqrt((u.boltzmann_constant*Temperature/
+  (3 * G *  np.pi *pc.viscosity_dynamic(Temperature)* d_particle)).to_base_units())
+
+G = 100*u.Hz
+d_particle = fm.PACl.Diameter*u.m
+x = (L_Shear_Diffusion(G,Temperature,d_particle)).to(u.nm)
+print(x)
+```
+
 #### Estimate diffusion time scale
+
+The distance that diffusion has to blend the coagulant into the raw water is given by the inner viscous length scale.
+
+$$\lambda_\nu = L_{Diffusion}$$
+
+Substituting for the diffusion length scale in {@eq:t_Diffusion} and using the average energy dissipation rate $\bar\varepsilon$ we have
+
+$$ t_{Diffusion} \approx \frac{\left(\Pi_{K\nu}\left( \frac{\nu^3}{\bar\varepsilon} \right)^{\frac{1}{4}} \right)^2}{D_{Diffusion}} $$
+
+Substitute Einstein's diffusion equation to obtain
+
+$$ t_{Diffusion} \approx \frac{\Pi_{K\nu}^2\left( \frac{\nu^3}{\bar\varepsilon} \right)^{\frac{1}{2}} }{\frac{k_B T}{3 \pi \nu \rho  d_P}} $$
+
+and simplify!
+
+$$ t_{Diffusion} \approx \frac{3 \pi \nu^\frac{5}{2} \rho  d_P \Pi_{K\nu}^2}{k_B T \bar\varepsilon^\frac{1}{2}} $$
+
+Now we can estimate this diffusion time for coagulant nanoparticles. There are strong temperature dependencies in this relationship because viscosity is a function of temperature. We will first plot this as a function of the average energy dissipation rate, $\bar\varepsilon$, and then as a function of temperature.
+
+
+
+```python
+
+
+EDR_graph = np.array([0.01,0.1,1,10 ])*u.W/u.kg
+Temperature
+
+fig, ax = plt.subplots()
+for i in range(len(EDR_graph)):
+  ax.semilogx(L_scale,((L_scale**2/EDR_graph[i])**(1/3)).to_base_units())
+
+ax.legend(EDR_graph)
+
+#ax.yaxis.set_major_formatter(FormatStrFormatter('%.f'))
+#ax.xaxis.set_major_formatter(FormatStrFormatter('%.f'))
+ax.set(xlabel='Length (m)', ylabel='Eddy turnover time (s)')
+fig.savefig(imagepath+'Eddy_turnover_time')
+plt.show()
+```
+<img src="https://github.com/AguaClara/CEE4540_Master/raw/master/AguaClara%20Water%20Treatment%20Plant%20Design/Rapid%20Mix/Images/???.png" width="400">
+
+**Figure x:** Time required for diffusion to blend the coagulant nanoparticles with the raw water.
+
 
 ### Maximum velocity gradients
 
