@@ -20,13 +20,19 @@ The two concepts that were not covered in the previous chapter, [fluids review](
 
 ### What do $G$ and $\varepsilon$ mean?
 
-$G$ is a measure of fluid deformation. $G$ is the parameter which measures velocity gradients, and an example of a velocity gradient is shown in the image below:
+$G$, or velocity gradient, is a measure of fluid deformation. It is defined by how quickly one point of water along one streamline moves in comparison to another point on another streamline, taking into account the distance between the streamlines ($\Delta h$). A visual example of a velocity gradient is shown in the image below:
 
-<center><img src="https://raw.githubusercontent.com/AguaClara/CEE4540_Master/master/AguaClara%20Water%20Treatment%20Plant%20Design/Energy%20Dissipation%20and%20Velocity%20Gradients/Images/Velocity_graident_image.jpg" width=500></center>
+<center><img src="https://raw.githubusercontent.com/AguaClara/CEE4540_Master/master/AguaClara%20Water%20Treatment%20Plant%20Design/Energy%20Dissipation%20and%20Velocity%20Gradients/Images/Velocity_gradient_image.jpg" width=500></center>
 
-The energy dissipation rate is the rate that mechanical energy is being converted to heat. Energy dissipation rate is a very useful concept because the last step of converting mechanical energy into heat is accomplished by viscosity. Viscosity converts the kinetic energy associated with fluid deformation into heat. Thus there is a direct connection between the rate that mechanical energy is being dissipated and the rate that the fluid is being deformed.
+</br>
 
-Fluid deformation plays an important role in mixing and of causing suspended particles to collide with each other. Aspects of fluid deformation, velocity gradients, and energy dissipation rates will be important for our understanding of mixing processes, collisions of particles in flocculation, and even in understanding failure modes of plate settlers and terminal head loss of sand filters.
+**Note on terminology:** "Fluid deformation" is equivalent to "velocity gradient," and the two terms can be used interchangeably. They are different ways of thinking about the same concept. Thus, $G$ is the measure of both terms.
+
+$\varepsilon$, or energy dissipation rate (EDR), is the rate that the kinetic energy of the fluid is being converted to heat. EDR is a very useful concept because the last step of converting kinetic energy into heat is accomplished by viscosity ($\nu$). Viscosity dissipates the kinetic energy associated with fluid deformation ($G$) into heat. Thus, there is a direct connection between $\varepsilon$, $\nu$, and $G$. This connection will be further covered later on in this introduction. 
+
+### Deriving equations for $\varepsilon$ and $G$
+
+Velocity gradients plays an important role both in mixing and in causing suspended particles to collide with each other. Aspects of velocity gradients and energy dissipation rates will be important for our understanding of mixing processes, collisions of particles in flocculation, and even in understanding failure modes of plate settlers, which you will learn about in the [Sedimentation](needlink.com "add this link") chapter, and terminal head loss of sand filters, which you will learn about in the [Filtration](needlink.com "add this link") chapter.
 
 We will begin by defining the concept of energy dissipation rate for a control volume. In a control volume that does not include pumps or turbines the mechanical energy lost (and represented as a change in elevation indicating potential energy) is $g h_L$. That mechanical energy is lost in the time that the fluid is in the control volume, $\theta$.
 
