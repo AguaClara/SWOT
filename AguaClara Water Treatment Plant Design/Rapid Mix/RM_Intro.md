@@ -25,10 +25,10 @@ Nanoparticle application includes multiple steps that must occur before the raw 
     1. At a very small scale (Inner viscous length scale) viscosity becomes significant and the kinetic energy of the eddies begins to be converted to heat by viscosity.  
 1. The coagulant is blended with the raw water by molecular diffusion
 1. The higher pH of the raw water causes the coagulant to begin to precipitate as $Al_{12}AlO_4(OH)_{24}(H_2O)_{12}^{7+}$, an aluminum, Al, nanoparticle.
-1. The precipitating $Al_{13}$ molecules aggregates with other nearby $Al_{13}$ molecules to form aluminum hydroxide nanoparticles.
-1. The Al nanoparticles attach to other dissolved species and suspended particles. The following list is ordered from assumed fastest to slowest processes.
-    1. Molecular diffusion causes some dissolved species and Al nanoparticles to aggregate.
-    1. Fluid shear and molecular diffusion cause Al nanoparticles with attached formerly dissolved species to collide with inorganic particles (such as clay) and organic particles (such as viruses, bacteria, and protozoans).
+1. The precipitating $Al_{13}$ molecules aggregates with other nearby $Al_{13}$ molecules to form aluminum hydroxide nanoparticles. It is also possible that the nanoparticles are already formed in the coagulant stock suspension. Polyaluminum chloride stock solutions turn white in about a year at room temperature and this suggests that nanoparticles have reached
+1. The Al nanoparticles attach to other dissolved species and suspended particles.
+1. Molecular diffusion causes some dissolved species and Al nanoparticles to aggregate.
+1. Fluid shear and molecular diffusion cause Al nanoparticles with attached formerly dissolved species to collide with inorganic particles (such as clay) and organic particles (such as viruses, bacteria, and protozoans).
 
 These multiple steps cover a wide range of length scales and it is not clear at the onset which processes might be the rate limiting steps. We will develop time scale estimates for several of these steps to help identify which processes will likely require the most attention to design. Many of these processes are presumed to occur in parallel.
 
@@ -151,11 +151,11 @@ The large scale mixing time is critical for the design of water treatment plants
 It is likely this process of mixing from the scale of the flow down to the inner viscous length scale is commonly referred to as "rapid mix." Here we showed that this mixing is indeed rapid and is really only a concern in the case where the coagulant injection point is very close to the location where the flow is split into multiple treatment trains.
 
 ### Shear-diffusion transport
-After the first few seconds in which mixing occurs from the length scale of the flow down to the inner viscous length scale the next step in the transport process is blending of the coagulant uniformly with the raw water. At the end of the turbulent transport the coagulant stock has been stretched out into thin bands throughout the raw water, but the two fluids are not actually blended together by turbulence. The blending is accomplished by fluid deformation.  
+After the first few seconds in which mixing occurs from the length scale of the flow down to the inner viscous length scale the next step in the transport process is blending of the coagulant uniformly with the raw water. At the end of the turbulent transport the coagulant stock has been stretched out into thin bands throughout the raw water, but the two fluids are not actually blended together by turbulence. The blending is accomplished by fluid deformation and then by molecular diffusion.  
 
 #### Fluid deformation by Shear
 
-The time scale for fluid deformation is $1/G$ where $G$ is the velocity gradient. This simple relationship is because the velocity of fluid deformation is proportional to the length scale and thus the time to travel any given distance is always the same. Velocity gradients in conventional mechanized rapid mix units are order 1000 Hz and thus the time for fluid deformation to blur concentration gradients is approximately 1 ms. This confirms the idea that blending the coagulant with the raw water is actually a very fast process with the slowest phase being the transport at the scale of reactor.
+The time scale for fluid deformation is $1/G$ where $G$ is the velocity gradient. This simple relationship is because the velocity of fluid deformation is proportional to the length scale and thus the time to travel any given distance is always the same. Velocity gradients in conventional mechanized rapid mix units are order 1000 Hz and thus the time for fluid deformation to blur concentration gradients is approximately 1 ms. This confirms the idea that blending the coagulant with the raw water is actually a very fast process with the slowest phase being the transport by turbulent eddies at the scale of reactor.
 
 
 #### Einstein's diffusion equation
@@ -189,50 +189,9 @@ d_particle = fm.PACl.Diameter*u.m
 x = (L_Shear_Diffusion(G,Temperature,d_particle)).to(u.nm)
 print(x)
 ```
+Molecular diffusion finishes the blending process by transporting the coagulant nanoparticles the last few hundred nanometers. The entire mixing process from the coagulant injection point to uniform blending with the raw water takes only a few seconds.
 
-#### Estimate diffusion time scale
-
-The distance that diffusion has to blend the coagulant into the raw water is given by the inner viscous length scale.
-
-$$\lambda_\nu = L_{Diffusion}$$
-
-Substituting for the diffusion length scale in {@eq:t_Diffusion} and using the average energy dissipation rate $\bar\varepsilon$ we have
-
-$$ t_{Diffusion} \approx \frac{\left(\Pi_{K\nu}\left( \frac{\nu^3}{\bar\varepsilon} \right)^{\frac{1}{4}} \right)^2}{D_{Diffusion}} $$
-
-Substitute Einstein's diffusion equation to obtain
-
-$$ t_{Diffusion} \approx \frac{\Pi_{K\nu}^2\left( \frac{\nu^3}{\bar\varepsilon} \right)^{\frac{1}{2}} }{\frac{k_B T}{3 \pi \nu \rho  d_P}} $$
-
-and simplify!
-
-$$ t_{Diffusion} \approx \frac{3 \pi \nu^\frac{5}{2} \rho  d_P \Pi_{K\nu}^2}{k_B T \bar\varepsilon^\frac{1}{2}} $$
-
-Now we can estimate this diffusion time for coagulant nanoparticles. There are strong temperature dependencies in this relationship because viscosity is a function of temperature. We will first plot this as a function of the average energy dissipation rate, $\bar\varepsilon$, and then as a function of temperature.
-
-
-
-```python
-
-
-EDR_graph = np.array([0.01,0.1,1,10 ])*u.W/u.kg
-Temperature
-
-fig, ax = plt.subplots()
-for i in range(len(EDR_graph)):
-  ax.semilogx(L_scale,((L_scale**2/EDR_graph[i])**(1/3)).to_base_units())
-
-ax.legend(EDR_graph)
-
-#ax.yaxis.set_major_formatter(FormatStrFormatter('%.f'))
-#ax.xaxis.set_major_formatter(FormatStrFormatter('%.f'))
-ax.set(xlabel='Length (m)', ylabel='Eddy turnover time (s)')
-fig.savefig(imagepath+'Eddy_turnover_time')
-plt.show()
-```
-<img src="https://github.com/AguaClara/CEE4540_Master/raw/master/AguaClara%20Water%20Treatment%20Plant%20Design/Rapid%20Mix/Images/???.png" width="400">
-
-**Figure x:** Time required for diffusion to blend the coagulant nanoparticles with the raw water.
+We have demonstrated that all of the steps for mixing of the coagulant nanoparticles with the raw water are very fast. Compared with the time required for flocculation, 10s to 1000s of seconds, the time required for this mixing is insignificant. The next steps are combining dissolved species including some components of dissolved natural organic matter with the coagulant nanoparticles and  
 
 
 ### Maximum velocity gradients
@@ -355,10 +314,6 @@ plt.show()
 Using the equation for $L_{Diff}$ above, [we can solve for](https://github.com/AguaClara/CEE4540_Master/blob/master/AguaClara%20Water%20Treatment%20Plant%20Design/Rapid%20Mix/RM_Derivations.md#t_coagulant%20application) the time required to reach a target efficiency of application of coagulant nanoparticles to clay:
 
 $$t_{coagulant, \, application} = \frac{2.3p C_{NC} \, \Lambda_{Clay}^2}{\pi G k \, d_{Clay}\,  L_{Diff_{NC}} }$$
-
-
-**<font color="red">WHAT IS THIS PARAGRAPH BELOW REFERRING TO? I DIDN'T CHANGE THE EQUATION, AND THERE'S NO SQUARE ROOT IN IT</font>**  
-In the equation above, the first fraction after the equal sign is dimensionless and the square root term has dimensions of time. In the aggregation of clay particles (looking ahead to flocculation) the
 
 The time required for the coagulant to be transported to clay surfaces is strongly dependent on the turbidity as indicated by the average spacing of clay particles, $\Lambda_{Clay}$. As turbidity increases the spacing between clay particles decreases and the time required for shear to transport coagulant nanoparticles to the clay decreases. Increasing the shear also results in faster transport of the coagulant nanoparticles to clay surfaces. The times required are strongly influenced by the size of the coagulant nanoparticles because larger nanoparticles diffuse more slowly.
 
