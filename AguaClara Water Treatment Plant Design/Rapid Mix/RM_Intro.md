@@ -191,46 +191,9 @@ print(x)
 ```
 Molecular diffusion finishes the blending process by transporting the coagulant nanoparticles the last few hundred nanometers. The entire mixing process from the coagulant injection point to uniform blending with the raw water takes only a few seconds.
 
-We have demonstrated that all of the steps for mixing of the coagulant nanoparticles with the raw water are very fast. Compared with the time required for flocculation, 10s to 1000s of seconds, the time required for this mixing is insignificant. The next steps are combining dissolved species including some components of dissolved natural organic matter with the coagulant nanoparticles and  
-
-
-### Maximum velocity gradients
-
-
-```python
-Mix_HRT = np.array([0.5,15,25,35,85])*u.s
-Mix_G = np.array([4000,1500,950,850,750])/u.s
-Mix_CP = np.multiply(Mix_HRT, np.sqrt(Mix_G))
-Mix_Gt = np.multiply(Mix_HRT, Mix_G)
-Mix_EDR = (Mix_G**2*pc.viscosity_kinematic(Temperature))
-
-fig, ax = plt.subplots()
-ax.plot(Mix_G.to(1/u.s),Mix_HRT.to(u.s),'o')
-ax.yaxis.set_major_formatter(FormatStrFormatter('%.f'))
-ax.xaxis.set_major_formatter(FormatStrFormatter('%.f'))
-ax.set(xlabel='Velocity gradient (Hz)', ylabel='Residence time (s)')
-fig.savefig(imagepath+'Mechanical_RM_Gt')
-plt.show()
-
-```
-<img src="https://github.com/AguaClara/CEE4540_Master/raw/master/AguaClara%20Water%20Treatment%20Plant%20Design/Rapid%20Mix/Images/Mechanical_RM_Gt.png" width="400">
-
-**Figure x:** Mechanical rapid mix units use a wide range of velocity gradients and residence times.
-
-```python
-
-```
-
-
-
-## Mixing length scale and transport mechanisms
-
-The next step is turbulent eddy shuffling of the fluid packets. Turbulent eddies distort the fluid such that the coagulant is mixed with the raw water. There are three critical goals of this shuffling.
-1. If the plant design calls for the flow to be split between several flocculators, then it is critical that the coagulant be sufficiently mixed with the raw water prior to the splitting of the flow so that each flocculator receives the same coagulant dose.
-1. The turbulent eddies shuffle the fluid packets down to the scale of the smallest eddies. (We need to figure out what this scale is!)
-1. Fluid deformation (shear) and molecular diffusion cause Al nanoparticles to collide with inorganic particles
-
-
+We have demonstrated that all of the steps for mixing of the coagulant nanoparticles with the raw water are very fast. Compared with the time required for flocculation, 10s to 1000s of seconds, the time required for this mixing is insignificant. The remaining steps are:
+1. Molecular diffusion causes some dissolved species and Al nanoparticles to aggregate.
+1. Fluid shear and molecular diffusion cause Al nanoparticles with attached formerly dissolved species to collide with inorganic particles (such as clay) and organic particles (such as viruses, bacteria, and protozoans).
 
 
 ### Length scales of coagulant nanoparticles and clay
@@ -421,8 +384,6 @@ The analysis of the time required for shear and diffusion to transport the coagu
   * Electronegativity reveals that the aluminum - oxygen bond is more polar than the hydrogen - oxygen bond
   * The bond between a coagulant nanoparticle and a clay surface can potentially be stronger than the bond between a water molecule and the clay surface.
 
-## Design for Mixing
-This is all about deforming the fluid.
 
 ### Jet Mixing
 
@@ -436,6 +397,34 @@ Coiled tube flocculators are commonly used by AguaClara Cornell researchers for 
 [add equations here for coiled flocculators]
 
 ## Conventional Rapid Mix
+
+
+
+### Maximum velocity gradients
+
+
+```python
+Mix_HRT = np.array([0.5,15,25,35,85])*u.s
+Mix_G = np.array([4000,1500,950,850,750])/u.s
+Mix_CP = np.multiply(Mix_HRT, np.sqrt(Mix_G))
+Mix_Gt = np.multiply(Mix_HRT, Mix_G)
+Mix_EDR = (Mix_G**2*pc.viscosity_kinematic(Temperature))
+
+fig, ax = plt.subplots()
+ax.plot(Mix_G.to(1/u.s),Mix_HRT.to(u.s),'o')
+ax.yaxis.set_major_formatter(FormatStrFormatter('%.f'))
+ax.xaxis.set_major_formatter(FormatStrFormatter('%.f'))
+ax.set(xlabel='Velocity gradient (Hz)', ylabel='Residence time (s)')
+fig.savefig(imagepath+'Mechanical_RM_Gt')
+plt.show()
+
+```
+<img src="https://github.com/AguaClara/CEE4540_Master/raw/master/AguaClara%20Water%20Treatment%20Plant%20Design/Rapid%20Mix/Images/Mechanical_RM_Gt.png" width="400">
+
+**Figure x:** Mechanical rapid mix units use a wide range of velocity gradients and residence times.
+
+
+
 
 Conventional rapid mix units use mechanical or potential energy to generate intense turbulence to begin the mixing process. Conventional design is based on the use of $\bar G$ (an average velocity gradient) as a design parameter. We don’t yet know what the design objective is for rapid mix and thus it isn’t clear which parameters matter. We hypothesize that both velocity gradients that cause deformation of the fluid and time for molecular diffusion are required to ultimately transport coagulant nanoparticles to the surfaces of clay particles.
 
