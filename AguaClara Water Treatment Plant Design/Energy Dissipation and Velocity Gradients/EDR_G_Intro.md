@@ -1,14 +1,28 @@
-# Energy Dissipation ($\varepsilon$), Velocity Gradients ($G$), and mixing
+# Energy Dissipation Rate, Velocity Gradient, and Mixing
 ## Introduction
 
-Drinking water treatment requires:
+In addition to the general fluids review in the previous chapter, there are a few extra fluid dynamics concepts that are important to know in order to understand drinking water treatment and AguaClara's approach to it. These concepts are primarily focused on the relationships between:
+* Turbulence
+* Velocity Gradient ($G$), which measures fluid deformation
+* Viscosity
+* Shear
+* Energy Dissipation Rate (EDR, $\varepsilon$)
 
-* mixing chemicals with the water
-* collisions between dissolved substances, nanoparticles, pathogens, suspended particles
-* prevention of floc breakup in high shear zones
-* and possibly, shear that prevents coagulant nanoparticle deposition on reactor walls
+Knowledge of these concepts and how they interact is critical to understand the following processes, which are key parts of water treatment:
 
-Each of these processes requires an understanding of fluid dynamics and specifically the relationships between turbulence, velocity gradients (fluid deformation), viscosity, shear, and the energy dissipation rate.
+* Thorough mixing of chemicals with the water
+* Collisions between dissolved substances, nanoparticles, pathogens, and suspended particles
+* Prevention of floc breakup in high shear zones  
+and possibly,
+* Shear that prevents coagulant nanoparticle deposition on reactor walls
+
+The two concepts that were not covered in the previous chapter, [fluids review](https://github.com/AguaClara/CEE4540_Master/blob/master/AguaClara%20Water%20Treatment%20Plant%20Design/Fluids%20Review/Fluids_Review_Design.md), are velocity gradient $G$ and energy dissipation rate $\varepsilon$. While these will be very thoroughly described over the course of this introduction, a brief and simple explanation is included in the section below.
+
+### What do $G$ and $\varepsilon$ mean?
+
+$G$ is a measure of fluid deformation. $G$ is the parameter which measures velocity gradients, and an example of a velocity gradient is shown in the image below:
+
+<center><img src="https://raw.githubusercontent.com/AguaClara/CEE4540_Master/master/AguaClara%20Water%20Treatment%20Plant%20Design/Energy%20Dissipation%20and%20Velocity%20Gradients/Images/Velocity_graident_image.jpg" width=500></center>
 
 The energy dissipation rate is the rate that mechanical energy is being converted to heat. Energy dissipation rate is a very useful concept because the last step of converting mechanical energy into heat is accomplished by viscosity. Viscosity converts the kinetic energy associated with fluid deformation into heat. Thus there is a direct connection between the rate that mechanical energy is being dissipated and the rate that the fluid is being deformed.
 
@@ -113,8 +127,8 @@ Table of equations for control volume averaged values of head loss, energy dissi
 | - | :-: | :-: | :-: | :-: |
 | Straight pipe | $h_{\rm{f}} = {\rm{f}} \frac{L}{D} \frac{\bar v^2}{2g}$ |$\bar\varepsilon = \frac{\rm{f}}{2} \frac{\bar v^3}{D}$ |$G_{CS} = \left(\frac{\rm{f}}{2\nu} \frac{\bar v^3}{D} \right)^\frac{1}{2}$ |  $G_{CS} = \left(\frac{\rm{32f}}{ \pi^3\nu} \frac{Q^3}{D^7} \right)^\frac{1}{2}$ |
 | Straight pipe laminar|$h_{\rm{f}} = \frac{32\nu L\bar v}{ g D^2}$| $\bar\varepsilon =32\nu \left( \frac{\bar v}{D} \right)^2$ |$G_{CS} =4\sqrt2 \frac{\bar v}{D}$ | $G_{CS} =\frac{16\sqrt2}{\pi} \frac{Q}{D^3}$ |
-| Parallel plates laminar | $h_{\rm{f}} = 12\frac{ \nu L \bar v }{gS^2}$ | $ \bar\varepsilon = 12 \nu \left(\frac{  \bar v}{S} \right)^2  $ | $G_{CS} = 2\sqrt{3}\frac{  \bar v}{S}$ | :-: |
-| Coiled tube laminar | $h_{L_{coil}} = \frac{32\nu L\bar v}{ g D^2} \left[ 1 + 0.033\left(log_{10}De\right)^4 \right] $ |$\bar\varepsilon = 32\nu \left( \frac{\bar v}{D} \right)^2 \left[ 1 + 0.033\left(log_{10}De\right)^4 \right]$| $G_{CS_{coil}} = 4\sqrt2 \frac{\bar v}{D}\left[ 1 + 0.033\left(log_{10}De\right)^4  \right]^\frac{1}{2}$ | - |
+| Parallel plates laminar | $h_{\rm{f}} = 12\frac{ \nu L \bar v }{gS^2}$ | $\bar\varepsilon = 12 \nu \left(\frac{  \bar v}{S} \right)^2$ | $G_{CS} = 2\sqrt{3}\frac{  \bar v}{S}$ | :-: |
+| Coiled tube laminar | $h_{L_{coil}} = \frac{32\nu L\bar v}{ g D^2} \left[ 1 + 0.033\left(log_{10}De\right)^4 \right]$ |$\bar\varepsilon = 32\nu \left( \frac{\bar v}{D} \right)^2 \left[ 1 + 0.033\left(log_{10}De\right)^4 \right]$| $G_{CS_{coil}} = 4\sqrt2 \frac{\bar v}{D}\left[ 1 + 0.033\left(log_{10}De\right)^4  \right]^\frac{1}{2}$ | - |
 | Expansions | $h_e =  \mathbf{K_e}\frac{\bar v_{out}^2}{2g}$ | $\bar\varepsilon = \mathbf{K_e}\frac{\bar v_{out}^3}{2H}$ | $G_{CS} = \bar v_{out}\sqrt{\frac{\mathbf{K_e}\bar v_{out}}{2H\nu}}$ | - |
 
 The equations used to convert between columns in the table above are:
@@ -130,7 +144,7 @@ For turbulent flow and for flow expansions the amount of fluid deformation decre
 Table of equations for maximum (wall) energy dissipation rates and wall velocity gradients.
 | Geometry | $\varepsilon_{wall}$ | $G_{wall}$|
 | - | :-: |:-: |
-| Straight pipe  | $\varepsilon_{wall} = \frac{1}{\nu}\left(\rm{f}  \frac{\bar v^2}{8} \right)^2 $ | $G_{wall} =\rm{f}  \frac{\bar v^2}{8\nu}$|
+| Straight pipe  | $\varepsilon_{wall} = \frac{1}{\nu}\left(\rm{f}  \frac{\bar v^2}{8} \right)^2$ | $G_{wall} =\rm{f}  \frac{\bar v^2}{8\nu}$|
 | Straight pipe laminar | $\varepsilon_{wall} = \left(\frac{8\bar v}{D} \right)^2 \nu$ | $G_{wall} =  \frac{8\bar v}{D}$|
 | parallel plates | $\varepsilon_{wall} = 36\left( \frac{\bar v}{S}\right)^2 \nu$ | $G_{wall} = \frac{6 \bar v}{S}$|
 | Coiled pipe | - | $G_{CS_{wall_{coil}}} =\rm{f} \left[ 1 + 0.033\left(log_{10}De\right)^4 \right]  \frac{\bar v^2}{8\nu}$|
@@ -138,20 +152,20 @@ Table of equations for maximum (wall) energy dissipation rates and wall velocity
 Table of equations for maximum energy dissipation rates and velocity gradients for flow expansions.
 | Geometry |$\Pi_{Jet}$ | $\varepsilon_{max}$ | $G_{max}$|
 | - | :-: |:-: |:-: |
-| Round jet |0.08 | $\varepsilon_{Max} = \Pi_{JetRound}\frac{   \bar v_{Jet} ^3}{D_{Jet}}$ | $ G_{Max} = \bar v_{Jet} \sqrt{\frac{\Pi_{RoundJet} \bar v_{Jet} }{\nu D_{Jet}}}$ |
+| Round jet |0.08 | $\varepsilon_{Max} = \Pi_{JetRound}\frac{   \bar v_{Jet} ^3}{D_{Jet}}$ | $G_{Max} = \bar v_{Jet} \sqrt{\frac{\Pi_{RoundJet} \bar v_{Jet} }{\nu D_{Jet}}}$ |
 | Plane jet |0.0124| $\varepsilon_{Max} = \Pi_{JetPlane} \frac{  \bar v_{Jet} ^3}{S_{Jet}}$ | $G_{Max} = \bar v_{Jet}\sqrt{\frac{\Pi_{JetPlane} \bar v_{Jet}}{\nu S_{Jet}}}$ |
 | Behind a flat plate |0.04 | $\varepsilon _{Max} = \Pi_{Plate}\frac{\bar v^3}{W_{Plate}}$ | $G_{Max} = \bar v\sqrt{\frac{\Pi_{Plate} \bar v}{\nu W_{Plate}}}$ |
 
 For mechanical mixing where an impeller or other stirring device is adding shaft work to a control volume we have
 
-$$ \bar\varepsilon = \frac{P}{M} = \frac{P}{\rho \rlap{\kern.08em--}V}$$
+$$ \bar\varepsilon = \frac{P}{M} = \frac{P}{\rho \rlap{-}V}$$
 
 where
 * $P$ = power input into the control volume
 * $M$ = mass of fluid in the control volume
-* $\rlap{\kern.08em--}V$ = volume of the control volume
+* $\rlap{-}V$ = volume of the control volume
 * $\rho$ = density of the fluid
 
 The Camp-Stein velocity gradient in a mechanically mixed reactor is
 
-$$ G_{CS} = \sqrt{\frac{P}{\rho \nu \rlap{\kern.08em--}V}} $$
+$$ G_{CS} = \sqrt{\frac{P}{\rho \nu \rlap{-}V}} $$
