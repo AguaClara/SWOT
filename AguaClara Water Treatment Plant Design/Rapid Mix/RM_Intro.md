@@ -1,9 +1,15 @@
-**Figure x:**## <font color="red">Introduction</font>
+## <font color="red">Introduction</font>
 
-Rapid mix is the term commonly used to describe the processes that occur between the coagulant addition to the raw water and the flocculation tanks. The processes that occur are not well understood and thus design guidelines are empirical.
+<font color="red">Our understanding of rapid mix is currently quite speculative. This is an area that requires substantial research. We have anecdotal evidence that the process of transporting coagulant nanoparticles to suspended particle surfaces may be a slow, rate-limiting process. Dissolved organic matter may influence the rate of coagulant nanoparticle transport by effectively increasing the size of the coagulant nanoparticles and thus reducing the diffusion rate.</font>
+
+<font color="red">Developing a fundamental understanding of the mixing and transport processes that occur between coagulant addition and flocculation is a very high priority for the AguaClara program.</font>
+
+Rapid mix is the term commonly used to describe the processes that occur between the coagulant addition to the raw water and the flocculation process. The processes that occur are not well understood and thus design guidelines have been empirical.
 
 “In summary, little is known about rapid mix, much less any sensitivity to scale. However, the models and data reviewed suggest the need to be on the lookout for certain effects. From what is presently known, it can be speculated that since coagulant precipitation is sensitive to both micro- and macro-mixing, scale-up must consider not only energy dissipation rate, but also the reaction injection point and the contacting method.”
  - [Mixing in Coagulation and Flocculation 1991 page 292](https://books.google.com/books/about/Mixing_in_coagulation_and_flocculation.html?id=dkFSAAAAMAAJ)
+
+
 
 Rapid mix units often require significant energy and this has led some municipal water treatment plant operators to experiment with turning off rapid mix units. There is a need to understand the physical and chemical processes that occur when a concentrated liquid coagulant is added to water.
 
@@ -12,44 +18,53 @@ Rapid mix sets the stage for aggregation of both suspended particles and dissolv
 
 Nanoparticle application includes multiple steps that must occur before the raw water particles can begin to aggregate. The sticky nanoparticles can be aluminum $(Al^{+3})$ or iron $(Fe^{+3})$ based and in either case the nanoparticles are formed from precipitated hydroxide species $(Al(OH)_3)$ or $(Fe(OH)_3)$. The series of events that are contained in the broad designation of "rapid mix" are:
 
-1. Liquid coagulant with a low pH is injected into the raw water
-1. Large scale eddies mix the coagulant with the raw water by creating large fluid deformations. This stretching and turning of the raw water and coagulant is analogous to shuffling a deck of cards. The cards are randomized, but the cards maintain their identity. The original liquids retain their chemical composition.
-1. Turbulent eddies disintegrate into smaller and smaller eddies.
-1. At a very small scale (Kolmogorov length scale) viscosity becomes significant and the kinetic energy of the eddies is converted to heat by viscosity.  
-1. Molecular diffusion causes true blending of the two fluids  
-1. The coagulant is diluted by the raw water, the pH of the mixture is higher and the higher pH causes the coagulant to begin to precipitate as $Al_{12}AlO_4(OH)_{24}(H_2O)_{12}^{7+}$, an $Al_{13}$ nanoparticle.
-1. The precipitating $Al_{13}$ molecules aggregates with other nearby $Al_{13}$ molecules to form aluminum hydroxide nanoparticles.
-1. Molecular diffusion and fluid shear cause the Al nanoparticles,  dissolved species, inorganic particles (such as clay) and organic particles (such as viruses, bacteria, and protozoans) to collide and potential attach.
+1. Liquid coagulant stock solution with a low pH is injected into the raw water
+1. Turbulent eddies randomize the fluids (but don't blend them)
+    1. Large scale eddies mix the coagulant with the raw water by creating large fluid deformations. This stretching and turning of the raw water and coagulant is analogous to shuffling a deck of cards. The cards are randomized, but the cards maintain their identity. The original liquids retain their chemical composition.
+    1. Turbulent eddies disintegrate into smaller and smaller eddies.
+    1. At a very small scale (Inner viscous length scale) viscosity becomes significant and the kinetic energy of the eddies begins to be converted to heat by viscosity.  
+1. The coagulant is blended with the raw water by molecular diffusion
+1. The higher pH of the raw water causes the coagulant to begin to precipitate as $Al_{12}AlO_4(OH)_{24}(H_2O)_{12}^{7+}$, an aluminum, Al, nanoparticle.
+1. The precipitating $Al_{13}$ molecules aggregates with other nearby $Al_{13}$ molecules to form aluminum hydroxide nanoparticles. It is also possible that the nanoparticles are already formed in the coagulant stock suspension. Polyaluminum chloride stock solutions turn white in about a year at room temperature and this suggests that nanoparticles have reached
+1. The Al nanoparticles attach to other dissolved species and suspended particles.
+1. Molecular diffusion causes some dissolved species and Al nanoparticles to aggregate.
+1. Fluid shear and molecular diffusion cause Al nanoparticles with attached formerly dissolved species to collide with inorganic particles (such as clay) and organic particles (such as viruses, bacteria, and protozoans).
 
-These multiple steps cover a wide range of length scales and it is not clear at the onset which processes might be the rate limiting steps. We will develop time scale estimates for several of these steps to help identify which processes will likely require the most attention to design.   
+These multiple steps cover a wide range of length scales and it is not clear at the onset which processes might be the rate limiting steps. We will develop time scale estimates for several of these steps to help identify which processes will likely require the most attention to design. Many of these processes are presumed to occur in parallel.
 
 <img src="https://github.com/AguaClara/CEE4540_Master/raw/master/AguaClara%20Water%20Treatment%20Plant%20Design/Rapid%20Mix/Images/rapid%20mix%20macro%20to%20nano%20scale.png" width="800">
 
-**Figure x:**.
-
-## Transport steps
-* Turbulence
-  * Large scale eddies
-  * Inner viscous length scale
-* Shear-diffusion transport
-  * Estimate diffusion time scale
-  * Einstein's diffusion equation
+**Figure x:**. Transport of coagulant nanoparticles occurs over length scales ranging from meter to a fraction of a nanometer.
 
 
-How long will it take for turbulent eddies to mix the coagulant across the area of the pipe? <font color="red"> We will use a rule of thumb that the velocity of the largest eddies is about 10% of the mean velocity. </font> **<font color="red">DO WE HAVE ANYTHING TO CITE FOR THIS?</font>** We can use the eddy velocity to estimate how long it will take for an eddy to cross the diameter of the pipe.
+## Estimates of time required for mixing processes
+### Turbulent mixing
+#### Large scale eddies at the dimension of flow
+The first step in mixing is at the large scale of the dimension of the largest eddies where the dimension of the largest eddies is the smallest dimension normal to the direction of flow. Thus in a pipe the dimension of the largest eddies is set by the pipe diameter. In a open channel the dimension of the largest eddies is usually the water depth although it could be the width of the channel for the case of a narrow tall channel.
 
-We will eventually develop designs for hydraulic devices to accomplish the multiple steps of transporting coagulant nanoparticles to interactions with dissolved and suspended contaminants. Initially we will assume that a design has been created that results in an energy dissipation rate of $1\frac{W}{kg}$.
+We can use the eddy velocity to estimate how long it will take for an eddy to cross the smallest dimension of flow. Eddy velocity is $v_{eddy} \approx \left( \bar\varepsilon \, L_{eddy} \right)^\frac{1}{3} $. The "$\approx$" indicates that this relationship is the same order of magnitude.  In a pipe we have
+$$v_{eddy} \approx \left( \bar\varepsilon \, D \right)^\frac{1}{3} $$
 
-The smallest scale that **<font color="red"> WHAT GOES NEXT?</font>**
+For a long straight pipe
+$\bar\varepsilon = \frac{\rm{f}}{2} \frac{\bar v^3}{D}$ and thus we can obtain the ratio between mean velocity and the velocity of the large scale eddies.
 
-We can estimate the characteristic velocity of any size of eddy based on the assumption that the rate of loss of energy
+$$v_{eddy} \approx \left( \frac{\rm{f}}{2} \frac{\bar v^3}{D} \, D \right)^\frac{1}{3} $$
 
-| length scale | Length | Time | Velocity |
-| - | - | - | - |
-|largest eddies | flow dimension perpendicular to the mean velocity |  | |
+$$\frac{v_{eddy}}{\bar v} \approx \left( \frac{\rm{f}}{2}   \right)^\frac{1}{3} $$
+
+Given a friction factor of 0.02, the eddy velocity is approximately 20% of the mean velocity. We can use this ratio to estimate how many pipe diameters downstream from an injection point will the coagulant be mixed across the diameter of the pipe.
+
+$$ N_{D_{pipe}} \approx \frac{\bar v}{v_{eddy}} \approx \left(\frac{2}{\rm{f}} \right)^\frac{1}{3} $$
+
+Where $N_{D_{pipe}}$ is the distance in number of pipe diameters downstream of the injection point where complete mixing will have occurred. This estimate is a minimum distance and a factor of safety of 2 or more would reasonably be applied. In addition it is best practice to inject the coagulant in the center of the pipe. Injecting the coagulant at the side of the pipe will require considerably greater distance downstream for mixing across the pipe.
+
+```python
+print((0.02/2)**(1/3))
+
+```
 
 
-
+#### Inner viscous length scale
 The smallest scale at which inertia containing eddies causes mixing is set by the final damping of inertia by viscosity. Turbulence occurs when fluid inertia is too large to be damped by viscosity. The ratio of inertia to viscosity is given by the Reynolds number, $\rm Re$:
 
 $${\rm{Re}} = \frac{\bar vD}{\nu}$$
@@ -62,12 +77,24 @@ where $\eta_K$ is the Kolmogorov length scale. At the Kolmogorov length scale vi
 The length scale at which most of the kinetic energy contained in the small eddies is dissipated by viscosity is the inner viscous length scale, $\lambda_v$, which is about [50 times larger than](http://dimotakis.caltech.edu/pdf/Dimotakis_JFM2000.pdf) the Kolmogorov length scale. Thus we have
 
 $$\lambda_\nu = \Pi_{K\nu}\left( \frac{\nu^3}{\varepsilon} \right)^{\frac{1}{4}}$$
+{#eq:inner_viscous_length}
+
 where $\Pi_{K\nu} = 50$
 
+At length scales larger than the inner viscous length scale, $\lambda_v$, the dominant transport mechanism is by turbulent eddies. At length scales smaller than $\lambda_v$ the dominant transport mechanism is fluid deformation due to shear. If the flow regime is completely laminar such as in a small diameter tube flocculator, then the dominant transport mechanism is fluid deformation due to shear at length scales all the way up to the diameter of the tubing.
+
+The dividing line between eddy transport and fluid deformation controlled by viscosity can be calculated as a function of the energy dissipation rate using [@eq:inner_viscous_length].
+
 ```python
+""" importing """
+from aide_design.play import*
+from aguaclara_research.play import*
+import aguaclara_research.floc_model as fm
+import matplotlib.pyplot as plt
+from matplotlib.ticker import FormatStrFormatter
+imagepath = 'AguaClara Water Treatment Plant Design/Rapid Mix/Images/'
 EDR_array = np.logspace(0,4,num=50)*u.mW/u.kg
 Temperature = 20*u.degC
-fm.RATIO_KOLMOGOROV
 def Inner_viscous(EDR, Temperature):
 	return fm.RATIO_KOLMOGOROV * fm.eta_kolmogorov(EDR, Temperature)
 
@@ -85,11 +112,13 @@ plt.show()
 
 **Figure x:** Eddies can cause fluid mixing down to the scale of a few millimeters for energy dissipation rates used in rapid mix units and flocculators.
 
-We are searching for the rate limiting step in the mixing process as we transition from the scale of the flow down to the scale of the coagulant nanoparticles. We can estimate the time required for eddies to mix at their length scales by assuming that the eddies pass all of their energy to smaller scales in the time it takes for an eddy to travel this distance equal to the length scale of the eddy. This time is known as the **[eddy turnover time](http://ceeserver.cee.cornell.edu/eac20/cee637/handouts/TURBFLOW_1.pdf)**, $t_{eddy}$. [The derivation for the equation below is found here](https://github.com/AguaClara/CEE4540_Master/blob/master/AguaClara%20Water%20Treatment%20Plant%20Design/Rapid%20Mix/RM_Derivations.md#t_eddy).
+### Turbulent mixing time as a function of scale
 
-$$t_{eddy} \sim \left( \frac{L_{eddy}^2}{ \varepsilon }\right)^\frac{1}{3} $$
+We are searching for the rate limiting step in the mixing process as we transition from the scale of the flow down to the scale of the coagulant nanoparticles. We can estimate the time required for eddies to mix at their length scales by assuming that the eddies pass all of their energy to smaller scales in the time it takes for an eddy to travel the distance equal to the length scale of the eddy. This time is known as the **[eddy turnover time](http://ceeserver.cee.cornell.edu/eac20/cee637/handouts/TURBFLOW_1.pdf)**, $t_{eddy}$. [The derivation for the equation below is found here](https://github.com/AguaClara/CEE4540_Master/blob/master/AguaClara%20Water%20Treatment%20Plant%20Design/Rapid%20Mix/RM_Derivations.md#t_eddy).
 
-We can plot the eddy turnover time as a function of scale from the inner viscous length scale up to the scale of the flow.
+$$t_{eddy} \approx \left( \frac{L_{eddy}^2}{ \bar\varepsilon }\right)^\frac{1}{3} $$
+
+We can plot the eddy turnover time as a function of scale from the inner viscous length scale up to the scale of the flow. We will discover whether large scale mixing by eddies is faster or slower than small scale mixing by eddies.
 ```python
 EDR_graph = np.array([0.01,0.1,1,10 ])*u.W/u.kg
 Temperature
@@ -117,23 +146,57 @@ plt.show()
 
 The eddy turnover times are longest for the largest eddies and this analysis suggests that it only takes a few seconds for turbulent eddies to mix from the scale of the flow down to the inner viscous length scale.
 
-The large scale mixing time is critical for the design of water treatment plants where after coagulant addition the flow is split into multiple treatment trains. In this case it is critical that the coagulant be mixed equally between all of the treatment trains and thus the mixing times shown in the previous graph represent a minimum time between where the coagulant is added and where the flow is divided into the parallel treatment trains.
+The large scale mixing time is critical for the design of water treatment plants for the case where  the flow is split into multiple treatment trains after coagulant addition. In this case it is critical that the coagulant be mixed equally between all of the treatment trains and thus the mixing times shown in the previous graph represent a minimum time between where the coagulant is added and where the flow is divided into the parallel treatment trains.
+
+It is likely this process of mixing from the scale of the flow down to the inner viscous length scale is commonly referred to as "rapid mix." Here we showed that this mixing is indeed rapid and is really only a concern in the case where the coagulant injection point is very close to the location where the flow is split into multiple treatment trains.
+
+### Shear-diffusion transport
+After the first few seconds in which mixing occurs from the length scale of the flow down to the inner viscous length scale the next step in the transport process is blending of the coagulant uniformly with the raw water. At the end of the turbulent transport the coagulant stock has been stretched out into thin bands throughout the raw water, but the two fluids are not actually blended together by turbulence. The blending is accomplished by fluid deformation and then by molecular diffusion.  
+
+#### Fluid deformation by Shear
+
+The time scale for fluid deformation is $1/G$ where $G$ is the velocity gradient. This simple relationship is because the velocity of fluid deformation is proportional to the length scale and thus the time to travel any given distance is always the same. Velocity gradients in conventional mechanized rapid mix units are order 1000 Hz and thus the time for fluid deformation to blur concentration gradients is approximately 1 ms. This confirms the idea that blending the coagulant with the raw water is actually a very fast process with the slowest phase being the transport by turbulent eddies at the scale of reactor.
 
 
+#### Einstein's diffusion equation
+
+We can estimate the length scale at which fluid shear and diffusion provide transport at the same rate. Einstein's diffusion equation is
+
+$$D_{Diffusion} = \frac{k_B T}{3 \pi \mu d_P}$$
+
+where $k_B$ is the Boltzmann constant and $d_P$ is the diameter of the particle that is diffusion in a fluid with viscosity $\nu$ and density $\rho$. The diffusion coefficient $D_{Diffusion}$ has dimensions of $\frac{[L^2]}{[T]}$ and can be understood as the velocity of the particle multiplied by the length of the mean free path.
 
 
-We can combine the equation that estimates the largest eddy velocity and the equation for the energy dissipation rate of an eddy **<font color="red">AH WHERE DID THE FIRST EQUATION COME FROM? WHY ARE THERE \SIMs EVERYWHERE INSTEAD OF EQUALS SIGNS? </font>**
+From dimensional analysis the time for diffusion to blur a concentration gradient over a length scale, $L_{Diffusion}$ is
 
-$$ \bar\varepsilon = \frac{\rm{f}}{2} \frac{\bar v^3}{D}  \sim \frac{v_{eddy}^3}{L_{eddy}} $$
+$$ t_{Diffusion} \approx \frac{L_{Diffusion}^2}{D_{Diffusion}}  $$ {#eq:t_Diffusion}
 
-Solve for the ratio of the eddy velocity to the mean flow velocity and note that the length scale for the largest eddy is the diameter of the pipe.
+The shear time scale is $1/G$ and thus we can solve for the length scale at which diffusion and shear have equivalent transport rates.
 
-$$ N_{D_{pipe}} \sim \frac{\bar v}{v_{eddy}} \sim \left(\frac{2}{\rm{f}} \right)^\frac{1}{3} $$
+$$ 1/G \approx t_{Diffusion} \approx \frac{L_{Diffusion}^2}{D_{Diffusion}}  $$
 
-Where $N_{D_{pipe}}$ is the distance in number of pipe diameters downstream of the injection point where complete mixing will have occurred. The velocity ratio can be used to estimate the distance required for mixing perpendicular to the flow direction in a straight pipe.
+Substitute Einstein's diffusion equation and solve for the length scale that transitions between shear and diffusion transport.
+
+$$L_{Diffusion}^{Shear} \approx \sqrt{\frac{k_B T}{3 G \pi \mu  d_P}}  $$
+
+```python
+def L_Shear_Diffusion(G,Temperature,d_particle):
+  return np.sqrt((u.boltzmann_constant*Temperature/
+  (3 * G *  np.pi *pc.viscosity_dynamic(Temperature)* d_particle)).to_base_units())
+
+G = 100*u.Hz
+d_particle = fm.PACl.Diameter*u.m
+x = (L_Shear_Diffusion(G,Temperature,d_particle)).to(u.nm)
+print(x)
+```
+Molecular diffusion finishes the blending process by transporting the coagulant nanoparticles the last few hundred nanometers. The entire mixing process from the coagulant injection point to uniform blending with the raw water takes only a few seconds.
+
+We have demonstrated that all of the steps for mixing of the coagulant nanoparticles with the raw water are very fast. Compared with the time required for flocculation, 10s to 1000s of seconds, the time required for this mixing is insignificant. The next steps are combining dissolved species including some components of dissolved natural organic matter with the coagulant nanoparticles and  
 
 
 ### Maximum velocity gradients
+
+
 ```python
 Mix_HRT = np.array([0.5,15,25,35,85])*u.s
 Mix_G = np.array([4000,1500,950,850,750])/u.s
@@ -251,10 +314,6 @@ plt.show()
 Using the equation for $L_{Diff}$ above, [we can solve for](https://github.com/AguaClara/CEE4540_Master/blob/master/AguaClara%20Water%20Treatment%20Plant%20Design/Rapid%20Mix/RM_Derivations.md#t_coagulant%20application) the time required to reach a target efficiency of application of coagulant nanoparticles to clay:
 
 $$t_{coagulant, \, application} = \frac{2.3p C_{NC} \, \Lambda_{Clay}^2}{\pi G k \, d_{Clay}\,  L_{Diff_{NC}} }$$
-
-
-**<font color="red">WHAT IS THIS PARAGRAPH BELOW REFERRING TO? I DIDN'T CHANGE THE EQUATION, AND THERE'S NO SQUARE ROOT IN IT</font>**  
-In the equation above, the first fraction after the equal sign is dimensionless and the square root term has dimensions of time. In the aggregation of clay particles (looking ahead to flocculation) the
 
 The time required for the coagulant to be transported to clay surfaces is strongly dependent on the turbidity as indicated by the average spacing of clay particles, $\Lambda_{Clay}$. As turbidity increases the spacing between clay particles decreases and the time required for shear to transport coagulant nanoparticles to the clay decreases. Increasing the shear also results in faster transport of the coagulant nanoparticles to clay surfaces. The times required are strongly influenced by the size of the coagulant nanoparticles because larger nanoparticles diffuse more slowly.
 
