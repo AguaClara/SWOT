@@ -49,7 +49,7 @@ These dimensions can be understood as a velocity squared per time, otherwise kno
 
 Velocity gradients are central to flocculation because they cause the deformation of the fluid which results in particle collisions. Consider a real-world example: if everyone on a sidewalk is walking in the same direction at exactly the same velocity, then there will never be any collisions between people. If, however, people at one side of the sidewalk stand still and people walk progressively faster as a function of how far they are away from the zero velocity side of the sidewalk, then there will be many collisions between the pedestrians.  Indeed, the rate of collisions is proportional to the velocity gradient.
 
-<center><img src="https://raw.githubusercontent.com/AguaClara/CEE4540_Master/master/AguaClara%20Water%20Treatment%20Plant%20Design/Energy%20Dissipation%20and%20Velocity%20Gradients/Images/Pedestrians_on_sidewalk.jpg" width=700></center>
+<center><img src="https://raw.githubusercontent.com/AguaClara/CEE4540_Master/master/AguaClara%20Water%20Treatment%20Plant%20Design/Energy%20Dissipation%20and%20Velocity%20Gradients/Images/Pedestrians_on_sidewalk.jpg" width=600></center>
 
 Estimation of velocity gradients for various flow geometries is the basis for the design of rapid mix, flocculators, and plate settlers and thus our goal is to define the velocity gradients consistently across the range of possible flow regimes. There are three approaches to calculating the average velocity gradient within a control volume.
 1) Use the Navier Stokes equations and solve for the spatially averaged velocity gradient.
