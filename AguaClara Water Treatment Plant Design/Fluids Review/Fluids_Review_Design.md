@@ -24,6 +24,10 @@ For the most part, [hyperlinks in these documents will contain supplementary inf
 Please use this table to control/command find the sections you are looking for.
 
 #### **Section: Fluids Review**
+**Introductory Concepts**  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - Laminar and Turbulent Flow  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - Streamlines and Control Volumes  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - Continuity Equation  
 **The Bernoulli and Energy Equations**  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - &nbsp;The Bernoulli Equation  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - &nbsp;The Energy Equation  
@@ -47,7 +51,7 @@ Please use this table to control/command find the sections you are looking for.
 <br>
 
 ## Section: Fluids Review
-This section is meant to be a brief refresher on fluid mechanics. It will only cover the topics of fluids mechanics that will be used heavily in the course.
+This section is meant to be a refresher on fluid mechanics. It will only cover the topics of fluids mechanics that will be used heavily in the course.
 
 If you wish to review fluid mechanics in (much) more detail, please refer to [this guide](https://github.com/AguaClara/CEE4540_Master/wiki/Fluids-Review-Guide "CEE 4540 Fluids Review"). If you wish to review from the textbook used in  CEE 3310, the intro to fluid mechanics course at Cornell, you can find a pdf of the book [here](https://hellcareers.files.wordpress.com/2016/01/fluid-mechanics-seventh-edition-by-frank-m-white.pdf "CEE 3310 textbook").
 
@@ -71,8 +75,68 @@ If you wish to review fluid mechanics in (much) more detail, please refer to [th
 6. Hagen-Poiseuille equation
 7. Orifice equation
 
+## Introductory Concepts
+Before diving in, there are a few important concepts which will be the foundation for building your understanding of fluid mechanics. You must walk before you can run, and similarly you must understand the basics of fluid mechanics before you can move on to the more fun, later sections of this document.
+
+### Continuity Equation
+Continuity is simply an application of mass balance to fluid mechanics. It states that the cross sectional area $A$ of flow times the average flow velocity $\bar v$ must equal the flow rate $Q$:
+
+$$Q = VA$$
+
+In CEE 4540, we deal primarily with flow through pipes. For a pipe, $A = \pi r^2 = \frac{\pi D^2}{4}$. You will often see this form of the continuity equation being used to relate the flow rate in a pipe to the fluid velocity and pipe diameter:
+
+$$Q = V\frac{\pi D^2}{4}$$
+
+The continuity equation is also useful when flow is going from one geometry to another. In this case, the flow in one geometry must be the same as the flow in the other, $Q_1 = Q_2$, which yields the following equations:
+
+$$V_1 A_1 = V_2 A_2$$
+
+$$V_1 \frac{\pi D_1^2}{4} = V_2 \frac{\pi D_2^2}{4}$$
+
+An example of changing flow geometries is when the a change in pipe size occurs in a piping system, as is demonstrated below.
+
+<center><img src="https://github.com/AguaClara/CEE4540_Master/blob/master/AguaClara%20Water%20Treatment%20Plant%20Design/Fluids%20Review/Images/Continuity_pipes.jpg?raw=true" width=550></center>
+
+### Laminar and Turbulent Flow
+Considering that this class deals with the flow of water through a water treatment plant, understanding the characteristics of the flow seems very important. Thus, it is important to understand the most common characteristic of fluid flow: whether it is laminar or turbulent. Laminar flow is very smooth and highly ordered. Turbulent flow is chaotic, messy, and disordered. The best way to understand each flow and what it looks like is visually, [like  this video shows](https://www.youtube.com/watch?v=qtvVN2qt968 "A great class project").
+
+A numeric way to determine whether flow regmine is  laminar or turbulent is by finding the [**Reynolds number**](https://en.wikipedia.org/wiki/Reynolds_number "Reynolds number wikipedia"), ${\rm Re}$. The Reynolds number is a dimensionless parameter that compares inertia, represented by the flow velocity $v$ times a length scale $D$ to [viscosity](https://en.wikipedia.org/wiki/Viscosity "Viscosity wikipedia"), represented by the kinematic viscosity $\nu$.
+
+$$ {\rm Re = \frac{inertia}{viscosity}} = \frac{vD}{\nu}$$
+
+Since fluid can flow through very many different geometries like a pipe, a rectangular channel, or some other shape, the Reynolds number needs to account
+
+equation for Reynolds number *in a circular pipe* is as follows (note that the length dimension used in the equation changes depending on the cross sectional area that the water is flowing through):
+
+$${\rm{Re}}=\frac{4Q}{\pi D\nu} = \frac{\rho \bar vD}{\mu} = \frac{\bar vD}{\nu}$$
+
+Where the three forms simply substitute $Q = \bar v \frac{\pi D^2}{4}$ and $\nu = \frac{\mu}{\rho}$  
+
+Such that:  
+$Q$ = pipe flow rate, $\frac{[L]^3}{[T]}$  
+$D$ = pipe diameter, $[L]$    
+$\bar v$ = fluid velocity $\frac{[L]}{[T]}$  
+$\nu$ = fluid kinematic viscosity, $\frac{[L]^2}{[T]}$    
+$\mu$ = fluid dynamic viscosity, $\frac{[M]}{[L][T]}$  
+
+**Function in aide_design:** `pc.re_pipe(FlowRate, Diam, Nu)` Returns the Reynolds number *in a circular pipe*. Functions for finding the Reynolds number through other conduits and geometries can also be found in [physchem.py](https://github.com/AguaClara/aide_design/blob/master/aide_design/physchem.py) within aide_design.
+
+[There is a transition between laminar and turbulent flow which is not yet well understood](https://en.wikipedia.org/wiki/Laminar%E2%80%93turbulent_transition "Transitional flow wikipedia"). To simplify this phenomenon and make it possible to code for laminar or turbulent flow, we will assume that the transition occurs at $\rm{Re}$ = 2100. The flow regime is assumed to be laminar below this value and turbulent above it. This variable is coded into aide_design as `pc.RE_TRANSITION_PIPE`.
+
+These different states are called 'regimes.'
+
+### Streamlines and Control Volumes
+Both [**streamlines**](https://en.wikipedia.org/wiki/Streamlines,_streaklines,_and_pathlines "Streamline wikipedia") and []()
+
+**Important Note:** Many images will be used over the course of this class to show hydraulic systems. A standardized system of lines will be used throughout them all to distinguish reference elevations from control volumes from streamlines. This system is described in the image below.
+
+<center><img src="https://github.com/AguaClara/CEE4540_Master/blob/master/AguaClara%20Water%20Treatment%20Plant%20Design/Fluids%20Review/Images/Image_control_volumes.jpg?raw=true" width=550></center>
+
+
+
 ## The Bernoulli and Energy Equations
-As explained in CEE 3310 with more details than most of you wanted to know, the Bernoulli and energy equations are incredibly useful in understanding the transfer of the fluid's energy throughout a [**streamline**](https://en.wikipedia.org/wiki/Streamlines,_streaklines,_and_pathlines "Streamline wikipedia") or through a control volume. The Bernoulli equation applies to two different points along one streamline, whereas the energy equation applies across a control volume. The energy of a fluid has three forms: pressure, potential (deriving from elevation), and kinetic (deriving from velocity).
+As explained in CEE 3310 with more details than most of you wanted to know, the Bernoulli and energy equations are incredibly useful in understanding the transfer of the fluid's energy throughout a streamline or through a control volume. The Bernoulli equation applies to two different points along one streamline, whereas the energy equation applies across a control volume. The energy of a fluid has three forms: pressure, potential (deriving from elevation), and kinetic (deriving from velocity).
+
 ### The Bernoulli Equation
 These three forms of energy expressed above make up the Bernoulli equation:
 
@@ -115,16 +179,12 @@ $$\frac{p_{1}}{\rho g} + z_{1} + \frac{\bar v_{1}^2}{2g} = \frac{p_{2}}{\rho g} 
 
 **This is the form of the energy equation that you will see over and over again in CEE 4540.** To summarize, the main difference between the Bernoulli equation and the energy equation for the purposes of this class is energy loss. The energy equation accounts for the fluid's loss of energy over time while the Bernoulli equation does not. So how can the fluid lose energy?
 
-**Important Note:** Many images will be used over the course of this class to show hydraulic systems. A standardized system of lines will be used throughout them all to distinguish reference elevations from control volumes from streamlines. This system is described in the image below.
-
-<center><img src="https://github.com/AguaClara/CEE4540_Master/blob/master/AguaClara%20Water%20Treatment%20Plant%20Design/Fluids%20Review/Images/Image_control_volumes.jpg?raw=true" width=550></center>
 
 ## Head Loss
 **Head (L)oss**, $h_L$ is a term that is ubiquitous in both this class and fluid mechanics in general. Its definition is exactly as it sounds: it refers to the loss of energy of a fluid as it flows through space. There are two components to head loss: major losses caused by pipe-fluid (f)riction, $h_{\rm{f}}$, and minor losses caused by fluid-fluid friction resulting from flow (e)xpansions, $h_e$, such that $h_L = h_{\rm{f}} + h_e$.
 
 ### Major Losses
-These losses are the result of friction between the fluid and the surface over which the fluid is flowing. A force acting parallel to a surface is referred to as [shear](https://en.wikipedia.org/wiki/Shear_force "Shear wikipedia"). It can therefore be said that major losses are the result of shear between the fluid and the surface it's flowing over. To help in understanding  major lo
-sses, consider the following example: imagine, as you have so often in physics class, pushing a large box across the ground. Friction is what resists your efforts to push the box. The farther you push the box, the more energy you expend pushing against friction. The same is true for water moving through a pipe, where water is analogous to the box you want to move, the pipe is similar to the floor that provides the friction, and the major losses of the water through the pipe is analogous to the energy _**you**_ expend by pushing the box.
+These losses are the result of friction between the fluid and the surface over which the fluid is flowing. A force acting parallel to a surface is referred to as [shear](https://en.wikipedia.org/wiki/Shear_force "Shear wikipedia"). It can therefore be said that major losses are the result of shear between the fluid and the surface it's flowing over. To help in understanding  major losses, consider the following example: imagine, as you have so often in physics class, pushing a large box across the ground. Friction is what resists your efforts to push the box. The farther you push the box, the more energy you expend pushing against friction. The same is true for water moving through a pipe, where water is analogous to the box you want to move, the pipe is similar to the floor that provides the friction, and the major losses of the water through the pipe is analogous to the energy _**you**_ expend by pushing the box.
 
 In this class, we will be dealing primarily with major losses in circular pipes, as opposed to channels or pipes with other geometries. Fortunately for us, Henry Darcy and Julius Weisbach came up with a handy equation to determine the major losses in a circular pipe _under both [**laminar**](https://en.wikipedia.org/wiki/Laminar_flow "Laminar flow wikipedia") and [**turbulent**](https://en.wikipedia.org/wiki/Turbulence "Turbulent flow wikipedia") flow conditions_. Their equation is logically but unoriginally named the [**Darcy-Weisbach equation**](https://en.wikipedia.org/wiki/Darcy%E2%80%93Weisbach_equation "Darcy-Weisbach wikipedia"). If you would like a refresher on laminar vs turbulent flow, please watch [this video](https://www.youtube.com/watch?v=qtvVN2qt968) and note that AguaClara uses a transition number of 2,100, instead of the 2,300 shown in the video; this concept is discussed a few paragraphs below this. Here is the Darcy-Weisbach equation:
 
@@ -144,22 +204,7 @@ $D$ = pipe diameter, $[L]$
 
 **Function in aide_design:** `pc.headloss_fric(FlowRate, Diam, Length, Nu, PipeRough)` Returns only major losses. Works for both laminar and turbulent flow.
 
-Darcy-Weisbach is wonderful because it applies to both laminar and turbulent flow regimes and contains relatively easy to measure variables. The one exception is the Darcy friction factor, $\rm{f}$. This parameter is an approximation for the magnitude of friction between the pipe walls and the fluid, and its value changes depending on the whether or not the flow is laminar or turbulent, and varies with the [**Reynolds number**](https://en.wikipedia.org/wiki/Reynolds_number "Reynolds number wikipedia"), $\rm{Re}$, in both regimes of flow. Recall that the Reynolds number is a dimensionless value used to quantify and distinguish laminar and turbulent flow. The equation for Reynolds number *in a circular pipe* is as follows (note that the length dimension used in the equation changes depending on the cross sectional area that the water is flowing through):
-
-$${\rm{Re}}=\frac{4Q}{\pi D\nu} = \frac{\rho \bar vD}{\mu} = \frac{\bar vD}{\nu}$$
-
-Where the three forms simply substitute $Q = \bar v \frac{\pi D^2}{4}$ and $\nu = \frac{\mu}{\rho}$  
-
-Such that:  
-$Q$ = pipe flow rate, $\frac{[L]^3}{[T]}$  
-$D$ = pipe diameter, $[L]$    
-$\bar v$ = fluid velocity $\frac{[L]}{[T]}$  
-$\nu$ = fluid kinematic viscosity, $\frac{[L]^2}{[T]}$    
-$\mu$ = fluid dynamic viscosity, $\frac{[M]}{[L][T]}$  
-
-**Function in aide_design:** `pc.re_pipe(FlowRate, Diam, Nu)` Returns the Reynolds number *in a circular pipe*. Functions for finding the Reynolds number through other conduits and geometries can also be found in [physchem.py](https://github.com/AguaClara/aide_design/blob/master/aide_design/physchem.py) within aide_design.
-
-[There is a transition between laminar and turbulent flow which is not yet well understood](https://en.wikipedia.org/wiki/Laminar%E2%80%93turbulent_transition "Transitional flow wikipedia"). To simplify this phenomenon and make it possible to code for laminar or turbulent flow, we will assume that the transition occurs at $\rm{Re}$ = 2100. The flow regime is assumed to be laminar below this value and turbulent above it. This variable is coded into aide_design as `pc.RE_TRANSITION_PIPE`.
+Darcy-Weisbach is wonderful because it applies to both laminar and turbulent flow regimes and contains relatively easy to measure variables. The one exception is the Darcy friction factor, $\rm{f}$. This parameter is an approximation for the magnitude of friction between the pipe walls and the fluid, and its value changes depending on the whether or not the flow is laminar or turbulent, and varies with the [**Reynolds number**](https://en.wikipedia.org/wiki/Reynolds_number "Reynolds number wikipedia"), $\rm{Re}$, in both regimes of flow.
 
 For laminar flow, the friction factor can be determined from the following equation:
 
@@ -199,7 +244,7 @@ In 1944, Lewis Ferry Moody plotted a ridiculous amount of experimental data, gat
 
 ### Minor Losses
 
-Unfortunately, there is no simple 'pushing a box across the ground' example to explain minor losses. So instead, consider a [hydraulic jump](https://www.youtube.com/watch?v=5spXXZX55C8 "What an amazingly made video, but sorry for the 3310 PTSD"). In the video, you can see lots of turbulence and eddies in the transition region between the fast, shallow flow and the slow, deep flow. The high amount of mixing of the water in the transition region of the hydraulic jump results in significant friction *between water and water* (the measure of a fluid's resistance to internal, fluid-fluid friction is called [**viscosity**](https://en.wikipedia.org/wiki/Viscosity "Viscosity wikipedia")). This turbulent, eddy-induced, fluid-fluid friction results in minor losses, much like fluid-pipe friction results in major losses.
+Unfortunately, there is no simple 'pushing a box across the ground' example to explain minor losses. So instead, consider a [hydraulic jump](https://www.youtube.com/watch?v=5spXXZX55C8 "What an amazingly made video, but sorry for the 3310 PTSD"). In the video, you can see lots of turbulence and eddies in the transition region between the fast, shallow flow and the slow, deep flow. The high amount of mixing of the water in the transition region of the hydraulic jump results in significant friction *between water and water* (the measure of a fluid's resistance to internal, fluid-fluid friction is called **viscosity**). This turbulent, eddy-induced, fluid-fluid friction results in minor losses, much like fluid-pipe friction results in major losses.
 
 As is the case in a hydraulic jump, a flow expansion (from shallow flow to deep flow) creates the turbulent eddies that result in minor losses. This will be a recurring theme in throughout the course: _**minor losses are caused by flow expansions**_. Imagine a pipe fitting that connects a small diameter pipe to a large diameter one, as shown in the image below. The flow must expand to fill up the entire large diameter pipe. This expansion creates turbulent eddies near the union between the small and large pipes, and these eddies cause minor losses. You may already know the equation for minor losses, but understanding where it comes from is very important for effective AguaClara plant design. For this reason, you are strongly recommended to read through the full derivation, which can be found [here](https://github.com/AguaClara/CEE4540_Master/blob/master/AguaClara%20Water%20Treatment%20Plant%20Design/Fluids%20Review/Derivation_minor_loss_equation.md "Remember to check this link").
 

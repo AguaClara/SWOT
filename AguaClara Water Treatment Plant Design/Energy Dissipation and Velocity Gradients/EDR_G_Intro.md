@@ -19,7 +19,7 @@ and possibly,
 
 The two concepts that were not covered in the previous chapter, [fluids review](https://github.com/AguaClara/CEE4540_Master/blob/master/AguaClara%20Water%20Treatment%20Plant%20Design/Fluids%20Review/Fluids_Review_Design.md), are velocity gradient $G$ and energy dissipation rate $\varepsilon$. While these will be very thoroughly described over the course of this introduction, a brief and simple explanation is included to help get the ball rolling.
 
-### What do $G$ and $\varepsilon$ mean?
+### Understanding $G$ and $\varepsilon$
 
 $G$, or velocity gradient, is a measure of fluid deformation. It is defined by how quickly one point of water along one streamline moves in comparison to another point on another streamline ($v_A$ compared to $v_B$, for example), taking into account the distance between the streamlines, $\Delta h$. A visual example of a velocity gradient is shown in the image below:
 
@@ -33,9 +33,7 @@ $\varepsilon$, or energy dissipation rate, is the rate that the kinetic energy o
 
 <center><img src="https://raw.githubusercontent.com/AguaClara/CEE4540_Master/master/AguaClara%20Water%20Treatment%20Plant%20Design/Energy%20Dissipation%20and%20Velocity%20Gradients/Images/EDR_image.jpg" width=700></center>
 
-### Deriving equations for $\varepsilon$ and $G$
-
-As mentioned above, EDR and velocity gradients play an important role in mixing and in causing suspended particles to collide with each other, both important topics in flocculation. Their use is not limited to flocculation, however, they are also helpful in understanding failure modes of plate settlers ([Sedimentation](https://github.com/AguaClara/CEE4540_Master/tree/master/AguaClara%20Water%20Treatment%20Plant%20Design/Sedimentation)) and terminal head loss of sand filters ([Filtration](https://github.com/AguaClara/CEE4540_Master/tree/master/AguaClara%20Water%20Treatment%20Plant%20Design/Filtration)).
+As mentioned above, EDR and velocity gradients play an important role in mixing and in causing suspended particles to collide with each other, both of which are important topics in flocculation. Their use is not limited to flocculation, they are also helpful in understanding failure modes of plate settlers ([Sedimentation](https://github.com/AguaClara/CEE4540_Master/tree/master/AguaClara%20Water%20Treatment%20Plant%20Design/Sedimentation)) and terminal head loss of sand filters ([Filtration](https://github.com/AguaClara/CEE4540_Master/tree/master/AguaClara%20Water%20Treatment%20Plant%20Design/Filtration)).
 
 We will begin by defining the concept of energy dissipation rate for a control volume. In a control volume that does not include pumps, turbines or other external energy sources or sinks, the mechanical energy lost is indicated by a change in elevation and quantified as $g h_L$. That mechanical energy is lost in the time that the fluid is in the control volume, $\theta$.
 
@@ -47,16 +45,18 @@ $$ \varepsilon = \frac{[m^3]}{[s^3]} = {\rm \frac{W}{kg}} $$
 
 These dimensions can be understood as a velocity squared per time, otherwise known as a rate of kinetic energy loss (recall that kinetic energy is ${\rm Ke} = \frac{v^2}{2g}$, or ${\rm Ke} \propto v^2$), or as power per unit mass, which would be ${\rm \frac{W}{kg}}$.
 
-Velocity gradients are central to flocculation because they cause the deformation of the fluid which results in particle collisions. Consider a real-world example: if everyone on a sidewalk is walking in the same direction at exactly the same velocity, then there will never be any collisions between people. If, however, people at one side of the sidewalk stand still and people walk progressively faster as a function of how far they are away from the zero velocity side of the sidewalk, then there will be many collisions between the pedestrians.  Indeed, the rate of collisions is proportional to the velocity gradient.
+Velocity gradients are central to flocculation because they cause the deformation of the fluid, and this results in particle collisions. Consider a real-world example via the image below: if everyone on a sidewalk is walking in the same direction at exactly the same velocity, then there will never be any collisions between people (top). If, however, people at one side of the sidewalk stand still and people walk progressively faster as a function of how far they are away from the zero velocity side of the sidewalk, then there will be many collisions between the pedestrians.  Indeed, the rate of collisions is proportional to the velocity gradient.
 
 <center><img src="https://raw.githubusercontent.com/AguaClara/CEE4540_Master/master/AguaClara%20Water%20Treatment%20Plant%20Design/Energy%20Dissipation%20and%20Velocity%20Gradients/Images/Pedestrians_on_sidewalk.jpg" width=600></center>
 
-Estimation of velocity gradients for various flow geometries is the basis for the design of rapid mix, flocculators, and plate settlers and thus our goal is to define the velocity gradients consistently across the range of possible flow regimes. There are three approaches to calculating the average velocity gradient within a control volume.
+### Equations for $\varepsilon$ and $G$ in Varying Flow Geometries
+
+Estimation of velocity gradients for various flow geometries is the basis for the design of rapid mix, flocculators, and plate settlers. Thus, our goal is to define the velocity gradients consistently across a range of possible flow regimes. There are three approaches to calculating the average velocity gradient within a control volume.
 1) Use the Navier Stokes equations and solve for the spatially averaged velocity gradient.
-1) Use computation fluid dynamics to solve for the spatially averaged velocity gradient.
+1) Use Computational Fluid Dynamics (CFD) to solve for the spatially averaged velocity gradient.
 1) Use the total mechanical energy loss in the control volume to calculate the energy dissipation rate. Estimate the velocity gradient directly from the energy dissipation rate, $G_{CS} = \sqrt{\frac{\bar\varepsilon}{\nu}}$, as defined by Camp and Stein in 1943 (Camp, T. R., and Stein, P. C. (1943) ‘‘Velocity Gradients and Hydraulic Work in Fluid Motion,’’ J. Boston Soc. Civil Eng., 30, 203–221.).
 
-The first approach would be ideal but is difficult in practice because Navier Stokes solutions are only available for limited geometries and laminar flow. Computational Fluid Dynamics could be used but is difficult to use as a general engineering design approach given the large number of geometries that are used in drinking water treatment plants. For these reasons we will use the control volume approach to estimate the average velocity gradient. This method incorrectly assumes that the energy dissipation rate is completely uniform in the control volume and hence the velocity gradient is also uniform. This method results in an over estimation of the velocity gradient.
+The first approach would be ideal but is difficult in practice because Navier Stokes solutions are only available for limited geometries and laminar flow. CFD could be used but is difficult to use as a general engineering design approach given the large number of geometries that are used in drinking water treatment plants. For these reasons we will use the control volume approach to estimate the average velocity gradient. This method incorrectly assumes that the energy dissipation rate is completely uniform in the control volume and hence the velocity gradient is also uniform. This method results in an over estimation of the velocity gradient.
 
 The Camp-Stein estimate of $G_{CS}$ is based on a control volume where the velocity gradient is uniform. Consider a layer of fluid of depth $H$ and apply a velocity, $v$ at the top of the fluid. The velocity gradient, $G$, is thus $\frac{v}{H}$ everywhere in the fluid. The force required to move the top of the fluid at velocity v can be obtained from the required shear, $\tau$. From Newtons Law of Friction we have
 
