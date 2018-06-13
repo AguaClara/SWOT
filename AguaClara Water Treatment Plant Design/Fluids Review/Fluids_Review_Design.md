@@ -107,10 +107,10 @@ An example of changing flow geometries is when the a change in pipe size occurs 
 <center><img src="https://github.com/AguaClara/CEE4540_Master/blob/master/AguaClara%20Water%20Treatment%20Plant%20Design/Fluids%20Review/Images/Continuity_pipes.jpg?raw=true" width=550></center>
 
 ### Laminar and Turbulent Flow
-Considering that this class deals with the flow of water through a water treatment plant, understanding the characteristics of the flow is very important. Thus, it is necessary to understand the most common characteristic of fluid flow: whether it is laminar or turbulent. [**Laminar**](https://en.wikipedia.org/wiki/Laminar_flow "Laminar flow wikipedia") flow is very smooth and highly ordered. [**Turbulent**](https://en.wikipedia.org/wiki/Turbulence "Turbulent flow wikipedia") flow is chaotic, messy, and disordered. The best way to understand each flow and what it looks like is visually, [like in this video](https://www.youtube.com/watch?v=qtvVN2qt968 "A great class project") or the wikipedia image below:
+Considering that this class deals with the flow of water through a water treatment plant, understanding the characteristics of the flow is very important. Thus, it is necessary to understand the most common characteristic of fluid flow: whether it is laminar or turbulent. [**Laminar**](https://en.wikipedia.org/wiki/Laminar_flow "Laminar flow wikipedia") flow is very smooth and highly ordered. [**Turbulent**](https://en.wikipedia.org/wiki/Turbulence "Turbulent flow wikipedia") flow is chaotic, messy, and disordered. The best way to understand each flow and what it looks like is visually, [like in this video](https://youtu.be/qtvVN2qt968?t=131 "A great class project") or the wikipedia image below:
 
-<center><img src="https://github.com/AguaClara/CEE4540_Master/blob/master/AguaClara%20Water%20Treatment%20Plant%20Design/Fluids%20Review/Images/Wikipedia_laminar_turbulent.jpg?raw=true" width=550></center>
-
+<center><img src="https://github.com/AguaClara/CEE4540_Master/blob/master/AguaClara%20Water%20Treatment%20Plant%20Design/Fluids%20Review/Images/Wikipedia_laminar_turbulent.jpg?raw=true" width=400></center>
+</br>
 Laminar and turbulent flow are described as two different **flow regimes**. When there is a characteristic of flow and different categories of the characteristic, each category is referred to as a flow regime. For example, the Reynolds number describes a flow characteristic, and its categories, referred to as flow regimes, are laminar or turbulent.
 
 A numeric way to determine whether flow regmine is  laminar or turbulent is by finding the [**Reynolds number**](https://en.wikipedia.org/wiki/Reynolds_number "Reynolds number wikipedia"), ${\rm Re}$. The Reynolds number is a dimensionless parameter that compares inertia, represented by the average flow velocity $\bar v$ times a length scale $D$ to [**viscosity**](https://en.wikipedia.org/wiki/Viscosity "Viscosity wikipedia"), represented by the kinematic viscosity $\nu$. [Click here](https://www.youtube.com/watch?v=DVQw0svRHZA "This guy is Austrailian?") for a brief video explanation of viscosity. If the Reynolds number is less than a certain value the flow is considered laminar. If it is more than a certain value, it is considered turbulent.
@@ -135,7 +135,9 @@ $\mu$ = fluid dynamic viscosity, $\frac{[M]}{[L][T]}$
 [There is a transition between laminar and turbulent flow which is not yet well understood](https://en.wikipedia.org/wiki/Laminar%E2%80%93turbulent_transition "Transitional flow wikipedia"). To simplify this phenomenon and make it possible to code for laminar or turbulent flow, we will assume that the transition occurs at $\rm{Re}$ = 2100. The flow regime is assumed to be laminar below this value and turbulent above it. This variable is coded into aide_design as `pc.RE_TRANSITION_PIPE`. We will neglect transitional flow.
 
 ### Streamlines and Control Volumes
-Both [**streamlines**](https://en.wikipedia.org/wiki/Streamlines,_streaklines,_and_pathlines "Streamline wikipedia") and **control volumes** tools to compare
+Both [**streamlines**](https://en.wikipedia.org/wiki/Streamlines,_streaklines,_and_pathlines "Streamline wikipedia") and **control volumes** tools to compare different sections of a system. For this class, this system will always be hydraulic.
+
+Image water flowing through a pipe. A streamline is the path that a particle would take if it could be placed in the fluid without changing the original flow of the fluid. A more technical definition is "a line which is everywhere parallel to the local velocity vector." Computational tools, dyes (in water), or smoke (in air) can be used to visualize streamlines.
 
 **Important Note:** Many images will be used over the course of this class to show hydraulic systems. A standardized system of lines will be used throughout them all to distinguish reference elevations from control volumes from streamlines. This system is described in the image below.
 
