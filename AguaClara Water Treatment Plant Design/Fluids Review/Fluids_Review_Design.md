@@ -25,9 +25,9 @@ Please use this table to control/command find the sections you are looking for.
 
 #### **Section: Fluids Review**
 **Introductory Concepts**  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - Continuity Equation  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - Laminar and Turbulent Flow  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - Streamlines and Control Volumes  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - Continuity Equation  
 **The Bernoulli and Energy Equations**  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - &nbsp;The Bernoulli Equation  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - &nbsp;The Energy Equation  
@@ -76,44 +76,55 @@ If you wish to review fluid mechanics in (much) more detail, please refer to [th
 7. Orifice equation
 
 ## Introductory Concepts
-Before diving in, there are a few important concepts which will be the foundation for building your understanding of fluid mechanics. You must walk before you can run, and similarly you must understand the basics of fluid mechanics before you can move on to the more fun, later sections of this document.
+Before diving in, there are a few important concepts which will be the foundation for building your understanding of fluid mechanics. One must walk before they can run, and similarly, the basics of fluid mechanics must be understood before moving on to the more fun sections of this document.
 
 ### Continuity Equation
-Continuity is simply an application of mass balance to fluid mechanics. It states that the cross sectional area $A$ of flow times the average flow velocity $\bar v$ must equal the flow rate $Q$:
+Continuity is simply an application of mass balance to fluid mechanics. It states that the cross sectional area $A$ that a fluid flows through multiplied by the fluid's average flow velocity $\bar v$ must equal the fluid's flow rate $Q$:
 
-$$Q = VA$$
+$$Q = \bar v A$$
 
-In CEE 4540, we deal primarily with flow through pipes. For a pipe, $A = \pi r^2 = \frac{\pi D^2}{4}$. You will often see this form of the continuity equation being used to relate the flow rate in a pipe to the fluid velocity and pipe diameter:
+**Note:** The line above the $v$ is called 'bar,' and represents an average. Any variable can have a bar. In this case, we are adding the bar to velocity $v$, turning it into average velocity $\bar v$. This variable is pronounced 'v bar.'
 
-$$Q = V\frac{\pi D^2}{4}$$
+In CEE 4540, we deal primarily with flow through pipes. For a circular pipe, $A = \pi r^2$. Substituting diameter in for radius, $r = \frac{D}{2}$, we get $A = \frac{\pi D^2}{4}$. You will often see this form of the continuity equation being used to relate the flow rate in a pipe to the fluid velocity and pipe diameter:
+
+$$Q = \bar v \frac{\pi D^2}{4}$$
 
 The continuity equation is also useful when flow is going from one geometry to another. In this case, the flow in one geometry must be the same as the flow in the other, $Q_1 = Q_2$, which yields the following equations:
 
-$$V_1 A_1 = V_2 A_2$$
+$$\bar v_1 A_1 = \bar v_2 A_2$$
 
-$$V_1 \frac{\pi D_1^2}{4} = V_2 \frac{\pi D_2^2}{4}$$
+$$\bar v_1 \frac{\pi D_1^2}{4} = \bar v_2 \frac{\pi D_2^2}{4}$$
 
-An example of changing flow geometries is when the a change in pipe size occurs in a piping system, as is demonstrated below.
+Such that:  
+$Q =$ fluid flow rate, $\frac{[L]^3}{[T]}$  
+$\bar v =$ fluid average velocity, $\frac{[L]}{[T]}$  
+$A =$ pipe area, $[L]^2$  
+$r =$ pipe radius, $[L]$  
+$D =$ pipe diameter, $[L]$
+
+An example of changing flow geometries is when the a change in pipe size occurs in a circular piping system, as is demonstrated below. The flow through ${\rm pipe} \, 1$ must be the same as the flow through ${\rm pipe} \, 2$.
 
 <center><img src="https://github.com/AguaClara/CEE4540_Master/blob/master/AguaClara%20Water%20Treatment%20Plant%20Design/Fluids%20Review/Images/Continuity_pipes.jpg?raw=true" width=550></center>
 
 ### Laminar and Turbulent Flow
-Considering that this class deals with the flow of water through a water treatment plant, understanding the characteristics of the flow seems very important. Thus, it is important to understand the most common characteristic of fluid flow: whether it is laminar or turbulent. Laminar flow is very smooth and highly ordered. Turbulent flow is chaotic, messy, and disordered. The best way to understand each flow and what it looks like is visually, [like  this video shows](https://www.youtube.com/watch?v=qtvVN2qt968 "A great class project").
+Considering that this class deals with the flow of water through a water treatment plant, understanding the characteristics of the flow is very important. Thus, it is necessary to understand the most common characteristic of fluid flow: whether it is laminar or turbulent. [**Laminar**](https://en.wikipedia.org/wiki/Laminar_flow "Laminar flow wikipedia") flow is very smooth and highly ordered. [**Turbulent**](https://en.wikipedia.org/wiki/Turbulence "Turbulent flow wikipedia") flow is chaotic, messy, and disordered. The best way to understand each flow and what it looks like is visually, [like in this video](https://www.youtube.com/watch?v=qtvVN2qt968 "A great class project") or the wikipedia image below:
 
-A numeric way to determine whether flow regmine is  laminar or turbulent is by finding the [**Reynolds number**](https://en.wikipedia.org/wiki/Reynolds_number "Reynolds number wikipedia"), ${\rm Re}$. The Reynolds number is a dimensionless parameter that compares inertia, represented by the flow velocity $v$ times a length scale $D$ to [viscosity](https://en.wikipedia.org/wiki/Viscosity "Viscosity wikipedia"), represented by the kinematic viscosity $\nu$.
+<center><img src="https://github.com/AguaClara/CEE4540_Master/blob/master/AguaClara%20Water%20Treatment%20Plant%20Design/Fluids%20Review/Images/Wikipedia_laminar_turbulent.jpg?raw=true" width=550></center>
 
-$$ {\rm Re = \frac{inertia}{viscosity}} = \frac{vD}{\nu}$$
+Laminar and turbulent flow are described as two different **flow regimes**. When there is a characteristic of flow and different categories of the characteristic, each category is referred to as a flow regime. For example, the Reynolds number describes a flow characteristic, and its categories, referred to as flow regimes, are laminar or turbulent.
 
-Since fluid can flow through very many different geometries like a pipe, a rectangular channel, or some other shape, the Reynolds number needs to account
+A numeric way to determine whether flow regmine is  laminar or turbulent is by finding the [**Reynolds number**](https://en.wikipedia.org/wiki/Reynolds_number "Reynolds number wikipedia"), ${\rm Re}$. The Reynolds number is a dimensionless parameter that compares inertia, represented by the average flow velocity $\bar v$ times a length scale $D$ to [**viscosity**](https://en.wikipedia.org/wiki/Viscosity "Viscosity wikipedia"), represented by the kinematic viscosity $\nu$. [Click here](https://www.youtube.com/watch?v=DVQw0svRHZA "This guy is Austrailian?") for a brief video explanation of viscosity. If the Reynolds number is less than a certain value the flow is considered laminar. If it is more than a certain value, it is considered turbulent.
 
-equation for Reynolds number *in a circular pipe* is as follows (note that the length dimension used in the equation changes depending on the cross sectional area that the water is flowing through):
+$$ {\rm Re = \frac{inertia}{viscosity}} = \frac{\bar vD}{\nu}$$
 
-$${\rm{Re}}=\frac{4Q}{\pi D\nu} = \frac{\rho \bar vD}{\mu} = \frac{\bar vD}{\nu}$$
+Fluid can flow through very many different geometries like a pipe, a rectangular channel, or any other shape. To account for this, the characteristic length scale is quantified as the [hydraulic diameter](https://www.engineeringtoolbox.com/hydraulic-equivalent-diameter-d_458.html "engineering toolbox"), which can be applied to any geometry. For circular pipes, which are the most common geometry you'll encounter in this class, the hydraulic diameter is simply the pipe diameter.
 
-Where the three forms simply substitute $Q = \bar v \frac{\pi D^2}{4}$ and $\nu = \frac{\mu}{\rho}$  
+Here are other commonly used forms of the Reynolds number equation. They are the same as the one above, just with the substitutions $Q = \bar v \frac{\pi D^2}{4}$ and $\nu = \frac{\mu}{\rho}$
+
+$${\rm{Re}} = \frac{\bar vD}{\nu} = \frac{4Q}{\pi D\nu} = \frac{\rho \bar vD}{\mu}$$  
 
 Such that:  
-$Q$ = pipe flow rate, $\frac{[L]^3}{[T]}$  
+$Q$ = fluid flow rate in pipe, $\frac{[L]^3}{[T]}$  
 $D$ = pipe diameter, $[L]$    
 $\bar v$ = fluid velocity $\frac{[L]}{[T]}$  
 $\nu$ = fluid kinematic viscosity, $\frac{[L]^2}{[T]}$    
@@ -121,12 +132,10 @@ $\mu$ = fluid dynamic viscosity, $\frac{[M]}{[L][T]}$
 
 **Function in aide_design:** `pc.re_pipe(FlowRate, Diam, Nu)` Returns the Reynolds number *in a circular pipe*. Functions for finding the Reynolds number through other conduits and geometries can also be found in [physchem.py](https://github.com/AguaClara/aide_design/blob/master/aide_design/physchem.py) within aide_design.
 
-[There is a transition between laminar and turbulent flow which is not yet well understood](https://en.wikipedia.org/wiki/Laminar%E2%80%93turbulent_transition "Transitional flow wikipedia"). To simplify this phenomenon and make it possible to code for laminar or turbulent flow, we will assume that the transition occurs at $\rm{Re}$ = 2100. The flow regime is assumed to be laminar below this value and turbulent above it. This variable is coded into aide_design as `pc.RE_TRANSITION_PIPE`.
-
-These different states are called 'regimes.'
+[There is a transition between laminar and turbulent flow which is not yet well understood](https://en.wikipedia.org/wiki/Laminar%E2%80%93turbulent_transition "Transitional flow wikipedia"). To simplify this phenomenon and make it possible to code for laminar or turbulent flow, we will assume that the transition occurs at $\rm{Re}$ = 2100. The flow regime is assumed to be laminar below this value and turbulent above it. This variable is coded into aide_design as `pc.RE_TRANSITION_PIPE`. We will neglect transitional flow.
 
 ### Streamlines and Control Volumes
-Both [**streamlines**](https://en.wikipedia.org/wiki/Streamlines,_streaklines,_and_pathlines "Streamline wikipedia") and []()
+Both [**streamlines**](https://en.wikipedia.org/wiki/Streamlines,_streaklines,_and_pathlines "Streamline wikipedia") and **control volumes** tools to compare
 
 **Important Note:** Many images will be used over the course of this class to show hydraulic systems. A standardized system of lines will be used throughout them all to distinguish reference elevations from control volumes from streamlines. This system is described in the image below.
 
@@ -186,7 +195,7 @@ $$\frac{p_{1}}{\rho g} + z_{1} + \frac{\bar v_{1}^2}{2g} = \frac{p_{2}}{\rho g} 
 ### Major Losses
 These losses are the result of friction between the fluid and the surface over which the fluid is flowing. A force acting parallel to a surface is referred to as [shear](https://en.wikipedia.org/wiki/Shear_force "Shear wikipedia"). It can therefore be said that major losses are the result of shear between the fluid and the surface it's flowing over. To help in understanding  major losses, consider the following example: imagine, as you have so often in physics class, pushing a large box across the ground. Friction is what resists your efforts to push the box. The farther you push the box, the more energy you expend pushing against friction. The same is true for water moving through a pipe, where water is analogous to the box you want to move, the pipe is similar to the floor that provides the friction, and the major losses of the water through the pipe is analogous to the energy _**you**_ expend by pushing the box.
 
-In this class, we will be dealing primarily with major losses in circular pipes, as opposed to channels or pipes with other geometries. Fortunately for us, Henry Darcy and Julius Weisbach came up with a handy equation to determine the major losses in a circular pipe _under both [**laminar**](https://en.wikipedia.org/wiki/Laminar_flow "Laminar flow wikipedia") and [**turbulent**](https://en.wikipedia.org/wiki/Turbulence "Turbulent flow wikipedia") flow conditions_. Their equation is logically but unoriginally named the [**Darcy-Weisbach equation**](https://en.wikipedia.org/wiki/Darcy%E2%80%93Weisbach_equation "Darcy-Weisbach wikipedia"). If you would like a refresher on laminar vs turbulent flow, please watch [this video](https://www.youtube.com/watch?v=qtvVN2qt968) and note that AguaClara uses a transition number of 2,100, instead of the 2,300 shown in the video; this concept is discussed a few paragraphs below this. Here is the Darcy-Weisbach equation:
+In this class, we will be dealing primarily with major losses in circular pipes, as opposed to channels or pipes with other geometries. Fortunately for us, Henry Darcy and Julius Weisbach came up with a handy equation to determine the major losses in a circular pipe _under both **laminar**](https://en.wikipedia.org/wiki/Laminar_flow "Laminar flow wikipedia") and [**turbulent**](https://en.wikipedia.org/wiki/Turbulence "Turbulent flow wikipedia") flow conditions_. Their equation is logically but unoriginally named the [**Darcy-Weisbach equation**](https://en.wikipedia.org/wiki/Darcy%E2%80%93Weisbach_equation "Darcy-Weisbach wikipedia"). If you would like a refresher on laminar vs turbulent flow, please watch [this video](https://www.youtube.com/watch?v=qtvVN2qt968) and note that AguaClara uses a transition number of 2,100, instead of the 2,300 shown in the video; this concept is discussed a few paragraphs below this. Here is the Darcy-Weisbach equation:
 
 $$h_{\rm{f}} \, = \, {\rm{f}} \frac{L}{D} \frac{\bar v^2}{2g}$$
 
