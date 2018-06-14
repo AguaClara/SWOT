@@ -83,7 +83,7 @@ Continuity is simply an application of mass balance to fluid mechanics. It state
 
 $$Q = \bar v A$$
 
-**Note:** The line above the $v$ is called 'bar,' and represents an average. Any variable can have a bar. In this case, we are adding the bar to velocity $v$, turning it into average velocity $\bar v$. This variable is pronounced 'v bar.'
+**Note:** The line above the $v$ is called a 'bar,' and represents an average. Any variable can have a bar. In this case, we are adding the bar to velocity $v$, turning it into average velocity $\bar v$. This variable is pronounced 'v bar.'
 
 In CEE 4540, we deal primarily with flow through pipes. For a circular pipe, $A = \pi r^2$. Substituting diameter in for radius, $r = \frac{D}{2}$, we get $A = \frac{\pi D^2}{4}$. You will often see this form of the continuity equation being used to relate the flow rate in a pipe to the fluid velocity and pipe diameter:
 
@@ -107,13 +107,11 @@ An example of changing flow geometries is when the a change in pipe size occurs 
 <center><img src="https://github.com/AguaClara/CEE4540_Master/blob/master/AguaClara%20Water%20Treatment%20Plant%20Design/Fluids%20Review/Images/Continuity_pipes.jpg?raw=true" width=550></center>
 
 ### Laminar and Turbulent Flow
-Considering that this class deals with the flow of water through a water treatment plant, understanding the characteristics of the flow is very important. Thus, it is necessary to understand the most common characteristic of fluid flow: whether it is laminar or turbulent. [**Laminar**](https://en.wikipedia.org/wiki/Laminar_flow "Laminar flow wikipedia") flow is very smooth and highly ordered. [**Turbulent**](https://en.wikipedia.org/wiki/Turbulence "Turbulent flow wikipedia") flow is chaotic, messy, and disordered. The best way to understand each flow and what it looks like is visually, [like in this video](https://youtu.be/qtvVN2qt968?t=131 "A great class project") or the wikipedia image below:
+Considering that this class deals with the flow of water through a water treatment plant, understanding the characteristics of the flow is very important. Thus, it is necessary to understand the most common characteristic of fluid flow: whether it is laminar or turbulent. [**Laminar**](https://en.wikipedia.org/wiki/Laminar_flow "Laminar flow wikipedia") flow is very smooth and highly ordered. [**Turbulent**](https://en.wikipedia.org/wiki/Turbulence "Turbulent flow wikipedia") flow is chaotic, messy, and disordered. The best way to understand each flow and what it looks like is visually, [like in this video](https://youtu.be/qtvVN2qt968?t=131 "A great class project") or the wikipedia image below. Please ignore the part of the video after the image of the tap.  
 
 <center><img src="https://github.com/AguaClara/CEE4540_Master/blob/master/AguaClara%20Water%20Treatment%20Plant%20Design/Fluids%20Review/Images/Wikipedia_laminar_turbulent.jpg?raw=true" width=400></center>
-</br>
-Laminar and turbulent flow are described as two different **flow regimes**. When there is a characteristic of flow and different categories of the characteristic, each category is referred to as a flow regime. For example, the Reynolds number describes a flow characteristic, and its categories, referred to as flow regimes, are laminar or turbulent.
 
-A numeric way to determine whether flow regmine is  laminar or turbulent is by finding the [**Reynolds number**](https://en.wikipedia.org/wiki/Reynolds_number "Reynolds number wikipedia"), ${\rm Re}$. The Reynolds number is a dimensionless parameter that compares inertia, represented by the average flow velocity $\bar v$ times a length scale $D$ to [**viscosity**](https://en.wikipedia.org/wiki/Viscosity "Viscosity wikipedia"), represented by the kinematic viscosity $\nu$. [Click here](https://www.youtube.com/watch?v=DVQw0svRHZA "This guy is Austrailian?") for a brief video explanation of viscosity. If the Reynolds number is less than a certain value the flow is considered laminar. If it is more than a certain value, it is considered turbulent.
+A numeric way to determine whether flow is  laminar or turbulent is by finding the [**Reynolds number**](https://en.wikipedia.org/wiki/Reynolds_number "Reynolds number wikipedia"), ${\rm Re}$. The Reynolds number is a dimensionless parameter that compares inertia, represented by the average flow velocity $\bar v$ times a length scale $D$ to [**viscosity**](https://en.wikipedia.org/wiki/Viscosity "Viscosity wikipedia"), represented by the kinematic viscosity $\nu$. [Click here](https://www.youtube.com/watch?v=DVQw0svRHZA "This guy is Austrailian?") for a brief video explanation of viscosity. If the Reynolds number is less than a certain value the flow is considered laminar. If it is more than a certain value, it is considered turbulent.
 
 $$ {\rm Re = \frac{inertia}{viscosity}} = \frac{\bar vD}{\nu}$$
 
@@ -134,15 +132,21 @@ $\mu$ = fluid dynamic viscosity, $\frac{[M]}{[L][T]}$
 
 [There is a transition between laminar and turbulent flow which is not yet well understood](https://en.wikipedia.org/wiki/Laminar%E2%80%93turbulent_transition "Transitional flow wikipedia"). To simplify this phenomenon and make it possible to code for laminar or turbulent flow, we will assume that the transition occurs at $\rm{Re}$ = 2100. The flow regime is assumed to be laminar below this value and turbulent above it. This variable is coded into aide_design as `pc.RE_TRANSITION_PIPE`. We will neglect transitional flow.
 
-### Streamlines and Control Volumes
-Both [**streamlines**](https://en.wikipedia.org/wiki/Streamlines,_streaklines,_and_pathlines "Streamline wikipedia") and **control volumes** tools to compare different sections of a system. For this class, this system will always be hydraulic.
+**Note:** Laminar and turbulent flow are described as two different **flow regimes**. When there is a characteristic of flow and different categories of the characteristic, each category is referred to as a flow regime. For example, the Reynolds number describes a flow characteristic, and its categories, referred to as flow regimes, are laminar or turbulent.  
 
-Image water flowing through a pipe. A streamline is the path that a particle would take if it could be placed in the fluid without changing the original flow of the fluid. A more technical definition is "a line which is everywhere parallel to the local velocity vector." Computational tools, dyes (in water), or smoke (in air) can be used to visualize streamlines.
+
+### Streamlines and Control Volumes
+Both [**streamlines**](https://en.wikipedia.org/wiki/Streamlines,_streaklines,_and_pathlines "Streamline wikipedia") and **control volumes** are tools to compare different sections of a system. For this class, this system will always be hydraulic.
+
+Image water flowing through a pipe. A streamline is the path that a particle would take if it could be placed in the fluid without changing the original flow of the fluid. A more technical definition is "a line which is everywhere parallel to the local velocity vector." Computational tools, [dyes (in water)](https://proxy.duckduckgo.com/iur/?f=1&image_host=http%3A%2F%2Fwww.nuclear-power.net%2Fwp-content%2Fuploads%2F2016%2F05%2FFlow-Regime.png%3F4b884b&u=https://www.nuclear-power.net/wp-content/uploads/2016/05/Flow-Regime.png?4b884b), or [smoke (in air)](https://www.youtube.com/watch?v=E9ZSAX56m0E&t=59s) can be used to visualize streamlines.
+
+A control volume is just an imaginary 3-dimensional shape in space. Its boundaries can be placed anywhere by the person applying the control volume, and once set the boundaries remain fixed in space over time. These boundaries are usually chosen to compare two relevant surfaces to each other. The entirety of a control volume is usually not shown, as it is often unnecessary. This is shown in the following image:
+
+<center><img src="https://github.com/AguaClara/CEE4540_Master/blob/master/AguaClara%20Water%20Treatment%20Plant%20Design/Fluids%20Review/Images/Control_volume_simplification.jpg?raw=true" width=550></center>
 
 **Important Note:** Many images will be used over the course of this class to show hydraulic systems. A standardized system of lines will be used throughout them all to distinguish reference elevations from control volumes from streamlines. This system is described in the image below.
 
 <center><img src="https://github.com/AguaClara/CEE4540_Master/blob/master/AguaClara%20Water%20Treatment%20Plant%20Design/Fluids%20Review/Images/Image_control_volumes.jpg?raw=true" width=550></center>
-
 
 
 ## The Bernoulli and Energy Equations
@@ -197,7 +201,7 @@ $$\frac{p_{1}}{\rho g} + z_{1} + \frac{\bar v_{1}^2}{2g} = \frac{p_{2}}{\rho g} 
 ### Major Losses
 These losses are the result of friction between the fluid and the surface over which the fluid is flowing. A force acting parallel to a surface is referred to as [shear](https://en.wikipedia.org/wiki/Shear_force "Shear wikipedia"). It can therefore be said that major losses are the result of shear between the fluid and the surface it's flowing over. To help in understanding  major losses, consider the following example: imagine, as you have so often in physics class, pushing a large box across the ground. Friction is what resists your efforts to push the box. The farther you push the box, the more energy you expend pushing against friction. The same is true for water moving through a pipe, where water is analogous to the box you want to move, the pipe is similar to the floor that provides the friction, and the major losses of the water through the pipe is analogous to the energy _**you**_ expend by pushing the box.
 
-In this class, we will be dealing primarily with major losses in circular pipes, as opposed to channels or pipes with other geometries. Fortunately for us, Henry Darcy and Julius Weisbach came up with a handy equation to determine the major losses in a circular pipe _under both **laminar**](https://en.wikipedia.org/wiki/Laminar_flow "Laminar flow wikipedia") and [**turbulent**](https://en.wikipedia.org/wiki/Turbulence "Turbulent flow wikipedia") flow conditions_. Their equation is logically but unoriginally named the [**Darcy-Weisbach equation**](https://en.wikipedia.org/wiki/Darcy%E2%80%93Weisbach_equation "Darcy-Weisbach wikipedia"). If you would like a refresher on laminar vs turbulent flow, please watch [this video](https://www.youtube.com/watch?v=qtvVN2qt968) and note that AguaClara uses a transition number of 2,100, instead of the 2,300 shown in the video; this concept is discussed a few paragraphs below this. Here is the Darcy-Weisbach equation:
+In this class, we will be dealing primarily with major losses in circular pipes, as opposed to channels or pipes with other geometries. Fortunately for us, Henry Darcy and Julius Weisbach came up with a handy equation to determine the major losses in a circular pipe _under both laminar and turbulent flow conditions_. Their equation is logically but unoriginally named the [**Darcy-Weisbach equation**](https://en.wikipedia.org/wiki/Darcy%E2%80%93Weisbach_equation "Darcy-Weisbach wikipedia") and is shown below:
 
 $$h_{\rm{f}} \, = \, {\rm{f}} \frac{L}{D} \frac{\bar v^2}{2g}$$
 
@@ -215,7 +219,7 @@ $D$ = pipe diameter, $[L]$
 
 **Function in aide_design:** `pc.headloss_fric(FlowRate, Diam, Length, Nu, PipeRough)` Returns only major losses. Works for both laminar and turbulent flow.
 
-Darcy-Weisbach is wonderful because it applies to both laminar and turbulent flow regimes and contains relatively easy to measure variables. The one exception is the Darcy friction factor, $\rm{f}$. This parameter is an approximation for the magnitude of friction between the pipe walls and the fluid, and its value changes depending on the whether or not the flow is laminar or turbulent, and varies with the [**Reynolds number**](https://en.wikipedia.org/wiki/Reynolds_number "Reynolds number wikipedia"), $\rm{Re}$, in both regimes of flow.
+Darcy-Weisbach is wonderful because it applies to both laminar and turbulent flow regimes and contains relatively easy to measure variables. The one exception is the Darcy friction factor, $\rm{f}$. This parameter is an approximation for the magnitude of friction between the pipe walls and the fluid, and its value changes depending on the whether or not the flow is laminar or turbulent, and varies with the Reynolds number in both flow regimes.
 
 For laminar flow, the friction factor can be determined from the following equation:
 

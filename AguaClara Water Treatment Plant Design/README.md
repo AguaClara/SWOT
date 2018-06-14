@@ -1,3 +1,17 @@
+# Textbook Progress table
+
+| Chapter Name | Introduction | Design | Derivations | Uncertainties | Examples |
+|:--------:|:----------:|:--------:|:----------:|:--------:|:----------:|
+| Fluids Review | Item Two |
+| EDR and G |            |
+| Rapid Mix |            |
+| Flow Control and Measurement |            |
+| Flocculation |            |
+| Sedimentation |            |
+| Filtration |            |
+
+
+
 # Textbook Structure
 This is the first version attempted of an AguaClara textbook. The current proposed structure is as follows:
 
