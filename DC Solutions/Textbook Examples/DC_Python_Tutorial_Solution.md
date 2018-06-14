@@ -9,19 +9,29 @@ inspect.getsource(foo)
 
 Where "foo" is the function that you'd like to learn about.
 
-Each cell in Jupyter is either code or markdown (select in the drop down menu above). You can learn about markdown language from the help menu. Markdown allows you to create very nicely formatted text including Latex equations.
+Each section in Atom is either code or markdown. Markdown allows you to create very nicely formatted text including LaTeX equations, when certain packages are installed and the view is toggled on. An example:
+
 $$c = \sqrt{a^2 + b^2}$$
 
-Each cell is either in edit mode (select this cell and press the enter key) or in display mode (press shift enter). Shift Enter also executes the code in the cell.
+You work can be previewed in real time using ctrl+shift+m, which opens up a second window that shows your work formatted nicely. To preview the LaTeX use ctrl + shift + x, if you have the markdown-preview-plus package installed (which you should)
 
-When you open a Jupyter notebook it is convenient to go to the cell menu and select Run All so that all results are calculated and displayed.
+Each code section within the markdown file needs to begin with the header line:  
 
-The Python Kernel remembers all definitions (functions and variables) as they are defined based on execution of the cells in the Jupyter notebook. Thus if you fail to execute a cell, the parameters defined in that cell won't be available. Similarly, if you define a parameter and then delete that line of code, that parameter remains defined until you go to the Kernel menu and select restart. It is good practice to select Restart & Run All from the Kernel menu after completing an assignment to make sure that everything in your notebook works correctly and that you haven't deleted an essential line of code!
+**```python**   
 
+and end with :  
 
+ **```**
+
+Each code block will need to be run separately when you want to run your code. To run your code highlight the section between (but not including!) the heading and ending lines and click ctrl + enter.
+
+Variables and functions run while the file is open in Atom are saved by the program while it remains open, however if certain cells are not run any parameter contained in them will not be evaluated and those values won't be able to be used if referenced elsewhere in the code. Additionally if you delete a section of code after it was run, the parameters it created will still exist until the file is closed and reopened.
+
+It is good practice to close, reopen, and rerun any assignment file after you've completed it to make sure it all runs as expected and that you haven't deleted an essential line of code!
+
+---
 ```python
-#Here we import packages that we will need for this notebook. You can find out about these packages in the Help menu.
-
+#Here we import packages that we will need for this assignment. You can find out about these packages in the Help menu.
 
 # although math is "built in" it needs to be imported so it's functions can be used.
 import math
@@ -41,10 +51,10 @@ import matplotlib.pyplot as plt
 import sys, os
 
 # If you place your GitHub directory in your documents folder and
-# clone both the design challenge notebook and the AguaClara_design repo, then this code should all work.
+# clone both the design challenge file and the AguaClara_design repo, then this code should all work.
 # If you have your GitHub directory at a different location on your computer,
 # then you will need to adjust the directory path below.
-# add the path to your GitHub directory so that python can find files in other contained folders.
+# add the path to your GitHub directory so that Python can find files in other contained folders.
 path1 = '~'
 path2 = 'Documents'
 path3 = 'GitHub'
@@ -89,7 +99,7 @@ end
 y = sum(x)/length(x);
 end`
 
-In Python, functions can be written by using the keyword "def", followed by the function name and then the input parameters in paranthesis followed by a colon. A function is terminated with "return".
+In Python, functions can be written by using the keyword "def", followed by the function name and then the input parameters in parentheses followed by a colon. A function is terminated with "return".
 
 `def average(x):
    if ~isvector(x)
@@ -140,183 +150,107 @@ a = [0,1,2,3]
 
 Python has a number of helpful commands to modify lists, and you can read more about them [here](https://docs.python.org/2/tutorial/datastructures.html).
 
-In order to use lists as arrays, numpy (numpy provides tools for working with **num**bers in **py**thon) provides an array data type that is defined using ( ).
-
+In order to use lists as arrays, numpy (numpy provides tools for working with **num** bers in **py** thon) provides an array data type that is defined using ( ).
 
 ```python
 a_array = np.array(a)
 ```
 
-
 ```python
 a_array
 ```
-
-
-
-
     array([0, 1, 2, 3])
 
-
-
 Pint, which adds unit capabilities to Python, (see section on units below) is compatible with NumPy, so it is possible to add units to arrays and perform certain calculations with these arrays. We recommend using NumPy arrays rather than lists because NumPy arrays can handle units. Additionally, use functions from NumPy if possible instead of function from the math package when possible because the math package does not yet handle units. Units are added by multiplying the number by the unit raised to the appropriate power. The pint unit registry was imported above as "u" and thus the units for milliliters are defined as u.mL.
+
+The complete registry for units available for Pint can be found [here](https://github.com/hgrecco/pint/blob/master/pint/default_en.txt), though more details on units are below.
 
 
 ```python
 a_array_units = a_array * u.m
 ```
 
-
 ```python
 a_array_units
 ```
-
-
-
-
 \[\begin{pmatrix}0 & 1 & 2 & 3\end{pmatrix} meter\]
 
-
-
 In order to make a 2D array, you can use the same [NumPy array command](https://docs.scipy.org/doc/numpy/reference/generated/numpy.array.html).
-
 
 ```python
 b = np.array([[0,1,2],[3,4,5],[6,7,8]])*u.mL
 b
 ```
 
-
-
-
 \[\begin{pmatrix}0 & 1 & 2\\
 3 & 4 & 5\\
 6 & 7 & 8\end{pmatrix} milliliter\]
 
-
-
 Indexing is done by row and then by column. To call all of the elements in a row or column, use a colon. As you can see in the following example, indexing in python begins at zero. So `b[:,1]` is calling all rows in the second column
-
 
 ```python
 b[:,1]
 ```
 
-
-
-
 \[\begin{pmatrix}1 & 4 & 7\end{pmatrix} milliliter\]
 
-
-
 If you want a specific range of values in an array, you can also use a colon to slice the array, with the number before the colon being the index of the first element, and the number after the colon being **one greater** than the index of the last element.
-
 
 ```python
 b[1:3,0]
 ```
 
-
-
-
 \[\begin{pmatrix}3 & 6\end{pmatrix} milliliter\]
 
-
-
 For lists and 1D arrays, the `len()` command can be used to determine the length. Note that the length is NOT equal to the index of the last element because the indexes are zero based. The len function can be used with lists and arrays. For multiple dimension arrays the `len()` command returns the length of the first dimension.
-
 
 ```python
 len(a)
 ```
-
-
-
-
-    4
-
-
-
+4
 
 ```python
 len(b)
 ```
-
-
-
-
     3
 
-
-
 For any higher dimension of array, `numpy.size()` can be used to find the total number of elements and `numpy.shape()` can be used to learn the dimensions of the array.
-
 
 ```python
 np.size(b)
 ```
-
-
-
-
     9
-
-
-
 
 ```python
 np.shape(b)
 ```
-
-
-
-
     (3, 3)
-
-
 
 For a listing of the commands you can use to manipulate numpy arrays, refer to the [scipy documentation](https://docs.scipy.org/doc/numpy/reference/routines.array-manipulation.html).
 
 Sometimes, it is helpful to have an array of elements that range from zero to a specified number. This can be useful, for example, in creating a graph. To create an array of this type, use [numpy.arange](https://docs.scipy.org/doc/numpy/reference/generated/numpy.arange.html).
 
-
 ```python
 crange = np.arange(10)
 ```
 
-
 ```python
 crange
 ```
-
-
-
-
     array([0, 1, 2, 3, 4, 5, 6, 7, 8, 9])
-
-
-
 
 ```python
 cdetailedrange = np.arange(5,10,0.1)
 ```
 
-
 ```python
 cdetailedrange
 ```
-
-
-
-
     array([ 5. ,  5.1,  5.2,  5.3,  5.4,  5.5,  5.6,  5.7,  5.8,  5.9,  6. ,
             6.1,  6.2,  6.3,  6.4,  6.5,  6.6,  6.7,  6.8,  6.9,  7. ,  7.1,
             7.2,  7.3,  7.4,  7.5,  7.6,  7.7,  7.8,  7.9,  8. ,  8.1,  8.2,
             8.3,  8.4,  8.5,  8.6,  8.7,  8.8,  8.9,  9. ,  9.1,  9.2,  9.3,
             9.4,  9.5,  9.6,  9.7,  9.8,  9.9])
-
-
-
 ---
 
 ## Units
@@ -339,27 +273,14 @@ A_reactor = pc.area_circle(D_reactor)
 Q_reactor = V_up*A_reactor
 Q_reactor
 ```
-
-
-
-
 0.0005067074790974977 meter<sup>2</sup> millimeter/second
 
-
-
 The result isn't formatted very nicely. We can select the units we'd like to display by using the `.to` method.
-
 
 ```python
 Q_reactor.to(u.mL/u.s)
 ```
-
-
-
-
 0.5067074790974977 milliliter/second
-
-
 
 We can also force the display to be in the metric base units
 
@@ -368,26 +289,17 @@ We can also force the display to be in the metric base units
 Q_reactor.to_base_units()
 ```
 
-
-
-
 5.067074790974977e-07 meter<sup>3</sup>/second
 
 
 
-If you need to strip units from a quantity (for example, for calculations using funtions that don't support units) you can use the `.magnitude` method. It is important that you force the quantity to be in the correct units before stripping the units.
+If you need to strip units from a quantity (for example, for calculations using functions that don't support units) you can use the `.magnitude` method. It is important that you force the quantity to be in the correct units before stripping the units.
 
 
 ```python
 Q_reactor.to(u.mL/u.s).magnitude
 ```
-
-
-
-
     0.5067074790974977
-
-
 
 ### Significant digits
 Python will happily display results with 17 digits of precision. We'd like to display a reasonable number of significant digits so that we don't get distracted with 14 digits of useless information. We created a [sig function in the AguaClara_design repository](https://github.com/AguaClara/AguaClara_design/blob/master/utility.py) that allows you to specify the number of significant digits to display. You can couple this with the print function to create a well formatted solution to a calculation. The sig function also displays the accompanying units.  
@@ -396,7 +308,6 @@ The sig function call is `ut.sig(value, sigfig)`.
 
 ### Example problem and solution.
 Calculate the number of moles of methane in a 20 L container at 15 psi above atmospheric pressure with a temperature of 30 C.
-
 
 ```python
 # First assign the values given in the problem to variables.
@@ -413,12 +324,7 @@ nmolesmethane
     There are 1.62 mol of methane in the container.
 
 
-
-
-
 1.6246299433154001 mole
-
-
 
 ---
 
@@ -428,19 +334,17 @@ When it becomes necessary to do the same calculation multiple times, it is usefu
 
 - Function blocks begin with the keyword def followed by the function name and parentheses ( ).
 - Any input parameters or arguments should be placed within these parentheses.
-- The code block within every function starts with a colon (:) and is indented.
+- The code block within every function starts with a colon ( \: ) and is indented.
 - The statement return [expression] exits a function and returns an expression to the user. A return statement with no arguments is the same as return None.
-- (Optional) The first statement of a function can the documentation string of the function or docstring, writeen with apostrophes ' '.
+- (Optional) The first statement of a function can the documentation string of the function or docstring, written with apostrophes ' '.
 
 Below is an example of a function that takes three inputs, pressure, volume, and temperature, and returns the number of moles.
-
 
 ```python
 # Creating a function is easy in Python
 def nmoles(P,V,T):
     return (P*V/(u.R*T.to(u.kelvin))).to_base_units()
 ```
-
 Try using the new function to solve the same problem as above. You can reuse the variables. You can use the new function call inside the print statement.
 
 
@@ -477,14 +381,13 @@ def DensityWater(T):
 print('The density of water at '+ut.sig(u.Quantity(20,u.degC),3) +' is '+ut.sig(DensityWater(u.Quantity(20,u.degC)),4)+'.')
 ```
 
-    The density of water at 20.0 celsius is 998.2 kg/m³.
-
+    The density of water at 20.0 Celsius is 998.2 kg/m³.
 
 ---
 
 ## Pipe Database
 
-The [`pipedatabase`](https://github.com/AguaClara/AguaClara_design/blob/master/pipedatabase.py) file in the `AguaClara_design` has many useful functions concerning pipe sizing. It provides functions that calculate actual pipe inner and outer diameters given the nominal diameter of the pipe. Note that nominal diameter just means the diameter that it is called (hence the discriptor "nominal") and thus a 1 inch nominal diameter pipe might not have any dimensions that are actually 1 inch!
+The [`pipedatabase`](https://github.com/AguaClara/AguaClara_design/blob/master/pipedatabase.py) file in the `AguaClara_design` has many useful functions concerning pipe sizing. It provides functions that calculate actual pipe inner and outer diameters given the nominal diameter of the pipe. Note that nominal diameter just means the diameter that it is called (hence the descriptor "nominal") and thus a 1 inch nominal diameter pipe might not have any dimensions that are actually 1 inch!
 
 
 ```python
@@ -509,12 +412,7 @@ ND_my_pipe = pipe.ND_SDR_available(IDmin,SDR)
 ND_my_pipe
 ```
 
-
-
-
 3.0 inch
-
-
 
 The actual inner diameter of this pipe is
 
@@ -526,7 +424,6 @@ print(ut.sig(ID_my_pipe.to(u.cm),2))
 
     8.2 cm
 
-
 We can display the available nominal pipe sizes that are in our database.
 
 
@@ -534,12 +431,7 @@ We can display the available nominal pipe sizes that are in our database.
 pipe.ND_all_available()
 ```
 
-
-
-
 \[\begin{pmatrix}0.5 & 1.0 & 2.0 & 3.0 & 4.0 & 6.0 & 8.0 & 10.0 & 12.0 & 16.0 & 18.0 & 24.0 & 30.0 & 36.0 & 48.0 & 60.0 & 72.0\end{pmatrix} inch\]
-
-
 
 ---
 
@@ -561,9 +453,7 @@ print('The kinematic viscosity of water at '+ut.sig(temperature,2)+' is '+ut.sig
 
     The kinematic viscosity of water at 20 celsius is 1.00e-6 m²/s
 
-
 ---
-
 
 ## Our First Graph!
 
@@ -583,7 +473,6 @@ plt.ylabel('Viscosity (mm^2/s)')
 plt.show()
 ```
 
-
 ![png](DC_Python_Tutorial_Solution_files/DC_Python_Tutorial_Solution_61_0.png)
 
 
@@ -599,14 +488,11 @@ Reynolds_pipe = pc.re_pipe(Q,D,nu)
 Reynolds_pipe
 ```
 
-
-
-
     60124.953167297012
 
 
 
-Now use the sig function to display calulated values to a user specified number of significant figures.
+Now use the sig function to display calculated values to a user specified number of significant figures.
 
 
 ```python
@@ -616,7 +502,7 @@ print('The Reynolds number is '+ut.sig(pc.re_pipe(Q,D,nu),3))
     The Reynolds number is 6.01e+4
 
 
-Here is a table of a few of the equations describing pipe flow and their physchem function counterparts.
+Here is a table of a few of the equations describing pipe flow and their physchem function counterparts. (If you haven't already tested your LaTeX viewing capacity, now is the perfect time to try it with ctrl + shift + x)
 
 | Equation Name                         |                                                                                            Equation                                                                                           |                       Physchem function                      |
 |---------------------------------------|:---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|:------------------------------------------------------------:|
