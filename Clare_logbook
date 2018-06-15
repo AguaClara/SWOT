@@ -1,0 +1,13 @@
+## June 13th 
+Short term goals: 
+- change current DC's to versions to go in the textbook + edits for clarity
+- separate conceptual questions from the designs to include in future DC work
+- fix the solutions so that images appear correctly in standalone version of the files
+Looking ahead: 
+- think about which concepts need to be included in the conceptual questions and find ways to ask those questions!
+Things I'm finding that will need definitely more work:
+- alerts about updates to packages. Probably not necessary anymore assuming the package isn't being wildly changed during the semester again
+- some variable errors that can probably be fixed (maybe already have in aide_design code) (such as diam_fractal + the warning with it in the floc model DC)
+
+## June 15th
+-trouble with file naming and locations of pictures. but now I can push things into the repository so that's useful.
