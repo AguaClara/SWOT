@@ -142,7 +142,7 @@ Image water flowing through a pipe. A streamline is the path that a particle wou
 
 A control volume is just an imaginary 3-dimensional shape in space. Its boundaries can be placed anywhere by the person applying the control volume, and once set the boundaries remain fixed in space over time. These boundaries are usually chosen to compare two relevant surfaces to each other. The entirety of a control volume is usually not shown, as it is often unnecessary. This is shown in the following image:
 
-<center><img src="https://github.com/AguaClara/CEE4540_Master/blob/master/AguaClara%20Water%20Treatment%20Plant%20Design/Fluids%20Review/Images/Control_volume_simplification.jpg?raw=true" width=550></center>
+<center><img src="https://raw.githubusercontent.com/AguaClara/CEE4540_Master/master/AguaClara%20Water%20Treatment%20Plant%20Design/Fluids%20Review/Images/Control%20_volume_simplification.jpg  " width=550></center>
 
 **Important Note:** Many images will be used over the course of this class to show hydraulic systems. A standardized system of lines will be used throughout them all to distinguish reference elevations from control volumes from streamlines. This system is described in the image below.
 

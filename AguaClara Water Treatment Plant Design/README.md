@@ -1,14 +1,26 @@
-# Textbook Progress table
+# Textbook Progress Table
 
-| Chapter Name | Introduction | Design | Derivations | Uncertainties | Examples |
-|:--------:|:----------:|:--------:|:----------:|:--------:|:----------:|
-| Fluids Review | Item Two |
-| EDR and G |            |
-| Rapid Mix |            |
-| Flow Control and Measurement |            |
-| Flocculation |            |
-| Sedimentation |            |
-| Filtration |            |
+Each chapter will have sections according to the explanation below the table. To monitor the progress of each section, we will use the following table. Every cell will have an **Author**. Additionally, every cell will have one of the following statuses:
+
+- **N/A**: Not applicable- not every section is relevant in every chapter
+- **-**: Section not yet started
+- **Preliminary writing**: Information has been written but is not organized and not in accordance with the textbook's syntax and structure.
+- **half-Organized**: Relevant information has been written and is in the process of being made readable.  
+- **Organized**: Information has been purposefully organized in a logical way and is presentable to readers.  
+- **Reviewed**: Read and commented through by volunteers. The name of each reader is included.
+
+### For interested Reviewers
+Sections that are marked as categorized as '**Organized**' are ready for your review. Comment on absolutely anything and everything that crosses your mind while reading in a GitHub issue [on this page](https://github.com/AguaClara/CEE4540_Master/issues). If the file you are reviewing already has an issue page, then *post your comments on that issue*. Only begin a new issue if the file you are looking at does not have one. If you begin a new issue, assign it to Juan (juanchon998), Monroe (monroews), and Clare (clare45).
+
+| Chapter Name | Introduction | Design | Derivations | Uncertainties | Theory and Future Work | Examples |
+|:--------:|:----------:|:--------:|:----------:|:--------:|:----------:|:----------:|
+| Fluids Review | - | Juan </br> **Reviewed:** Ian | Juan </br> **half-Organized** | - | **N/A** | - |
+| EDR and G | Monroe </br> **Preliminary writing** | - | Juan </br> **Preliminary writing** | - | - | - |
+| Rapid Mix | Monroe </br> **Preliminary writing** | Monroe </br> **Preliminary writing** | Juan </br> **Preliminary writing** | - | - | - |
+| Flow Control and Measurement | - | Juan </br> **half-Organized** | Juan </br> **Organized** | - | - | - |
+| Flocculation | Monroe </br> **Preliminary writing** | Juan </br> **Organized** | Juan </br> **half-Organized** | - | - | - |
+| Sedimentation | Monroe </br> **Preliminary writing** | - | - | - | - | - |
+| Filtration | - | - | - | - | - | - |
 
 
 
