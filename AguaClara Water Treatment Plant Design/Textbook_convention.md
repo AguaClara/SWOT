@@ -4,10 +4,11 @@
 ### <font color="red">Red is Uncertain</font>
 Red coloring indicates that there is more research to be done on the topic under consideration. Any concept colored red will be further discussed in the 'Uncertainties' section of each chapter.
 
-### <font color="purple">Purple is Final Equation in a Derivation</font>
+### <font color="purple">Purple is Final Equation in a Derivation or Control Volumes/Streamlines</font>
 A purple colored equation indicates that a final equation is being presented. This is most often found at the end of equation derivations within the 'Derivations' section of a chapter.  
+When purple is seen in an image, it indicates a streamline or a control volume
 
-### <font color="blue">Blue is ... Do we need another color? If so what should we assign to it?</font>
+### <font color="blue">Blue is ... Do we need another color? If so what should we assign to it? </font>
 
 
 ## Parameters
