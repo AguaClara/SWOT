@@ -7,10 +7,12 @@ Red coloring indicates that there is more research to be done on the topic under
 ### <font color="purple">Purple is Final Equation in a Derivation</font>
 A purple colored equation indicates that a final equation is being presented. This is most often found at the end of equation derivations within the 'Derivations' section of a chapter.  
 
-### <font color="blue">Blue is ...</font>
+### <font color="blue">Blue is ... Do we need another color? If so what should we assign to it?</font>
 
 
 ## Parameters
+For parameters to use in Python code, [follow this convention](https://github.com/AguaClara/aide_design/wiki/Variable-Naming "aide naming convention page").
+
 Once more textbook sections are done, we should consider reorganizing this into easier to follow sections. Perhaps have a list of frequently used parameters (like $Q$, $h_L$ $v$, etc) along with parameters specific to each unit process ($\Pi_{Error}$, $\Pi_{\bar \varepsilon}^{\varepsilon_{Max}}$, $\Pi_{\bar G}^{G_{Max}}$), and have them neatly separated and ennumerated.
 
 Base units
