@@ -1,8 +1,20 @@
 # Textbook Guidelines and Convention
-Once more textbook sections are done, we should consider reorganizing this into easier to follow sections. Perhaps have a list of frequently used parameters (like $Q$, $h_L$ $v$, etc) along with parameters specific to each unit process ($\Pi_{Error}$, $\Pi_{\bar \varepsilon}^{\varepsilon_{Max}}$, $\Pi_{\bar G}^{G_{Max}}$), and have them neatly separated and ennumerated.
+
+## Text Coloring
+### <font color="red">Red is Uncertain</font>
+Red coloring indicates that there is more research to be done on the topic under consideration. Any concept colored red will be further discussed in the 'Uncertainties' section of each chapter.
+
+### <font color="purple">Purple is Final Equation in a Derivation</font>
+A purple colored equation indicates that a final equation is being presented. This is most often found at the end of equation derivations within the 'Derivations' section of a chapter.  
+
+### <font color="blue">Blue is ...</font>
+
 
 ## Parameters
+Once more textbook sections are done, we should consider reorganizing this into easier to follow sections. Perhaps have a list of frequently used parameters (like $Q$, $h_L$ $v$, etc) along with parameters specific to each unit process ($\Pi_{Error}$, $\Pi_{\bar \varepsilon}^{\varepsilon_{Max}}$, $\Pi_{\bar G}^{G_{Max}}$), and have them neatly separated and ennumerated.
+
 Base units
+
 | Dimension | Abbreviation | Base Unit |
 |:---------:|:------------:|:---------:|
 |  Length   |    $[L]$     |   meter   |
@@ -10,6 +22,7 @@ Base units
 |   Mass    |    $[M]$     | kilogram  |
 
 Parameters
+
 |                  Parameter                   |                           Description                           |         Units          |
 |:--------------------------------------------:|:---------------------------------------------------------------:|:----------------------:|
 |                     $z$                      |                            Elevation                            |         $[L]$          |
