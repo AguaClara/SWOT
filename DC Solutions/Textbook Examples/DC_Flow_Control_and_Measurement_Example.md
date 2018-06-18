@@ -8,8 +8,8 @@
 3.	Do not break dependency. That means that if I change an input parameter at the top of your notebook, that I should get the correct answers for the new parameter for all related calculations in the notebook.
 4.	Always use dimensions (units). All calculations involving physical units must include those units.
 5.	Document your design process with comments.
-6.  Do not redefine your variables in subsequent problems. This loses valulable digits of precision on your numbers and can cause a lot of trouble and frustration.
-7.  For everyone's sake, use logical and resonable variable names. [Here is AguaClara variable naming convention](https://github.com/AguaClara/aide_design/wiki/Variable-Naming)
+6.  Do not redefine your variables in subsequent problems. This loses valuable digits of precision on your numbers and can cause a lot of trouble and frustration.
+7.  For everyone's sake, use logical and reasonable variable names. [Here is AguaClara variable naming convention](https://github.com/AguaClara/aide_design/wiki/Variable-Naming)
 </div>
 
 ## A brief Design Challenge guide
@@ -63,7 +63,7 @@ The vertical orifice equation is based on the concept that the velocity through 
 
 For this question, you will create a well formatted graph with two curves to display flow rate through a 5 cm diameter orifice oriented **vertically and horizontally**.
 
-We want to be able to describe the height of the water in the orifice as relative to the orifice diameter size. The relationship between velocity and orifice diameter is true for orifices of any size, so it is valuable to create a nondimensional model that can be understood for all diameters. The flow rate that you will use for this question is as a function of the normalized depth of water from 1 diameter below the center of the orifice to 2 diameters above the center of the orifice.
+We want to be able to describe the height of the water in the orifice as relative to the orifice diameter size. The relationship between velocity and orifice diameter is true for orifices of any size, so it is valuable to create a non-dimensional model that can be understood for all diameters. The flow rate that you will use for this question is as a function of the normalized depth of water from 1 diameter below the center of the orifice to 2 diameters above the center of the orifice.
 
 The steps for making the graph are as follows:
 
@@ -240,21 +240,7 @@ Play with the value for the plant flow rate, `Flow`, at the top of the cell abov
 The flow rates seem to exceed the target flow by a tiny factor over the majority of the range. This means there is a systemic error in the algorithm that sets the number of orifices in each row.
 The LFOM isn't accurate for the first couple of rows.
 
-### 8)
-Describe at least two failure modes where the design produces very inaccurate flow measurements.
 
-- For very high flow rates (100 L/s) that the LFOM doesn't reach the target flow until half of the LFOM is submerged.
-- For very low flow rates (1 L/s) the algorithm overshoots with too many orifices in the bottom row.
-
-### 9)
-Explain why all LFOMs perform poorly when the water depth is in the first row of orifices.
-
-The relationship between head and flow is nonlinear for a single row of orifices. Thus it is impossible for the LFOM to be accurate when there is only one row of orifices.
-
-### 10)
-Explain why all of the bottom several rows have the same number of orifices for flows about 30 L/s. (Hint: What constrains the maximum number of orifices that can be in a row?)
-
-The number of orifices in a row is limited by the circumference of the LFOM. For high flow rates the ideal number of orifices in the first row exceeds the space and thus the flow target is not met for the first several rows. Each of these rows simply has the maximum number that can fit around the pipe.
 
 ## Laminar Flow Based Flow Controller
 

@@ -23,7 +23,7 @@ and end with :
 
  **```**
 
-Each code block will need to be run separately when you want to run your code. To run your code highlight the section between (but not including!) the heading and ending lines and click ctrl + enter.
+Each code block will need to be run separately when you want to run your code. To run your code highlight the section between (but not including!) the heading and ending lines and click ctrl + enter. You can also place your cursor on a line and ctrl + enter to run one line at a time.
 
 Variables and functions run while the file is open in Atom are saved by the program while it remains open, however if certain cells are not run any parameter contained in them will not be evaluated and those values won't be able to be used if referenced elsewhere in the code. Additionally if you delete a section of code after it was run, the parameters it created will still exist until the file is closed and reopened.
 
@@ -32,37 +32,34 @@ It is good practice to close, reopen, and rerun any assignment file after you've
 ---
 ```python
 #Here we import packages that we will need for this assignment. You can find out about these packages in the Help menu.
-
 # although math is "built in" it needs to be imported so it's functions can be used.
 import math
-
 from scipy import constants, interpolate
-
 #see numpy cheat sheet https://www.dataquest.io/blog/images/cheat-sheets/numpy-cheat-sheet.pdf
 #The numpy import is needed because it is renamed here as np.
 import numpy as np
-
 #Pandas is used to import data from spreadsheets
 import pandas as pd
-
 import matplotlib.pyplot as plt
-
 # sys and os give us access to operating system directory paths and to sys paths.
 import sys, os
-
 # If you place your GitHub directory in your documents folder and
 # clone both the design challenge file and the AguaClara_design repo, then this code should all work.
 # If you have your GitHub directory at a different location on your computer,
 # then you will need to adjust the directory path below.
 # add the path to your GitHub directory so that Python can find files in other contained folders.
+
 path1 = '~'
 path2 = 'Documents'
-path3 = 'GitHub'
-path4 = os.path.join(path1, path2, path3)
+#path3 = 'GitHub'
+path3 = 'github'
+#path4 = os.path.join(path1, path2, path3)
+path4 = os.path.join(path1,path3)
 myGitHubdir = os.path.expanduser(path4)
 if myGitHubdir not in sys.path:
     sys.path.append(myGitHubdir)
 
+myGitHubdir
 # add imports for AguaClara code that will be needed
 # physchem has functions related to hydraulics, fractal flocs, flocculation, sedimentation, etc.
 from aide_design import physchem as pc
@@ -172,6 +169,7 @@ a_array_units = a_array * u.m
 
 ```python
 a_array_units
+
 ```
 \[\begin{pmatrix}0 & 1 & 2 & 3\end{pmatrix} meter\]
 
@@ -190,6 +188,7 @@ Indexing is done by row and then by column. To call all of the elements in a row
 
 ```python
 b[:,1]
+
 ```
 
 \[\begin{pmatrix}1 & 4 & 7\end{pmatrix} milliliter\]
@@ -290,8 +289,6 @@ Q_reactor.to_base_units()
 ```
 
 5.067074790974977e-07 meter<sup>3</sup>/second
-
-
 
 If you need to strip units from a quantity (for example, for calculations using functions that don't support units) you can use the `.magnitude` method. It is important that you force the quantity to be in the correct units before stripping the units.
 
@@ -463,7 +460,7 @@ We will use [matplotlib](https://matplotlib.org/) to create a graph of water den
 ```python
 # Create a list of 100 numbers between 0 and 100 and then assign the units of degC to the array.
 # This array will be the x values of the graph.
-
+# Note: when running sections of graphing code, the result only looks nice if it is run as a block rather than line by line.
 GraphTarray = u.Quantity(np.arange(100),u.degC)
 
 #Note the use of the .to method below to display the results in a particular set of units.
@@ -540,7 +537,7 @@ plt.show()
 ![png](DC_Python_Tutorial_Solution_files/DC_Python_Tutorial_Solution_68_0.png)
 
 
-# Design Challenge 1, learning Python, Jupyter, and some AguaClara Design Functions
+# Design Challenge 1, learning Python, Atom, and some AguaClara Design Functions
 
 ### 1)
 Calculate the minimum inner diameter of a PVC pipe that can carry a flow of at least 10 L/s for the town of Ojojona. The population is 4000 people. The water source is a dam with a surface elevation of 1500 m. The pipeline connects the reservoir to the discharge into a distribution tank at an elevation of 1440 m. The pipeline length is 2.5 km. The pipeline is made with PVC pipe with an SDR (standard diameter ratio) of 26.
@@ -552,10 +549,10 @@ ${h_e} = {K_e}\frac{{{V^2}}}{{2g}}$
 The water temperature ranges from 10 to 30 Celsius. The roughness of a PVC pipe is approximately 0.1 mm. Use the fluids functions to calculate the minimum inner pipe diameter to carry this flow from the dam to the distribution tank.
 
 Report the following
-* critical design temperature
+* critical design temperature (at what temperature will the design fail?)
 * kinematic viscosity (maximum viscosity will occur at the lowest temperature)
 * the minimum inner pipe diameter (in mm).
-Use complete sentences to report the results and use 2 significant digits (use the sig function).
+Use complete sentences to report the results and use 2 significant digits (use the ut.sig function).
 
 
 ```python
@@ -741,21 +738,16 @@ Gpoint = 50
 ReG = np.logspace(math.log10(3500), 8, Gpoint)
 ReLam = np.logspace(math.log10(670),math.log10(2100),Gpoint)
 fLam = np.zeros(Gpoint)
-
 for i in range(0,Gpoint):
     fLam[i] = fofRe(ReLam[i],0)
-
 fG = np.zeros((len(eGraph),Gpoint))
 for j in range(0,len(eGraph)-1):
     for i in range(0, Gpoint):
         fG[j,i]=fofRe(ReG[i],eGraph[j])
 
 mylegend = np.append(eGraph.astype('str'),[('laminar', 'Pipeline')])  
-
-
 #Set the size of the figure to make it big!
 plt.figure('ax',(10,8))
-
 for i in range(len(fG)):
     plt.plot( ReG,fG[i,:], '-', linewidth = 4)
 
@@ -785,27 +777,25 @@ plt.show()
 
 
 ### 13)
-Researchers in the AguaClara laboratory collected the following head loss data through a 1/8" diameter tube that was 2 m long using water at 22 C. The data is in a common separated data file named ['Head_loss_vs_Flow_dosing_tube_data.csv'](https://github.com/AguaClara/CEE4540_DC/blob/master/Head_loss_vs_Flow_dosing_tube_data.csv). Use the pandas read_csv function to read the data file into a pandas data object. Display the data so you can see how it is formatted.
+Researchers in the AguaClara laboratory collected the following head loss data through a 1/8" diameter tube that was 2 m long using water at 22 C. The data is in a comma separated data file named ['Head_loss_vs_Flow_dosing_tube_data.csv'](https://github.com/AguaClara/CEE4540_DC/blob/master/Head_loss_vs_Flow_dosing_tube_data.csv). Use the pandas read_csv function to read the data file into a pandas data object. Display the data so you can see how it is formatted.
 
 
 ```python
-head_loss_data = pd.read_csv('Head_loss_vs_Flow_dosing_tube_data.csv')    
+
+head_loss_data = pd.read_csv('Head_loss_vs_Flow_dosing_tube_data.csv')  
 head_loss_data  
+
+
 ```
-
-
-
 
 <div>
 <style>
     .dataframe thead tr:only-child th {
         text-align: right;
     }
-
     .dataframe thead th {
         text-align: left;
     }
-
     .dataframe tbody tr th {
         vertical-align: top;
     }
@@ -967,10 +957,8 @@ Qpoint=50
 
 QGraph= np.linspace((min(Q_data).to(u.mL/u.s)).magnitude, (max(Q_data).to(u.mL/u.s)).magnitude, Qpoint)*u.mL/u.s
 
-
 plt.plot(Q_data.to(u.mL/u.s),HL_data.to(u.cm),'o')
 plt.plot(QGraph.to(u.mL/u.s),pc.headloss_fric(QGraph,D_tube,L_tube,nu_data,0*u.mm).to(u.cm), '-',linewidth=2)
-
 
 leg=plt.legend(['data','theoretical major losses'], loc='best')
 leg.get_frame().set_alpha(1)
@@ -1038,7 +1026,6 @@ print('The root mean square error for the model fit when adjusting the minor los
 ### 16)
 Repeat the analysis from the previous cell, but this time assume that the minor loss coefficient is zero and that diameter is the unknown parameter.
 
-
 ```python
 # Define a new function that calculates head loss given the flow rate
 # and the parameter that we want to use curve fitting to estimate
@@ -1094,4 +1081,4 @@ The root mean square error was smaller when the minor loss coefficient was varie
 What did you find most difficult about learning to use Python? Create a brief example as an extension to this tutorial to help students learn the topic that you found most difficult.
 
 ## Final Pointer
-It is good practice to select Restart & Run All from the Kernel menu after completing an assignment to make sure that everything in your notebook works correctly and that you haven't deleted an essential line of code!
+It is good practice to close, reopen, and rerun your file after completing an assignment to make sure that everything in your assignment works correctly and that you haven't deleted an essential line of code!

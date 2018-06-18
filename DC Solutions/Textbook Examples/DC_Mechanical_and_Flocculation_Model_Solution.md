@@ -2,17 +2,11 @@
 
 ```python
 import numpy as np
-
 import pandas as pd
-
 import matplotlib.pyplot as plt
-
 from aide_design import physchem as pc
-
 from aide_design.units import unit_registry as u
-
 from aide_design import utility as ut
-
 from aide_design import floc_model as floc
 ```
 
@@ -156,7 +150,9 @@ print('The ratio of maximum to average velocity gradient is', ut.sig(G_mech_rati
 
 SOLUTION NOTE: this information is found on extra slide 48 in the Flocculator Design slides, heading is "Results of the CFD analysis and our model equations."
 
+<div class="alert alert-info" role=alert>
 
+**This section could go in the conceptual section if rephrased and the above/below section restructured slightly**
 High ratios of Max/Ave for velocity gradients (and therefore also energy dissipation rates) are common in both mechanical and hydraulic flocculators. A high velocity gradient ratio is a poor design for two reasons.
  - This high Max/Ave G results in significant inefficiency in the use of energy for flocculation. This inefficiency requires longer residence times and/or more energy input to achieve the same extent of flocculation.   
  - The high energy dissipation rate in the propeller wake limits the amount of energy that can be dissipated without causing excessive floc breakup. Excessive floc breakup produces flocs that are too small to be captured by the sedimentation tank.
@@ -166,6 +162,7 @@ We hypothesize that the maximum G values specified for mechanical flocculators w
 The high energy dissipation rates at the tip of a propeller in a flocculator may be high enough to create flocs that are too small to be captured by the sedimentation tanks. We will determine if the sedimentation tank could capture these flocs in the analysis below.
 
 These results also suggest that the traditional emphasis on maintaining the same or lesser G value for the transport of flocculated water to the sedimentation tank may have missed the more important point of not exceeding a value of G that produces flocs that are too small to be captured by the sedimentation tank.
+</div>
 
 ### 6)
 
