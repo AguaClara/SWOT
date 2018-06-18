@@ -280,8 +280,7 @@ NTU has been defined as an approximate empirical relationship between the concen
 
 ### Look through `floc_model.py` within aide_design. You will be using it heavily in the following section
 Whenever possible, use variables defined within `floc_model.py` instead of redefining them. Relevant variables defined in `floc_model.py` include:
-<br>
-<br>
+
 1. `DIAM_FRACTAL` <br>
      Recall in class that Monroe mentioned that this is not actually a diameter, but rather a dimension. It has been incorrectly and misleadingly named in aide_design. It's value is simply 2.3, and it has no units.
 

@@ -5,7 +5,6 @@
 ```python
 from aide_design.play import*
 from aide_design import floc_model as floc
-from pytexit import py2tex
 
 #Below are the items that were imported by the code above so that you know what abbreviations to use in your code.
 
@@ -39,8 +38,6 @@ For each step in the solution define a variable with a name that is easily under
 
 Use numpy for ceil, floor, sin, and pi.
 
-<br>
-<br>
 The following cell has constants defined for you to use in designing your sedimentation tank. Read through and run it so you know what variables have been defined for you.
 
 
@@ -137,41 +134,15 @@ print('The width of sed tank diffuser is',W_diffuser.to(u.cm))
 
     The width of sed tank diffuser is 0.3175 centimeter
 
-
-## Py2tex
-Show your work for question 3 using pytexit's py2tex. You will need to [install pytextit](https://confluence.cornell.edu/display/cee4540/Installing+Pytexit) if you have not done that yet.  
-1. Pytexit is a python package which contains Py2tex and:
-    1. Allows you to write LaTeX formulas directly from the Python expression.
-    1. Checks Python formulas for correctness: once printed, LaTeX is much more readable than a multiline Python expression.
-<br>
-<br>
-1. **Note:** Py2tex does not handle references from aide_design files well (ex. pc.(), floc.()) but will handle greek letters,numpy (ex. np.pi, np.sin), and user defined variables and functions.
-    1. Simply enter your equation to py2tex within ' apostrophes '.
-    1. Because py2tex has difficulty with user defined file references, **`py2tex('pc.flow_pipe')` is not okay, but `py2tex('flow_pipe')` is okay**
-<br>
-<br>
-1. Follow the example offered below.
-
-
 ```python
 Pi_Error = 0.1
 Headloss_DosingTube_Max = 20*(u.cm)
 K_Minor = 2
 
 Vel_Tube_Max = (((Pi_Error * 2 * Headloss_DosingTube_Max * g) / K_Minor)**(1/2)).to(u.meter/u.s)
-py2tex('Vel_Tube_Max = (((Pi_Error * 2 * Headloss_DosingTube_Max * g) / K_Minor)**(1/2))')
 ```
 
 $$Vel_{Tube,Max}=\left(\frac{2\,\Pi_{Error}\,Headloss_{DosingTube,Max}\,g}{K_{Minor}}\right)^{\frac{1}{2}}$$
-
-
-$$Vel_{Tube,Max}=\left(\frac{2\,\Pi_{Error}\,Headloss_{DosingTube,Max}\,g}{K_{Minor}}\right)^{\frac{1}{2}}$$
-
-
-
-
-
-    '$$Vel_{Tube,Max}=\\left(\\frac{2\\,\\Pi_{Error}\\,Headloss_{DosingTube,Max}\\,g}{K_{Minor}}\\right)^{\\frac{1}{2}}$$'
 
 
 
@@ -179,7 +150,7 @@ $$Vel_{Tube,Max}=\left(\frac{2\,\Pi_{Error}\,Headloss_{DosingTube,Max}\,g}{K_{Mi
 
 The PVC pipe that forms the diffusers changes in shape and wall thickness during the molding process. The inner width of the rectangle is created by forcing the pipe over a rectangular wedge that is the thickness you calculated above. During the molding process, PVC pipe wall cross-sectional area is conserved. The pipe wall is stretched in total length approximately 20%. Another way to think about this is that the thickness of the wall is reduced by a factor of 1/1.2 because the mass of PVC is conserved and the density is unchanged. Thus, volume and cross-sectional area are conserved.  
 
-* Start by drawing a picture of what is happening to the deformation of the pipe as it is converted from the circular pipe to the rectangular diffuer slot (assume that the slot is a rectangle with perfectly square corners). You do not need to submit your sketches for this design challenge.
+* Start by drawing a picture of what is happening to the deformation of the pipe as it is converted from the circular pipe to the rectangular diffuser slot (assume that the slot is a rectangle with perfectly square corners). You do not need to submit your sketches for this design challenge.
     * Draw the initial circular pipe. Label the diagram with the appropriate variables for inner diameter, outer diameter, and wall thickness.
     * Draw the final rectangular diffuser slot. Label the diagram with the appropriate variables for length, width, and wall thickness.
 
@@ -209,20 +180,13 @@ ND_sed_diffuser = 1 * u.inch
 
 ```python
 #The cross-sectional area of the pipe wall is:
-area_PVC = (np.pi/4) * ((pipe.OD(ND_sed_diffuser)**2)
-                          - (pipe.ID_SDR(ND_sed_diffuser,SDR)**2)
-                          )
+area_PVC = (np.pi/4) * ((pipe.OD(ND_sed_diffuser)**2)  -(pipe.ID_SDR(ND_sed_diffuser,SDR)**2))
 
 #The thickness of the wall is reduced by the stretch factor:
-thickness_sed_diffuser_wall = ((pipe.OD(ND_sed_diffuser)
-                               - pipe.ID_SDR(ND_sed_diffuser,SDR))
-                              / (2 * Pi_PVC_stretch)
-                              )
+thickness_sed_diffuser_wall = ((pipe.OD(ND_sed_diffuser)   - pipe.ID_SDR(ND_sed_diffuser,SDR))/ (2 * Pi_PVC_stretch)  )
 
 # From geometry of the rectangular diffuser opening (assuming perfectly square corners) we have:
-B_diffuser = ((area_PVC / (2 * thickness_sed_diffuser_wall))
-                            - W_diffuser
-                            ).to(u.cm)
+B_diffuser = ((area_PVC / (2 * thickness_sed_diffuser_wall))  - W_diffuser  ).to(u.cm)
 
 print("Sed diffuser outer length:", B_diffuser)
 
@@ -306,8 +270,7 @@ W_jet_reversed = W_sed * V_sed_up / V_diffuser
 
 #Calculate the maximum energy dissipation rate
 
-EDR_inlet_jet = (((Pi_jet_plane * V_diffuser)**3)
-                        / W_jet_reversed).to(u.mW / u.kg)
+EDR_inlet_jet = (((Pi_jet_plane * V_diffuser)**3)  / W_jet_reversed).to(u.mW / u.kg)
 
 
 print('The energy dissipation rate for inlet jet is', EDR_inlet_jet)
@@ -389,14 +352,12 @@ Exit losses from the diffusers dominate the head loss because the velocity in th
 #h_jet = V_jet^2/(2*g)
 
 def Vel_sed_manifold_max(Pi_diffuser_flow, V_diffuser):
-    return (V_diffuser * np.sqrt(2 * ((1-(Pi_diffuser_flow**2))
-                                          / ((Pi_diffuser_flow**2)+1)
-                                          )
-                                     ))
+    return (V_diffuser * np.sqrt(2 * ((1-(Pi_diffuser_flow**2))  / ((Pi_diffuser_flow**2)+1)
+  )))
 ```
 
 ### 11:
-Head loss in the sedimentation tank is impacted by multiple forms of head loss, inlcuding head loss through the effluent launder and diffusers. Head loss through the effluent launder is about 4 cm. You found head loss through the diffusers in Problem 9.  
+Head loss in the sedimentation tank is impacted by multiple forms of head loss, including head loss through the effluent launder and diffusers. Head loss through the effluent launder is about 4 cm. You found head loss through the diffusers in Problem 9.  
 * Which form of head loss (effluent launder or diffuser) is in the parallel path, ${hl}_{ParallelPath}$?
 
 Use the function that you wrote for Problem 10 to calculate the maximum velocity in the inlet manifold of the sedimentation tank.
@@ -443,10 +404,6 @@ The maximum sed tank flow rate is currently set by the constraint of using a sin
 
 ```python
 L_sed_upflow_max = 5.8 * u.m
-```
-
-
-```python
 flow_sed_max = (L_sed_upflow_max * V_sed_up * W_sed).to(u.L / u.s)
 print("The maximum flow rate in one sedimentation tank is",flow_sed_max)
 ```
@@ -513,7 +470,7 @@ print(L_sed_flocblanket_total)
 
 ### 17:
 
-How many sedimentation tanks are required to treat the total plant flow? Calculate this using the the total plant flow rate and the maximum sed tank flow rate. The plant flow rate is the basis of design and the maximum sed tank flow rate is based on the manifold diameter.
+How many sedimentation tanks are required to treat the total plant flow? Calculate this using the total plant flow rate and the maximum sed tank flow rate. The plant flow rate is the basis of design and the maximum sed tank flow rate is based on the manifold diameter.
 
 Your answer should be an integer value.
 
@@ -567,9 +524,9 @@ What is the required length of the plate settlers? Do not neglect the thickness 
 
 ```python
 L_sed_plate = ((s_sed_plate * ((V_sed_up/V_sed_capture)-1)
-                  + thickness_sed_plate * (V_sed_up/V_sed_capture))
-                 / (np.sin(angle_sed_plate) * np.cos(angle_sed_plate))
-                 ).to(u.m)
++ thickness_sed_plate * (V_sed_up/V_sed_capture))
+   / (np.sin(angle_sed_plate) * np.cos(angle_sed_plate))
+  ).to(u.m)
 
 print('The minimum length of the plate settlers is',L_sed_plate)
 ```
@@ -583,8 +540,7 @@ What is the horizontal spacing (center to center) of the plate settlers?
 
 
 ```python
-B_sed_plate_horizontal = ((thickness_sed_plate + s_sed_plate)
-                                    / np.sin(angle_sed_plate)).to(u.cm)
+B_sed_plate_horizontal = ((thickness_sed_plate + s_sed_plate)  / np.sin(angle_sed_plate)).to(u.cm)
 
 print('The horizontal center to center spacing of the plate settlers is',B_sed_plate_horizontal)
 ```

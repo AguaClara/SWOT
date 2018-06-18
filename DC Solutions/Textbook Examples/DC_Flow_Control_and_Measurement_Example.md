@@ -241,7 +241,6 @@ The flow rates seem to exceed the target flow by a tiny factor over the majority
 The LFOM isn't accurate for the first couple of rows.
 
 
-
 ## Laminar Flow Based Flow Controller
 
 You will design (by completing the following questions) a laminar flow controller for chlorine feed for a plant design flow rate of 50 L/s.

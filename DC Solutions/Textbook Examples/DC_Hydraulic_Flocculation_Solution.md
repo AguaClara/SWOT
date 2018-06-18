@@ -157,7 +157,7 @@ plt.show()
 ### 4)
 The following floc model equation creates the link between $\bar Gt$ and flocculator performance.
 
-$pC^* = \frac{3}{2}\log \left( {\frac{2}{3}\pi k\frac{{d_{Clay}^2}}{{\Lambda _0^2}}\bar Gt\alpha  + 1} \right) $
+$pC^* = \frac{3}{2}\log \left( {\frac{2}{3}\pi k\frac{{d_{Clay}^2}}{{\Lambda_0^2}}\bar Gt\alpha  + 1} \right) $
 
 What does the floc model and the graph tell you about flocculator performance and flocculator design? Explain why performance varies with temperature.
 
@@ -215,7 +215,7 @@ print ('The total width of the flocculator channels is is', width_floc_total(flo
 ### 8)
 Calculate the minimum channel width required to achieve H/S>3. The channel can be wider than this, but this is the absolute minimum width for a channel. The minimum width occurs when there is only one expansion per baffle and thus the distance between expansions is the same as the depth of water at the end of the flocculator.
 
-${W_{Min}} = \frac{{\Pi _{HS}}Q}{H_e}{\left( {\frac{K_e}{2{H_e}\nu {\bar G}^2}} \right)^{\frac{1}{3}}}$
+${W_{Min}} = \frac{{\Pi_{HS}}Q}{H_e}{\left( {\frac{K_e}{2{H_e}\nu {\bar G}^2}} \right)^{\frac{1}{3}}}$
 
 
 ```python
@@ -232,7 +232,7 @@ print('The minimum channel width is', width_floc_min_est(flow_plant, headloss_fl
 
 
 ### 9)
-What is the minimum channel width given the additional constraint that it be constructable? Use the max function to find the true minimum channel width given both constraints.
+What is the minimum channel width given the additional constraint that it be constructible? Use the max function to find the true minimum channel width given both constraints.
 
 
 ```python
