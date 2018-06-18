@@ -65,11 +65,11 @@ Please use this table to control/command find the sections you are looking for.
 ## Introduction to Hydraulic Flocculation
 The reason that flocculation is widely used in water treatment is because of sedimentation. Sedimentation is the process that actually removes particles like clay, dirt, organic matter, and bacteria from water. As you learned in the previous chapter on Rapid Mix _**(DOUBLE CHECK THAT THIS IS IN RAPID MIX ONCE RAPID MIX IS WRITTEN)**_, sedimentation is the process of particles 'falling' out of water due to density stratification, and its governing equation is:
 
-$$\bar v_t = \frac{d^2 g}{18 \nu} \frac{\rho_p - \rho_w}{\rho_w}$$  
+$$\bar v_t = \frac{D_{particle}^2 g}{18 \nu} \frac{\rho_p - \rho_w}{\rho_w}$$  
 
 Such that:  
 $\bar v_t$ = terminal velocity of a particle, its downwards speed if it were in quiescent (still) water  
-$d$ = particle diameter  
+$D_{particle}$ = particle diameter  
 $\rho$ = density. The $p$ subscript stands for particle, while $w$ stands for water
 
 To increase $\bar v_t$ and make sedimentation more efficient, floccuation aims to increase the diameter $d$ of the particles. This is done by applying a coagulant to the dirty water and helping the coagulant to stick evenly to all particles during Rapid Mix _**(DOUBLE CHECK THAT THIS IS IN RAPID MIX ONCE RAPID MIX IS WRITTEN)**_. Being covered in coagulant allows the particles to collide, merge, and grow bigger during flocculation.
@@ -154,19 +154,19 @@ Since baffles are the source of head loss via minor losses, we need to find the 
 <img src="https://github.com/AguaClara/CEE4540_Master/blob/master/AguaClara%20Water%20Treatment%20Plant%20Design/Flocculation/Images/CFD_vc_baffle.jpg?raw=true" width=60>
 </center>
 
-We can therefore state with reasonable accuracy that, when most contracted, the flow around a baffle goes through 38.4% of the area it does when expanded, or $A_{contracted} = \Pi_{vc, \, baffle} A_{expanded}$. Through the [third form of the minor loss equation](https://github.com/AguaClara/CEE4540_Master/blob/master/AguaClara%20Water%20Treatment%20Plant%20Design/Fluids%20Review/Fluids_Review_Design.md#minor-losses), $h_e = K_e \frac{\bar v_{out}^2}{2g}$ and its definition of the minor loss coefficient, $K_e = \left( \frac{A_{out}}{A_{in}} -1 \right)^2$, we can determine a $K_e$ for flow around a single baffle:
+We can therefore state with reasonable accuracy that, when most contracted, the flow around a baffle goes through 38.4% of the area it does when expanded, or $A_{contracted} = \Pi_{vc, \, baffle} A_{expanded}$. Through the [third form of the minor loss equation](https://github.com/AguaClara/CEE4540_Master/blob/master/AguaClara%20Water%20Treatment%20Plant%20Design/Fluids%20Review/Fluids_Review_Design.md#minor-losses), $h_e = K \frac{\bar v_{out}^2}{2g}$ and its definition of the minor loss coefficient, $K = \left( \frac{A_{out}}{A_{in}} -1 \right)^2$, we can determine a $K$ for flow around a single baffle:
 
-$$K_{e, \, baffle} = \left( \frac{A_{expanded}}{A_{contracted}} -1 \right)^2$$
+$$K_{baffle} = \left( \frac{A_{expanded}}{A_{contracted}} -1 \right)^2$$
 
-$$K_{e, \, baffle} = \left( \frac{\rlap{\Big/} A_{expanded}}{\Pi_{vc, \, baffle} \rlap{\Big/} A_{expanded}} -1 \right)^2$$
+$$K_{baffle} = \left( \frac{\rlap{\Big/} A_{expanded}}{\Pi_{vc, \, baffle} \rlap{\Big/} A_{expanded}} -1 \right)^2$$
 
-$$K_{e, \, baffle} = \left( \frac{1}{0.384} -1 \right)^2$$
+$$K_{baffle} = \left( \frac{1}{0.384} -1 \right)^2$$
 
 $$\color{red}{
-K_{e, \, baffle} = 2.56
+K_{baffle} = 2.56
 }$$
 
-This $K_{e, \, baffle}$ has been used to design many flocculators in AguaClara plants. However, its value has not yet been rigorously tested for AguaClara plants the field. Therefore it might actually deviate from $2.56$. Research and testing the $K_e$ of a baffle in an AguaClara plant is ongoing, but for now the designs made under the assumption that $\color{red}{K_{e, \, baffle} = 2.56}$ are functioning very well in AguaClara plants. Although research has been done by many academics on the minor loss coefficient, including [this paper by Haarhoff in 1998](http://aqua.iwaponline.com/content/47/3/142 "    DOI: 10.2166/aqua.1998.20"), the $K_{e, \, baffle}$ values found are context dependent and empirically based. For AguaClara flocculator parameters, literature suggest a $K_{e, \, baffle}$ value between $2.5$ and $4$.
+This $K_{baffle}$ has been used to design many flocculators in AguaClara plants. However, its value has not yet been rigorously tested for AguaClara plants the field. Therefore it might actually deviate from $2.56$. Research and testing the $K$ of a baffle in an AguaClara plant is ongoing, but for now the designs made under the assumption that $\color{red}{K_{baffle} = 2.56}$ are functioning very well in AguaClara plants. Although research has been done by many academics on the minor loss coefficient, including [this paper by Haarhoff in 1998](http://aqua.iwaponline.com/content/47/3/142 "    DOI: 10.2166/aqua.1998.20"), the $K_{baffle}$ values found are context dependent and empirically based. For AguaClara flocculator parameters, literature suggest a $K_{baffle}$ value between $2.5$ and $4$.
 
 ### Flocculator Efficiency
 When designing an effective and efficient flocculator, there are two main problems that we seek to avoid:  
@@ -188,7 +188,7 @@ Therefore, by making our $\Pi_{\bar G}^{G_{Max}}$ as small as possible, we can b
 
 We define and optimize a performance metric:
 
-$$\frac{H_e}{S} = \Pi_{HS}$$
+$$\frac{H_e}{S} = \Pi_{H_eS}$$
 
 Where $H_e$ is the distance between flow expansions in the flocculator and $S$ is the spacing between baffles. For now, $H_e$ is approximated as the height of water in the flocculator.
 
@@ -204,9 +204,9 @@ $$\frac{H_e}{10} = S - (0.384 S)$$
 $$\frac{H_e}{10} = 0.616 S$$
 $$H_e = 6.16S$$
 $$\frac{H_e}{S} = 6.16$$
-$$\Pi_{HS_{Max}} = \frac{H_e}{S} = 6.16 \approx 6$$
+$$\Pi_{H_eS_{Max}} = \frac{H_e}{S} = 6.16 \approx 6$$
 
-This is the highest allowable $\Pi_{HS}$ that we can design while ensuring that there is no dead space in the flocculator.
+This is the highest allowable $\Pi_{H_eS}$ that we can design while ensuring that there is no dead space in the flocculator.
 
 <center><img src="https://github.com/AguaClara/CEE4540_Master/blob/master/AguaClara%20Water%20Treatment%20Plant%20Design/Flocculation/Images/CFD_baffle_image.jpg?raw=true" width=600></center>
 
@@ -215,30 +215,30 @@ This is the highest allowable $\Pi_{HS}$ that we can design while ensuring that 
 </br>
 </br>
 
-In order to have a robust design process for a baffle module, we need to have some flexibility in the $\Pi_{HS} = \frac{H_e}{S}$ ratio. Since we found $\Pi_{HS_{Max}}$ previously, we must now find the lowest functional $\frac{H_e}{S}$ ratio, $\Pi_{HS_{Min}}$.
+In order to have a robust design process for a baffle module, we need to have some flexibility in the $\Pi_{H_eS} = \frac{H_e}{S}$ ratio. Since we found $\Pi_{H_eS_{Max}}$ previously, we must now find the lowest functional $\frac{H_e}{S}$ ratio, $\Pi_{H_eS_{Min}}$.
 
-AguaClara uses a fairly straightforward way of setting $\Pi_{HS_{Min}}$. It is based on the distance between the water level and the bottom baffle (which is the same distance between the flocculator floor and a top baffle). This distance is referred to as the slot width [(Haarhoff 1998)](http://aqua.iwaponline.com/content/47/3/142 "    DOI: 10.2166/aqua.1998.20") and is defined by the slot width ratio, which describes the slot width as a function of baffle spacing $S$. Slot width is shown in the following image:
+AguaClara uses a fairly straightforward way of setting $\Pi_{H_eS_{Min}}$. It is based on the distance between the water level and the bottom baffle (which is the same distance between the flocculator floor and a top baffle). This distance is referred to as the slot width [(Haarhoff 1998)](http://aqua.iwaponline.com/content/47/3/142 "    DOI: 10.2166/aqua.1998.20") and is defined by the slot width ratio, which describes the slot width as a function of baffle spacing $S$. Slot width is shown in the following image:
 
 <center><img src="https://github.com/AguaClara/CEE4540_Master/blob/master/AguaClara%20Water%20Treatment%20Plant%20Design/Flocculation/Images/Slot_width_description.jpg?raw=true" width=500></center>
 
 AguaClara uses a slot width ratio of 1 for its flocculators. This number has been the topic of much hydraulic flocculation research, and values between 1 and 1.5 are generally accepted for hydraulic flocculators. See the following paper and book respectively for more data on slot width ratios and other hydraulic flocculator parameters: [Haarhoff 1998](http://aqua.iwaponline.com/content/47/3/142 "    DOI: 10.2166/aqua.1998.20"), [Shulz and Okun 1984](https://isbnsearch.org/isbn/0471802611 "ISBN: 0471802611"). We base our slot width ratio of 1 on research done by [Haarhoff and van der Walt in 2001](http://aqua.iwaponline.com/content/50/3/149 "DOI: 10.2166/aqua.2001.0014") on optimizing hydraulic flocculator parameters to maximize flocculator efficiency.
 
-The minimum $\Pi_{HS}$ allowable depends on the slot with ratio. If $\Pi_{HS}$ is less than twice the slot width ratio, the water would flow straight through the flocculator without having to bend around the baffles. This means that the flocculator would not be generating almost any head loss, and the top and bottom of the flocculator will largely be dead space. See the following image for an example:  
+The minimum $\Pi_{H_eS}$ allowable depends on the slot with ratio. If $\Pi_{H_eS}$ is less than twice the slot width ratio, the water would flow straight through the flocculator without having to bend around the baffles. This means that the flocculator would not be generating almost any head loss, and the top and bottom of the flocculator will largely be dead space. See the following image for an example:  
 
 <center><img src="https://github.com/AguaClara/CEE4540_Master/blob/master/AguaClara%20Water%20Treatment%20Plant%20Design/Flocculation/Images/HeS_ratio_min.jpg?raw=true" width=800></center>
 
-Thus, $\Pi_{HS_{Min}}$ should be at leasts twice the slot width ratio, $\Pi_{HS_{Min}} = 2$. <span style="color:red">Historically, AguaClara plants have been designed using $\Pi_{HS_{Min}} = 3$</span>. This adds a safety factor of sorts, ensuring that the flow does not short-circuit through the flocculator and also allowing more space for the flow to expand after each contraction.
+Thus, $\Pi_{H_eS_{Min}}$ should be at leasts twice the slot width ratio, $\Pi_{H_eS_{Min}} = 2$. <span style="color:red">Historically, AguaClara plants have been designed using $\Pi_{H_eS_{Min}} = 3$</span>. This adds a safety factor of sorts, ensuring that the flow does not short-circuit through the flocculator and also allowing more space for the flow to expand after each contraction.
 
-$$\Pi_{HS_{Min}} = \frac{H_e}{S} = 3$$
+$$\Pi_{H_eS_{Min}} = \frac{H_e}{S} = 3$$
 
-Finally, we describe a range of $\Pi_{HS}$ that we can use to design an AguaClara flocculator:
+Finally, we describe a range of $\Pi_{H_eS}$ that we can use to design an AguaClara flocculator:
 
-$$ 3 < \Pi_{HS} < 6$$
+$$ 3 < \Pi_{H_eS} < 6$$
 
 #### **Obstacles**
-Knowing that efficient flocculators require an $\frac{H_e}{S}$ ratio that lies between 3 and 6, we need to understand how that impacts the flocculator design. Keeping $\frac{H_e}{S}$ between two specific values limits the options for baffle spacing and quantity, due to the flocculator having certain size constraints before beginning the design of the baffles. This limitation places an upper limit on the amount of head loss that a baffled flocculator can generate, since the number of baffles is limited by space and baffles are what cause head loss. This is unfortunate, it means that baffled flocculators under certain size specifications can't be designed to generate certain values of $\bar \varepsilon$ and $\bar G$ _while remaining efficient and maintaining_ $3 < \Pi_{HS} < 6$. This problem only arises for low flow plants, usually below $Q_{Plant} = 20 {\rm \frac{L}{s}}$
+Knowing that efficient flocculators require an $\frac{H_e}{S}$ ratio that lies between 3 and 6, we need to understand how that impacts the flocculator design. Keeping $\frac{H_e}{S}$ between two specific values limits the options for baffle spacing and quantity, due to the flocculator having certain size constraints before beginning the design of the baffles. This limitation places an upper limit on the amount of head loss that a baffled flocculator can generate, since the number of baffles is limited by space and baffles are what cause head loss. This is unfortunate, it means that baffled flocculators under certain size specifications can't be designed to generate certain values of $\bar \varepsilon$ and $\bar G$ _while remaining efficient and maintaining_ $3 < \Pi_{H_eS} < 6$. This problem only arises for low flow plants, usually below $Q_{Plant} = 20 {\rm \frac{L}{s}}$
 
-To get around this problem, AguaClara included 'obstacles,' or half-pipes to contract the flow after the flow expands around one baffle and before it reaches the next baffle. The purpose of these obstacles is to provide extra head loss in between baffles. They also generate head loss via minor losses, _and one obstacle is designed to have the same $K_e$ as one baffle_. Introducing obstacles slightly alters how we think about $H_e$. In a flocculator where there are just baffles and no obstacles, then $H_e = H$, since the height of water in the flocculator is equal to the distance between expansions. When obstacles are added, however, then $H_e = \frac{H}{1 + n_{obstacles}}$, where $n_{obstacles}$ is the number of obstacles between two baffles.
+To get around this problem, AguaClara included 'obstacles,' or half-pipes to contract the flow after the flow expands around one baffle and before it reaches the next baffle. The purpose of these obstacles is to provide extra head loss in between baffles. They also generate head loss via minor losses, _and one obstacle is designed to have the same $K$ as one baffle_. Introducing obstacles slightly alters how we think about $H_e$. In a flocculator where there are just baffles and no obstacles, then $H_e = H$, since the height of water in the flocculator is equal to the distance between expansions. When obstacles are added, however, then $H_e = \frac{H}{1 + n_{obstacles}}$, where $n_{obstacles}$ is the number of obstacles between two baffles.
 
 **Baffle space** is the term we use for the space between two baffles. The number of flow expansions per baffle space is $n_{expansions} = 1 + n_{obstacles}$. The $1$ is because the baffle itself causes a flow expansion.
 
@@ -251,7 +251,7 @@ These obstacles serve as 'pseudo-baffles'. They allow for $\frac{H}{S}$ to excee
 ## AguaClara Design of Hydraulic, Vertical Flow Flocculators  
 AguaClara's approach to flocculator design is the same as it is for any other unit process. First, critical design criteria, called inputs, are established. These criteria represent the priorities that the rest of the design will be based around. Once these parameters are established, then the other parameters of the design, which are dependent on the inputs, are calculated based on certain constraints.
 
-[Take the CDC as an example of this design process](https://github.com/AguaClara/CEE4540_Master/blob/master/AguaClara%20Water%20Treatment%20Plant%20Design/Flow%20Control%20and%20Measurement/FCM_Derivation_designing_the_cdc.md#cdc-design-equation-derivation "CDC design derivation document"); its inputs are $h_{L_{Max}}$, $\sum K_e$, $\Pi_{Error}$, and the discrete dosing tube diameters $D$ that are available at hardware stores or pipe suppliers. Its dependent variables include the number and length of the dosing tubes and the flow through the CDC system.
+[Take the CDC as an example of this design process](https://github.com/AguaClara/CEE4540_Master/blob/master/AguaClara%20Water%20Treatment%20Plant%20Design/Flow%20Control%20and%20Measurement/FCM_Derivation_designing_the_cdc.md#cdc-design-equation-derivation "CDC design derivation document"); its inputs are $h_{L_{Max}}$, $\sum K$, $\Pi_{Error}$, and the discrete dosing tube diameters $D$ that are available at hardware stores or pipe suppliers. Its dependent variables include the number and length of the dosing tubes and the flow through the CDC system.
 
 The flocculator is more complex to design than the CDC, as it has more details and parameters and the equations for those details and parameters are very interdependent. Therefore, there are many ways to design an AguaClara flocculator, and many different sets of critical design criteria to begin with. Enumerated below is the current AguaClara approach.
 
@@ -333,21 +333,21 @@ $$\color{purple}{
 #### **Width and Number of Channels**
 The width of a single flocculator channel must meet the following conditions:
 - Maintain $\bar G$ at the value found in the inputs section
-- Allow for $3 < \frac{H_e}{S} < 6$. Recall that $\frac{H_e}{S} =  \Pi_{HS}$
+- Allow for $3 < \frac{H_e}{S} < 6$. Recall that $\frac{H_e}{S} =  \Pi_{H_eS}$
 - Allow for a human to be able to fit into a flocculator channel
 
 The first two conditions are wrapped up into the following equation, [which is derived here](https://github.com/AguaClara/CEE4540_Master/blob/master/AguaClara%20Water%20Treatment%20Plant%20Design/Flocculation/Floc_Derivation_flocculator_design_equations.md):
 
-$$W_{Min, \, \Pi_{HS}} = \frac{\Pi_{HS}Q}{H_e}\left( \frac{K_e}{2 H_e \nu \bar G^2} \right)^\frac{1}{3}$$
+$$W_{Min, \, \Pi_{H_eS}} = \frac{\Pi_{H_eS}Q}{H_e}\left( \frac{K}{2 H_e \nu \bar G^2} \right)^\frac{1}{3}$$
 
-This equation represents the absolute smallest width of a flocculator channel if we consider the lowest value of $\Pi_{HS}$ and the highest possible value of $H_e$:  
+This equation represents the absolute smallest width of a flocculator channel if we consider the lowest value of $\Pi_{H_eS}$ and the highest possible value of $H_e$:  
 
 $H_e = H_{e_{Max}} = H = 2 \, {\rm m}$, this implies that there are no obstacles between baffles  
-$\Pi_{HS} = \Pi_{ {HS}_{Min} } = 3$
+$\Pi_{H_eS} = \Pi_{ {HS}_{Min} } = 3$
 
 Recall our other width constraint, $W_{Min, \, human} = 45 \, {\rm cm}$, which is based on our desire to have a human be able to fit into the channels. The governing constraint is the _larger_ value of $W_{Min}$:
 
-$$W_{Min} = {\rm max}(W_{Min, \, \Pi_{HS}}, \, W_{Min, \, human})$$
+$$W_{Min} = {\rm max}(W_{Min, \, \Pi_{H_eS}}, \, W_{Min, \, human})$$
 
 We can find the number of channels, $n_{channels}$ and their actual width in one last step, by finding the _total flocculator width_ if there were no channels and dividing that by the minimum flocculator width, $W_{Min}$, found above. The equation for total flocculator width is based on our target volume:
 
@@ -373,9 +373,9 @@ Now that the physical dimensions of the flocculator have been defined, the baffl
 #### **Height Between Expansions $H_e$ and Number of Obstacles per Baffle Space $n_{obstacles}$**
 We have a range of possible $H_e$ values based on our window of $3 < \frac{H_e}{S} < 6$. However, we have a limitation and a preference which shape how we design $H_e$. Our limitation is that there can only be an integer number of obstacles. Our preference is to have as few obstacles as possible to make the baffle module as easy to fabricate as possible. Therefore, we want $H_e$ to be closer to $6$ than it is to $3$; we are looking for $H_{e_{Max}}$.
 
-We calculate $H_{e_{Max}}$ based on the physical flocculator dimensions. The equation for $H_e$ is obtained by rearranging one of the equations for minimum channel width found above, $W_{Min, \, \Pi_{HS}} = \frac{\Pi_{HS}Q}{H_e}\left( \frac{K_e}{2 H_e \nu \bar G^2} \right)^\frac{1}{3}$. Because we have already design the channel width, we substitute $\color{purple}{W_{channel}}$ for $W_{Min, \, \Pi_{HS}}$. Since we are looking for $H_{e_{Max}}$, we also substitute $\Pi_{{HS}_{Max}}$ for $\Pi_{HS}$. The result is:
+We calculate $H_{e_{Max}}$ based on the physical flocculator dimensions. The equation for $H_e$ is obtained by rearranging one of the equations for minimum channel width found above, $W_{Min, \, \Pi_{H_eS}} = \frac{\Pi_{H_eS}Q}{H_e}\left( \frac{K}{2 H_e \nu \bar G^2} \right)^\frac{1}{3}$. Because we have already design the channel width, we substitute $\color{purple}{W_{channel}}$ for $W_{Min, \, \Pi_{H_eS}}$. Since we are looking for $H_{e_{Max}}$, we also substitute $\Pi_{{HS}_{Max}}$ for $\Pi_{H_eS}$. The result is:
 
-$$H_{e_{Max}} = \left[ \frac{K_e}{2 \nu \bar G^2} \left( \frac{Q \Pi_{{HS}_{Max}}}{W_{channel}} \right)^3 \right]^\frac{1}{4}$$
+$$H_{e_{Max}} = \left[ \frac{K}{2 \nu \bar G^2} \left( \frac{Q \Pi_{{HS}_{Max}}}{W_{channel}} \right)^3 \right]^\frac{1}{4}$$
 
 Note that this is the _maximum_ distance between flow expansions, and does not account for the limitation that there must be an integer number of obstacles per baffle space. Thus, we need to find the _actual_ distance between flow expansions. To do this, we determine and round up the number of expansions per baffle space using the ceiling function:
 
@@ -394,10 +394,10 @@ $$\color{purple}{
   }$$
 
 #### **Baffle Spacing $S$**
-Finally, we can find the space between baffles, $S$. The equation for $S$ is taken from an intermediate step [in the $W_{Min, \, \Pi_{HS}}$ derivation](https://github.com/AguaClara/CEE4540_Master/blob/master/AguaClara%20Water%20Treatment%20Plant%20Design/Flocculation/Floc_Derivation_flocculator_design_equations.md), $W = \frac{Q}{S}\left( \frac{K_e}{2 H_e \nu \bar G^2} \right)^\frac{1}{3}$. Rearranging for $S$, we get:
+Finally, we can find the space between baffles, $S$. The equation for $S$ is taken from an intermediate step [in the $W_{Min, \, \Pi_{H_eS}}$ derivation](https://github.com/AguaClara/CEE4540_Master/blob/master/AguaClara%20Water%20Treatment%20Plant%20Design/Flocculation/Floc_Derivation_flocculator_design_equations.md), $W = \frac{Q}{S}\left( \frac{K}{2 H_e \nu \bar G^2} \right)^\frac{1}{3}$. Rearranging for $S$, we get:
 
 $$\color{purple}{
-S = \left( \frac{K_e}{2 H_e \bar G^2 \nu } \right)^\frac{1}{3} \frac{Q}{W_{channel}}
+S = \left( \frac{K}{2 H_e \bar G^2 \nu } \right)^\frac{1}{3} \frac{Q}{W_{channel}}
 }$$
 
 Fortunately, we either know or have already design for all the parameters in this equation
@@ -420,9 +420,9 @@ We check $n_{spaces, \, actual}$ against the amount of baffle spaces that would 
 
 $$\bar G \theta_{1space} = \sqrt{ \frac{g h_{L_{1space}} \theta_{1space}}{\nu}}$$
 
-$$\bar G \theta_{1space} = \sqrt{ \left( n_{expansions} K_e \right) \frac{\bar v^2 \theta_{1space}}{2 \nu}}$$
+$$\bar G \theta_{1space} = \sqrt{ \left( n_{expansions} K \right) \frac{\bar v^2 \theta_{1space}}{2 \nu}}$$
 
-$$\bar G \theta_{1space} = \sqrt{ \left( n_{expansions} K_e \right) \frac{H Q}{2 \nu W S}}$$
+$$\bar G \theta_{1space} = \sqrt{ \left( n_{expansions} K \right) \frac{H Q}{2 \nu W S}}$$
 
 Now, we divide the total collision potential by the collision potential per baffle space:
 

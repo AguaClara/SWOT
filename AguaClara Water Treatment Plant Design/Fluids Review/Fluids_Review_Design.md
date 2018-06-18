@@ -278,11 +278,13 @@ $K_e^{'}, \,\, K_e$ = minor loss coefficients, dimensionless
 `pc.headloss_exp_general(Vel, KMinor)` Returns $h_e$. Can be either the second or third form due to user input of both velocity and minor loss coefficient. It is up to the user to use consistent $\bar v$ and $K_e$.    
 `pc.headloss_exp(FlowRate, Diam, KMinor)` Returns $h_e$. Uses third form, $K_e$.  
 
+**Note:** You will often see $K_e^{'}$ and $K_e$ used without the $e$ subscript, they will appear as $K^{'}$ and $K$.
+
 The $in$ and $out$ subscripts in each of the three forms refer to the diagram that was used for the derivation:
 
 <center><img src="https://github.com/AguaClara/CEE4540_Master/blob/master/AguaClara%20Water%20Treatment%20Plant%20Design/Fluids%20Review/Images/Minor_loss_pipe.jpg?raw=true" width=650></center>
 
-The second and third forms are the ones which you are probably most familiar with. The distinction between them, however, is critical. First, consider the magnitudes of $A_{in}$ and $A_{out}$. $A_{in}$ can never be larger than $A_{out}$, because the flow is expanding. When flow expands, the cross-sectional area it flows through must increase. As a result, both $\frac{A_{out}}{A_{in}} > 1$ and $\frac{A_{in}}{A_{out}} < 1$ must always be true. This means that $K_e^{'}$ can never be greater than 1, while $K_e$ technically has no upper limit.
+The second and third forms are the ones which you are probably most familiar with. The distinction between them, however, is critical. First, consider the magnitudes of $A_{in}$ and $A_{out}$. $A_{in}$ can never be larger than $A_{out}$, because the flow is expanding. When flow expands, the cross-sectional area it flows through must increase. As a result, both $\frac{A_{out}}{A_{in}} > 1$ and $\frac{A_{in}}{A_{out}} < 1$ must always be true. This means that $K^{'}$ can never be greater than 1, while $K$ technically has no upper limit.
 
 If you have taken CEE 3310, you have seen tables of minor loss coefficients [like this one](https://www.engineeringtoolbox.com/minor-loss-coefficients-pipes-d_626.html "engineeringtoolbox is the best site ever"), and they almost all have coefficients greater than 1. This implies that these tables use the third form of the minor loss equation as we have defined it, where the velocity is $\bar v_{out}$. There is a good reason for using the third form over the second one: $\bar v_{out}$ is far easier to determine than $\bar v_{in}$. Consider flow through a pipe elbow, as shown in the image below.
 
@@ -302,7 +304,7 @@ Consider the following image, which was taken from the Flow Control and Measurem
 
 In systems like this, where an elevation difference is causing the flow of water, the elevation difference is called the **driving head**. In the system above, the driving head is the elevation difference between the water level and the end of the tubing. Usually driving head is written as $\Delta z$ or $\Delta h$, though above it is labelled as $h_L$.
 
- This image is violating the energy equation by saying that the elevation difference between the water in the tank and the end of the tube is $h_L$. It implies that all of the driving head, $\Delta z$, is lost to head loss and therefore that no water is flowing out of the tubing, which is not true. Let's apply the energy equation between the two red points. Pressures are atmospheric at both points and the velocity of water at the top of tank is negligible.
+This image is violating the energy equation by saying that the elevation difference between the water in the tank and the end of the tube is $h_L$. It implies that all of the driving head, $\Delta z$, is lost to head loss and therefore that no water is flowing out of the tubing, which is not true. Let's apply the energy equation between the two red points. Pressures are atmospheric at both points and the velocity of water at the top of tank is negligible.
 
 $$\rlap{\Bigg/}\frac{p_{1}}{\rho g} + z_{1} + \rlap{\Bigg/}\frac{\bar v_{1}^2}{2g} = \rlap{\Bigg/}\frac{p_{2}}{\rho g} + z_{2} + \frac{\bar v_{2}^2}{2g} + h_L$$  
 
@@ -314,17 +316,17 @@ This contradicts the image above, which says that $\Delta z = h_L$ and neglects 
 
 $$\Delta z = \frac{\bar v_2^2}{2g} + h_e + h_f$$
 
-$$\Delta z = \frac{\bar v_2^2}{2g} + \left( \sum K_e \right) \frac{\bar v_2^2}{2g} + h_f$$
+$$\Delta z = \frac{\bar v_2^2}{2g} + \left( \sum K \right) \frac{\bar v_2^2}{2g} + h_f$$
 
-$$\Delta z = \left( 1 + \sum K_e \right) \frac{\bar v_2^2}{2g} + h_f$$
+$$\Delta z = \left( 1 + \sum K \right) \frac{\bar v_2^2}{2g} + h_f$$
 
-This last step incorporated the kinetic energy term of the energy equation, $\frac{\bar v_2^2}{2g}$, into the minor loss equation by saying that its $K_e$ is 1. From here, we reverse our steps to get $\Delta z = h_L$
+This last step incorporated the kinetic energy term of the energy equation, $\frac{\bar v_2^2}{2g}$, into the minor loss equation by saying that its $K$ is 1. From here, we reverse our steps to get $\Delta z = h_L$
 
 $$\Delta z = h_e + h_f$$
 
 $$\Delta z = h_L$$
 
-By applying the head loss trick, you are considering the entire flow of water out of a control volume as lost energy. This is just an algebraic trick, the only thing to remember when applying this trick is that $\sum K_e$ will always be at least 1, even if there are no 'real' minor losses in the system.
+By applying the head loss trick, you are considering the entire flow of water out of a control volume as lost energy. This is just an algebraic trick, the only thing to remember when applying this trick is that $\sum K$ will always be at least 1, even if there are no 'real' minor losses in the system.
 
 
 ## The Orifice Equation
@@ -391,7 +393,7 @@ $$\frac{p_{1}}{\rho g} + z_{1} + \frac{\bar v_{1}^2}{2g} = \frac{p_{2}}{\rho g} 
 
 Darcy-Weisbach equation:  
 $$h_{\rm{f}} = {\rm{f}} \frac{L}{D} \frac{\bar v^2}{2g}$$
-For water treatment plant design we tend to use plant flow rate, Q, as our master variable and thus we have.
+For water treatment plant design we tend to use plant flow rate, $Q$, as our master variable and thus we have.
 $$h_{\rm{f}} = {\rm{f}} \frac{8}{g \pi^2} \frac{LQ^2}{D^5}$$
 
 $\rm{f}$ for laminar flow:
@@ -405,16 +407,16 @@ $${\rm{f}} = \frac{0.25} {\left[ \log \left( \frac{\epsilon }{3.7D} + \frac{5.74
 Hagen-Poiseuille equation for laminar flow:
 $$h_{\rm{f}} = \frac{32\mu L \bar v}{\rho gD^2} = \frac{128\mu Q}{\rho g\pi D^4}$$
 
-3. **Minor losses:** Defined as the energy loss due to the generation of turbulent eddies when flow expands. Once more: minor losses are caused by flow expansions. There are three forms of the minor loss equation, two of which look the same but use different coefficients ($K_e^{'}$ vs $K_e$) and velocities ($\bar v_{in}$ vs $\bar v_{out}$). _Make sure the coefficient you select is consistent with the velocity you use_.
+3. **Minor losses:** Defined as the energy loss due to the generation of turbulent eddies when flow expands. Once more: minor losses are caused by flow expansions. There are three forms of the minor loss equation, two of which look the same but use different coefficients ($K^{'}$ vs $K$) and velocities ($\bar v_{in}$ vs $\bar v_{out}$). _Make sure the coefficient you select is consistent with the velocity you use_.
 
 First form:
 $$h_e = \frac{\left( \bar v_{in}  - \bar v_{out} \right)^2}{2g}$$
 
 Second form:
-$$h_e = \frac{\bar v_{in}^2}{2g}{\left( {1 - \frac{A_{in}}{A_{out}}} \right)^2} = \,\,\, \frac{\bar v_{in}^2}{2g} \mathbf{K_e^{'}}$$
+$$h_e = \frac{\bar v_{in}^2}{2g}{\left( {1 - \frac{A_{in}}{A_{out}}} \right)^2} = \,\,\, \frac{\bar v_{in}^2}{2g} \mathbf{K^{'}}$$
 
 Third and most common form:
-$$h_e = \frac{\bar v_{out}^2}{2g}{\left( {\frac{A_{out}}{A_{in}}} -1 \right)^2} = \,\,\,\, \frac{\bar v_{out}^2}{2g} \mathbf{K_e}$$
+$$h_e = \frac{\bar v_{out}^2}{2g}{\left( {\frac{A_{out}}{A_{in}}} -1 \right)^2} = \,\,\,\, \frac{\bar v_{out}^2}{2g} \mathbf{K}$$
 
 
 4. **Major and minor losses vary with flow:** While it is generally important to know how increasing or decreasing flow will affect head loss, it is even more important for this class to understand exactly how flow will affect head loss. As the table below shows, head loss will always be proportional to flow squared during turbulent flow. During laminar flow, however, the exponent on $Q$ will be between 1 and 2 depending on the proportion of major to minor losses.
@@ -425,7 +427,7 @@ $$h_e = \frac{\bar v_{out}^2}{2g}{\left( {\frac{A_{out}}{A_{in}}} -1 \right)^2} 
 |       Turbulent        |    $Q^2$     |    $Q^2$     |
 
 
-5. The **head loss trick**, also called the control volume trick, can be used to incorporate the 'kinetic energy out' term of the energy equation, $\frac{\bar v_2^2}{2g}$, into head loss as a minor loss with $K_e = 1$, so the minor loss equation becomes $\left( 1 + \sum K_e \right) \frac{\bar v^2}{2g}$. This is used to be able to say that $\Delta z = h_L$ and makes many equation simplifications possible in the future.
+5. The **head loss trick**, also called the control volume trick, can be used to incorporate the 'kinetic energy out' term of the energy equation, $\frac{\bar v_2^2}{2g}$, into head loss as a minor loss with $K = 1$, so the minor loss equation becomes $\left( 1 + \sum K \right) \frac{\bar v^2}{2g}$. This is used to be able to say that $\Delta z = h_L$ and makes many equation simplifications possible in the future.
 
 6. **Orifice equation and vena contractas:** The orifice equation is used to determine the flow out of an orifice given the elevation of water above the orifice. This equation introduces the concept of a vena contracta, which describes flow contraction due to the inability of streamlines to make sharp turns. The equation shows that the flow out of an orifice is proportional to the square root of the driving head, $Q \propto \sqrt{\Delta h}$. Depending on the orientation of the orifice, vertical (like a hole in the side of a bucket) or horizontal (like a hole in the bottom of a bucket), a different equation in aide_design should be used.
 

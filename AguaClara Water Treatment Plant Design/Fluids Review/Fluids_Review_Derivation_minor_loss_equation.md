@@ -61,4 +61,6 @@ $$\color{purple}{
 {\rm{ \mathbf{Third \, form:} }} \,\,\, h_e = \frac{\bar v_{out}^2}{2g}{\left( {\frac{A_{out}}{A_{in}}} -1 \right)^2} = \frac{\bar v_{out}^2}{2g} \mathbf{K_e}
 }$$
 
+**Note:** You will often see $K_e^{'}$ and $K_e$ used without the $e$ subscript, they will appear as $K^{'}$ and $K$.
+
 Being familiar with these three forms and how they are used will be of great help throughout the class. The third form is the one that is most commonly used.
