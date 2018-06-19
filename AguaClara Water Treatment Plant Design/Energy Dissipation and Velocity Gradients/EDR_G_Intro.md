@@ -1,37 +1,62 @@
-# Energy Dissipation ($\varepsilon$), Velocity Gradients ($G$), and mixing
+# Energy Dissipation Rate, Velocity Gradient, and Mixing
 ## Introduction
 
-Drinking water treatment requires:
+In addition to the general fluids review in the previous chapter, there are a few extra fluid dynamics concepts that are important to know in order to understand drinking water treatment and AguaClara's approach to it. These concepts are primarily focused on the relationships between:
+* Turbulence
+* Viscosity
+* Shear
+* Velocity Gradients ($G$), which serve as a measure of fluid deformation
+* Energy Dissipation Rate (EDR, $\varepsilon$)
 
-* mixing chemicals with the water
-* collisions between dissolved substances, nanoparticles, pathogens, suspended particles
-* prevention of floc breakup in high shear zones
-* and possibly, shear that prevents coagulant nanoparticle deposition on reactor walls
+Knowledge of these concepts and how they interact is critical to understand the following processes, which are key parts of water treatment:
 
-Each of these processes requires an understanding of fluid dynamics and specifically the relationships between turbulence, velocity gradients (fluid deformation), viscosity, shear, and the energy dissipation rate.
+* **[Rapid Mix](https://github.com/AguaClara/CEE4540_Master/tree/master/AguaClara%20Water%20Treatment%20Plant%20Design/Rapid%20Mix) and [Disinfection](https://github.com/AguaClara/CEE4540_Master/tree/master/AguaClara%20Water%20Treatment%20Plant%20Design/Disinfection):** Thorough mixing of chemicals with the water
+* **[Flocculation](https://github.com/AguaClara/CEE4540_Master/tree/master/AguaClara%20Water%20Treatment%20Plant%20Design/Flocculation):**
+  - Collisions between dissolved substances, nanoparticles, pathogens, and suspended particles
+  - Prevention of floc breakup in high shear zones  
+and possibly,
+  - Shear that prevents coagulant nanoparticle deposition on reactor walls
 
-The energy dissipation rate is the rate that mechanical energy is being converted to heat. Energy dissipation rate is a very useful concept because the last step of converting mechanical energy into heat is accomplished by viscosity. Viscosity converts the kinetic energy associated with fluid deformation into heat. Thus there is a direct connection between the rate that mechanical energy is being dissipated and the rate that the fluid is being deformed.
+The two concepts that were not covered in the previous chapter, [fluids review](https://github.com/AguaClara/CEE4540_Master/blob/master/AguaClara%20Water%20Treatment%20Plant%20Design/Fluids%20Review/Fluids_Review_Design.md), are velocity gradient $G$ and energy dissipation rate $\varepsilon$. While these will be very thoroughly described over the course of this introduction, a brief and simple explanation is included to help get the ball rolling.
 
-Fluid deformation plays an important role in mixing and of causing suspended particles to collide with each other. Aspects of fluid deformation, velocity gradients, and energy dissipation rates will be important for our understanding of mixing processes, collisions of particles in flocculation, and even in understanding failure modes of plate settlers and terminal head loss of sand filters.
+### Understanding $G$ and $\varepsilon$
 
-We will begin by defining the concept of energy dissipation rate for a control volume. In a control volume that does not include pumps or turbines the mechanical energy lost (and represented as a change in elevation indicating potential energy) is $g h_L$. That mechanical energy is lost in the time that the fluid is in the control volume, $\theta$.
+$G$, or velocity gradient, is a measure of fluid deformation. It is defined by how quickly one point of water along one streamline moves in comparison to another point on another streamline ($v_A$ compared to $v_B$, for example), taking into account the distance between the streamlines, $\Delta h$. A visual example of a velocity gradient is shown in the image below:
+
+<center><img src="https://raw.githubusercontent.com/AguaClara/CEE4540_Master/master/AguaClara%20Water%20Treatment%20Plant%20Design/Energy%20Dissipation%20and%20Velocity%20Gradients/Images/Velocity_gradient_image.jpg" width=700></center>
+
+</br>
+
+**Note on terminology:** "Fluid deformation" is equivalent to "velocity gradient," and the two terms can be used interchangeably. They are different ways of thinking about the same concept. Thus, $G$ is the measure of both terms.
+
+$\varepsilon$, or energy dissipation rate, is the rate that the kinetic energy of the fluid is being converted to heat. EDR is a very useful concept because the last step of converting kinetic energy into heat is accomplished by viscosity ($\nu$). This kinetic energy being dissipated by viscosity is the energy associated with velocity gradients ($G$). Thus, through EDR there is a direct connection between $\nu$ and $G$. This connection will be further covered later on in this introduction.
+
+<center><img src="https://raw.githubusercontent.com/AguaClara/CEE4540_Master/master/AguaClara%20Water%20Treatment%20Plant%20Design/Energy%20Dissipation%20and%20Velocity%20Gradients/Images/EDR_image.jpg" width=700></center>
+
+As mentioned above, EDR and velocity gradients play an important role in mixing and in causing suspended particles to collide with each other, both of which are important topics in flocculation. Their use is not limited to flocculation, they are also helpful in understanding failure modes of plate settlers ([Sedimentation](https://github.com/AguaClara/CEE4540_Master/tree/master/AguaClara%20Water%20Treatment%20Plant%20Design/Sedimentation)) and terminal head loss of sand filters ([Filtration](https://github.com/AguaClara/CEE4540_Master/tree/master/AguaClara%20Water%20Treatment%20Plant%20Design/Filtration)).
+
+We will begin by defining the concept of energy dissipation rate for a control volume. In a control volume that does not include pumps, turbines or other external energy sources or sinks, the mechanical energy lost is indicated by a change in elevation and quantified as $g h_L$. That mechanical energy is lost in the time that the fluid is in the control volume, $\theta$.
 
 $$ \bar\varepsilon \theta = g h_L$$
 
-This equation simply states that the average rate of energy dissipation times the time over which that dissipation occurs is equal to the total lost mechanical energy. The dimensions of $\varepsilon$ are
+This equation simply states that the average rate of energy dissipation times the time over which that dissipation occurs is equal to the total lost mechanical energy. The dimensions of $\varepsilon$ are:
 
-$$ \varepsilon = \frac{[m^3]}{[s^3]} = \frac{W}{kg} $$
+$$ \varepsilon = \frac{[m^3]}{[s^3]} = {\rm \frac{W}{kg}} $$
 
-which can be understood as a velocity squared per time, ie, a rate of kinetic energy loss or as power per unit mass.
+These dimensions can be understood as a velocity squared per time, otherwise known as a rate of kinetic energy loss (recall that kinetic energy is ${\rm Ke} = \frac{v^2}{2g}$, or ${\rm Ke} \propto v^2$), or as power per unit mass, which would be ${\rm \frac{W}{kg}}$.
 
-Velocity gradients are central to flocculation because it is the deformation of the fluid caused by the velocity gradient that causes particles to collide with each other. If everyone on a sidewalk is walking in the same direction at exactly the same velocity, then there will never be any collisions between people. If, however, people at one side of the sidewalk stand still and people walk progressively faster as a function of how far they are away from the zero velocity side of the sidewalk, then there will be many collisions between the pedestrians.  Indeed, the rate of collisions is proportional to the velocity gradient.
+Velocity gradients are central to flocculation because they cause the deformation of the fluid, and this results in particle collisions. Consider a real-world example via the image below: if everyone on a sidewalk is walking in the same direction at exactly the same velocity, then there will never be any collisions between people (top). If, however, people at one side of the sidewalk stand still and people walk progressively faster as a function of how far they are away from the zero velocity side of the sidewalk, then there will be many collisions between the pedestrians.  Indeed, the rate of collisions is proportional to the velocity gradient.
 
-Estimation of velocity gradients for various flow geometries is the basis for the design of rapid mix, flocculators, and plate settlers and thus our goal is to define the velocity gradients consistently across the range of possible flow regimes. There are three approaches to calculating the average velocity gradient within a control volume.
+<center><img src="https://raw.githubusercontent.com/AguaClara/CEE4540_Master/master/AguaClara%20Water%20Treatment%20Plant%20Design/Energy%20Dissipation%20and%20Velocity%20Gradients/Images/Pedestrians_on_sidewalk.jpg" width=600></center>
+
+### Equations for $\varepsilon$ and $G$ in Varying Flow Geometries
+
+Estimation of velocity gradients for various flow geometries is the basis for the design of rapid mix, flocculators, and plate settlers. Thus, our goal is to define the velocity gradients consistently across a range of possible flow regimes. There are three approaches to calculating the average velocity gradient within a control volume.
 1) Use the Navier Stokes equations and solve for the spatially averaged velocity gradient.
-1) Use computation fluid dynamics to solve for the spatially averaged velocity gradient.
+1) Use Computational Fluid Dynamics (CFD) to solve for the spatially averaged velocity gradient.
 1) Use the total mechanical energy loss in the control volume to calculate the energy dissipation rate. Estimate the velocity gradient directly from the energy dissipation rate, $G_{CS} = \sqrt{\frac{\bar\varepsilon}{\nu}}$, as defined by Camp and Stein in 1943 (Camp, T. R., and Stein, P. C. (1943) ‘‘Velocity Gradients and Hydraulic Work in Fluid Motion,’’ J. Boston Soc. Civil Eng., 30, 203–221.).
 
-The first approach would be ideal but is difficult in practice because Navier Stokes solutions are only available for limited geometries and laminar flow. Computational Fluid Dynamics could be used but is difficult to use as a general engineering design approach given the large number of geometries that are used in drinking water treatment plants. For these reasons we will use the control volume approach to estimate the average velocity gradient. This method incorrectly assumes that the energy dissipation rate is completely uniform in the control volume and hence the velocity gradient is also uniform. This method results in an over estimation of the velocity gradient.
+The first approach would be ideal but is difficult in practice because Navier Stokes solutions are only available for limited geometries and laminar flow. CFD could be used but is difficult to use as a general engineering design approach given the large number of geometries that are used in drinking water treatment plants. For these reasons we will use the control volume approach to estimate the average velocity gradient. This method incorrectly assumes that the energy dissipation rate is completely uniform in the control volume and hence the velocity gradient is also uniform. This method results in an over estimation of the velocity gradient.
 
 The Camp-Stein estimate of $G_{CS}$ is based on a control volume where the velocity gradient is uniform. Consider a layer of fluid of depth $H$ and apply a velocity, $v$ at the top of the fluid. The velocity gradient, $G$, is thus $\frac{v}{H}$ everywhere in the fluid. The force required to move the top of the fluid at velocity v can be obtained from the required shear, $\tau$. From Newtons Law of Friction we have
 
@@ -113,8 +138,8 @@ Table of equations for control volume averaged values of head loss, energy dissi
 | - | :-: | :-: | :-: | :-: |
 | Straight pipe | $h_{\rm{f}} = {\rm{f}} \frac{L}{D} \frac{\bar v^2}{2g}$ |$\bar\varepsilon = \frac{\rm{f}}{2} \frac{\bar v^3}{D}$ |$G_{CS} = \left(\frac{\rm{f}}{2\nu} \frac{\bar v^3}{D} \right)^\frac{1}{2}$ |  $G_{CS} = \left(\frac{\rm{32f}}{ \pi^3\nu} \frac{Q^3}{D^7} \right)^\frac{1}{2}$ |
 | Straight pipe laminar|$h_{\rm{f}} = \frac{32\nu L\bar v}{ g D^2}$| $\bar\varepsilon =32\nu \left( \frac{\bar v}{D} \right)^2$ |$G_{CS} =4\sqrt2 \frac{\bar v}{D}$ | $G_{CS} =\frac{16\sqrt2}{\pi} \frac{Q}{D^3}$ |
-| Parallel plates laminar | $h_{\rm{f}} = 12\frac{ \nu L \bar v }{gS^2}$ | $ \bar\varepsilon = 12 \nu \left(\frac{  \bar v}{S} \right)^2  $ | $G_{CS} = 2\sqrt{3}\frac{  \bar v}{S}$ | :-: |
-| Coiled tube laminar | $h_{L_{coil}} = \frac{32\nu L\bar v}{ g D^2} \left[ 1 + 0.033\left(log_{10}De\right)^4 \right] $ |$\bar\varepsilon = 32\nu \left( \frac{\bar v}{D} \right)^2 \left[ 1 + 0.033\left(log_{10}De\right)^4 \right]$| $G_{CS_{coil}} = 4\sqrt2 \frac{\bar v}{D}\left[ 1 + 0.033\left(log_{10}De\right)^4  \right]^\frac{1}{2}$ | - |
+| Parallel plates laminar | $h_{\rm{f}} = 12\frac{ \nu L \bar v }{gS^2}$ | $\bar\varepsilon = 12 \nu \left(\frac{  \bar v}{S} \right)^2$ | $G_{CS} = 2\sqrt{3}\frac{  \bar v}{S}$ | :-: |
+| Coiled tube laminar | $h_{L_{coil}} = \frac{32\nu L\bar v}{ g D^2} \left[ 1 + 0.033\left(log_{10}De\right)^4 \right]$ |$\bar\varepsilon = 32\nu \left( \frac{\bar v}{D} \right)^2 \left[ 1 + 0.033\left(log_{10}De\right)^4 \right]$| $G_{CS_{coil}} = 4\sqrt2 \frac{\bar v}{D}\left[ 1 + 0.033\left(log_{10}De\right)^4  \right]^\frac{1}{2}$ | - |
 | Expansions | $h_e =  \mathbf{K_e}\frac{\bar v_{out}^2}{2g}$ | $\bar\varepsilon = \mathbf{K_e}\frac{\bar v_{out}^3}{2H}$ | $G_{CS} = \bar v_{out}\sqrt{\frac{\mathbf{K_e}\bar v_{out}}{2H\nu}}$ | - |
 
 The equations used to convert between columns in the table above are:
@@ -130,7 +155,7 @@ For turbulent flow and for flow expansions the amount of fluid deformation decre
 Table of equations for maximum (wall) energy dissipation rates and wall velocity gradients.
 | Geometry | $\varepsilon_{wall}$ | $G_{wall}$|
 | - | :-: |:-: |
-| Straight pipe  | $\varepsilon_{wall} = \frac{1}{\nu}\left(\rm{f}  \frac{\bar v^2}{8} \right)^2 $ | $G_{wall} =\rm{f}  \frac{\bar v^2}{8\nu}$|
+| Straight pipe  | $\varepsilon_{wall} = \frac{1}{\nu}\left(\rm{f}  \frac{\bar v^2}{8} \right)^2$ | $G_{wall} =\rm{f}  \frac{\bar v^2}{8\nu}$|
 | Straight pipe laminar | $\varepsilon_{wall} = \left(\frac{8\bar v}{D} \right)^2 \nu$ | $G_{wall} =  \frac{8\bar v}{D}$|
 | parallel plates | $\varepsilon_{wall} = 36\left( \frac{\bar v}{S}\right)^2 \nu$ | $G_{wall} = \frac{6 \bar v}{S}$|
 | Coiled pipe | - | $G_{CS_{wall_{coil}}} =\rm{f} \left[ 1 + 0.033\left(log_{10}De\right)^4 \right]  \frac{\bar v^2}{8\nu}$|
@@ -138,20 +163,20 @@ Table of equations for maximum (wall) energy dissipation rates and wall velocity
 Table of equations for maximum energy dissipation rates and velocity gradients for flow expansions.
 | Geometry |$\Pi_{Jet}$ | $\varepsilon_{max}$ | $G_{max}$|
 | - | :-: |:-: |:-: |
-| Round jet |0.08 | $\varepsilon_{Max} = \Pi_{JetRound}\frac{   \bar v_{Jet} ^3}{D_{Jet}}$ | $ G_{Max} = \bar v_{Jet} \sqrt{\frac{\Pi_{RoundJet} \bar v_{Jet} }{\nu D_{Jet}}}$ |
+| Round jet |0.08 | $\varepsilon_{Max} = \Pi_{JetRound}\frac{   \bar v_{Jet} ^3}{D_{Jet}}$ | $G_{Max} = \bar v_{Jet} \sqrt{\frac{\Pi_{RoundJet} \bar v_{Jet} }{\nu D_{Jet}}}$ |
 | Plane jet |0.0124| $\varepsilon_{Max} = \Pi_{JetPlane} \frac{  \bar v_{Jet} ^3}{S_{Jet}}$ | $G_{Max} = \bar v_{Jet}\sqrt{\frac{\Pi_{JetPlane} \bar v_{Jet}}{\nu S_{Jet}}}$ |
 | Behind a flat plate |0.04 | $\varepsilon _{Max} = \Pi_{Plate}\frac{\bar v^3}{W_{Plate}}$ | $G_{Max} = \bar v\sqrt{\frac{\Pi_{Plate} \bar v}{\nu W_{Plate}}}$ |
 
 For mechanical mixing where an impeller or other stirring device is adding shaft work to a control volume we have
 
-$$ \bar\varepsilon = \frac{P}{M} = \frac{P}{\rho \rlap{\kern.08em--}V}$$
+$$ \bar\varepsilon = \frac{P}{M} = \frac{P}{\rho \rlap{-}V}$$
 
 where
 * $P$ = power input into the control volume
 * $M$ = mass of fluid in the control volume
-* $\rlap{\kern.08em--}V$ = volume of the control volume
+* $\rlap{-}V$ = volume of the control volume
 * $\rho$ = density of the fluid
 
 The Camp-Stein velocity gradient in a mechanically mixed reactor is
 
-$$ G_{CS} = \sqrt{\frac{P}{\rho \nu \rlap{\kern.08em--}V}} $$
+$$ G_{CS} = \sqrt{\frac{P}{\rho \nu \rlap{-}V}} $$
