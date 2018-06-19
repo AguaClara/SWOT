@@ -10,15 +10,15 @@ While AguaClara sedimentation tanks use valves instead of pipe to begin the proc
 
 We will start the derivation from the following equation, which is found in an intermediate step from the ['tank with a valve derivation'](https://github.com/AguaClara/CEE4540_Master/blob/master/AguaClara%20Water%20Treatment%20Plant%20Design/Flow%20Control%20and%20Measurement/Derivation_flow_through_tank_with_a_valve.md). While this system does not have a valve, it has other sources of minor loss and therefore the equation is still valid.
 
-$$\sqrt h  = \sqrt{h_0} - t \frac{A_{Valve}}{2 A_{Tank}} \sqrt {\frac{2g}{K_e}}$$
+$$\sqrt h  = \sqrt{h_0} - t \frac{A_{Valve}}{2 A_{Tank}} \sqrt {\frac{2g}{K}}$$
 
-We need to make some adjustments to this equation before proceeding, to make it applicable for this new drain-system scenario.  First, we want to assume that the tank has fully drained. Thus, $t = t_{Drain}$ and $h = 0$. Next, we recall that the tank drain is not actually a valve, but just pipe and an elbow, so $A_{Valve} = A_{Pipe}$. Additionally, there can be multiple points of minor loss in the drain system: the entrance from the tank into the drain pipe, the elbow, and potentially the exit of the water out of the drain pipe. When considering a sedimentation tank, the open valve required to begin drainage also has a minor loss associated with it. Therefore, it is necessary to substitute $\sum K_e$ for $K_e$ With these substitutions,  the equation becomes:
+We need to make some adjustments to this equation before proceeding, to make it applicable for this new drain-system scenario.  First, we want to assume that the tank has fully drained. Thus, $t = t_{Drain}$ and $h = 0$. Next, we recall that the tank drain is not actually a valve, but just pipe and an elbow, so $A_{Valve} = A_{Pipe}$. Additionally, there can be multiple points of minor loss in the drain system: the entrance from the tank into the drain pipe, the elbow, and potentially the exit of the water out of the drain pipe. When considering a sedimentation tank, the open valve required to begin drainage also has a minor loss associated with it. Therefore, it is necessary to substitute $\sum K$ for $K$ With these substitutions,  the equation becomes:
 
-$$\sqrt{h_0}  = t_{Drain} \frac{A_{Pipe}}{2 A_{Tank}} \sqrt {\frac{2g}{\sum K_e}}$$
+$$\sqrt{h_0}  = t_{Drain} \frac{A_{Pipe}}{2 A_{Tank}} \sqrt {\frac{2g}{\sum K}}$$
 
 Now, with the knowledge that $A_{Pipe} = \frac{\pi D_{Pipe}^2}{4}$ and rearranging to solve for $D_{Pipe}$, we obtain the following equation:
 
-$$ D_{Pipe} = \sqrt{ \frac{8 A_{Tank}}{\pi t_{Drain}} \sqrt{ \frac{h_0 \sum K_e}{2g} } }$$
+$$ D_{Pipe} = \sqrt{ \frac{8 A_{Tank}}{\pi t_{Drain}} \sqrt{ \frac{h_0 \sum K}{2g} } }$$
 
 To get the equation in terms of easily measureable tank parameters, we substitute $L_{Tank} W_{Tank}$ for $A_{Tank}$. To maintain consistency in variable names, we substitute $H_{Tank}$ for $h_0$.   
 

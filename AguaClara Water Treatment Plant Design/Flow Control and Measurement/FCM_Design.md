@@ -93,17 +93,17 @@ Using this equation and relationship, we make the following plots. On the left, 
 ### Drain System for a Tank
 While the 'tank with a valve' scenario is not a good constant head solution, we can use our understanding of the system to properly design drain systems for AguaClara reactors like flocculators and sedimentation tanks, since they essentially tanks with valves.  The derivation for the following equation is [found here](https://github.com/AguaClara/CEE4540_Master/blob/master/AguaClara%20Water%20Treatment%20Plant%20Design/Flow%20Control%20and%20Measurement/FCM_Derivation_drain_system_design.md), along with more details on AguaClara's pipe stub method for draining tanks. The derived 'Tank Drain' equation is as follows:
 
-$$D_{Pipe} = \sqrt{ \frac{8 L_{Tank} W_{Tank}}{\pi t_{Drain}}} {\left( \frac{H_{Tank} \sum K_e }{2g} \right)^{\frac{1}{4}}}$$
+$$D_{Pipe} = \sqrt{ \frac{8 L_{Tank} W_{Tank}}{\pi t_{Drain}}} {\left( \frac{H_{Tank} \sum K }{2g} \right)^{\frac{1}{4}}}$$
 
 The equation can also be rearranged to solve for the time it would take to drain a tank given its dimensions and a certain drain pipe size:
 
-$$t_{Drain} =  \frac{8 L_{Tank} W_{Tank}}{\pi D_{Pipe}^2} {\left( \frac{H_{Tank} \sum K_e }{2g} \right)^{\frac{1}{2}}}$$
+$$t_{Drain} =  \frac{8 L_{Tank} W_{Tank}}{\pi D_{Pipe}^2} {\left( \frac{H_{Tank} \sum K }{2g} \right)^{\frac{1}{2}}}$$
 
 Such that:
 $D_{Pipe}$ = Diameter of the drain piping  
 $L_{Tank}, W_{Tank}, H_{Tank}$ = Tank dimensions  
 $t_{Drain}$ = Time it takes to drain the tank  
-$\sum K_e$ = Sum of all the minor loss coefficients in the system  
+$\sum K$ = Sum of all the minor loss coefficients in the system  
 
 <center><img src="https://github.com/AguaClara/CEE4540_Master/blob/master/AguaClara%20Water%20Treatment%20Plant%20Design/Flow%20Control%20and%20Measurement/Images/Pipe_stub_drainage_variables.jpg?raw=true" width=500></center>
 
@@ -214,7 +214,7 @@ The CDC can be designed manually using the equations from the derivation linked 
 
 1. Calculate the maximum flow rate, $Q_{Max, \, Tube}$, through each available dosing tube diameter $D$ that keeps error due to minor losses below 10% of total head loss. Recall that tubing diameter is an array, as there are many diameters available at hardware stores and suppliers. This means that for each step, there will be as many solutions as there are reasonable diameters available.
 
-$$ Q_{Max, \, Tube} = \frac{\pi D^2}{4} \sqrt{\frac{2 h_L g \Pi_{Error}}{\sum{K_e} }} $$
+$$ Q_{Max, \, Tube} = \frac{\pi D^2}{4} \sqrt{\frac{2 h_L g \Pi_{Error}}{\sum{K} }} $$
 
 2. Calculate how much flow of chemical needs to pass through the CDC at maximum plant flow and maximum chemical dose. This depends on the concentration of chemicals in the stock tank.
 
@@ -226,7 +226,7 @@ $$n_{Tubes} = {\rm ceil} \left( \frac{Q_{Max, \, CDC}}{Q_{Max, \, Tube}} \right)
 
 4. Calculate the length of dosing tube(s) that correspond to each available tube diameter.
 
-$$ L_{Min} = \left( \frac{g h_L \pi D^4}{128 \nu Q_{Max}} - \frac{Q_{Max}}{16 \pi \nu} \sum{K_e} \right)$$
+$$ L_{Min} = \left( \frac{g h_L \pi D^4}{128 \nu Q_{Max}} - \frac{Q_{Max}}{16 \pi \nu} \sum{K} \right)$$
 
 5. Select a tube length from your array of solutions. Pick the longest dosing tube that you can, keeping in mind that the tube(s) must be able to fit in the plant and can't be longer than the length of the plant wall it will be placed along.
 

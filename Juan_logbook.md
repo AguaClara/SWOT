@@ -130,14 +130,14 @@ This interim progress report is due to 2 factors. My family and I are going on v
 
 ### Done
 1. I need to be a bit more organized and broaden my scope to consider more than just the summary sheets at any given time. One day out of every week, I will zoom out of my current project, which will be summary sheets/powerpoints in the near future, and look at the general organization/structure of the class.
-2. Is it a problem that we are presumably using the same repo to give subsequent years of students their DCs? Is it possible for them to checkout a previous commit to get the DC solutions from previous years?
+1. Is it a problem that we are presumably using the same repo to give subsequent years of students their DCs? Is it possible for them to checkout a previous commit to get the DC solutions from previous years?
     - I think that it is not a huge deal. There are so many ways to cheat in any class if a student tries hard enough. Most students won't have any prior knowledge of github anyways, and will be unlikely to even know this is possible.
-3. I have checked out the possibility of moving everything from confluence to github. Not only is it possible, but it wouldn't even be that difficult. The only concern would be the locations of certain images and files, but that is not a legitimate reason not to do the switch. It would take me 10 hours MAX and probably a lot less. Organizing the file structure on github would be the only tricky part.
+1. I have checked out the possibility of moving everything from confluence to github. Not only is it possible, but it wouldn't even be that difficult. The only concern would be the locations of certain images and files, but that is not a legitimate reason not to do the switch. It would take me 10 hours MAX and probably a lot less. Organizing the file structure on github would be the only tricky part.
     - I have made the first line of the sample syllabus via a markdown table, you may find it [here](https://github.com/AguaClara/CEE4540_DC/blob/Flow_Control_and_Measurement_v2/Sample_Syllabus.md). The raw file is still a mess exactly like the confluence one, but I believe that is unavoidable. By expanding the atom window/shrinking the text size each row can take up one line, which makes the table begins to look normal and navigable.
 
 ### To Do
 1. Umm... everything. Summary sheet making is a slow process if a quality product is desired. Which of course it is.
-2. **Should I begin to make the switch from confluence to github?**
+1. **Should I begin to make the switch from confluence to github?**
 
 
 
@@ -145,12 +145,12 @@ This interim progress report is due to 2 factors. My family and I are going on v
 ## Seventh Progress Report: 4/26/2018  
 ### Done  
 1. Transfer from confluence to GitHub is more or less done (Thanks Monroe!). Anything else that was forgotten can be easily moved later on.
-2. New repo structure has been established. [CEE4540_Master](https://github.com/AguaClara/CEE4540_Master) for class material, [CEE4540_DC_2018](https://github.com/AguaClara/CEE4540_DC_2018) for Design Challenges, and a separate, private repository for solutions.
-3. Have advanced to the AguaClara tech section of Flow Control and Measurement summary sheet. Incorporated feedback from Clare and Fletcher.
+1. New repo structure has been established. [CEE4540_Master](https://github.com/AguaClara/CEE4540_Master) for class material, [CEE4540_DC_2018](https://github.com/AguaClara/CEE4540_DC_2018) for Design Challenges, and a separate, private repository for solutions.
+1. Have advanced to the AguaClara tech section of Flow Control and Measurement summary sheet. Incorporated feedback from Clare and Fletcher.
 
 ### To Do
 1. Finish the Flow Control and Measurement cheat sheet and powerpoint by the end of next week.
-2. Re-evaluate my work priorities, considering time. Perhaps I should prioritize creating derivation sheets to remove derivations from powerpoints, and then spruce up the powerpoints before returning to the summary sheets. The summary sheets take a very, very long time to do well :/
+1. Re-evaluate my work priorities, considering time. Perhaps I should prioritize creating derivation sheets to remove derivations from powerpoints, and then spruce up the powerpoints before returning to the summary sheets. The summary sheets take a very, very long time to do well :/
 I think that will greatly improve the chance that some things are completely done and what _is_ done is done very well by the beginning of the semester.
 
 
@@ -159,25 +159,25 @@ I think that will greatly improve the chance that some things are completely don
 ## Eigth Progress Report: 5/7/2018  
 ### Done  
 1. Change image insertion from markdown style to html to allow for resizing- silly markdown
-2. Added the head loss trick to fluids Review
-3. Reorganized CEE4540_Master repo by chapter to make organizing a book easier and avoid enormous image folders.
-4. Cleaned up the 4 intro powerpoints. Added clickable overviews to all of them and organized their extras.
-5. Finished the FCM summary sheet, powerpoint, powerpoint extras, and derivations. Definitely, definitely need another pair of eyes or two, but I think it looks pretty good :D
-6. Starting to look at rapid mix... oh boy
+1. Added the head loss trick to fluids Review
+1. Reorganized CEE4540_Master repo by chapter to make organizing a book easier and avoid enormous image folders.
+1. Cleaned up the 4 intro powerpoints. Added clickable overviews to all of them and organized their extras.
+1. Finished the FCM summary sheet, powerpoint, powerpoint extras, and derivations. Definitely, definitely need another pair of eyes or two, but I think it looks pretty good :D
+1. Starting to look at rapid mix... oh boy
 
 ### To Do
 1. Questions/confirmations for Monroe
     1. In [this minor loss equation derivation](https://github.com/AguaClara/CEE4540_Master/blob/master/AguaClara%20Water%20Treatment%20Plant%20Design/Chapter%201_Fluids%20Review/Derivation_minor_loss_equation.md), why is $p_{in}$ with $A_{out}$ instead of $A_{in}$?
     The control surface 1 is drawn in the fluid so that the only solid surfaces inside the control volume are normal to the two control surfaces. In the x direction the only forces on the solid surfaces are shear and that is negligible. The area of control surface 1 is the same as the area of control surface 2. The pressure on control surface 1 is assumed to be uniform (or hydrostatic).
-    2. When [deriving the CDC equations](https://github.com/AguaClara/CEE4540_Master/blob/master/AguaClara%20Water%20Treatment%20Plant%20Design/Chapter%202_Flow%20Control%20and%20Measurement/Derivation_designing_the_cdc.md#designing-for-the-error-constraint-pi_error), why do you take the limit as Q approaches 0? Is that when the difference between the actual head loss and the linearized model is the greatest, percentage-wise?
+    1. When [deriving the CDC equations](https://github.com/AguaClara/CEE4540_Master/blob/master/AguaClara%20Water%20Treatment%20Plant%20Design/Chapter%202_Flow%20Control%20and%20Measurement/Derivation_designing_the_cdc.md#designing-for-the-error-constraint-pi_error), why do you take the limit as Q approaches 0? Is that when the difference between the actual head loss and the linearized model is the greatest, percentage-wise?
     The error is zero at Max Q because we've calibrated at max flow rate. The ratio of actual flow/target flow is maximum as Q approaches zero.
     3. Revise step 6 in the [CDC design algorithm](https://github.com/AguaClara/CEE4540_Master/blob/master/AguaClara%20Water%20Treatment%20Plant%20Design/Chapter%202_Flow%20Control%20and%20Measurement/Summary_Sheet_Flow_Control_and_Measurement.md#how-it-works-2). I thought that Stock Concentration was set in the beginning? I can understand why it makes sense to set at the end, but everything document I've looked at does it at the beginning. High student-confusion-potential
     You are right. Remove stock concentration from the final step.
     4. In the powerpoint 'Drinking Water Contaminants,' what is the blue star in the corner of the slides supposed to represent? Extras? There are a lot of them.
     Great question. I'm not sure. It almost looks like the opposite of extras.
-2. Should the flow control summary sheet include constant head devices?? If so, see the [TOO LONG](https://github.com/AguaClara/CEE4540_Master/blob/master/AguaClara%20Water%20Treatment%20Plant%20Design/Chapter%202_Flow%20Control%20and%20Measurement/Summary_Sheet_TOOLONG_Flow_Control.md#22-constant-head-devices) version. Should these be included as is or changed? If they should be included as is, I think we need some more advantages and disadvantages.
+1. Should the flow control summary sheet include constant head devices?? If so, see the [TOO LONG](https://github.com/AguaClara/CEE4540_Master/blob/master/AguaClara%20Water%20Treatment%20Plant%20Design/Chapter%202_Flow%20Control%20and%20Measurement/Summary_Sheet_TOOLONG_Flow_Control.md#22-constant-head-devices) version. Should these be included as is or changed? If they should be included as is, I think we need some more advantages and disadvantages.
 The text should definitely include the constant head devices. Given that we don't use them in our designs it might not be necessary to have a summary sheet on them
-3. I will now begin to make derivations sheets for flocculation/sedimentation/flocculation while clearing up the powerpoint slides that contain those derivations. Having looked at rapid mix, I think it now makes sense to communicate with Monroe on what should go in the intro vs the summary sheets for each unit processes. This would be best done with a voice/video call. Earliest possible date: May 11th.
+1. I will now begin to make derivations sheets for flocculation/sedimentation/flocculation while clearing up the powerpoint slides that contain those derivations. Having looked at rapid mix, I think it now makes sense to communicate with Monroe on what should go in the intro vs the summary sheets for each unit processes. This would be best done with a voice/video call. Earliest possible date: May 11th.
 I suggest putting all effort into the text book. There is some chance that the text will rapidly become the primary source of information and the lectures will become more discussion focused. I'm going to be exploring options for how to more effectively teach this material in the coming weeks.
 
 
@@ -194,7 +194,7 @@ I suggest putting all effort into the text book. There is some chance that the t
 
         - Tradition? This is approximately the value we have used for design for the past 8? years or so. We are also experimenting with a $G\theta$ of 20,000 for the 1 L/s plant. We are far from the ability to create an optimized design for a water treatment plant and thus this value will undoubtedly change. For now it is providing reasonable plant performance especially given that it is followed by a floc blanket.
 
-    2. Baffle modules for flocculators: What are they called? Do they have a commonly used name?
+    1. Baffle modules for flocculators: What are they called? Do they have a commonly used name?
 
         - We have to invent the nomenclature. As far as I know we invented baffle modules. Now is a great opportunity to name them.
 
@@ -202,73 +202,74 @@ I suggest putting all effort into the text book. There is some chance that the t
         - Baffle modules
         - you idea here
 
-    3. Where did the equations for $G$ and $\varepsilon$ come from? Without knowing how these came to be, I can't fully wrap my head around flocculation- $\bar G = \sqrt{ \frac{\bar \varepsilon}{\nu}}$ and $\bar \varepsilon = \frac{g h_L}{\theta}$
+    1. Where did the equations for $G$ and $\varepsilon$ come from? Without knowing how these came to be, I can't fully wrap my head around flocculation- $\bar G = \sqrt{ \frac{\bar \varepsilon}{\nu}}$ and $\bar \varepsilon = \frac{g h_L}{\theta}$
 
         - $\bar \varepsilon = \nu\bar G^2$  I don't know how to argue for this equation from first principles. See [this paper](https://www.tandfonline.com/doi/pdf/10.1080/19942060.2009.11015267) for the equation. This relationship is the basis of mechanical flocculator design. Perhaps this is best viewed as the definition of  $\bar G$. There would be more than one way to define an average for the velocity gradient and this is the simple definition that we use.
         - $\bar \varepsilon \theta = g h_L$ This states that the rate of conversion of mechanical energy to heat * the time over which that conversion is happening is equal to the total amount of mechanical energy that is converted.
 
-    4. How thoroughly have we tested/confirmed that the minor loss coefficient of a baffle is 2.56? Do we have sources to cite? Do we have sources to cite for the VC being 0.384? [What you cited for that in a slide's comments](https://confluence.cornell.edu/display/AGUACLARA/Validation+Studies+for+ANSYS+Fluent+Turbulence+Model+Simulations) has been taken over by Michel Kors ads, somehow.
+    1. How thoroughly have we tested/confirmed that the minor loss coefficient of a baffle is 2.56? Do we have sources to cite? Do we have sources to cite for the VC being 0.384? [What you cited for that in a slide's comments](https://confluence.cornell.edu/display/AGUACLARA/Validation+Studies+for+ANSYS+Fluent+Turbulence+Model+Simulations) has been taken over by Michel Kors ads, somehow.
 
         - We have not yet been able to do a good measurement in the field to confirm this value. The measured head loss may very well be different than this value because of the complicated effect of the interactions between sequential flow expansions
         - Shulz and Okun give a wide range for this number. I don't know of a good reference. I invented the approach to estimate the vena contracta based on the angle of the change in flow direction. That has not been confirmed with experimentation.
 
-    5. Where did we get the 'Jets expand in width at the rate of approximately 1 unit in width per 10 units forward' rule? How sure are we that the flow fully expands in our flocculators?  Based on the jet expansion rule, how does $\frac{H_e}{S} = 3$ allow for full jet expansion?   
+    1. Where did we get the 'Jets expand in width at the rate of approximately 1 unit in width per 10 units forward' rule? How sure are we that the flow fully expands in our flocculators?  Based on the jet expansion rule, how does $\frac{H_e}{S} = 3$ allow for full jet expansion?   
     <img src="https://github.com/AguaClara/CEE4540_Master/blob/master/AguaClara%20Water%20Treatment%20Plant%20Design/Chapter%204_Flocculation/Images/I_need_some_clarity.JPG?raw=true" width=400>    
 
         -  b = 0.107 s where b is the jet width and s is the distance along the centerline of the jet. I've added a powerpoint on Jets & plumes into the "other and previous" lectures. This reference is on slide 16 and comes from course notes from Gerhart Jirka who studied jets and plumes at Cornell.
         - The flocculator design goal is to create uniform velocity gradients. Thus we don't want the flow to fully expand because at that point turbulence generation is over, energy dissipation falls off quickly, and velocity gradients decrease.
         - Thus we want to avoid high $\frac{H_e}{S}$ values. We estimate full expansion by $\frac{H_e}{S}$ of 6. We also need a range of acceptable values of $\frac{H_e}{S}$ because our tank depth is set by other constraints and thus we can't specify an exact value of $\frac{H_e}{S}$. It turns out that we need a range that is over a factor of 2 so that we can go from 1 flow expansion to 2 flow expansions per flocculator depth (and 2 is 2*1!).
 
-    6. AguaClara flocculators have a Max/ave EDR of 1?!?!?! How can this be true?? That seems impossible in just about any reactor. This again points to my question number 4., do we have any data for how these baffles or baffles with obstacles are performing when compared to our models/predictions?   
+    1. AguaClara flocculators have a Max/ave EDR of 1?!?!?! How can this be true?? That seems impossible in just about any reactor. This again points to my question number 4., do we have any data for how these baffles or baffles with obstacles are performing when compared to our models/predictions?   
     <img src="https://github.com/AguaClara/CEE4540_Master/blob/master/AguaClara%20Water%20Treatment%20Plant%20Design/Chapter%204_Flocculation/Images/Max_ave_EDR_of_1.JPG?raw=true" width=400>    
 
         - NO. Max/ave EDR is 2 for a well designed hydraulic flocculator. That means that Gmax/Gave is $\sqrt{2}$   
         - See [Harhoff Figure 8](https://www.environmental-expert.com/Files/5302/articles/9777/Towardsoptimaldesignparametersforaround-the-end.pdf)  where they find the minimum value of Gmax over Gave to be 1.4.
         - The slide that you show was addressing the question of efficiency of energy use for creating collisions. If the Gmax/Gave value is very large, then energy is not being used efficiently. The most energy efficient reactor has a uniform energy dissipation rate throughout the reactor. With a Gmax/Gava of 1.4 we get very close to the ideal efficiency and so we ignore this effect. We previously designed inefficient flocculators with high H/s ratios and thus we used to account for this inefficiency. Now we design all flocculators to be efficient with 3<H/s<6 and thus we can ignore this efficiency factor.
 
-    7. should we transition everything from saying $G \theta$ over to $\bar G \theta$? It is more correct and eliminates another potential source of confusion.
+    1. should we transition everything from saying $G \theta$ over to $\bar G \theta$? It is more correct and eliminates another potential source of confusion.
 
         - Yes. let's switch to $\bar G$  
 
-    8. Is the minimum width for fitting a human into the flocculator channel 45 cm?
+    1. Is the minimum width for fitting a human into the flocculator channel 45 cm?
 
         - yes  
 
-    9. Why do we solve for $H_{e_{Max}}$ and round $H_e$ down instead of solving for $H_{e_{Min}}$ and roundin $H_e$ up? Is it because getting $\frac{H_e}{S}$ closer to 5 or 6 is closer to full expansion and we don't know the physics yet?
+    1. Why do we solve for $H_{e_{Max}}$ and round $H_e$ down instead of solving for $H_{e_{Min}}$ and roundin $H_e$ up? Is it because getting $\frac{H_e}{S}$ closer to 5 or 6 is closer to full expansion and we don't know the physics yet?
 
         - No. We are simply minimizing the number of expansions that we have to build. There is little difference between H/s of 3 and 6 and thus we are happy with an H/s anywhere in that range. Using an H/s closer to 6 reduces the number of obstacles that we build.   
 
-    10. How tall should the baffles be? Should there be $S$ distance between the floor of the flocculator and the bottom of a top baffle? How does the 40 cm of head loss affect this for the flow over and around a bottom baffle?
+    1. How tall should the baffles be? Should there be $S$ distance between the floor of the flocculator and the bottom of a top baffle? How does the 40 cm of head loss affect this for the flow over and around a bottom baffle?
 
         - I think our current design is to have 1.5s of space below the bottom of the upper baffle. My understanding is that there is little performance difference between an opening of 1s and 1.5s. We don't currently have any method of efficiently using the added triangle of water that builds up due to head loss. We have to keep our bottom baffles well below this so that the plant works under low flow conditions when head loss is dramatically reduced. Thus the water in the triangle may be relatively stagnant and we don't assume that the residence time in that triangle is helpful.  
 
 
 
 ***
-## Tenth Progress Report: 6/??/2018  
+## Tenth Progress Report: 6/18/2018  
 ### Done
 1. Meeting with Monroe, Clare, Zoe, and Fletcher. Discussed the structure of the textbook, design challenges, and work for this summer. Textbook is top priority. I am to continue working on the summary sheets, which are being renamed to `Design` since that is the role that they occupy within the textbook.
-2. Finish standardizing the images for control volume vs streamline notation (arrows vs dotted lines). Red lines imply energy/bernoulli, black is just reference.
-3. Renamed all chapter number folders, get rid of numbering in design sheets
-4. Added new chapters  
+1. Finish standardizing the images for control volume vs streamline notation (arrows vs dotted lines). Red lines imply energy/bernoulli, black is just reference.
+1. Renamed all chapter number folders, get rid of numbering in design sheets
+1. Added new chapters  
       - Disinfection
       - Public Health
       - Energy Dissipation and Velocity Gradients
-5. changed all velocities to small $\bar v$ instead of $V$ in the entire textbook, both mine and Monroe's files push up to master send email
-6. Changed the slot width ratio from 1.5 to 1 in accordance with Haarhoff's CFD paper in 2001
-7. Figured out reference structure, use doi's and link the journal of publication.
+1. changed all velocities to small $\bar v$ instead of $V$ in the entire textbook, both mine and Monroe's files push up to master send email
+1. Changed the slot width ratio from 1.5 to 1 in accordance with Haarhoff's CFD paper in 2001
+1. Figured out reference structure, use doi's and link the journal of publication.
+1. Created organizational sheets [Documenting textbook progress (on the READEM)](https://github.com/AguaClara/CEE4540_Master/tree/master/AguaClara%20Water%20Treatment%20Plant%20Design#textbook-progress-table) and [variable guide](https://github.com/AguaClara/CEE4540_Master/blob/master/AguaClara%20Water%20Treatment%20Plant%20Design/Textbook_convention.md "wow this document looks in GitHub")
 
 
 ### To Do
 1. Re do the opening lines of the summary sheets, which are now to be called the 'design' section of textbooks
 
-2. Get a better reference for the b = 0.107s jet expansion. Gerhart Jirka's notes are the basis for this, but I think we need a better reference than one of Monroe's powerpoints
+1. Get a better reference for the b = 0.107s jet expansion. Gerhart Jirka's notes are the basis for this, but I think we need a better reference than one of Monroe's powerpoints
 
-3. Make sure that the flocculator design check is correct.
+1. Make sure that the flocculator design check is correct.
     - Should we account for head loss in the final residence time check? Monroe mentioned some time ago that the volume of water that is in the 'head loss triangle' doesn't contribute any meaningful shear.
 
-4. make graphs in python for the cdc equation derivations, change the colors to not be red
+1. Make graphs in python for the cdc equation derivations, change the colors to not be red
 
-5. Make documents for text formatting/coloring and variables/parameters used
+1. Consolidate all the equation derivations into one sheet.
 
-6. consolidate all the equation derivations into one sheet.
+1. Move Monroe's EDR and Rapid Mix files into 'Theory and Future Work'

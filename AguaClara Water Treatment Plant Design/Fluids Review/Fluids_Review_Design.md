@@ -25,9 +25,9 @@ Please use this table to control/command find the sections you are looking for.
 
 #### **Section: Fluids Review**
 **Introductory Concepts**  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - Continuity Equation  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - Laminar and Turbulent Flow  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - Streamlines and Control Volumes  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - Continuity Equation  
 **The Bernoulli and Energy Equations**  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - &nbsp;The Bernoulli Equation  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - &nbsp;The Energy Equation  
@@ -76,44 +76,55 @@ If you wish to review fluid mechanics in (much) more detail, please refer to [th
 7. Orifice equation
 
 ## Introductory Concepts
-Before diving in, there are a few important concepts which will be the foundation for building your understanding of fluid mechanics. You must walk before you can run, and similarly you must understand the basics of fluid mechanics before you can move on to the more fun, later sections of this document.
+Before diving in, there are a few important concepts which will be the foundation for building your understanding of fluid mechanics. One must walk before they can run, and similarly, the basics of fluid mechanics must be understood before moving on to the more fun sections of this document.
 
 ### Continuity Equation
-Continuity is simply an application of mass balance to fluid mechanics. It states that the cross sectional area $A$ of flow times the average flow velocity $\bar v$ must equal the flow rate $Q$:
+Continuity is simply an application of mass balance to fluid mechanics. It states that the cross sectional area $A$ that a fluid flows through multiplied by the fluid's average flow velocity $\bar v$ must equal the fluid's flow rate $Q$:
 
-$$Q = VA$$
+$$Q = \bar v A$$
 
-In CEE 4540, we deal primarily with flow through pipes. For a pipe, $A = \pi r^2 = \frac{\pi D^2}{4}$. You will often see this form of the continuity equation being used to relate the flow rate in a pipe to the fluid velocity and pipe diameter:
+**Note:** The line above the $v$ is called a 'bar,' and represents an average. Any variable can have a bar. In this case, we are adding the bar to velocity $v$, turning it into average velocity $\bar v$. This variable is pronounced 'v bar.'
 
-$$Q = V\frac{\pi D^2}{4}$$
+In CEE 4540, we deal primarily with flow through pipes. For a circular pipe, $A = \pi r^2$. Substituting diameter in for radius, $r = \frac{D}{2}$, we get $A = \frac{\pi D^2}{4}$. You will often see this form of the continuity equation being used to relate the flow rate in a pipe to the fluid velocity and pipe diameter:
+
+$$Q = \bar v \frac{\pi D^2}{4}$$
 
 The continuity equation is also useful when flow is going from one geometry to another. In this case, the flow in one geometry must be the same as the flow in the other, $Q_1 = Q_2$, which yields the following equations:
 
-$$V_1 A_1 = V_2 A_2$$
+$$\bar v_1 A_1 = \bar v_2 A_2$$
 
-$$V_1 \frac{\pi D_1^2}{4} = V_2 \frac{\pi D_2^2}{4}$$
+$$\bar v_1 \frac{\pi D_1^2}{4} = \bar v_2 \frac{\pi D_2^2}{4}$$
 
-An example of changing flow geometries is when the a change in pipe size occurs in a piping system, as is demonstrated below.
+Such that:  
+$Q =$ fluid flow rate, $\frac{[L]^3}{[T]}$  
+$\bar v =$ fluid average velocity, $\frac{[L]}{[T]}$  
+$A =$ pipe area, $[L]^2$  
+$r =$ pipe radius, $[L]$  
+$D =$ pipe diameter, $[L]$
+
+An example of changing flow geometries is when the a change in pipe size occurs in a circular piping system, as is demonstrated below. The flow through ${\rm pipe} \, 1$ must be the same as the flow through ${\rm pipe} \, 2$.
 
 <center><img src="https://github.com/AguaClara/CEE4540_Master/blob/master/AguaClara%20Water%20Treatment%20Plant%20Design/Fluids%20Review/Images/Continuity_pipes.jpg?raw=true" width=550></center>
 
 ### Laminar and Turbulent Flow
-Considering that this class deals with the flow of water through a water treatment plant, understanding the characteristics of the flow seems very important. Thus, it is important to understand the most common characteristic of fluid flow: whether it is laminar or turbulent. Laminar flow is very smooth and highly ordered. Turbulent flow is chaotic, messy, and disordered. The best way to understand each flow and what it looks like is visually, [like  this video shows](https://www.youtube.com/watch?v=qtvVN2qt968 "A great class project").
+Considering that this class deals with the flow of water through a water treatment plant, understanding the characteristics of the flow is very important. Thus, it is necessary to understand the most common characteristic of fluid flow: whether it is laminar or turbulent. [**Laminar**](https://en.wikipedia.org/wiki/Laminar_flow "Laminar flow wikipedia") flow is very smooth and highly ordered. [**Turbulent**](https://en.wikipedia.org/wiki/Turbulence "Turbulent flow wikipedia") flow is chaotic, messy, and disordered. The best way to understand each flow and what it looks like is visually, [like in this video](https://youtu.be/qtvVN2qt968?t=131 "A great class project") or the wikipedia image below. Please ignore the part of the video after the image of the tap.  
 
-A numeric way to determine whether flow regmine is  laminar or turbulent is by finding the [**Reynolds number**](https://en.wikipedia.org/wiki/Reynolds_number "Reynolds number wikipedia"), ${\rm Re}$. The Reynolds number is a dimensionless parameter that compares inertia, represented by the flow velocity $v$ times a length scale $D$ to [viscosity](https://en.wikipedia.org/wiki/Viscosity "Viscosity wikipedia"), represented by the kinematic viscosity $\nu$.
+<center><img src="https://github.com/AguaClara/CEE4540_Master/blob/master/AguaClara%20Water%20Treatment%20Plant%20Design/Fluids%20Review/Images/Wikipedia_laminar_turbulent.jpg?raw=true" width=400></center>
 
-$$ {\rm Re = \frac{inertia}{viscosity}} = \frac{vD}{\nu}$$
+A numeric way to determine whether flow is  laminar or turbulent is by finding the [**Reynolds number**](https://en.wikipedia.org/wiki/Reynolds_number "Reynolds number wikipedia"), ${\rm Re}$. The Reynolds number is a dimensionless parameter that compares inertia, represented by the average flow velocity $\bar v$ times a length scale $D$ to [**viscosity**](https://en.wikipedia.org/wiki/Viscosity "Viscosity wikipedia"), represented by the kinematic viscosity $\nu$. [Click here](https://www.youtube.com/watch?v=DVQw0svRHZA "This guy is Austrailian?") for a brief video explanation of viscosity. If the Reynolds number is less than 2,100 the flow is considered laminar. If it is more than a certain value, it is considered turbulent.
 
-Since fluid can flow through very many different geometries like a pipe, a rectangular channel, or some other shape, the Reynolds number needs to account
+$$ {\rm Re = \frac{inertia}{viscosity}} = \frac{\bar vD}{\nu}$$
 
-equation for Reynolds number *in a circular pipe* is as follows (note that the length dimension used in the equation changes depending on the cross sectional area that the water is flowing through):
+[There is a transition between laminar and turbulent flow which is not yet well understood](https://en.wikipedia.org/wiki/Laminar%E2%80%93turbulent_transition "Transitional flow wikipedia"). To simplify this phenomenon and make it possible to code for laminar or turbulent flow, we assume that the transition occurs at $\rm{Re} = 2100$. The flow regime is assumed to be laminar below this value and turbulent above it. This variable is coded into aide_design as `pc.RE_TRANSITION_PIPE`. We will neglect transitional flow.
 
-$${\rm{Re}}=\frac{4Q}{\pi D\nu} = \frac{\rho \bar vD}{\mu} = \frac{\bar vD}{\nu}$$
+Fluid can flow through very many different geometries like a pipe, a rectangular channel, or any other shape. To account for this, the characteristic length scale is quantified as the [hydraulic diameter](https://www.engineeringtoolbox.com/hydraulic-equivalent-diameter-d_458.html "engineering toolbox"), which can be applied to any geometry. For circular pipes, which are the most common geometry you'll encounter in this class, the hydraulic diameter is simply the pipe diameter.
 
-Where the three forms simply substitute $Q = \bar v \frac{\pi D^2}{4}$ and $\nu = \frac{\mu}{\rho}$  
+Here are other commonly used forms of the Reynolds number equation. They are the same as the one above, just with the substitutions $Q = \bar v \frac{\pi D^2}{4}$ and $\nu = \frac{\mu}{\rho}$
+
+$${\rm{Re}} = \frac{\bar vD}{\nu} = \frac{4Q}{\pi D\nu} = \frac{\rho \bar vD}{\mu}$$  
 
 Such that:  
-$Q$ = pipe flow rate, $\frac{[L]^3}{[T]}$  
+$Q$ = fluid flow rate in pipe, $\frac{[L]^3}{[T]}$  
 $D$ = pipe diameter, $[L]$    
 $\bar v$ = fluid velocity $\frac{[L]}{[T]}$  
 $\nu$ = fluid kinematic viscosity, $\frac{[L]^2}{[T]}$    
@@ -121,17 +132,22 @@ $\mu$ = fluid dynamic viscosity, $\frac{[M]}{[L][T]}$
 
 **Function in aide_design:** `pc.re_pipe(FlowRate, Diam, Nu)` Returns the Reynolds number *in a circular pipe*. Functions for finding the Reynolds number through other conduits and geometries can also be found in [physchem.py](https://github.com/AguaClara/aide_design/blob/master/aide_design/physchem.py) within aide_design.
 
-[There is a transition between laminar and turbulent flow which is not yet well understood](https://en.wikipedia.org/wiki/Laminar%E2%80%93turbulent_transition "Transitional flow wikipedia"). To simplify this phenomenon and make it possible to code for laminar or turbulent flow, we will assume that the transition occurs at $\rm{Re}$ = 2100. The flow regime is assumed to be laminar below this value and turbulent above it. This variable is coded into aide_design as `pc.RE_TRANSITION_PIPE`.
 
-These different states are called 'regimes.'
+**Note:** Laminar and turbulent flow are described as two different **flow regimes**. When there is a characteristic of flow and different categories of the characteristic, each category is referred to as a flow regime. For example, the Reynolds number describes a flow characteristic, and its categories, referred to as flow regimes, are laminar or turbulent.  
+
 
 ### Streamlines and Control Volumes
-Both [**streamlines**](https://en.wikipedia.org/wiki/Streamlines,_streaklines,_and_pathlines "Streamline wikipedia") and []()
+Both [**streamlines**](https://en.wikipedia.org/wiki/Streamlines,_streaklines,_and_pathlines "Streamline wikipedia") and **control volumes** are tools to compare different sections of a system. For this class, this system will always be hydraulic.
+
+Imagine water flowing through a pipe. A streamline is the path that a particle would take if it could be placed in the fluid without changing the original flow of the fluid. A more technical definition is "a line which is everywhere parallel to the local velocity vector." Computational tools, [dyes (in water)](https://proxy.duckduckgo.com/iur/?f=1&image_host=http%3A%2F%2Fwww.nuclear-power.net%2Fwp-content%2Fuploads%2F2016%2F05%2FFlow-Regime.png%3F4b884b&u=https://www.nuclear-power.net/wp-content/uploads/2016/05/Flow-Regime.png?4b884b), or [smoke (in air)](https://www.youtube.com/watch?v=E9ZSAX56m0E&t=59s) can be used to visualize streamlines.
+
+A control volume is just an imaginary 3-dimensional shape in space. Its boundaries can be placed anywhere by the person applying the control volume, and once set the boundaries remain fixed in space over time. These boundaries are usually chosen to compare two relevant surfaces to each other. The entirety of a control volume is usually not shown, as it is often unnecessary. This is shown in the following image:
+
+<center><img src="https://raw.githubusercontent.com/AguaClara/CEE4540_Master/master/AguaClara%20Water%20Treatment%20Plant%20Design/Fluids%20Review/Images/Control%20_volume_simplification.jpg  " width=700></center>
 
 **Important Note:** Many images will be used over the course of this class to show hydraulic systems. A standardized system of lines will be used throughout them all to distinguish reference elevations from control volumes from streamlines. This system is described in the image below.
 
-<center><img src="https://github.com/AguaClara/CEE4540_Master/blob/master/AguaClara%20Water%20Treatment%20Plant%20Design/Fluids%20Review/Images/Image_control_volumes.jpg?raw=true" width=550></center>
-
+<center><img src="https://github.com/AguaClara/CEE4540_Master/blob/master/AguaClara%20Water%20Treatment%20Plant%20Design/Fluids%20Review/Images/Image_control_volumes.jpg?raw=true" width=700></center>
 
 
 ## The Bernoulli and Energy Equations
@@ -162,14 +178,14 @@ Going back to the Bernoulli equation, the $\frac{p}{\rho g}$ term is called the 
 <center><img src="https://github.com/AguaClara/CEE4540_Master/blob/master/AguaClara%20Water%20Treatment%20Plant%20Design/Fluids%20Review/Images/Different_forms_of_head.jpg?raw=true" width=550></center>
 
 #### Assumption in using the Bernoulli equation  
-Though there are [many assumptions needed to confirm that the Bernoulli equation can be used](https://en.wikipedia.org/wiki/Bernoulli%27s_principle#Incompressible_flow_equation "Bernoulli wikipedia"), the main one for the purpose of this class is that energy is not gained or lost throughout the streamline being considered. If we consider more precise fluid mechanics terminology, then "friction by viscous forces must be negligible." Energy can only be transferred between its three forms if this equation is to be used, it can't be gained or lost.
+Though there are [many assumptions needed to confirm that the Bernoulli equation can be used](https://en.wikipedia.org/wiki/Bernoulli%27s_principle#Incompressible_flow_equation "Bernoulli wikipedia"), the main one for the purpose of this class is that energy is not gained or lost throughout the streamline being considered. If we consider more precise fluid mechanics terminology, then "friction by viscous forces must be negligible." What this means is that the fluid along the streamline being considered is not losing energy to viscosity. Energy can only be transferred between its three forms if this equation is to be used, it can't be gained or lost.
 
 #### Example problems
 
 [Here is a simple worksheet with very straightforward example problems using the Bernoulli equation.](https://www.teachengineering.org/content/cub_/lessons/cub_bernoulli/cub_bernoulli_lesson01_bepworksheetas_draft4_tedl_dwc.pdf "Bernoulli worksheet") Note that the solutions use the pressure-form of the Bernoulli equation. This just means that every term in the equation is multiplied by $\rho g$, so the pressure term is just $P$. The form of the equation does not affect the solution to the problem it helps solved.
 
 ### The Energy Equation
-The assumption necessary to use the Bernoulli equation, which is stated above, represents the key difference between the Bernoulli equation and the energy equation for the purpose of this class. The energy equation accounts for the (L)oss of energy from both the fluid flowing, $h_L$, and the charging of a (T)urbine, $h_T$, as well as energy gain provided by a (P\)ump, $h_P$.
+The assumption necessary to use the Bernoulli equation, which is stated above, represents the key difference between the Bernoulli equation and the energy equation for the purpose of this class. The energy equation accounts for the (L)oss of energy from both the fluid flowing, $h_L$, and any other energy drain, like the charging of a (T)urbine, $h_T$. It also accounts for any energy inputs into the system, $h_P$, which is usually caused by a (P)ump within the control volume.
 
 $$\frac{p_{1}}{\rho g} + z_{1} + \alpha_{1} \frac{\bar v_{1}^2}{2g} + h_P = \frac{p_{2}}{\rho g} + z_{2} + {\alpha_{2}} \frac{\bar v_{2}^2}{2g} + h_T + h_L$$
 
@@ -186,7 +202,7 @@ $$\frac{p_{1}}{\rho g} + z_{1} + \frac{\bar v_{1}^2}{2g} = \frac{p_{2}}{\rho g} 
 ### Major Losses
 These losses are the result of friction between the fluid and the surface over which the fluid is flowing. A force acting parallel to a surface is referred to as [shear](https://en.wikipedia.org/wiki/Shear_force "Shear wikipedia"). It can therefore be said that major losses are the result of shear between the fluid and the surface it's flowing over. To help in understanding  major losses, consider the following example: imagine, as you have so often in physics class, pushing a large box across the ground. Friction is what resists your efforts to push the box. The farther you push the box, the more energy you expend pushing against friction. The same is true for water moving through a pipe, where water is analogous to the box you want to move, the pipe is similar to the floor that provides the friction, and the major losses of the water through the pipe is analogous to the energy _**you**_ expend by pushing the box.
 
-In this class, we will be dealing primarily with major losses in circular pipes, as opposed to channels or pipes with other geometries. Fortunately for us, Henry Darcy and Julius Weisbach came up with a handy equation to determine the major losses in a circular pipe _under both [**laminar**](https://en.wikipedia.org/wiki/Laminar_flow "Laminar flow wikipedia") and [**turbulent**](https://en.wikipedia.org/wiki/Turbulence "Turbulent flow wikipedia") flow conditions_. Their equation is logically but unoriginally named the [**Darcy-Weisbach equation**](https://en.wikipedia.org/wiki/Darcy%E2%80%93Weisbach_equation "Darcy-Weisbach wikipedia"). If you would like a refresher on laminar vs turbulent flow, please watch [this video](https://www.youtube.com/watch?v=qtvVN2qt968) and note that AguaClara uses a transition number of 2,100, instead of the 2,300 shown in the video; this concept is discussed a few paragraphs below this. Here is the Darcy-Weisbach equation:
+In this class, we will be dealing primarily with major losses in circular pipes, as opposed to channels or pipes with other geometries. Fortunately for us, Henry Darcy and Julius Weisbach came up with a handy equation to determine the major losses in a circular pipe _under both laminar and turbulent flow conditions_. Their equation is logically but unoriginally named the [**Darcy-Weisbach equation**](https://en.wikipedia.org/wiki/Darcy%E2%80%93Weisbach_equation "Darcy-Weisbach wikipedia") and is shown below:
 
 $$h_{\rm{f}} \, = \, {\rm{f}} \frac{L}{D} \frac{\bar v^2}{2g}$$
 
@@ -204,7 +220,7 @@ $D$ = pipe diameter, $[L]$
 
 **Function in aide_design:** `pc.headloss_fric(FlowRate, Diam, Length, Nu, PipeRough)` Returns only major losses. Works for both laminar and turbulent flow.
 
-Darcy-Weisbach is wonderful because it applies to both laminar and turbulent flow regimes and contains relatively easy to measure variables. The one exception is the Darcy friction factor, $\rm{f}$. This parameter is an approximation for the magnitude of friction between the pipe walls and the fluid, and its value changes depending on the whether or not the flow is laminar or turbulent, and varies with the [**Reynolds number**](https://en.wikipedia.org/wiki/Reynolds_number "Reynolds number wikipedia"), $\rm{Re}$, in both regimes of flow.
+Darcy-Weisbach is wonderful because it applies to both laminar and turbulent flow regimes and contains relatively easy to measure variables. The one exception is the Darcy friction factor, $\rm{f}$. This parameter is an approximation for the magnitude of friction between the pipe walls and the fluid, and its value changes depending on the whether or not the flow is laminar or turbulent, and varies with the Reynolds number in both flow regimes.
 
 For laminar flow, the friction factor can be determined from the following equation:
 
@@ -244,9 +260,9 @@ In 1944, Lewis Ferry Moody plotted a ridiculous amount of experimental data, gat
 
 ### Minor Losses
 
-Unfortunately, there is no simple 'pushing a box across the ground' example to explain minor losses. So instead, consider a [hydraulic jump](https://www.youtube.com/watch?v=5spXXZX55C8 "What an amazingly made video, but sorry for the 3310 PTSD"). In the video, you can see lots of turbulence and eddies in the transition region between the fast, shallow flow and the slow, deep flow. The high amount of mixing of the water in the transition region of the hydraulic jump results in significant friction *between water and water* (the measure of a fluid's resistance to internal, fluid-fluid friction is called **viscosity**). This turbulent, eddy-induced, fluid-fluid friction results in minor losses, much like fluid-pipe friction results in major losses.
+Unfortunately, there is no simple 'pushing a box across the ground' example to explain minor losses. So instead, consider a [hydraulic jump](https://www.youtube.com/watch?v=5spXXZX55C8 "What an amazingly made video, but sorry for the 3310 PTSD"). In the video, you can see lots of turbulence and eddies in the transition region between the fast, shallow flow and the slow, deep flow. The high amount of mixing of the water in the transition region of the hydraulic jump results in significant friction *between water and water* (recall that the measure of a fluid's resistance to internal, fluid-fluid friction is called **viscosity**). This turbulent, eddy-induced, fluid-fluid friction results in minor losses, much like fluid-pipe friction results in major losses.
 
-As is the case in a hydraulic jump, a flow expansion (from shallow flow to deep flow) creates the turbulent eddies that result in minor losses. This will be a recurring theme in throughout the course: _**minor losses are caused by flow expansions**_. Imagine a pipe fitting that connects a small diameter pipe to a large diameter one, as shown in the image below. The flow must expand to fill up the entire large diameter pipe. This expansion creates turbulent eddies near the union between the small and large pipes, and these eddies cause minor losses. You may already know the equation for minor losses, but understanding where it comes from is very important for effective AguaClara plant design. For this reason, you are strongly recommended to read through the full derivation, which can be found [here](https://github.com/AguaClara/CEE4540_Master/blob/master/AguaClara%20Water%20Treatment%20Plant%20Design/Fluids%20Review/Derivation_minor_loss_equation.md "Remember to check this link").
+As is the case in a hydraulic jump, a flow expansion (from shallow flow to deep flow) creates the turbulent eddies that result in minor losses. This will be a recurring theme in throughout the course: _**minor losses are caused by flow expansions**_. Imagine a pipe fitting that connects a small diameter pipe to a large diameter one, as shown in the image below. The flow must expand to fill up the entire large diameter pipe. This expansion creates turbulent eddies near the union between the small and large pipes, and these eddies cause minor losses. You may already know the equation for minor losses, but understanding where it comes from is very important for effective AguaClara plant design. For this reason, you are strongly recommended to read through the full derivation, which can be found [here](https://github.com/AguaClara/CEE4540_Master/blob/master/AguaClara%20Water%20Treatment%20Plant%20Design/Fluids%20Review/Fluids_Review_Derivation_minor_loss_equation.md "Remember to check this link").
 
 There are three forms of the minor loss equation that you will see in this class:
 
@@ -263,11 +279,13 @@ $K_e^{'}, \,\, K_e$ = minor loss coefficients, dimensionless
 `pc.headloss_exp_general(Vel, KMinor)` Returns $h_e$. Can be either the second or third form due to user input of both velocity and minor loss coefficient. It is up to the user to use consistent $\bar v$ and $K_e$.    
 `pc.headloss_exp(FlowRate, Diam, KMinor)` Returns $h_e$. Uses third form, $K_e$.  
 
+**Note:** You will often see $K_e^{'}$ and $K_e$ used without the $e$ subscript, they will appear as $K^{'}$ and $K$.
+
 The $in$ and $out$ subscripts in each of the three forms refer to the diagram that was used for the derivation:
 
 <center><img src="https://github.com/AguaClara/CEE4540_Master/blob/master/AguaClara%20Water%20Treatment%20Plant%20Design/Fluids%20Review/Images/Minor_loss_pipe.jpg?raw=true" width=650></center>
 
-The second and third forms are the ones which you are probably most familiar with. The distinction between them, however, is critical. First, consider the magnitudes of $A_{in}$ and $A_{out}$. $A_{in}$ can never be larger than $A_{out}$, because the flow is expanding. When flow expands, the cross-sectional area it flows through must increase. As a result, both $\frac{A_{out}}{A_{in}} > 1$ and $\frac{A_{in}}{A_{out}} < 1$ must always be true. This means that $K_e^{'}$ can never be greater than 1, while $K_e$ technically has no upper limit.
+The second and third forms are the ones which you are probably most familiar with. The distinction between them, however, is critical. First, consider the magnitudes of $A_{in}$ and $A_{out}$. $A_{in}$ can never be larger than $A_{out}$, because the flow is expanding. When flow expands, the cross-sectional area it flows through must increase. As a result, both $\frac{A_{out}}{A_{in}} > 1$ and $\frac{A_{in}}{A_{out}} < 1$ must always be true. This means that $K^{'}$ can never be greater than 1, while $K$ technically has no upper limit.
 
 If you have taken CEE 3310, you have seen tables of minor loss coefficients [like this one](https://www.engineeringtoolbox.com/minor-loss-coefficients-pipes-d_626.html "engineeringtoolbox is the best site ever"), and they almost all have coefficients greater than 1. This implies that these tables use the third form of the minor loss equation as we have defined it, where the velocity is $\bar v_{out}$. There is a good reason for using the third form over the second one: $\bar v_{out}$ is far easier to determine than $\bar v_{in}$. Consider flow through a pipe elbow, as shown in the image below.
 
@@ -287,7 +305,7 @@ Consider the following image, which was taken from the Flow Control and Measurem
 
 In systems like this, where an elevation difference is causing the flow of water, the elevation difference is called the **driving head**. In the system above, the driving head is the elevation difference between the water level and the end of the tubing. Usually driving head is written as $\Delta z$ or $\Delta h$, though above it is labelled as $h_L$.
 
- This image is violating the energy equation by saying that the elevation difference between the water in the tank and the end of the tube is $h_L$. It implies that all of the driving head, $\Delta z$, is lost to head loss and therefore that no water is flowing out of the tubing, which is not true. Let's apply the energy equation between the two red points. Pressures are atmospheric at both points and the velocity of water at the top of tank is negligible.
+This image is violating the energy equation by saying that the elevation difference between the water in the tank and the end of the tube is $h_L$. It implies that all of the driving head, $\Delta z$, is lost to head loss and therefore that no water is flowing out of the tubing, which is not true. Let's apply the energy equation between the two red points. Pressures are atmospheric at both points and the velocity of water at the top of tank is negligible.
 
 $$\rlap{\Bigg/}\frac{p_{1}}{\rho g} + z_{1} + \rlap{\Bigg/}\frac{\bar v_{1}^2}{2g} = \rlap{\Bigg/}\frac{p_{2}}{\rho g} + z_{2} + \frac{\bar v_{2}^2}{2g} + h_L$$  
 
@@ -299,17 +317,17 @@ This contradicts the image above, which says that $\Delta z = h_L$ and neglects 
 
 $$\Delta z = \frac{\bar v_2^2}{2g} + h_e + h_f$$
 
-$$\Delta z = \frac{\bar v_2^2}{2g} + \left( \sum K_e \right) \frac{\bar v_2^2}{2g} + h_f$$
+$$\Delta z = \frac{\bar v_2^2}{2g} + \left( \sum K \right) \frac{\bar v_2^2}{2g} + h_f$$
 
-$$\Delta z = \left( 1 + \sum K_e \right) \frac{\bar v_2^2}{2g} + h_f$$
+$$\Delta z = \left( 1 + \sum K \right) \frac{\bar v_2^2}{2g} + h_f$$
 
-This last step incorporated the kinetic energy term of the energy equation, $\frac{\bar v_2^2}{2g}$, into the minor loss equation by saying that its $K_e$ is 1. From here, we reverse our steps to get $\Delta z = h_L$
+This last step incorporated the kinetic energy term of the energy equation, $\frac{\bar v_2^2}{2g}$, into the minor loss equation by saying that its $K$ is 1. From here, we reverse our steps to get $\Delta z = h_L$
 
 $$\Delta z = h_e + h_f$$
 
 $$\Delta z = h_L$$
 
-By applying the head loss trick, you are considering the entire flow of water out of a control volume as lost energy. This is just an algebraic trick, the only thing to remember when applying this trick is that $\sum K_e$ will always be at least 1, even if there are no 'real' minor losses in the system.
+By applying the head loss trick, you are considering the entire flow of water out of a control volume as lost energy. This is just an algebraic trick, the only thing to remember when applying this trick is that $\sum K$ will always be at least 1, even if there are no 'real' minor losses in the system.
 
 
 ## The Orifice Equation
@@ -376,7 +394,7 @@ $$\frac{p_{1}}{\rho g} + z_{1} + \frac{\bar v_{1}^2}{2g} = \frac{p_{2}}{\rho g} 
 
 Darcy-Weisbach equation:  
 $$h_{\rm{f}} = {\rm{f}} \frac{L}{D} \frac{\bar v^2}{2g}$$
-For water treatment plant design we tend to use plant flow rate, Q, as our master variable and thus we have.
+For water treatment plant design we tend to use plant flow rate, $Q$, as our master variable and thus we have.
 $$h_{\rm{f}} = {\rm{f}} \frac{8}{g \pi^2} \frac{LQ^2}{D^5}$$
 
 $\rm{f}$ for laminar flow:
@@ -390,16 +408,16 @@ $${\rm{f}} = \frac{0.25} {\left[ \log \left( \frac{\epsilon }{3.7D} + \frac{5.74
 Hagen-Poiseuille equation for laminar flow:
 $$h_{\rm{f}} = \frac{32\mu L \bar v}{\rho gD^2} = \frac{128\mu Q}{\rho g\pi D^4}$$
 
-3. **Minor losses:** Defined as the energy loss due to the generation of turbulent eddies when flow expands. Once more: minor losses are caused by flow expansions. There are three forms of the minor loss equation, two of which look the same but use different coefficients ($K_e^{'}$ vs $K_e$) and velocities ($\bar v_{in}$ vs $\bar v_{out}$). _Make sure the coefficient you select is consistent with the velocity you use_.
+3. **Minor losses:** Defined as the energy loss due to the generation of turbulent eddies when flow expands. Once more: minor losses are caused by flow expansions. There are three forms of the minor loss equation, two of which look the same but use different coefficients ($K^{'}$ vs $K$) and velocities ($\bar v_{in}$ vs $\bar v_{out}$). _Make sure the coefficient you select is consistent with the velocity you use_.
 
 First form:
 $$h_e = \frac{\left( \bar v_{in}  - \bar v_{out} \right)^2}{2g}$$
 
 Second form:
-$$h_e = \frac{\bar v_{in}^2}{2g}{\left( {1 - \frac{A_{in}}{A_{out}}} \right)^2} = \,\,\, \frac{\bar v_{in}^2}{2g} \mathbf{K_e^{'}}$$
+$$h_e = \frac{\bar v_{in}^2}{2g}{\left( {1 - \frac{A_{in}}{A_{out}}} \right)^2} = \,\,\, \frac{\bar v_{in}^2}{2g} \mathbf{K^{'}}$$
 
 Third and most common form:
-$$h_e = \frac{\bar v_{out}^2}{2g}{\left( {\frac{A_{out}}{A_{in}}} -1 \right)^2} = \,\,\,\, \frac{\bar v_{out}^2}{2g} \mathbf{K_e}$$
+$$h_e = \frac{\bar v_{out}^2}{2g}{\left( {\frac{A_{out}}{A_{in}}} -1 \right)^2} = \,\,\,\, \frac{\bar v_{out}^2}{2g} \mathbf{K}$$
 
 
 4. **Major and minor losses vary with flow:** While it is generally important to know how increasing or decreasing flow will affect head loss, it is even more important for this class to understand exactly how flow will affect head loss. As the table below shows, head loss will always be proportional to flow squared during turbulent flow. During laminar flow, however, the exponent on $Q$ will be between 1 and 2 depending on the proportion of major to minor losses.
@@ -410,7 +428,7 @@ $$h_e = \frac{\bar v_{out}^2}{2g}{\left( {\frac{A_{out}}{A_{in}}} -1 \right)^2} 
 |       Turbulent        |    $Q^2$     |    $Q^2$     |
 
 
-5. The **head loss trick**, also called the control volume trick, can be used to incorporate the 'kinetic energy out' term of the energy equation, $\frac{\bar v_2^2}{2g}$, into head loss as a minor loss with $K_e = 1$, so the minor loss equation becomes $\left( 1 + \sum K_e \right) \frac{\bar v^2}{2g}$. This is used to be able to say that $\Delta z = h_L$ and makes many equation simplifications possible in the future.
+5. The **head loss trick**, also called the control volume trick, can be used to incorporate the 'kinetic energy out' term of the energy equation, $\frac{\bar v_2^2}{2g}$, into head loss as a minor loss with $K = 1$, so the minor loss equation becomes $\left( 1 + \sum K \right) \frac{\bar v^2}{2g}$. This is used to be able to say that $\Delta z = h_L$ and makes many equation simplifications possible in the future.
 
 6. **Orifice equation and vena contractas:** The orifice equation is used to determine the flow out of an orifice given the elevation of water above the orifice. This equation introduces the concept of a vena contracta, which describes flow contraction due to the inability of streamlines to make sharp turns. The equation shows that the flow out of an orifice is proportional to the square root of the driving head, $Q \propto \sqrt{\Delta h}$. Depending on the orientation of the orifice, vertical (like a hole in the side of a bucket) or horizontal (like a hole in the bottom of a bucket), a different equation in aide_design should be used.
 
