@@ -28,6 +28,7 @@ Things I'm finding that will need definitely more work:
  |sedimentation|sedimentation | 
  
  Topics included in each DC:
+ 
  |DC|topics|
  |-----|------|
  |Filtration| characterization of fluids, fluidization vel,residence time, total waste and loss from backwash, mass of solids removed, constriction theory|
