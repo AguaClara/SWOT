@@ -28,11 +28,16 @@ Things I'm finding that will need definitely more work:
  |sedimentation|sedimentation | 
  
  Topics included in each DC:
+ |DC|topics|
  |-----|------|
  |Filtration| characterization of fluids, fluidization vel,residence time, total waste and loss from backwash, mass of solids removed, constriction theory|
  |flow control + meas|v+h orifices (w/ expl),function for LFOM based on v+h or eqns,laminar flow controller (stock, tube diam + num, small headloss)|
  |Hydraulic Floc|vert flow desgin, G as f(T), floc'r vol/len/width/num chan/spacing/dist betw expan/res time, if G param changes what happens|
- |Mech floc + floc model|conventail des param (time in floc'r),pwr reqs,max EDR,energy req,cost,
+ |Mech floc + floc model|conventail des param (time in floc'r),pwr reqs,max EDR,energy req,cost,fractal floc model, term vel or flocs, inner viscous length scale, time scale, coagulent distribution|
+ |Python|python skills|
+ |Rapid mix| Temperature effects, energy use, and operating costs, energy dissipation of jet|
+ |Sedimentation|Diffuser calcs,  sources of headloss, plate settlers, manifold+launder calcs, (this does not include everything!)|
+ 
  
  **idea** 
  somehow use half the design challenge as example with sample code, have them complete it, and then ask to change parameters and explain why changes were obsvered. 
