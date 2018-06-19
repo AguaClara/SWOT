@@ -20,7 +20,7 @@ Sections that are marked as categorized as '**Organized**' are ready for your re
 | Flow Control and Measurement | - | Juan </br> **Edits ongoing** | Juan </br> **Organized** | - | - | - |
 | Flocculation | Monroe </br> **Preliminary writing** | Juan </br> **Organized** | Juan </br> **Edits ongoing** | - | - | - |
 | Sedimentation | Monroe </br> **Preliminary writing** | - | - | - | - | - |
-| Filtration | - | - | - | - | - | - |
+| Filtration | - | - | This is a high priority because AIDE doesn't have a filter design | - | - | - |
 
 
 
