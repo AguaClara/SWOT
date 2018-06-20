@@ -87,9 +87,9 @@ The following tables can serve as a convenient reference to the equations descri
 Table of equations for control volume averaged values of head loss, energy dissipation rate, and the Camp-Stein velocity gradient.
 | Geometry | $h_L$ |$\bar\varepsilon$ | $G_{CS}(\bar v)$ |  $G_{CS}(Q)$|
 | - | :-: | :-: | :-: | :-: |
-| Straight pipe | $h_{\rm{f}} = {\rm{f}} \frac{L}{D} \frac{\bar v^2}{2g}$ |$\bar\varepsilon = \frac{\rm{f}}{2} \frac{\bar v^3}{D}$ |$G_{CS} = \left(\frac{\rm{f}}{2\nu} \frac{\bar v^3}{D} \right)^\frac{1}{2}$ |  $G_{CS} = \left(\frac{\rm{32f}}{ \pi^3\nu} \frac{Q^3}{D^7} \right)^\frac{1}{2}$ |
-| Straight pipe laminar|$h_{\rm{f}} = \frac{32\nu L\bar v}{ g D^2}$| $\bar\varepsilon =32\nu \left( \frac{\bar v}{D} \right)^2$ |$G_{CS} =4\sqrt2 \frac{\bar v}{D}$ | $G_{CS} =\frac{16\sqrt2}{\pi} \frac{Q}{D^3}$ |
-| Parallel plates laminar | $h_{\rm{f}} = 12\frac{ \nu L \bar v }{gS^2}$ | $\bar\varepsilon = 12 \nu \left(\frac{  \bar v}{S} \right)^2$ | $G_{CS} = 2\sqrt{3}\frac{  \bar v}{S}$ | :-: |
+| Straight pipe | $h_{{\rm f}} = {{\rm f}} \frac{L}{D} \frac{\bar v^2}{2g}$ |$\bar\varepsilon = \frac{{\rm f}}{2} \frac{\bar v^3}{D}$ |$G_{CS} = \left(\frac{{\rm f}}{2\nu} \frac{\bar v^3}{D} \right)^\frac{1}{2}$ |  $G_{CS} = \left(\frac{\rm{32f}}{ \pi^3\nu} \frac{Q^3}{D^7} \right)^\frac{1}{2}$ |
+| Straight pipe laminar|$h_{{\rm f}} = \frac{32\nu L\bar v}{ g D^2}$| $\bar\varepsilon =32\nu \left( \frac{\bar v}{D} \right)^2$ |$G_{CS} =4\sqrt2 \frac{\bar v}{D}$ | $G_{CS} =\frac{16\sqrt2}{\pi} \frac{Q}{D^3}$ |
+| Parallel plates laminar | $h_{{\rm f}} = 12\frac{ \nu L \bar v }{gS^2}$ | $\bar\varepsilon = 12 \nu \left(\frac{  \bar v}{S} \right)^2$ | $G_{CS} = 2\sqrt{3}\frac{  \bar v}{S}$ | :-: |
 | Coiled tube laminar | $h_{L_{coil}} = \frac{32\nu L\bar v}{ g D^2} \left[ 1 + 0.033\left(log_{10}De\right)^4 \right]$ |$\bar\varepsilon = 32\nu \left( \frac{\bar v}{D} \right)^2 \left[ 1 + 0.033\left(log_{10}De\right)^4 \right]$| $G_{CS_{coil}} = 4\sqrt2 \frac{\bar v}{D}\left[ 1 + 0.033\left(log_{10}De\right)^4  \right]^\frac{1}{2}$ | - |
 | Expansions | $h_e =  K\frac{\bar v_{out}^2}{2g}$ | $\bar\varepsilon = K\frac{\bar v_{out}^3}{2H}$ | $G_{CS} = \bar v_{out}\sqrt{\frac{K\bar v_{out}}{2H\nu}}$ | - |
 
@@ -106,10 +106,10 @@ For turbulent flow and for flow expansions the amount of fluid deformation decre
 Table of equations for maximum (wall) energy dissipation rates and wall velocity gradients.
 | Geometry | $\varepsilon_{wall}$ | $G_{wall}$|
 | - | :-: |:-: |
-| Straight pipe  | $\varepsilon_{wall} = \frac{1}{\nu}\left(\rm{f}  \frac{\bar v^2}{8} \right)^2$ | $G_{wall} =\rm{f}  \frac{\bar v^2}{8\nu}$|
+| Straight pipe  | $\varepsilon_{wall} = \frac{1}{\nu}\left({\rm f}  \frac{\bar v^2}{8} \right)^2$ | $G_{wall} ={\rm f}  \frac{\bar v^2}{8\nu}$|
 | Straight pipe laminar | $\varepsilon_{wall} = \left(\frac{8\bar v}{D} \right)^2 \nu$ | $G_{wall} =  \frac{8\bar v}{D}$|
 | parallel plates | $\varepsilon_{wall} = 36\left( \frac{\bar v}{S}\right)^2 \nu$ | $G_{wall} = \frac{6 \bar v}{S}$|
-| Coiled pipe | - | $G_{CS_{wall_{coil}}} =\rm{f} \left[ 1 + 0.033\left(log_{10}De\right)^4 \right]  \frac{\bar v^2}{8\nu}$|
+| Coiled pipe | - | $G_{CS_{wall_{coil}}} ={\rm f} \left[ 1 + 0.033\left(log_{10}De\right)^4 \right]  \frac{\bar v^2}{8\nu}$|
 
 Table of equations for maximum energy dissipation rates and velocity gradients for flow expansions.
 | Geometry |$\Pi_{Jet}$ | $\varepsilon_{max}$ | $G_{max}$|
@@ -149,15 +149,15 @@ We can use the eddy velocity to estimate how long it will take for an eddy to cr
 $$v_{eddy} \approx \left( \bar\varepsilon \, D \right)^\frac{1}{3} $$
 
 For a long straight pipe
-$\bar\varepsilon = \frac{\rm{f}}{2} \frac{\bar v^3}{D}$ and thus we can obtain the ratio between mean velocity and the velocity of the large scale eddies.
+$\bar\varepsilon = \frac{{\rm f}}{2} \frac{\bar v^3}{D}$ and thus we can obtain the ratio between mean velocity and the velocity of the large scale eddies.
 
-$$v_{eddy} \approx \left( \frac{\rm{f}}{2} \frac{\bar v^3}{D} \, D \right)^\frac{1}{3} $$
+$$v_{eddy} \approx \left( \frac{{\rm f}}{2} \frac{\bar v^3}{D} \, D \right)^\frac{1}{3} $$
 
-$$\frac{v_{eddy}}{\bar v} \approx \left( \frac{\rm{f}}{2}   \right)^\frac{1}{3} $$
+$$\frac{v_{eddy}}{\bar v} \approx \left( \frac{{\rm f}}{2}   \right)^\frac{1}{3} $$
 
 Given a friction factor of 0.02, the eddy velocity is approximately 20% of the mean velocity. We can use this ratio to estimate how many pipe diameters downstream from an injection point will the coagulant be mixed across the diameter of the pipe.
 
-$$ N_{D_{pipe}} \approx \frac{\bar v}{v_{eddy}} \approx \left(\frac{2}{\rm{f}} \right)^\frac{1}{3} $$
+$$ N_{D_{pipe}} \approx \frac{\bar v}{v_{eddy}} \approx \left(\frac{2}{{\rm f}} \right)^\frac{1}{3} $$
 
 Where $N_{D_{pipe}}$ is the distance in number of pipe diameters downstream of the injection point where complete mixing will have occurred. This estimate is a minimum distance and a factor of safety of 2 or more would reasonably be applied. In addition it is best practice to inject the coagulant in the center of the pipe. Injecting the coagulant at the side of the pipe will require considerably greater distance downstream for mixing across the pipe.
 
