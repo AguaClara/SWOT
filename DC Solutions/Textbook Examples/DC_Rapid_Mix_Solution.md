@@ -1,5 +1,3 @@
-
-
 ```python
 import numpy as np
 import pandas as pd
@@ -32,7 +30,7 @@ Numpy can handle addition, subtraction, multiplication, and division between arr
 
 This design challenge contains two parts:
 - In the first section, we will explore the energy requirements and operating costs for conventional mechanized rapid mix. This provides an opportunity to learn about the consequences of failing to design for sustainability. Rapid mix is both poorly understood and potentially very important in determining the successful operation of a water treatment plant.
-- In the(very short) second section, we will explore the energy dissipation rate in a free jet. 
+- In the(very short) second section, we will explore the energy dissipation rate in a free jet.
 
 # Part 1: Temperature effects, energy use, and operating costs
 
@@ -90,6 +88,8 @@ def rapid_mix_shaft_power(Flow,VelocityGradient,time,Temp):
 ShaftPower = rapid_mix_shaft_power(FlowPlant,G,t,GraphTempArray)
 
 
+
+
 plt.plot(GraphTempArray, ShaftPower.to(u.kW), 'r-')
 plt.xlabel('Temperature (degrees Celcius)')
 plt.ylabel('shaft power required (kW)')
@@ -143,12 +143,12 @@ Our next task is to select a motor that can provide the required shaft power, as
 * Extract the column of available horsepower and the column of premium efficiencies from the excel file and place them within their own 1D numpy arrays.
 * Apply appropriate units to the two extracted numpy arrays.
 
-**NOTE:** The variable to which you assign the extracted excel document is a special type of data structure called a [dataframe](https://pandas.pydata.org/pandas-docs/stable/dsintro.html#dataframe). You can call a column of data from a dataframe by 'indexing' by the columns title in the original file, like `dataframe['Horsepower']`. Make sure the column header is input as a string!
-
+**NOTE:** The variable to which you assign the extracted excel document is a special type of data structure called a [dataframe](https://pandas.pydata.org/pandas-docs/stable/dsintro.html#dataframe). You can call a column of data from a dataframe by 'indexing' by the columns title in the original file, like `dataframe['Horsepower']`. Make sure the column header is input as a string.
 
 ```python
 #We use a pandas dataframe (df) to hold the data from the excel sheet.
 MotorEfficiencydf = pd.read_excel('motor_efficiency.xlsx')    
+
 
 print(MotorEfficiencydf)
 
@@ -241,10 +241,6 @@ print('The motor efficiency is '+ut.sig(MotorEfficiency,3)+'.')
 
     0.896
     The motor efficiency is 0.896.
-
-
-You might think that the rapid mix unit will take less electrical power when the water is warmer. But that isn't the case because the Reynolds number for the rapid mix propeller is quite high and thus the drag coefficient is independent of Re. This means that the torque required to spin the propeller doesn't change as the viscosity of the water changes. It would be possible to run the propeller slower when the water is warmer because the required energy dissipation rate is lower, but that would require a variable speed drive. You could add a variable speed motor controller to take advantage of this. However, the bigger problem is that we don't yet have a good model explaining what rapid mix does.
-
 ### 7)
 Now, we want to find a 3 phase, 1800 rpm (approximately!) electric motor that is totally enclosed and fan cooled (TEFC), and that has enough power to operate your rapid mixer at [McMaster Carr](https://www.mcmaster.com/). You can find the link to the CAD drawing if you pretend you are going to select the motor for purchase. This part of the design challenge breaks dependency.
 
@@ -283,16 +279,10 @@ For this step, simply **display the resulting data table showing the most recent
 Note that this data file has meta information about the data in the first rows. You can [delete those rows by setting header = 4](https://pandas.pydata.org/pandas-docs/stable/generated/pandas.read_csv.html) in the function call to the `pd.read_csv`. You can read exactly one year of data by setting nrows = 12. This will make it easy to calculate the average cost for the past year.
 
 
-
-
 ```python
 ElectricityCostdata = pd.read_csv('Average_retail_price_of_electricity_monthly.csv',header=4,nrows=12)
 ElectricityCostdata
 ```
-
-
-
-
 <div>
 <style>
     .dataframe thead tr:only-child th {
@@ -433,10 +423,8 @@ ElectricityCostdata
 </div>
 
 
-
 ### 9b)
 Calculate the average commercial electricity cost for the most recent 12 months. Include the appropriate units. Don't forget to correct for the fact that the prices are given in cents and not dollars.
-
 
 ```python
 ElectricityRate = np.average(np.array(ElectricityCostdata['New York : commercial cents per kilowatthour']))/100*u.USD/(u.kWh)
@@ -507,13 +495,6 @@ print ('The cumulative energy costs for a period of 25 years is', ut.sig(YR25Ele
 ```
 
     The cumulative energy costs for a period of 25 years is 105794.0 USD
-
-
-### 10)
-Write a paragraph describing what you learned from this design challenge. Include reflections on the temptation to use a standard design, the low capital cost of energy wasting designs, and the long term implications of engineering that isn't guided by a goal of sustainability.
-
-### Insert Paragraph Here:
-
 
 # Part 2: Energy dissipation rates in free jets (think flow expansion!)
 
