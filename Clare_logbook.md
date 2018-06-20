@@ -19,7 +19,7 @@ Things I'm finding that will need definitely more work:
  
  |textbook chapter| DC's already existing with these topics |
  |------|-------|
- |Energy Diss + Vel Grad|  ??? |
+ |Energy Diss + Vel Grad|  ???, part2 of RM could go here |
  |Filtration|  DC Filtration |
  |Flocculation| Hydraulic floc, Mech + floc model|
  |Flow control and meas| flow control + meas|
@@ -28,13 +28,28 @@ Things I'm finding that will need definitely more work:
  |sedimentation|sedimentation | 
  
  Topics included in each DC:
+ 
+ |DC|topics|
  |-----|------|
  |Filtration| characterization of fluids, fluidization vel,residence time, total waste and loss from backwash, mass of solids removed, constriction theory|
  |flow control + meas|v+h orifices (w/ expl),function for LFOM based on v+h or eqns,laminar flow controller (stock, tube diam + num, small headloss)|
  |Hydraulic Floc|vert flow desgin, G as f(T), floc'r vol/len/width/num chan/spacing/dist betw expan/res time, if G param changes what happens|
- |Mech floc + floc model|conventail des param (time in floc'r),pwr reqs,max EDR,energy req,cost,
+ |Mech floc + floc model|conventail des param (time in floc'r),pwr reqs,max EDR,energy req,cost,fractal floc model, term vel or flocs, inner viscous length scale, time scale, coagulent distribution|
+ |Python|python skills|
+ |Rapid mix| Temperature effects, energy use, and operating costs, energy dissipation of jet|
+ |Sedimentation|Diffuser calcs,  sources of headloss, plate settlers, manifold+launder calcs, (this does not include everything!)|
  
- **idea** 
- somehow use half the design challenge as example with sample code, have them complete it, and then ask to change parameters and explain why changes were obsvered. 
- - this will allow some of the design to still happen, but less code intensive
- - and will incorporate the concpetual questions in (as I wonder if there are really enough of those to merit full outside of class work)
+ 
+ ## June 20th
+ -Within each DC that exists there are several 'levels' of questions.
+  -    basic ones that set up the parameters (with 20cm in one layer of sand and 6 layers of sand, how much sand is there)
+  -   plotting questions (plot the values of this equation)
+  - function questions (write a function)
+  -concept questions. (if this is changed what happens)
+  
+ At this poit, I have taken out all the standalone concpet questions that I could find, while also editing for clarity. Many of the 
+ other concept questions are tied with graph construction making it difficult to use them alone unless the entire format is changed
+ (which is fine) but with this, I'm wondering how long the examples are meant to be. To have them be the full 20ish questions long, as 
+ they are right now seems too long unless they get further separated into sections. 
+ 
+ 
