@@ -40,6 +40,7 @@ from aide_design import physchem as pc
 from aide_design import expert_inputs as exp
 from aide_design import utility as ut
 from aide_design.units import unit_registry as u
+#from aide_design.unit_process_design.prefab import lfom_prefab_functional as lfom
 from aide_design.unit_process_design.prefab import lfom_prefab_functional as lfom
 ```
 
@@ -93,6 +94,7 @@ plt.title('Horizontal vs. Vertical Orifice Orientation')
 plt.legend(['Horizontal Orientation', 'Vertical orientation'], loc='best')
 plt.grid(True)
 plt.show()
+plt.savefig('verticalical_horizontal_orifice.png')
 ```
 
 
@@ -227,6 +229,8 @@ plt.title('Normalized Flow Rate vs. Water Depth')
 plt.legend(['Vertical Orifice', 'Target'], loc='best')
 plt.grid(True)
 plt.show()
+plt.savefig('normalized_flow_vs_water_depth.png')
+
 
 ```
 

@@ -10,22 +10,15 @@ from aide_design import utility as ut
 from aide_design import floc_model as floc
 ```
 
-# DC Mechanical Flocculation Solution
+# DC Mechanical Flocculation Example Solution
 
-In this design challenge, you will design a mechanical flocculator and power unit. You will use a flow rate of 50 L/s as your default design value. The coldest temperature that the raw water is expected to have is 10°C.  
+In this example, you will design a mechanical flocculator and power unit. You will use a flow rate of 50 L/s as the default design value. The coldest temperature that the raw water is expected to have is 10°C.  
 You will also play with fractal flocculation model equations to get a sense of how fast flocs can aggregate. You will also explore the floc model predictions.
 
-As you define variables, take care not to redefine parameters. One trick is to use a unique name for variables that are estimates. We often add "est" to any variable names that aren't the final values.
+One trick used here to avoid renaming parameters is to add "est" to any variable names that aren't the final values, this maintains a unique value for each parameter
 
 The `floc_model.py` file contains many useful functions which includes clay, coagulant and humic acid material properties, fractal model equations, and flocculation model equations. **We recommend that you open the `floc_model.py` and have it side by side with this design challenge for easy reference.**
 
-
-
-<div class="alert alert-block alert-info">
-
- The textbook explanations found on Github will be very useful for obtaining and understanding relevant equations for this design challenge and ones in the future.
-
- </div>
 
 ## Conventional Design Guidelines:
 
@@ -57,7 +50,7 @@ Note: `.to(u.dimensionless)` ensures you don't get weird dimensions like kilomet
 
 
 ```python
-#answer
+
 time_mech = 30 * u.min
 Gtime_mech= (G_mech * time_mech).to(u.dimensionless)
 

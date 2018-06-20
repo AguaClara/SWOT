@@ -26,7 +26,7 @@ from pytexit import py2tex
 #import warnings
 ```
 
-# DC Stacked Rapid Sand Filtration
+#Stacked Rapid Sand Filtration
 
 The stacked rapid sand filter at Tamara, Honduras is treating 12 L/s of water with six 20 cm deep layers of sand. The sand has an effective size of 0.5 mm and a uniformity coefficient of 1.6. The backwash velocity of the filter is 11 mm/s. Defined below are many of the necessary inputs for the filtration analysis.
 
@@ -37,7 +37,6 @@ density_sand = 2650 * u.kg / u.m**3
 k_Kozeny = 5
 H_filter_layer = 20 * u.cm
 N_filter_layer = 6
-
 
 #We will use 20 deg C as the typical operating temperature. Honduras is quite warm.
 T_design = 20*u.degC
@@ -178,6 +177,7 @@ plt.show()
 
 
 ![png](DC_Filtration_Solution_files/DC_Filtration_Solution_17_0.png)
+
 
 
 ### 8)
