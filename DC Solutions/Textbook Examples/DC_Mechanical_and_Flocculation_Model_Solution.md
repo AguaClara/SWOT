@@ -262,7 +262,6 @@ If this flocculator is 4 m deep, then how many square meters of plan view area a
 
 
 ```python
-#answer
 depth_mech = 4 * u.m
 area_mech = (vol_mech / (depth_mech * flow_plant))
 print('The required plan view area is', area_mech)

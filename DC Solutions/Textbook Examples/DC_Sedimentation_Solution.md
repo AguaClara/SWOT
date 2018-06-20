@@ -281,10 +281,10 @@ print('The energy dissipation rate for inlet jet is', EDR_inlet_jet)
 
 ### 9:
 
-In desiging AguaClara plants, it is critical to account for all forms of significant head loss. In the sedimentation tank, effluent launders provide about 4 cm of head loss. We want to calculate the exit head loss for water leaving the diffusers to determine whether it is a significant addition to the total head loss through the sedimentation tank.
+In designing AguaClara plants, it is critical to account for all forms of significant head loss. In the sedimentation tank, effluent launders provide about 4 cm of head loss. We want to calculate the exit head loss for water leaving the diffusers to determine whether it is a significant addition to the total head loss through the sedimentation tank.
 
 Calculate this diffuser exit head loss in two ways.
-* First, calculate the head loss making sure to account for the upflow velocity in the sed tank.
+  - First, calculate the head loss making sure to account fo r the upflow velocity in the sed tank.
 * Second, calculate the head loss but assume that the upflow velocity is negligible.
 
 * Is it reasonable to neglect the upflow velocity in the sed tank when calculating this head loss?

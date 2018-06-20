@@ -148,6 +148,7 @@ plt.xlabel(r'Temperature ($^\circ$C)')
 plt.ylabel(r'G$\theta$')
 plt.title(r'G$\theta$ vs temperature')
 plt.show()
+plt.savefig('G_theta vs Temperature')
 ```
 
 
@@ -475,6 +476,7 @@ plt.xlabel('Plant Flow Rate (L/s)')
 plt.ylabel('Expansion per baffle space')
 plt.title('Expansions per baffle space vs plant flow')
 plt.show()
+plt.savefig('expansions_per_baffle_space_vs_plant_flow')
 
 
 channels=np.zeros(plot_points)
@@ -486,6 +488,7 @@ plt.xlabel('Plant Flow Rate (L/s)')
 plt.ylabel('Number of channels')
 plt.title('Number of channels vs plant flow')
 plt.show()
+plt.savefig('number_channels_vs_plant_flow')
 
 
 baffles=np.zeros(plot_points)
@@ -497,6 +500,7 @@ plt.xlabel('Plant Flow Rate (L/s)')
 plt.ylabel('Number of Baffle Spaces')
 plt.title('Number of baffle spaces vs plant flow')
 plt.show()
+plt.savefig('number_baffle_spaces_vs_plant_flow')
 
 
 width_floc_channel=np.zeros(plot_points)*u.m
@@ -508,6 +512,7 @@ plt.xlabel('Plant Flow Rate (L/s)')
 plt.ylabel('Floc Channel Width (m)')
 plt.title('Floc channel width vs plant flow')
 plt.show()
+plt.savefig('floc_channel_width_vs_plant_flow')
 
 ```
 
