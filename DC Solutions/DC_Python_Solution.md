@@ -1,15 +1,37 @@
 
-# DC Python Tutorial 2: 10-19
+# DC Python Tutorial
 
-Hint: If you are typing a function name and want to know what the options are for completing what you are typing, just hit the tab key for a menu of options.
+TEST TEST TEST Hint: If you are typing a function name and want to know what the options are for completing what you are typing, just hit the tab key for a menu of options.
 
 Hint: If you want to see the source code associated with a function, you can do the following
 import inspect
 inspect.getsource(foo)
+
 Where "foo" is the function that you'd like to learn about.
 
+Each section in Atom is either code or markdown. Markdown allows you to create very nicely formatted text including LaTeX equations, when certain packages are installed and the view is toggled on. An example:
+
+$$c = \sqrt{a^2 + b^2}$$
+
+You work can be previewed in real time using ctrl+shift+m, which opens up a second window that shows your work formatted nicely. To preview the LaTeX use ctrl + shift + x, if you have the markdown-preview-plus package installed (which you should)
+
+Each code section within the markdown file needs to begin with the header line:  
+
+**```python**   
+
+and end with :  
+
+ **```**
+
+Each code block will need to be run separately when you want to run your code. To run your code highlight the section between (but not including!) the heading and ending lines and click ctrl + enter. You can also place your cursor on a line and ctrl + enter to run one line at a time.
+
+Variables and functions run while the file is open in Atom are saved by the program while it remains open, however if certain cells are not run any parameter contained in them will not be evaluated and those values won't be able to be used if referenced elsewhere in the code. Additionally if you delete a section of code after it was run, the parameters it created will still exist until the file is closed and reopened.
+
+It is good practice to close, reopen, and rerun any assignment file after you've completed it to make sure it all runs as expected and that you haven't deleted an essential line of code!
+
+---
 ```python
-#Here we import packages that we will need for this notebook. You can find out about these packages in the Help menu.
+#Here we import packages that we will need for this assignment. You can find out about these packages in the Help menu.
 # although math is "built in" it needs to be imported so it's functions can be used.
 import math
 from scipy import constants, interpolate
@@ -22,25 +44,37 @@ import matplotlib.pyplot as plt
 # sys and os give us access to operating system directory paths and to sys paths.
 import sys, os
 # If you place your GitHub directory in your documents folder and
-# clone both the design challenge notebook and the AguaClara_design repo, then this code should all work.
+# clone both the design challenge file and the AguaClara_design repo, then this code should all work.
 # If you have your GitHub directory at a different location on your computer,
 # then you will need to adjust the directory path below.
-# add the path to your GitHub directory so that python can find files in other contained folders.
+# add the path to your GitHub directory so that Python can find files in other contained folders.
+
 path1 = '~'
 path2 = 'Documents'
-path3 = 'GitHub'
-path4 = os.path.join(path1, path2, path3)
+#path3 = 'GitHub'
+path3 = 'github'
+#path4 = os.path.join(path1, path2, path3)
+path4 = os.path.join(path1,path3)
 myGitHubdir = os.path.expanduser(path4)
 if myGitHubdir not in sys.path:
     sys.path.append(myGitHubdir)
+
+myGitHubdir
+os
+print(os)
+print(sys)
 # add imports for AguaClara code that will be needed
 # physchem has functions related to hydraulics, fractal flocs, flocculation, sedimentation, etc.
 from aide_design import physchem as pc
+
 # pipedatabase has functions related to pipe diameters
 from aide_design import pipedatabase as pipe
+
 # units allows us to include units in all of our calculations
 from aide_design.units import unit_registry as u
+
 from aide_design import utility as ut
+
 ```
 
 ---
@@ -65,7 +99,7 @@ end
 y = sum(x)/length(x);
 end`
 
-In Python, functions can be written by using the keyword "def", followed by the function name and then the input parameters in paranthesis followed by a colon. A function is terminated with "return".
+In Python, functions can be written by using the keyword "def", followed by the function name and then the input parameters in parentheses followed by a colon. A function is terminated with "return".
 
 `def average(x):
    if ~isvector(x)
@@ -118,177 +152,107 @@ Python has a number of helpful commands to modify lists, and you can read more a
 
 In order to use lists as arrays, numpy (numpy provides tools for working with **num** bers in **py** thon) provides an array data type that is defined using ( ).
 
-
 ```python
 a_array = np.array(a)
 ```
 
-
 ```python
 a_array
 ```
-
-
-
-
     array([0, 1, 2, 3])
 
-
-
 Pint, which adds unit capabilities to Python, (see section on units below) is compatible with NumPy, so it is possible to add units to arrays and perform certain calculations with these arrays. We recommend using NumPy arrays rather than lists because NumPy arrays can handle units. Additionally, use functions from NumPy if possible instead of function from the math package when possible because the math package does not yet handle units. Units are added by multiplying the number by the unit raised to the appropriate power. The pint unit registry was imported above as "u" and thus the units for milliliters are defined as u.mL.
+
+The complete registry for units available for Pint can be found [here](https://github.com/hgrecco/pint/blob/master/pint/default_en.txt), though more details on units are below.
 
 
 ```python
 a_array_units = a_array * u.m
 ```
 
-
 ```python
 a_array_units
-```
 
+```
 \[\begin{pmatrix}0 & 1 & 2 & 3\end{pmatrix} meter\]
 
-
 In order to make a 2D array, you can use the same [NumPy array command](https://docs.scipy.org/doc/numpy/reference/generated/numpy.array.html).
-
 
 ```python
 b = np.array([[0,1,2],[3,4,5],[6,7,8]])*u.mL
 b
 ```
 
-
-
-
 \[\begin{pmatrix}0 & 1 & 2\\
-3 & 4 & 5\\ 
+3 & 4 & 5\\
 6 & 7 & 8\end{pmatrix} milliliter\]
-
-
 
 Indexing is done by row and then by column. To call all of the elements in a row or column, use a colon. As you can see in the following example, indexing in python begins at zero. So `b[:,1]` is calling all rows in the second column
 
-
 ```python
 b[:,1]
+
 ```
-
-
-
 
 \[\begin{pmatrix}1 & 4 & 7\end{pmatrix} milliliter\]
 
-
-
 If you want a specific range of values in an array, you can also use a colon to slice the array, with the number before the colon being the index of the first element, and the number after the colon being **one greater** than the index of the last element.
-
 
 ```python
 b[1:3,0]
 ```
 
-
-
-
 \[\begin{pmatrix}3 & 6\end{pmatrix} milliliter\]
 
-
-
 For lists and 1D arrays, the `len()` command can be used to determine the length. Note that the length is NOT equal to the index of the last element because the indexes are zero based. The len function can be used with lists and arrays. For multiple dimension arrays the `len()` command returns the length of the first dimension.
-
 
 ```python
 len(a)
 ```
-
-
-
-
-    4
-
-
-
+4
 
 ```python
 len(b)
 ```
-
-
-
-
     3
 
-
-
 For any higher dimension of array, `numpy.size()` can be used to find the total number of elements and `numpy.shape()` can be used to learn the dimensions of the array.
-
 
 ```python
 np.size(b)
 ```
-
-
-
-
     9
-
-
-
 
 ```python
 np.shape(b)
 ```
-
-
-
-
     (3, 3)
-
-
 
 For a listing of the commands you can use to manipulate numpy arrays, refer to the [scipy documentation](https://docs.scipy.org/doc/numpy/reference/routines.array-manipulation.html).
 
 Sometimes, it is helpful to have an array of elements that range from zero to a specified number. This can be useful, for example, in creating a graph. To create an array of this type, use [numpy.arange](https://docs.scipy.org/doc/numpy/reference/generated/numpy.arange.html).
 
-
 ```python
 crange = np.arange(10)
 ```
 
-
 ```python
 crange
 ```
-
-
-
-
     array([0, 1, 2, 3, 4, 5, 6, 7, 8, 9])
-
-
-
 
 ```python
 cdetailedrange = np.arange(5,10,0.1)
 ```
 
-
 ```python
 cdetailedrange
 ```
-
-
-
-
     array([ 5. ,  5.1,  5.2,  5.3,  5.4,  5.5,  5.6,  5.7,  5.8,  5.9,  6. ,
             6.1,  6.2,  6.3,  6.4,  6.5,  6.6,  6.7,  6.8,  6.9,  7. ,  7.1,
             7.2,  7.3,  7.4,  7.5,  7.6,  7.7,  7.8,  7.9,  8. ,  8.1,  8.2,
             8.3,  8.4,  8.5,  8.6,  8.7,  8.8,  8.9,  9. ,  9.1,  9.2,  9.3,
             9.4,  9.5,  9.6,  9.7,  9.8,  9.9])
-
-
-
 ---
 
 ## Units
@@ -311,27 +275,14 @@ A_reactor = pc.area_circle(D_reactor)
 Q_reactor = V_up*A_reactor
 Q_reactor
 ```
-
-
-
-
 0.0005067074790974977 meter<sup>2</sup> millimeter/second
 
-
-
 The result isn't formatted very nicely. We can select the units we'd like to display by using the `.to` method.
-
 
 ```python
 Q_reactor.to(u.mL/u.s)
 ```
-
-
-
-
 0.5067074790974977 milliliter/second
-
-
 
 We can also force the display to be in the metric base units
 
@@ -340,26 +291,15 @@ We can also force the display to be in the metric base units
 Q_reactor.to_base_units()
 ```
 
-
-
-
 5.067074790974977e-07 meter<sup>3</sup>/second
 
-
-
-If you need to strip units from a quantity (for example, for calculations using funtions that don't support units) you can use the `.magnitude` method. It is important that you force the quantity to be in the correct units before stripping the units.
+If you need to strip units from a quantity (for example, for calculations using functions that don't support units) you can use the `.magnitude` method. It is important that you force the quantity to be in the correct units before stripping the units.
 
 
 ```python
 Q_reactor.to(u.mL/u.s).magnitude
 ```
-
-
-
-
     0.5067074790974977
-
-
 
 ### Significant digits
 Python will happily display results with 17 digits of precision. We'd like to display a reasonable number of significant digits so that we don't get distracted with 14 digits of useless information. We created a [sig function in the AguaClara_design repository](https://github.com/AguaClara/AguaClara_design/blob/master/utility.py) that allows you to specify the number of significant digits to display. You can couple this with the print function to create a well formatted solution to a calculation. The sig function also displays the accompanying units.  
@@ -368,7 +308,6 @@ The sig function call is `ut.sig(value, sigfig)`.
 
 ### Example problem and solution.
 Calculate the number of moles of methane in a 20 L container at 15 psi above atmospheric pressure with a temperature of 30 C.
-
 
 ```python
 # First assign the values given in the problem to variables.
@@ -385,12 +324,7 @@ nmolesmethane
     There are 1.62 mol of methane in the container.
 
 
-
-
-
 1.6246299433154001 mole
-
-
 
 ---
 
@@ -400,19 +334,17 @@ When it becomes necessary to do the same calculation multiple times, it is usefu
 
 - Function blocks begin with the keyword def followed by the function name and parentheses ( ).
 - Any input parameters or arguments should be placed within these parentheses.
-- The code block within every function starts with a colon (:) and is indented.
+- The code block within every function starts with a colon ( \: ) and is indented.
 - The statement return [expression] exits a function and returns an expression to the user. A return statement with no arguments is the same as return None.
-- (Optional) The first statement of a function can the documentation string of the function or docstring, writeen with apostrophes ' '.
+- (Optional) The first statement of a function can the documentation string of the function or docstring, written with apostrophes ' '.
 
 Below is an example of a function that takes three inputs, pressure, volume, and temperature, and returns the number of moles.
-
 
 ```python
 # Creating a function is easy in Python
 def nmoles(P,V,T):
     return (P*V/(u.R*T.to(u.kelvin))).to_base_units()
 ```
-
 Try using the new function to solve the same problem as above. You can reuse the variables. You can use the new function call inside the print statement.
 
 
@@ -449,14 +381,13 @@ def DensityWater(T):
 print('The density of water at '+ut.sig(u.Quantity(20,u.degC),3) +' is '+ut.sig(DensityWater(u.Quantity(20,u.degC)),4)+'.')
 ```
 
-    The density of water at 20.0 celsius is 998.2 kg/m³.
-
+    The density of water at 20.0 Celsius is 998.2 kg/m³.
 
 ---
 
 ## Pipe Database
 
-The [`pipedatabase`](https://github.com/AguaClara/AguaClara_design/blob/master/pipedatabase.py) file in the `AguaClara_design` has many useful functions concerning pipe sizing. It provides functions that calculate actual pipe inner and outer diameters given the nominal diameter of the pipe. Note that nominal diameter just means the diameter that it is called (hence the discriptor "nominal") and thus a 1 inch nominal diameter pipe might not have any dimensions that are actually 1 inch!
+The [`pipedatabase`](https://github.com/AguaClara/AguaClara_design/blob/master/pipedatabase.py) file in the `AguaClara_design` has many useful functions concerning pipe sizing. It provides functions that calculate actual pipe inner and outer diameters given the nominal diameter of the pipe. Note that nominal diameter just means the diameter that it is called (hence the descriptor "nominal") and thus a 1 inch nominal diameter pipe might not have any dimensions that are actually 1 inch!
 
 
 ```python
@@ -481,12 +412,7 @@ ND_my_pipe = pipe.ND_SDR_available(IDmin,SDR)
 ND_my_pipe
 ```
 
-
-
-
 3.0 inch
-
-
 
 The actual inner diameter of this pipe is
 
@@ -498,7 +424,6 @@ print(ut.sig(ID_my_pipe.to(u.cm),2))
 
     8.2 cm
 
-
 We can display the available nominal pipe sizes that are in our database.
 
 
@@ -506,12 +431,7 @@ We can display the available nominal pipe sizes that are in our database.
 pipe.ND_all_available()
 ```
 
-
-
-
 \[\begin{pmatrix}0.5 & 1.0 & 2.0 & 3.0 & 4.0 & 6.0 & 8.0 & 10.0 & 12.0 & 16.0 & 18.0 & 24.0 & 30.0 & 36.0 & 48.0 & 60.0 & 72.0\end{pmatrix} inch\]
-
-
 
 ---
 
@@ -533,9 +453,7 @@ print('The kinematic viscosity of water at '+ut.sig(temperature,2)+' is '+ut.sig
 
     The kinematic viscosity of water at 20 celsius is 1.00e-6 m²/s
 
-
 ---
-
 
 ## Our First Graph!
 
@@ -545,18 +463,19 @@ We will use [matplotlib](https://matplotlib.org/) to create a graph of water den
 ```python
 # Create a list of 100 numbers between 0 and 100 and then assign the units of degC to the array.
 # This array will be the x values of the graph.
-
+# Note: when running sections of graphing code, the result only looks nice if it is run as a block rather than line by line.
 GraphTarray = u.Quantity(np.arange(100),u.degC)
 
 #Note the use of the .to method below to display the results in a particular set of units.
 plt.plot(GraphTarray, pc.viscosity_kinematic(GraphTarray).to(u.mm**2/u.s), '-')
 plt.xlabel('Temperature (degrees Celcius)')
 plt.ylabel('Viscosity (mm^2/s)')
+plt.title('Viscosity vs Temperature')
 plt.show()
+plt.savefig('viscosity_vs_temperature.png')
 ```
 
-
-![png](DC_Python_Tutorial_2_Solution_files/DC_Python_Tutorial_2_Solution_61_0.png)
+![png](DC_Python_Tutorial_Solution_files/DC_Python_Tutorial_Solution_61_0.png)
 
 
 ### Reynolds number
@@ -571,14 +490,11 @@ Reynolds_pipe = pc.re_pipe(Q,D,nu)
 Reynolds_pipe
 ```
 
-
-
-
     60124.953167297012
 
 
 
-Now use the sig function to display calulated values to a user specified number of significant figures.
+Now use the sig function to display calculated values to a user specified number of significant figures.
 
 
 ```python
@@ -588,15 +504,12 @@ print('The Reynolds number is '+ut.sig(pc.re_pipe(Q,D,nu),3))
     The Reynolds number is 6.01e+4
 
 
-Here is a table of a few of the equations describing pipe flow and their physchem function counterparts.
+Here is a table of a few of the equations describing pipe flow and their physchem function counterparts. (If you haven't already tested your LaTeX viewing capacity, now is the perfect time to try it with ctrl + shift + x)
 
-## Assorted Fluids Functions
-
-| Equation Name                         |                                                                                            Equation                                                                                           |                       Physchem function                      |
-|---------------------------------------|:---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|:------------------------------------------------------------:|
-| Reynolds Number                       |                                                                                 $Re= \frac{{4Q}}{{\pi D\nu }}$                                                                                |                 `re_pipe(FlowRate, Diam, Nu)`                |
-| Swamee-Jain Turbulent Friction factor           |                ${\rm{f}} = \frac{{0.25}}{{{{\left[ {\log \left( {\frac{\varepsilon }{{3.7D}} + \frac{{5.74}}{{{{{\mathop{\rm Re}\nolimits} }^{0.9}}}}} \right)} \right]}^2}}}$                |             `fric(FlowRate, Diam, Nu, PipeRough)`            |
-| Laminar Friction factor           |                ${\rm{f}} = \frac{64}{Re}$                |                         |
+| Equation Name|  Equation   |    Physchem function  |
+|----------|:-------:|:-------:|
+| Reynolds Number |  $Re= \frac{{4Q}}{{\pi D\nu }}$  | `re_pipe(FlowRate, Diam, Nu)`                |
+| Swamee-Jain Friction factor           |                ${\rm{f}} = \frac{{0.25}}{{{{\left[ {\log \left( {\frac{\varepsilon }{{3.7D}} + \frac{{5.74}}{{{{{\mathop{\rm Re}\nolimits} }^{0.9}}}}} \right)} \right]}^2}}}$                |             `fric(FlowRate, Diam, Nu, PipeRough)`            |
 | Hagen Pousille laminar flow head loss |                                                   ${h_{\rm{f}}} = \frac{{32\mu LV}}{{\rho g{D^2}}} = \frac{{128\mu LQ}}{{\rho g\pi {D^4}}}$                                                   |                                                              |
 | Darcy Weisbach head loss              |                                                             ${h_{\rm{f}}} = {\rm{f}}\frac{8}{{g{\pi ^2}}}\frac{{L{Q^2}}}{{{D^5}}}$                                                            |    `headloss_fric(FlowRate, Diam, Length, Nu, PipeRough)`    |
 | Swamee-Jain equation for diameter                              | $0.66\left ( \varepsilon ^{1.25}\left ( \frac{LQ^{2}}{gh_{f}} \right )^{4.75}+\nu Q^{9.4}\left ( \frac{L}{gh_{f}} \right )^{5.2} \right )^{0.04}$| `diam_swamee(FlowRate, HeadLossFric, Length, Nu, PipeRough)` |
@@ -619,17 +532,18 @@ plt.plot(Tarray, rhoarray, 'o', GraphTarray, (DensityWater(GraphTarray)), '-')
 plt.legend(['data', 'cubic'], loc='best')
 plt.xlabel('Temperature (degrees Celcius)', fontsize=20)
 plt.ylabel('Density (kg/m^3)', fontsize=20)
-
+plt.title('Density vs Temperature')
 
 #Now we show the graph and we are done!
 plt.show()  
+plt.savefig('desity_vs_temperature.png')
 ```
 
 
-![png](DC_Python_Tutorial_2_Solution_files/DC_Python_Tutorial_2_Solution_68_0.png)
+![png](DC_Python_Tutorial_Solution_files/DC_Python_Tutorial_Solution_68_0.png)
 
 
-# Design Challenge 1, learning Python, Jupyter, and some AguaClara Design Functions
+# Design Challenge 1, learning Python, Atom, and some AguaClara Design Functions
 
 ### 1)
 Calculate the minimum inner diameter of a PVC pipe that can carry a flow of at least 10 L/s for the town of Ojojona. The population is 4000 people. The water source is a dam with a surface elevation of 1500 m. The pipeline connects the reservoir to the discharge into a distribution tank at an elevation of 1440 m. The pipeline length is 2.5 km. The pipeline is made with PVC pipe with an SDR (standard diameter ratio) of 26.
@@ -641,10 +555,10 @@ ${h_e} = {K_e}\frac{{{V^2}}}{{2g}}$
 The water temperature ranges from 10 to 30 Celsius. The roughness of a PVC pipe is approximately 0.1 mm. Use the fluids functions to calculate the minimum inner pipe diameter to carry this flow from the dam to the distribution tank.
 
 Report the following
-* critical design temperature
+* critical design temperature (at what temperature will the design fail?)
 * kinematic viscosity (maximum viscosity will occur at the lowest temperature)
 * the minimum inner pipe diameter (in mm).
-Use complete sentences to report the results and use 2 significant digits (use the sig function).
+Use complete sentences to report the results and use 2 significant digits (use the ut.sig function).
 
 
 ```python
@@ -774,10 +688,18 @@ delta_elevationnew = 1500*u.m - 1450*u.m
 L_pipenew = 2.5*u.km + 30*u.m
 Knew = 1.5+3*0.3
 pipeline_Q_maxnew = pc.flow_pipe(pipeline_ID,delta_elevationnew,L_pipenew,nu,e,Knew)
-print('The new maximum flow rate at '+ut.sig(T_crit,2)+' is '+ut.sig(pipeline_Q_maxnew.to(u.L/u.s),2)+'.')
+print('The new maximum flow rate at '+ut.sig(T_crit,2)+' is '+ut.sig(pipeline_Q_maxnew.to(u.L/u.s),4)+'.')
+
 ```
 
-    The new maximum flow rate at 10 celsius is 12 l/s.
+    The new maximum flow rate at 10 celsius is 11.95 l/s.
+
+
+
+
+
+1.2999268625519206e-06 meter<sup>2</sup>/second
+
 
 
 ### 10)
@@ -785,30 +707,14 @@ How much less water will flow through the transmission line after the line is re
 
 
 ```python
-print('The reduction in flow is '+ut.sig((pipeline_Q_max-pipeline_Q_maxnew).to(u.L/u.s),2)+'.')
+print('The reduction in flow is '+ut.sig((pipeline_Q_max-pipeline_Q_maxnew).to(u.L/u.s),4)+'.')
 ```
 
-    The reduction in flow is 1.3 l/s.
+    The reduction in flow is 1.290 l/s.
 
-
-<div class="alert alert-block alert-danger">
-
-We noticed that many of you are having some difficulty with naming convention and syntax.
-
-Please refer to the following for Github [Standards Page] (https://github.com/AguaClara/aide_design/wiki/Standards) for naming standards.
-
-Additionally, here is a Github [Variable Naming Guide] (https://github.com/AguaClara/aide_design/wiki/Variable-Naming) that will be useful for creating variable names.
 
 ### 11)
-There exists a function within the physchem file called `pc.fric(FlowRate, Diam, Nu, PipeRough)` that returns the friction factor for both laminar and turbulent flow. In this problem, you will be creating a new function which you shall call `fofRe()` that takes the Reynolds number and the dimensionless pipe roughness (ε/D) as inputs.
-
-Recall that the format for defining a function is
-
-`def fofRe(input1, input2):
-    f = buncha stuff
-    return f`
-
-Since the equation for calculating the friction factor is different for laminar and turbulent flow (with the transition Reynolds number being defined within the physchem file), you will need to use an `if, else` statement for the two conditions. The two friction factor equations are given in the **Assorted Fluids Functions** table.
+The next big goal is to create the Moody diagram using the friction factor function. As a first step, modify the friction factor function from that takes the Reynolds number and dimensionless roughness (ε/D) as inputs. You should define the friction function with an if, else statement.
 
 
 ```python
@@ -823,129 +729,37 @@ def fofRe(Re,roughness):
 
 ### 12)
 
-<div class="alert alert-block alert-danger">
-Need to update picture!
-
 Create a beautiful Moody diagram. Include axes labels and show a legend that clearly describes each plot. The result should look like the picture of the graph below.![](Moody.png)
 
-### 12a)
-You will be creating a Moody diagram showing Reynolds number vs friction factor for multiple dimensionless pipe roughnesses. The first step to do this is to define the number of dimensionless pipe roughnesses you want to plot. We will plot 8 curves for the following values: 0, 0.0001, 0.0003, 0.001, 0.003, 0.01, 0.03, 0.1. We will plot an additional curve, which will be a straight line, for laminar flow, since it is not dependent on the pipe roughness value (see the Moody diagram above).
+Start by creating a numpy array of Reynolds numbers (note that start and stop are the log10 of 3500 and log10 of 10^8.
+logspace(start, stop[, num, endpoint, base, ...])
 
-* Create an array for the dimensionless pipe roughness values, using `np.array([])`.
-* Specify the amount of data points you want to plot for each curve. We will be using 50 points.
+Include a data point for the Reynolds number and friction factor for the pipeline problem that was calculated above.
 
-Because the Moody diagram is a log-log plot, we need to ensure that all 50 points on the diagram we are creating are equally spaced in log-space. Use the `np.logspace(input1, input2, input3)` function to create an array for turbulent Reynolds numbers and an array for laminar Reynolds numbers.
-* `input1` is the exponent for the lower bound of the range. For example, if you want your lower bound to be 1000, your input should be `math.log10(1000)` which is equal to 3.
-* `input2` is the exponent for the upper bound of the range. Format this input as you have formatted `input1`.
-* `input3` is the number of data points you are using for each curve.
-Note: The range for array that yo
-
-**12a) Deliverables**
-* Array of dimentionless pipe roughnesses. Call this array `eGraph`.
-* Variable defining the amount of points on each pipe roughness curve
-* Two arrays created using `np.logspace` which for turbulent and laminar Reynolds numbers, which will be the x-axis values for the Moody diagram
-
-Note: The bounds for the laminar Reynolds numbers array should span between 670 and the predefined transition number used in Problem 11. The bounds for the turbulent Reynolds numbers array should span between 3,500 and 100,000,000. These ranges are chosen to make the curves fit well within the graph and to intentionally omit data in the transition range between laminar and turbulent flows.
 
 
 ```python
 eGraph = np.array([0,0.0001,0.0003,0.001,0.003,0.01,0.03,0.1])
 Gpoint = 50
 ReG = np.logspace(math.log10(3500), 8, Gpoint)
-ReLam = np.logspace(math.log10(670),math.log10(pc.RE_TRANSITION_PIPE),Gpoint)
-
-```
-
-### 12b)
-
-Now you will create the y-axis values for turbulent flow (based on dimensionless pipe roughness) and laminar flow (not based on dimensionless pipe roughness). To do this, you will use the `fofRe()` function you wrote in Problem 11 to find the friction factors.
-
-Begin by creating an empty 2-dimensional array that will be populated by the turbulent-flow friction factors for each dimensionless pipe roughness. Use `np.zeros(number of rows, number of columns)`. The number of rows should be the number of dimensionless pipe roughness values (`len(eGraph)`), while the number of columns should be the number of data points per curve as defined above.
-
-Populating this array with friction factor values will require two `for` loops, one to iterate through rows and one to iterate through columns. Recall that `for` loop syntax is as follows:
-
-`example = np.zeros((40, 30))
-for i in range(0, 40):
-    for j in range(0, 30):
-        example[i,j] = function(buncha[i],stuff[j])`
-
-where `buncha` and `stuff` are arrays.
-
-You will repeat this process to find the friction factors for laminar flow. The only difference between the turbulent and laminar friction flow arrays will be that the laminar array will only have one dimension since it does not affected by the dimensionless pipe roughness. Start by creating an empty 1-dimensional array and then use a single `for` loop.
-
-**12b) Deliverables**
-* One 1-D array containing friction factor values for laminar flow.
-* One 2-D array containing friction factor values for each dimensionless pipe roughness for turbulent flow.
-
-
-```python
+ReLam = np.logspace(math.log10(670),math.log10(2100),Gpoint)
 fLam = np.zeros(Gpoint)
 for i in range(0,Gpoint):
     fLam[i] = fofRe(ReLam[i],0)
-
 fG = np.zeros((len(eGraph),Gpoint))
-for i in range(0,len(eGraph)):
-    for j in range(0, Gpoint):
-        fG[i,j]=fofRe(ReG[j],eGraph[i])
+for j in range(0,len(eGraph)-1):
+    for i in range(0, Gpoint):
+        fG[j,i]=fofRe(ReG[i],eGraph[j])
 
-###Another way (probably better) is to make only 1 for loop like the following example
-#fLam_opt = np.zeros((1,Gpoint))
-#fG_opt = np.zeros((len(eGraph),Gpoint))
-
-#for i in range(0, Gpoint):
- #   fLam_opt[0,i] = fofRe(1,ReLam[i])
- #   for j in range(0, len(eGraph)):
- #      fG_opt[j,i] = fofRe(eGraph[j],ReG[i])
-```
-
-### 12c)
-
-Now, we are ready to start making the Moody diagram!!!!!1!!! The plot formatting is included for you in the cell below. You will add to this cell the code that will actually plot the arrays you brought into existence in 12a) and 12b) with a legend. For the sake of your own sanity, please only add code where specified.
-
-* First, plot your arrays. See the plots in the tutorial above for the syntax. Recall that each dimensionless pipe roughness is a separate row within the 2-D array you created. To plot these roughnesses as separate curves, use a `for` loop to iterate through the rows of your array. To plot all columns in a particular row, use the `[1,:]` call on an array, where 1 is the row you are calling.
-
-
-* Plotting the laminar flow curve does not require a `for` loop because it is a 1-D array.
-    * Use a linewidth of 4 for all curves.
-
-
-
-* Now plot the data point you calculated in DC Python Tutorial 1, conveniently located a few problems above this one. Use the Reynolds number and friction factor obtained in Problem 5. Because this is a single point, it should be plotted as a circle instead of a line. Because a line composed of a single point does not exist.
-
-
-* You will need to make a legend for the graph using `leg = plt.legend(stringarray, loc = 'best')`
-    * The first input, `stringarray`, must be an array composed of strings instead of numbers. The array you created which contains the dimensionless pipe roughness values (`eGraph`) can be converted into a string array for your legend (`eGraph.astype('str'))`. You will need to add 'Laminar' and 'Pipeline' as strings to the new ` eGraph ` string array. Perhaps you will find `np.append(basestring, [('string1','string2')])` to be useful ;)
-
-
-
-
-```python
+mylegend = np.append(eGraph.astype('str'),[('laminar', 'Pipeline')])  
 #Set the size of the figure to make it big!
 plt.figure('ax',(10,8))
-
-
-#--------------------------------------------------------------------------------------
-#---------------------WRITE CODE BELOW-------------------------------------------------
-#--------------------------------------------------------------------------------------
-#You should begin by plotting your data.
-
 for i in range(len(fG)):
     plt.plot( ReG,fG[i,:], '-', linewidth = 4)
 
 #fig = plt.figure()  
-plt.plot(ReLam,fLam,'k-',linewidth = 4)
-
+plt.plot(ReLam,fLam,'k-',linewidth=4)
 plt.plot(pipeline_Re,fPipe,'ko')
-
-#Your legend should go below. If you try to make your legend before you make you plot your data, the legend will not show and you will be dazed and confused.
-mylegend = np.append(eGraph.astype('str'),[('laminar', 'Pipeline')])  
-leg = plt.legend(mylegend, loc='best')
-
-#--------------------------------------------------------------------------------------
-#---------------------WRITE CODE ABOVE-------------------------------------------------
-#--------------------------------------------------------------------------------------
-
-#LOOK AT ALL THIS COOL CODE!
 plt.yscale('log')
 plt.xscale('log')
 plt.grid(b=True, which='major', color='k', linestyle='-', linewidth=0.5)
@@ -955,40 +769,40 @@ plt.grid(b=True, which='minor', color='0.5', linestyle='-', linewidth=0.5)
 
 #The next 2 lines of code are used to set the transparency of the legend to 1.
 #The default legend setting was transparent and was cluttered.
-
+leg = plt.legend(mylegend, loc='best')
+leg.get_frame().set_alpha(1)
 
 plt.xlabel('Reynolds number', fontsize=30)
 plt.ylabel('Friction factor', fontsize=30)
 
 plt.show()  
+plt.savefig('reynolds_and_friction_factor.png')
 ```
 
 
-![png](DC_Python_Tutorial_2_Solution_files/DC_Python_Tutorial_2_Solution_100_0.png)
+![png](DC_Python_Tutorial_Solution_files/DC_Python_Tutorial_Solution_94_0.png)
 
 
 ### 13)
-Researchers in the AguaClara laboratory collected the following head loss data through a 1/8" diameter tube that was 2 m long using water at 22°C. The data is in a comma separated data (.csv) file named ['Head_loss_vs_Flow_dosing_tube_data.csv'](https://github.com/AguaClara/CEE4540_DC/blob/master/Head_loss_vs_Flow_dosing_tube_data.csv). Use the pandas read csv function (`pd.read_csv('filename.csv')`) to read the data file. Display the data so you can see how it is formatted.
+Researchers in the AguaClara laboratory collected the following head loss data through a 1/8" diameter tube that was 2 m long using water at 22 C. The data is in a comma separated data file named ['Head_loss_vs_Flow_dosing_tube_data.csv'](https://github.com/AguaClara/CEE4540_DC/blob/master/Head_loss_vs_Flow_dosing_tube_data.csv). Use the pandas read_csv function to read the data file into a pandas data object. Display the data so you can see how it is formatted.
 
 
 ```python
-head_loss_data = pd.read_csv('Head_loss_vs_Flow_dosing_tube_data.csv')    
+
+head_loss_data = pd.read_csv('Head_loss_vs_Flow_dosing_tube_data.csv')  
 head_loss_data  
+
+
 ```
-
-
-
 
 <div>
 <style>
     .dataframe thead tr:only-child th {
         text-align: right;
     }
-
     .dataframe thead th {
         text-align: left;
     }
-
     .dataframe tbody tr th {
         vertical-align: top;
     }
@@ -1109,19 +923,16 @@ head_loss_data
 
 
 ### 14)
-Using the data table from Problem 13, assign the head loss **and flow rate** data to separate 1-D arrays. Attach the correct units. `np.array` can extract the data by simply inputting the text string of the column header. Here is example code to create the first array:
-
-`HL_data=np.array(head_loss_data['Head loss (m)'])*u.m`
+Assign the head loss and the flow rate data to separate 1d NumPy arrays. Attach the correct units. NumPy.array can extract the data by simply passing it the text string of the column header. Here is example code to create the first array. `HL_data=np.array(head_loss_data['Head loss (m)'])*u.m`
 
 
 ```python
-HL_data = np.array(head_loss_data['Head loss (m)'])*u.m
-Q_data = np.array(head_loss_data['Flow rate (mL/min)'])*u.mL/u.min
-
+HL_data=np.array(head_loss_data['Head loss (m)'])*u.m
+Q_data=np.array(head_loss_data['Flow rate (mL/min)'])*u.mL/u.min
 ```
 
 ### 15)
-Calculate and report the maximum and minimum Reynolds number for this data set. Use the tube and temperature parameters specified in Problem 13. Use the `min` and `max` functions which take arrays as their inputs.
+Calculate and report the maximum and minimum Reynolds number for this data set.
 
 
 ```python
@@ -1138,13 +949,12 @@ print('The Reynolds number varied from '+ut.sig(Re_data_min,2)+' to '+ut.sig(Re_
 
 
 ### 16)
-You will now create a graph of headloss vs flow for the tube mentioned in the previous problems. This graph will have two sets of data: the real data contained within the csv file and some theoretical data. The theoretical data is what we would expect the headloss through the tube to be in an ideal world for any given flow. When calculating the theoretical headloss, assume that minor losses are negligible. Plot the data from the csv file as individual data points and the theoretical headloss as a continuous curve. Make the y-axis have units of cm and the x-axis have units of mL/s.
+Plot the data (as data points and NOT AS A CONTINUOUS LINE) and the theoretical value of head loss in a straight tube (as a curve) on a graph. For the theoretical value assume that minor losses were negligible. Make the y axis have units of cm and the x axis have units of mL/s.
 
-A few hints.
-* To find the theoretical headloss, you will first need to create an array of different flow values. While you could use the values in the csv file that you extracted in Problem 14, we would instead like you to create an array of 50 equally-spaced flow values. These values shall be between the minimum and maximum flows in the csv file.
-* You can use the `np.linspace(input1, input2, input3)` function to create this set of equally-spaced flows. Inputs for `np.linspace` are the same as they were for `np.logspace`, which was used in Problem 12a). Linspace does not work with units; you will need to remove the units (using `.magnitude`) from the inputs to `np.logspace` and then reattach the correct units of flow after creating the array.
-* The `pc.headloss_fric` function can handle arrays as inputs, so that makes it easy to produce the theoretical headloss array once you have finished your equally-spaced flow array.
-* When using `plt.plot`, make sure to convert the flow and headloss data to the desired units.
+A couple of hints.
+* You can use the linspace command to create a set of flows to calculate the theoretical head loss for the plot. Linspace doesn't work with units and so you will need to remove the units and then reattach the correct units of flow.
+* convert the flow and head loss data to the desired units when passing the data arrays to the plot method.
+* The `pc.headloss_fric` function can handle arrays as inputs, so that makes it easy to produce the theoretical head loss array.
 
 
 
@@ -1154,23 +964,23 @@ Qpoint=50
 
 QGraph= np.linspace((min(Q_data).to(u.mL/u.s)).magnitude, (max(Q_data).to(u.mL/u.s)).magnitude, Qpoint)*u.mL/u.s
 
-
 plt.plot(Q_data.to(u.mL/u.s),HL_data.to(u.cm),'o')
 plt.plot(QGraph.to(u.mL/u.s),pc.headloss_fric(QGraph,D_tube,L_tube,nu_data,0*u.mm).to(u.cm), '-',linewidth=2)
 
-
 leg=plt.legend(['data','theoretical major losses'], loc='best')
-#leg.get_frame().set_alpha(1)
+leg.get_frame().set_alpha(1)
 plt.xlabel('Flow rate (mL/s)')
-plt.ylabel('Head loss (cm)')
-plt.show()  
+plt.ylabel('Headloss (cm)')
+plt.title(' Headloss vs Flow rate')
+plt.show()
+plt.savefig('headloss_vs_flow_rate.png')
 ```
 
 
-![png](DC_Python_Tutorial_2_Solution_files/DC_Python_Tutorial_2_Solution_108_0.png)
+![png](DC_Python_Tutorial_Solution_files/DC_Python_Tutorial_Solution_102_0.png)
 
 
-The theoretical model doesn't fit the data very well. We assumed that major losses dominated. But that assumption was wrong. So let's try a more sophisticated approach where we fit minor losses to the data. Below we demonstrate the use of the [scipy curve_fit method](https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.curve_fit.html#scipy.optimize.curve_fit) to fit the minor loss coefficient given this data set.  In this example, `Q_data` is the flow rate array for the csv file from problem 13. You should re-name this variable below to whatever you titled this variable.
+The theoretical model doesn't fit the data very well. We assumed that major losses dominated. But that assumption was wrong. So let's try a more sophisticated approach where we fit minor losses to the data. Below we demonstrate the use of the [scipy curve_fit method](https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.curve_fit.html#scipy.optimize.curve_fit) to fit the minor loss coefficient given this data set.  
 
 
 ```python
@@ -1183,10 +993,10 @@ from scipy.optimize import curve_fit
 def HL_curvefit(FlowRate, KMinor):
     # The tubing is smooth AND pipe roughness isn't significant for laminar flow.
     PipeRough = 0*u.mm
-    L_tube = 2*u.m
-    T_data = u.Quantity(22,u.degC)
-    nu_data = pc.viscosity_kinematic(T_data)
-    D_tube = 1/8*u.inch
+    L_tube=2*u.m
+    T_data=u.Quantity(22,u.degC)
+    nu_data=pc.viscosity_kinematic(T_data)
+    D_tube=1/8*u.inch
     # pass all of the parameters to the head loss function and then strip the units so
     # the curve fitting function can handle the data.
     return (pc.headloss(FlowRate, D_tube, L_tube, nu_data, PipeRough, KMinor)).magnitude
@@ -1207,8 +1017,10 @@ plt.plot(Q_data.to(u.mL/u.s), HL_data.to(u.cm), 'o', label='data')
 plt.plot(Q_data.to(u.mL/u.s), ((HL_curvefit(Q_data, *popt))*u.m).to(u.cm), 'r-', label='fit')
 plt.xlabel('Flow rate (mL/s)')
 plt.ylabel('Head loss (cm)')
+plt.title('Curve fit of headloss to flow rate')
 plt.legend()
 plt.show()
+plt.savefig('curve_fit_headloss_and_flow_rate.png')
 
 #Calculate the root mean square error to estimate the goodness of fit of the model to the data
 RMSE_Kminor = (np.sqrt(np.var(np.subtract((HL_curvefit(Q_data, *popt)),HL_data.magnitude)))*u.m).to(u.cm)
@@ -1216,17 +1028,14 @@ print('The root mean square error for the model fit when adjusting the minor los
 ```
 
 
-![png](DC_Python_Tutorial_2_Solution_files/DC_Python_Tutorial_2_Solution_110_0.png)
+![png](DC_Python_Tutorial_Solution_files/DC_Python_Tutorial_Solution_104_0.png)
 
 
     The root mean square error for the model fit when adjusting the minor loss coefficient was 0.39 cm
 
 
-### 17)
-Repeat the analysis from the previous cell, but this time assume that the minor loss coefficient is zero and that diameter is the unknown parameter. The bounds specified in the line beginning with `popt, pcov` should be changed from the previous question (which had bounds from 0 to 20) to the new bounds of 0.001 to 0.01.
-
-Hint: Don't think too much about this, you only need to change the name of the defined function (perhaps "`HL_curvefit2`"?) and adjust its inputs/values.
-
+### 16)
+Repeat the analysis from the previous cell, but this time assume that the minor loss coefficient is zero and that diameter is the unknown parameter.
 
 ```python
 # Define a new function that calculates head loss given the flow rate
@@ -1261,212 +1070,27 @@ plt.xlabel('Flow rate (mL/s)')
 plt.ylabel('Head loss (cm)')
 plt.legend()
 plt.show()
+plt.savefig('curve_fit_and_covariance_headloss_and_flowrate.png')
 
 #Calculate the root mean square error to estimate the goodness of fit of the model to the data
-RMSE_Diameter = (np.sqrt(np.var(np.subtract((HL_curvefit2(Q_data, *popt)),HL_data.magnitude)))*u.m).to(u.cm)
+RMSE_Diameter = (np.sqrt(np.var(np.subtract((HL_curvefit(Q_data, *popt)),HL_data.magnitude)))*u.m).to(u.cm)
 print('The root mean square error for the model fit when adjusting the diameter was '+ut.sig(RMSE_Diameter,2))
 ```
 
 
-![png](DC_Python_Tutorial_2_Solution_files/DC_Python_Tutorial_2_Solution_112_0.png)
+![png](DC_Python_Tutorial_Solution_files/DC_Python_Tutorial_Solution_106_0.png)
 
 
-    The root mean square error for the model fit when adjusting the diameter was 0.47 cm
+    The root mean square error for the model fit when adjusting the diameter was 1.5 cm
 
 
-### 18
+### 17
 Changes to which of the two parameters, minor loss coefficient or tube diameter, results in a better fit to the data?
 
 The root mean square error was smaller when the minor loss coefficient was varied to fit the data.
 
-### 19
+### 18
 What did you find most difficult about learning to use Python? Create a brief example as an extension to this tutorial to help students learn the topic that you found most difficult.
 
 ## Final Pointer
-It is good practice to select Restart & Run All from the Kernel menu after completing an assignment to make sure that everything in your notebook works correctly and that you haven't deleted an essential line of code!
-
-
-
-```python
-#I had trouble with the for loop and filling an array and plotting that array
-#Problem: use a for loop to make an array where each point is a sum of the indices
-#ex array[1,1]=2, etc
-
-array=np.zeros((2,2))
-
-for i in range(2): #if you want to start from 0, you don't need to include 0, but if you
-    for j in range(2): #wanted a range going from 1 to 7 you would put range(1,7)
-        array[i,j]=i+1+j+1 #python starts to count from 1
-
-print(array)
-```
-
-    [[ 2.  3.]
-     [ 3.  4.]]
-
-
-
-```python
-print('I found creating arrays to be particularly difficult. For example, creating an empty 2-D array with 30 rows and 2 columns shown below')
-#Example of how to create a 2-D array of zeros
-example = np.zeros((30,2))
-example
-```
-
-    I found creating arrays to be particularly difficult. For example, creating an empty 2-D array with 30 rows and 2 columns shown below
-
-
-
-
-
-    array([[ 0.,  0.],
-           [ 0.,  0.],
-           [ 0.,  0.],
-           [ 0.,  0.],
-           [ 0.,  0.],
-           [ 0.,  0.],
-           [ 0.,  0.],
-           [ 0.,  0.],
-           [ 0.,  0.],
-           [ 0.,  0.],
-           [ 0.,  0.],
-           [ 0.,  0.],
-           [ 0.,  0.],
-           [ 0.,  0.],
-           [ 0.,  0.],
-           [ 0.,  0.],
-           [ 0.,  0.],
-           [ 0.,  0.],
-           [ 0.,  0.],
-           [ 0.,  0.],
-           [ 0.,  0.],
-           [ 0.,  0.],
-           [ 0.,  0.],
-           [ 0.,  0.],
-           [ 0.,  0.],
-           [ 0.,  0.],
-           [ 0.,  0.],
-           [ 0.,  0.],
-           [ 0.,  0.],
-           [ 0.,  0.]])
-
-
-
-
-```python
-print('The most difficult part is the units convertion. My suggestion would be to list all the values with SI units at first place, so that we can know what units we have. Then once we encounter any English unit, we will use the *u.units to call the original units.')
-```
-
-    The most difficult part is the units convertion. My suggestion would be to list all the values with SI units at first place, so that we can know what units we have. Then once we encounter any English unit, we will use the *u.units to call the original units.
-
-
-
-```python
-#Getting the units to match up with what you want.
-#It was hard to keep track of where to change the units and what the units of these arrays and variables are.
-
-#Example
-#A plant can process 1,300 L/day.
-#The users want to know how many seconds it will take to fill their water jugs which are cylinders of radius 5 cm and height of 10 inches.
-
-#Answer
-plantFL = 1300 *u.l /u.day
-jugVol = (np.pi*(5*u.cm)**2)*10*u.inch
-time = (jugVol/plantFL).to(u.s)
-
-print('The time to fill the jug is ' + ut.sig(time,3) + '.')
-```
-
-    The time to fill the jug is 133 s.
-
-
-
-```python
-# In order to create a evenly spaced array use the function linspace, but take out the units and bring them back in.
-#flow_data = np.linspace(min(FR_data).to(u.mL/u.s).magnitude,max(FR_data).to(u.mL/u.s).magnitude,50)*u.mL/u.s
-```
-
-
-```python
-#indentation
-for i in range(1,5):
-    for j in range(1,5):
-        for k in range(1,5):
-            if( i != k ) and (i != j) and (j != k):
-                print(ut.sig(i,j))
-```
-
-    1.0
-    1.0
-    1.00
-    1.00
-    1.000
-    1.000
-    2
-    2
-    2.00
-    2.00
-    2.000
-    2.000
-    3
-    3
-    3.0
-    3.0
-    3.000
-    3.000
-    4
-    4
-    4.0
-    4.0
-    4.00
-    4.00
-
-
-
-```python
-# When learning how to use python, I found the if /else if/ else statement could be confused
-# though we did not use them a lot in DC1/2, they still worth mention
-# little example attached
-x = 2
-
-if x < 0:
-    print('x < 0')                      # executes only if x < 0
-elif x == 0:
-    print('x is zero')                 # if it's not true that x < 0, check if x == 0
-elif x == 1:
-    print('x == 1')                    # if it's not true that x < 0 and x != 0, check if x == 1
-else:
-    print('non of the above is true')
-```
-
-    non of the above is true
-
-
-
-```python
-#The unit conversions from a given set of data to a graphical representation (such as mL/min given data to mL/s graphical data)
-
-#Make a smooth plot that represents the theoretical range of head loss values for a pipe with a minimum flow rate of 60 L/min
-#and a maximum of 110 L/min. The tube is 5 m long and has a diameter of a 1/4". It's chilly where this pipe is hanging out,
-#so the temperature is 5 degrees Celsius. It's a pretty ~cool~ pipe to say the least. The plot should be mL/s of flow vs m of head loss.
-
-numpoints = 50
-Diam = .25*u.inch
-Length = 5*u.m
-Temp = u.Quantity(5,u.degC)
-Nu = pc.viscosity_kinematic(Temp)
-PipeRough = .1*u.mm
-MaxFlow = 110*u.L/u.min
-MinFlow = 60*u.L/u.min
-FlowRate = (np.linspace(MinFlow.magnitude, MaxFlow.magnitude, numpoints))*(u.L/u.min)
-Headloss = pc.headloss_fric(FlowRate, Diam, Length, Nu, PipeRough)
-plt.plot(FlowRate.to(u.mL/u.s), Headloss.to(u.m), '-')
-plt.xlabel('Flow Rate (mL/s)', fontsize=20)
-plt.ylabel('Head Loss (m)', fontsize=20)
-plt.show()
-
-#it's not a very good pipe design, but you get the point
-```
-
-
-![png](DC_Python_Tutorial_2_Solution_files/DC_Python_Tutorial_2_Solution_124_0.png)
+It is good practice to close, reopen, and rerun your file after completing an assignment to make sure that everything in your assignment works correctly and that you haven't deleted an essential line of code!
