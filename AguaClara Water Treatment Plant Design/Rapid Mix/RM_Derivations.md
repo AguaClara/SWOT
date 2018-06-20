@@ -1,6 +1,6 @@
 # Rapid Mix Derivations
 
-## $t_{eddy}$
+### $t_{eddy}$
 
 Eddy turnover time, $t_{eddy}$, is the time it takes for the eddy to travel a distance equal to its length-scale. We assume that the energy of the large eddy is dissipated into smaller length scales in the time $t_{eddy}$:
 
@@ -20,8 +20,8 @@ $$\color{purple}{
   t_{eddy} \approx \frac{L_{eddy}}{\left( \bar\varepsilon \, L_{eddy} \right)^\frac{1}{3}} \approx \left( \frac{L_{eddy}^2}{ \bar\varepsilon }\right)^\frac{1}{3}
 }$$
 
-## $t_{coagulant, \, application}$
-## Collision Rates
+### $t_{coagulant, \, application}$
+#### Collision Rates
 $${\rlap{\kern.08em--}V_{\rm{Cleared}}} \approx \pi d_{Clay} L_{Diff_{NC}} v_r t_c$$
 
 Where $\rlap{\kern.08em--}V_{Occupied} = \Lambda_{Clay}^3$. Solve for $t_c$:
@@ -38,14 +38,14 @@ Where $t_c = \frac{dN_c}{dt}$:
 $$dN_c = \pi d_{Clay} L_{Diff_{NC}}{\Lambda^{-2}_{Clay}} G dt$$
 
 
-### Collision Rate and Particle Removal
+#### Collision Rate and Particle Removal
 A fraction of the remaining coagulant nanoparticles are removed during the time required for one sweep past the clay particle.
 
 $$\frac{dn_{NC}}{ - k \, n_{NC}} = dN_c$$
 
 $$\frac{dn_{NC}}{ - k \, n_{NC}} = \pi d_{Clay} L_{Diff_{NC}}{\Lambda^{-2}_{Clay}} G dt$$
 
-### Integrate the coagulant transport model
+#### Integrate the coagulant transport model
 Integrate from the initial coagulant nanoparticle concentration to the concentration at time t.
 $$\int \limits_{n_{NC_0}}^{n_{NC}} n_{NC}^{- 1} \, dn_{NC}  =  - \pi d_{Clay} L_{Diff_{NC}} \Lambda^{-2}_{Clay} G \, k  \int \limits_0^t {dt} $$
 
@@ -60,7 +60,7 @@ $$\color{purple}{
   t_{coagulant, \, application} = \frac{2.3p C_{NC} \, \Lambda_{Clay}^2}{\pi G k \, d_{Clay}\,  L_{Diff_{NC}} }
 }$$
 
-## $G_{coagulant, \, application}$
+### $G_{coagulant, \, application}$
 
 $$  \Delta h =   \frac{G^2 \nu \theta}{g} $$
 

@@ -1,5 +1,6 @@
-# Average Energy Dissipation Rate and Camp-Stein Velocity Gradient Derivations
-## Straight pipe (wall shear)
+## Table of $G$, $\varepsilon$, and $h_L$ for Different Geometries Derivations
+These are the derivations for the equations that appear in the table containing equations for $G$, $\varepsilon$, and $h_L$.
+### Straight pipe (wall shear)
 The average energy dissipation rate, $\bar\varepsilon$, in a control volume with residence time $\theta$ is
 $$ \bar\varepsilon = \frac{gh_{\rm{L}}}{\theta} $$
 
@@ -29,7 +30,7 @@ or in terms of flow rate, we have:
 
 $$  G_{CS} = \left(\frac{\rm{32f}}{ \pi^3\nu} \frac{Q^3}{D^7} \right)^\frac{1}{2}$$
 
-## Straight Pipe Laminar
+### Straight Pipe Laminar
 Laboratory scale apparatus is often limited to laminar flow where viscosity effects dominate. The equations describing laminar flow conditions always include viscosity. For the case of laminar flow in a straight pipe, we have:
 
 $$\rm{f} = \frac{64}{Re}$$
@@ -67,7 +68,7 @@ $$ \bar v=\frac{Q}{A} = \frac{4Q}{\pi D^2}$$
 
 $$ G_{CS} =\frac{16\sqrt2}{\pi} \frac{Q}{D^3} $$
 
-## Parallel plates Laminar
+### Parallel plates Laminar
 
 Flow between parallel plates occurs in plate settlers in the sedimentation tank. We will derive the velocity gradient at the wall using the Navier Stokes equation.
 
@@ -176,7 +177,7 @@ $$ \bar\varepsilon = 12 \nu \left(\frac{  \bar v}{S} \right)^2  $$
 The Camp-Stein velocity gradient for laminar flow between parallel plates is
 $$G_{CS} = 2\sqrt{3}\frac{  \bar v}{S}$$
 
-## Coiled tubes (laminar flow)
+### Coiled tubes (laminar flow)
 Coiled tubes are used as flocculators at laboratory scale. The one shown below is a doubled coil. A single coil would only go around one cylinder
 
 [<img src="https://github.com/AguaClara/CEE4540_Master/raw/master/AguaClara%20Water%20Treatment%20Plant%20Design/Rapid%20Mix/Images/Tube_flocculator_AC.JPG" width="500">](https://confluence.cornell.edu/display/AGUACLARA/Laminar+Tube+Floc?preview=/10422268/258146480/ReportLaminarTubeFlocSpring2014.pdf)
@@ -215,7 +216,7 @@ $$\color{purple}{
   G_{CS_{coil}} = 4\sqrt2 \frac{\bar v}{D}\left[ 1 + 0.033\left(log_{10}De\right)^4  \right]^\frac{1}{2}
 }$$
 
-## Expansions
+### Expansions
 
 The average energy dissipation rate for a flow expansion really only has meaning if there is a defined control volume where the mechanical energy is lost. Hydraulic flocculators provide such a case because the same flow expansion is repeated and thus the mechanical energy loss can be assumed to happen in the volume associated with one flow expansion. I this case we have
 
