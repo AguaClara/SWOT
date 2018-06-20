@@ -71,7 +71,7 @@ $$ G_{CS} =\frac{16\sqrt2}{\pi} \frac{Q}{D^3} $$
 
 Flow between parallel plates occurs in plate settlers in the sedimentation tank. We will derive the velocity gradient at the wall using the Navier Stokes equation.
 
-<img src="https://github.com/AguaClara/CEE4540_Master/raw/master/AguaClara%20Water%20Treatment%20Plant%20Design/Energy%20Dissipation%20and%20Velocity%20Gradients/Images/Parallel_Plate_schematic.png" width="400">
+<img src="https://github.com/AguaClara/CEE4540_Master/raw/master/AguaClara%20Water%20Treatment%20Plant%20Design/Rapid%20Mix/Images/Parallel_Plate_schematic.png" width="400">
 
 Figure x. A fluid flowing from left to right due to a pressure gradient results in wall shear on the parallel plates. This flow profile is for the case when $\frac{dp}{dx}$ is negative.
 
@@ -137,7 +137,7 @@ $$\varepsilon_{wall} = G_{wall}^2 \nu$$
 $$\varepsilon_{wall} = \left( \frac{6 \bar v}{S}\right)^2 \nu$$
 
 Head loss due to shear on the plates is obtained from a force balance on a control volume between two parallel plates.
-<img src="https://github.com/AguaClara/CEE4540_Master/raw/master/AguaClara%20Water%20Treatment%20Plant%20Design/Energy%20Dissipation%20and%20Velocity%20Gradients/Images/pipe_pressure_shear_force_balance.png" width="400">
+<img src="https://github.com/AguaClara/CEE4540_Master/raw/master/AguaClara%20Water%20Treatment%20Plant%20Design/Rapid%20Mix/Images/pipe_pressure_shear_force_balance.png" width="400">
 
 Figure x. A fluid flowing between parallel plates from left to right due to a pressure gradient results in wall shear.
 
@@ -179,7 +179,7 @@ $$G_{CS} = 2\sqrt{3}\frac{  \bar v}{S}$$
 ## Coiled tubes (laminar flow)
 Coiled tubes are used as flocculators at laboratory scale. The one shown below is a doubled coil. A single coil would only go around one cylinder
 
-[<img src="https://github.com/AguaClara/CEE4540_Master/raw/master/AguaClara%20Water%20Treatment%20Plant%20Design/Energy%20Dissipation%20and%20Velocity%20Gradients/Images/Tube_flocculator_AC.JPG" width="500">](https://confluence.cornell.edu/display/AGUACLARA/Laminar+Tube+Floc?preview=/10422268/258146480/ReportLaminarTubeFlocSpring2014.pdf)
+[<img src="https://github.com/AguaClara/CEE4540_Master/raw/master/AguaClara%20Water%20Treatment%20Plant%20Design/Rapid%20Mix/Images/Tube_flocculator_AC.JPG" width="500">](https://confluence.cornell.edu/display/AGUACLARA/Laminar+Tube+Floc?preview=/10422268/258146480/ReportLaminarTubeFlocSpring2014.pdf)
 
 Figure x. The double coiled flocculator creates secondary currents that oscillate in direction. This may be helpful in creating much more mixing than would occur in a straight laminar flow pipe.
 
@@ -246,7 +246,7 @@ $$\color{purple}{
 ### Straight pipe (major losses)
 The maximum velocity gradient in pipe flow occurs at the wall. This is true for both laminar and turbulent flow. In either case a force balance on a control volume of pipe gives us the wall shear and the wall shear can then be used to estimate the velocity gradient at the wall.
 
-<img src="https://github.com/AguaClara/CEE4540_Master/raw/master/AguaClara%20Water%20Treatment%20Plant%20Design/Energy%20Dissipation%20and%20Velocity%20Gradients/Images/pipe_pressure_shear_force_balance.png" width="400">
+<img src="https://github.com/AguaClara/CEE4540_Master/raw/master/AguaClara%20Water%20Treatment%20Plant%20Design/Rapid%20Mix/Images/pipe_pressure_shear_force_balance.png" width="400">
 
 Figure x. A fluid flowing from left to right due to a pressure gradient results in wall shear.
 
@@ -351,7 +351,7 @@ fig.savefig(imagepath+'Jet_centerline_EDR')
 plt.show()
 ```
 
-<img src="https://github.com/AguaClara/CEE4540_Master/raw/master/AguaClara%20Water%20Treatment%20Plant%20Design/Energy%20Dissipation%20and%20Velocity%20Gradients/Images/Jet_centerline_EDR.png" width="400">
+<img src="https://github.com/AguaClara/CEE4540_Master/raw/master/AguaClara%20Water%20Treatment%20Plant%20Design/Rapid%20Mix/Images/Jet_centerline_EDR.png" width="400">
 
 Figure x. The centerline energy dissipation rate downstream from a round jet. The distance downstream is measured in units of jet diameters. The energy dissipation rate between the jet and 7 jet diameters is developing as the shear between the stationary fluid and the jet propagates toward the center of the jet and turbulence is generated.
 
@@ -419,7 +419,7 @@ A flat plate normal to the direction of flow could be used in a hydraulic floccu
 The impellers used in mechanical flocculators could be modeled as a rotating flat plate. The energy dissipation rate in the wake behind the flat plate is often quite high in mechanical flocculators and this may be responsible for breaking previously formed flocs.
 
 Ariane Walker-Horn modeled the flat plate using Fluent in 2015.
-<img src="https://github.com/AguaClara/CEE4540_Master/raw/master/AguaClara%20Water%20Treatment%20Plant%20Design/Energy%20Dissipation%20and%20Velocity%20Gradients/Images/CFD_Flat_Plate.png" width="600">
+<img src="https://github.com/AguaClara/CEE4540_Master/raw/master/AguaClara%20Water%20Treatment%20Plant%20Design/Rapid%20Mix/Images/CFD_Flat_Plate.png" width="600">
 
 Figure x. The energy dissipation rate and streamlines for a 1 m wide plate in two dimensional flow with an approach velocity of $1 m/s$. The maximum energy dissipation rate was approximately $0.04 W/kg$.
 

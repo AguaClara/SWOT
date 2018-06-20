@@ -23,7 +23,7 @@ The two concepts that were not covered in the previous chapter, [fluids review](
 
 $G$, or velocity gradient, is a measure of fluid deformation. It is defined by how quickly one point of water along one streamline moves in comparison to another point on another streamline ($v_A$ compared to $v_B$, for example), taking into account the distance between the streamlines, $\Delta h$. A visual example of a velocity gradient is shown in the image below:
 
-<center><img src="https://raw.githubusercontent.com/AguaClara/CEE4540_Master/master/AguaClara%20Water%20Treatment%20Plant%20Design/Energy%20Dissipation%20and%20Velocity%20Gradients/Images/Velocity_gradient_image.jpg" width=700></center>
+<center><img src="https://raw.githubusercontent.com/AguaClara/CEE4540_Master/master/AguaClara%20Water%20Treatment%20Plant%20Design/Rapid%20Mix/Images/Velocity_gradient_image.jpg" width=700></center>
 
 </br>
 
@@ -31,7 +31,7 @@ $G$, or velocity gradient, is a measure of fluid deformation. It is defined by h
 
 $\varepsilon$, or energy dissipation rate, is the rate that the kinetic energy of the fluid is being converted to heat. EDR is a very useful concept because the last step of converting kinetic energy into heat is accomplished by viscosity ($\nu$). This kinetic energy being dissipated by viscosity is the energy associated with velocity gradients ($G$). Thus, through EDR there is a direct connection between $\nu$ and $G$. This connection will be further covered later on in this introduction.
 
-<center><img src="https://raw.githubusercontent.com/AguaClara/CEE4540_Master/master/AguaClara%20Water%20Treatment%20Plant%20Design/Energy%20Dissipation%20and%20Velocity%20Gradients/Images/EDR_image.jpg" width=700></center>
+<center><img src="https://raw.githubusercontent.com/AguaClara/CEE4540_Master/master/AguaClara%20Water%20Treatment%20Plant%20Design/Rapid%20Mix/Images/EDR_image.jpg" width=700></center>
 
 As mentioned above, EDR and velocity gradients play an important role in mixing and in causing suspended particles to collide with each other, both of which are important topics in flocculation. Their use is not limited to flocculation, they are also helpful in understanding failure modes of plate settlers ([Sedimentation](https://github.com/AguaClara/CEE4540_Master/tree/master/AguaClara%20Water%20Treatment%20Plant%20Design/Sedimentation)) and terminal head loss of sand filters ([Filtration](https://github.com/AguaClara/CEE4540_Master/tree/master/AguaClara%20Water%20Treatment%20Plant%20Design/Filtration)).
 
@@ -47,7 +47,7 @@ These dimensions can be understood as a velocity squared per time, otherwise kno
 
 Velocity gradients are central to flocculation because they cause the deformation of the fluid, and this results in particle collisions. Consider a real-world example via the image below: if everyone on a sidewalk is walking in the same direction at exactly the same velocity, then there will never be any collisions between people (top). If, however, people at one side of the sidewalk stand still and people walk progressively faster as a function of how far they are away from the zero velocity side of the sidewalk, then there will be many collisions between the pedestrians.  Indeed, the rate of collisions is proportional to the velocity gradient.
 
-<center><img src="https://raw.githubusercontent.com/AguaClara/CEE4540_Master/master/AguaClara%20Water%20Treatment%20Plant%20Design/Energy%20Dissipation%20and%20Velocity%20Gradients/Images/Pedestrians_on_sidewalk.jpg" width=600></center>
+<center><img src="https://raw.githubusercontent.com/AguaClara/CEE4540_Master/master/AguaClara%20Water%20Treatment%20Plant%20Design/Rapid%20Mix/Images/Pedestrians_on_sidewalk.jpg" width=600></center>
 
 ### Equations for $\varepsilon$ and $G$ in Varying Flow Geometries
 
