@@ -1,4 +1,7 @@
 # Textbook Guidelines and Convention
+## Beginning a Document
+A document should always begin with the biggest size heading (#) stating the name of the document. First comes the chapter name, then a line break using < / br >, then the chapter section all in the same line. For example.
+#Chapter </br> Section
 
 ## Text Coloring
 ### <font color="red">Red is Uncertain</font>
