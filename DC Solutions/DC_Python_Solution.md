@@ -1,4 +1,21 @@
 
+```python
+#Here we import packages that we will need for this assignment. You can find out about these packages in the Help menu.
+# although math is "built in" it needs to be imported so it's functions can be used.
+import math
+from scipy import constants, interpolate
+#see numpy cheat sheet https://www.dataquest.io/blog/images/cheat-sheets/numpy-cheat-sheet.pdf
+#The numpy import is needed because it is renamed here as np.
+import numpy as np
+#Pandas is used to import data from spreadsheets
+import pandas as pd
+import matplotlib.pyplot as plt
+# sys and os give us access to operating system directory paths and to sys paths.
+import sys, os
+from aide_design import physchem as pc
+from aide_design import pipedatabase as pipe
+from aide_design.units import unit_registry as u
+from aide_design import utility as ut
 
 # Design Challenge 1, learning Python, Atom, and some AguaClara Design Functions
 
