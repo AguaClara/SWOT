@@ -31,7 +31,7 @@ $A_{or}$ = orifice area- NOT contracted flow area
 $\Delta h$ = elevation difference between orifice and water level
 
 **Equations in aide_design:**  
-`[pc.flow_orifice(Diam, Height, RatioVCOrifice)](https://github.com/AguaClara/aide_design/blob/e2e092605698adca8c8903e3c3a555e069027f1e/aide_design/physchem.py)` Returns flow through a horizontal orifice.  
+[`pc.flow_orifice(Diam, Height, RatioVCOrifice)`](https://github.com/AguaClara/aide_design/blob/e2e092605698adca8c8903e3c3a555e069027f1e/aide_design/physchem.py#L385) Returns flow through a horizontal orifice.  
 `pc.flow_orifice_vert(Diam, Height, RatioVCOrifice)` Returns flow through a vertical orifice. The height parameter refers to height above the center of the orifice.
 
 This example should be closely followed when presenting equations, including the word 'Where:' with a colon to introduce the parameters and the format used to introduce the equations in aide_design.
