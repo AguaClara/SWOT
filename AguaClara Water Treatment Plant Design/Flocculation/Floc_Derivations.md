@@ -1,4 +1,5 @@
-# Deriving the Design Equations for the Flocculator
+# Flocculation <br> Derivations
+## Design Equations for the Flocculator
 This document contains the derivation for the minimum allowable width of a flocculator channel based on the requirements that $3 < \Pi_{H_eS} < 6$ and that we maintain the $\bar G$ that serves as a basis for design. The final parameter derived is $W_{Min, \, \Pi_{H_eS}}$.
 
 ### Width
@@ -10,7 +11,7 @@ First, we begin by setting the two equations for energy dissipation rate, $\bar 
 
 $$\nu \bar G^2 = \frac{g h_{L_{floc}}}{\theta}$$
 
-#### **Very Important Note:**
+##### **Very Important Note:**
 For the following steps, we will consider the flow through _**a single flow expansion $H_e$, not through the entire flocculator**_. This could be from baffle to obstacle, obstacle to baffle, obstacle to obstacle, or baffle to baffle depending on how many obstacles are in the design. This means that we are briefly redefining $\theta$ to be the time it takes for the flow to fully expand after a flow contraction. $\theta$ no longer represents the time it takes for the flow to go through the entire flocculator.
 
 From here we make three subsequent substitutions: first $h_{L_{floc}} = K \frac{\bar v^2}{2g}$, then $\theta = \frac{H_e}{\bar v}$, and finally $\bar v = \frac{Q}{WS}$

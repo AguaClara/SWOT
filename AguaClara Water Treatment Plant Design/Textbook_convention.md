@@ -1,5 +1,42 @@
 # Textbook Guidelines and Convention
 
+***
+## Document Headings
+A document should always begin with the biggest size heading (#) stating the name of the document. First comes the chapter name, then a line break using < / br >, then the chapter section all in the same line. For example:
+# Chapter <br> Section
+Each subsequent header begins with ## and continues hierarchically, ###, then ####, and so on.
+***
+
+## Figures and Tables
+When writing, embed figures with html convention for more flexibility:  
+`<img src="figure_name.com/things/stuff.jpg" width="600">` instead of markdown convention:  
+`![Figure Referral](figure_name.com/things/stuff.jpg)`  
+html convention allows you to change the figure's size by changing the value of `width=600`.
+### Centering
+Using html code also allows you more flexibility when aligning an image.  
+Centering:
+`<center><img src="figure_name.com/things/stuff.jpg" width="600"></center>`
+Left align: `<img src="figure_name.com/things/stuff.jpg" width="600" style="float: left">`  
+***
+
+
+## Equations
+Whenever a new equation is introduced, it should be followed by a list explaining its parameters. If the equation has a counterpart in aide design, that should be included after the parameter explanation. In the example equation below, taken from 'Fluids_Review_Design.md', $Q$ and $g$ where introduced in previous equations and did not need to be reintroduced
+
+$$Q = \Pi_{vc} A_{or} \sqrt{2g\Delta h}$$
+
+Where:  
+$\Pi_{vc}$ = 0.62 = vena contracta coefficient, in aide_design as `pc.RATIO_VC_ORIFICE`  
+$A_{or}$ = orifice area- NOT contracted flow area  
+$\Delta h$ = elevation difference between orifice and water level
+
+**Equations in aide_design:**  
+[`pc.flow_orifice(Diam, Height, RatioVCOrifice)`](https://github.com/AguaClara/aide_design/blob/e2e092605698adca8c8903e3c3a555e069027f1e/aide_design/physchem.py#L385) Returns flow through a horizontal orifice.  
+`pc.flow_orifice_vert(Diam, Height, RatioVCOrifice)` Returns flow through a vertical orifice. The height parameter refers to height above the center of the orifice.
+
+This example should be closely followed when presenting equations, including the word 'Where:' with a colon to introduce the parameters and the format used to introduce the equations in aide_design.
+***
+
 ## Text Coloring
 ### <font color="red">Red is Uncertain</font>
 Red coloring indicates that there is more research to be done on the topic under consideration. Any concept colored red will be further discussed in the 'Uncertainties' section of each chapter.
@@ -9,22 +46,6 @@ A purple colored equation indicates that a final equation is being presented. Th
 When purple is seen in an image, it indicates a streamline or a control volume
 
 ### <font color="blue">Blue is ... Do we need another color? If so what should we assign to it? </font>
-
-## Equations
-Whenever a new equation is introduced, it should have a section explaining its new parameters. If the equation has a counterpart in aide design, that should be included after the parameter explanation. In the example equation below, taken from 'Fluids_Review_Design.md', $Q$ and $g$ where introduced in previous equations and did not need to be reintroduced
-***
-$$Q = \Pi_{vc} A_{or} \sqrt{2g\Delta h}$$
-
-Where:  
-$\Pi_{vc}$ = 0.62 = vena contracta coefficient, in aide_design as `pc.RATIO_VC_ORIFICE`  
-$A_{or}$ = orifice area- NOT contracted flow area  
-$\Delta h$ = elevation difference between orifice and water level
-
-**Equations in aide_design:**  
-`pc.flow_orifice(Diam, Height, RatioVCOrifice)` Returns flow through a horizontal orifice.  
-`pc.flow_orifice_vert(Diam, Height, RatioVCOrifice)` Returns flow through a vertical orifice. The height parameter refers to height above the center of the orifice.
-***
-This example should be closely followed when presenting equations, including the word 'Where:' with a colon to introduce the parameters and the format used to introduce the equations in aide_design.
 
 
 ## Parameters
