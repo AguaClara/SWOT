@@ -1,4 +1,5 @@
-# Deriving the Minor Loss Equations
+#Fluids Review <br> Derivations
+## Minor Loss Equations
 
 This document contains the derivation of the minor loss equation using the following image as a reference. The derivation begins with a slightly simplified energy equation across the control volume show. Our energy equation begins with $h_P$ and $h_T$ having been eliminated.
 

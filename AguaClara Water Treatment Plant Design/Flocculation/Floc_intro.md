@@ -1,3 +1,4 @@
+# Flocculation <br> Introduction
 ```python
 # %%
 from aide_design.play import*
