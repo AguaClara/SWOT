@@ -5,6 +5,8 @@ from aide_design.play import*
 from aide_design import floc_model as floc
 from pytexit import py2tex
 
+
+
 #Below are the items that were imported by the code above so that you know what abbreviations to use in your code.
 
 # Third-party imports
@@ -56,13 +58,6 @@ V_filter_backwash = 11 * u.mm / u.s
 g = pc.gravity
 
 ```
-
-<div class="alert alert-block alert-info">
-Remember: don't break continuity!
-
-Ensure that you use the variables defined above in your code, do not hard code any numbers if you do not have to.
-</div>
-
 ### 1)
 Calculate the total sand depth of all 6 sand layers.
 

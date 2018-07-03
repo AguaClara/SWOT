@@ -59,7 +59,7 @@ if myGitHubdir not in sys.path:
     sys.path.append(myGitHubdir)
 
 myGitHubdir
-os
+
 print(os)
 print(sys)
 # add imports for AguaClara code that will be needed
