@@ -93,7 +93,9 @@ The root mean square error for the model fit when adjusting the diameter was 0.4
 Changes to which of the two parameters, minor loss coefficient or tube diameter, results in a better fit to the data?
 
 ## 7)
-Create a design for a [chemical dose controller using aguaclara](https://github.com/AguaClara/aguaclara/blob/master/aguaclara/design/cdc.py). Then take that design and calculate the maximum coagulant dose that it will deliver.
+Create a design for a [chemical dose controller using aguaclara](https://github.com/AguaClara/aguaclara/blob/master/aguaclara/design/cdc.py).  Use the AguaClara cdc functions to obtain the diameter, length, and number of dosing tubes that are required. Then take that design and use the physchem functions for flow in a pipe to calculate the maximum coagulant dose that it will deliver. This design and check is a powerful tool to ensure that you don't make mistakes because the two steps are done using different code.
+
+I've included the code necessary to get the length of the dosing tubes.
 
 ``` python
   import aguaclara
@@ -114,18 +116,10 @@ Create a design for a [chemical dose controller using aguaclara](https://github.
   KMinor = 2
 
   L_tube = cdc.len_cdc_tube(FlowPlant, ConcDoseMax, ConcStock, DiamTubeAvail, HeadlossCDC, LenCDCTubeMax, temp, en_chem, KMinor)
-  D_tube = cdc.diam_cdc_tube(FlowPlant, ConcDoseMax, ConcStock, DiamTubeAvail, HeadlossCDC, LenCDCTubeMax, temp, en_chem, KMinor).to(u.inch)
-  n_tube = cdc.n_cdc_tube(FlowPlant, ConcDoseMax, ConcStock, DiamTubeAvail, HeadlossCDC, LenCDCTubeMax, temp, en_chem, KMinor)
-
-  Nu = cdc.viscosity_kinematic_pacl(ConcStock, temp)
-  PipeRough = 0 * u.mm
-
-  C_Plant_Max = n_tube * pc.flow_pipe(D_tube, HeadlossCDC, L_tube, Nu, PipeRough, KMinor) * ConcStock/FlowPlant
-  print(C_Plant_Max.to(u.mg/u.L))
 ```
 
 ## 8)
-An AguaClara plant will be upgraded from 20 L/s to 30 L/s by adding two sedimentation tanks, increasing the head loss through the flocculator, and adding an additional StaRS filter. Give the current design specs for the CDC. Propose the most cost effective modification to the CDC to handle the additional flow.
+An AguaClara plant will be upgraded from 20 L/s to 30 L/s by adding two sedimentation tanks, increasing the head loss through the flocculator, and adding an additional StaRS filter. Give the current design specs for the CDC, Propose a modification to the CDC to handle the additional flow for the coagulant.
 
 ## 9)
 Determine if the LFOM diameter will need to be increased for a 20 L/s to 30 L/s plant upgrade.
