@@ -88,7 +88,7 @@ Since the equation for calculating the friction factor is different for laminar 
 ### 12)
 Create a beautiful Moody diagram. Include axes labels and show a legend that clearly describes each plot. The result should look like the figure below.
 
-![Moody diagram describing fluid flow in straight pipes.](https://github.com/AguaClara/CEE4520/blob/master/DC/images/Moody.png)
+![Moody diagram describing fluid flow in straight pipes.](https://raw.githubusercontent.com/AguaClara/CEE4520/master/DC/images/Moody.png)
 
 
 ### 12a)
