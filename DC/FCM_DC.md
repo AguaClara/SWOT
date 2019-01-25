@@ -1,12 +1,8 @@
 # Flow Control and Measurement Design Challenge
 
 
-Researchers in the AguaClara laboratory collected the following head
-loss data through a 1/8" diameter tube that was 2 m long using water at
-22°C. The data is in a comma separated data (.csv) file named
-[Head_loss_vs_Flow_dosing_tube_data.csv](https://raw.githubusercontent.com/AguaClara/CEE4520/master/DC%20Solutions/Markdown/Head_loss_vs_Flow_dosing_tube_data.csv)
-. Use the pandas read csv function (`pd.read_csv('filename.csv')`) to
-read the data file. Display the data so you can see how it is formatted.
+Researchers in the AguaClara laboratory collected the following head loss data through a 1/8" diameter tube that was 2 m long using water at
+22°C. The data is in a comma separated data (.csv) file named [Head_loss_vs_Flow_dosing_tube_data.csv](https://raw.githubusercontent.com/AguaClara/CEE4520/master/DC%20Solutions/Markdown/Head_loss_vs_Flow_dosing_tube_data.csv). Use the pandas read csv function (`pd.read_csv('filename.csv')`) to read the data file. Display the data so you can see how it is formatted.
 
 ``` python
   import pandas as pd
@@ -18,64 +14,29 @@ read the data file. Display the data so you can see how it is formatted.
 ```
 
 ## 1)
+Using the data table above, assign the head loss and flow rate data to separate 1-D arrays. Attach the correct units. `np.array` can extract the data by simply inputting the text string of the column header. Here is example code to create the first array:
 
-
-Using the data table above, assign the head loss and flow rate data to
-separate 1-D arrays. Attach the correct units. `np.array` can extract
-the data by simply inputting the text string of the column header. Here
-is example code to create the first array:
 ``` python
   HL_data=np.array(head_loss_data['Head loss (m)'])*u.m
 ```
 
 ## 2)
-Calculate and report the maximum and minimum Reynolds number for this
-data set. Use the tube and temperature parameters specified above. Use
-the `min` and `max` functions which take arrays as their inputs.
+Calculate and report the maximum and minimum Reynolds number for this data set. Use the tube and temperature parameters specified above. Use the `min` and `max` functions which take arrays as their inputs.
 
 The Reynolds number varied from 2.9e+2 to 1.0e+3.
 
 ## 3)
-You will now create a graph of head loss vs flow for the tube mentioned
-in the previous problems. This graph will have two sets of data: the
-real data contained within the csv file and some theoretical data. The
-theoretical data is what we would expect the head loss through the tube
-to be in an ideal world for any given flow. When calculating the
-theoretical head loss, assume that minor losses are negligible. Plot the
-data from the csv file as individual data points and the theoretical
-head loss as a continuous curve. Make the y-axis have units of cm and
-the x-axis have units of mL/s.
+You will now create a graph of head loss vs flow for the tube mentioned in the previous problems. This graph will have two sets of data: the real data contained within the csv file and some theoretical data. The theoretical data is what we would expect the head loss through the tube to be in an ideal world for any given flow. When calculating the theoretical head loss, assume that minor losses are negligible. Plot the data from the csv file as individual data points and the theoretical head loss as a continuous curve. Make the y-axis have units of cm and the x-axis have units of mL/s.
 
 A few hints.
 
--   To find the theoretical head loss, you will first need to create
-        an array of different flow values. While you could use the
-        values in the csv file that you extracted in Problem 14, we
-        would instead like you to create an array of 50 equally-spaced
-        flow values. These values shall be between the minimum and
-        maximum flows in the csv file.
--   You can use the `np.linspace(input1, input2, input3)` function
-        to create this set of equally-spaced flows. Inputs for
-        `np.linspace` are the same as they were for `np.logspace`, which
-        was used in Problem 12a). Linspace does not work with units; you
-        can make the inputs dimensionless and then multiply the array by
-        a scaling factor with units.
--   The `pc.headloss_fric` function can handle arrays as inputs, so
-        that makes it easy to produce the theoretical head loss array
-        once you have finished your equally-spaced flow array.
--   When using plotting, make sure to convert the flow and head loss
-        data to the desired units.
+- To find the theoretical head loss, you will first need to create an array of different flow values. While you could use the values in the csv file, we would instead like you to create an array of 50 equally-spaced flow values. These values shall be between the minimum and maximum flows in the csv file.
+- You can use the `np.linspace(input1, input2, input3)` function to create this set of equally-spaced flows. Inputs for `np.linspace` are the same as they were for `np.logspace`, which was used in Problem 12a). Linspace does not work with units; you can make the inputs dimensionless and then multiply the array by a scaling factor with units.
+- The `pc.headloss_fric` function can handle arrays as inputs, so that makes it easy to produce the theoretical head loss array once you have finished your equally-spaced flow array.
+- When using plotting, make sure to convert the flow and head loss data to the desired units.
 
 ## 4)
-
-The theoretical model doesn't fit the data very well. We assumed that
-major losses dominated. But that assumption was wrong. So let's try a
-more sophisticated approach where we fit minor losses to the data. Below
-we demonstrate the use of the [scipy curve_fit
-method](https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.curve_fit.html#scipy.optimize.curve_fit)
-to fit the minor loss coefficient given this data set. In this example,
-`Q_data` is the flow rate array for the csv file from problem 13. You
-should re-name this variable below to whatever you titled this variable.
+The theoretical model doesn't fit the data very well. We assumed that major losses dominated. But that assumption was wrong. So let's try a more sophisticated approach where we fit minor losses to the data. Below we demonstrate the use of the [scipy curve_fit method](https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.curve_fit.html#scipy.optimize.curve_fit) to fit the minor loss coefficient given this data set. In this example, `Q_data` is the flow rate array for the csv file from problem 13. You should re-name this variable below to whatever you titled this variable.
 
 ``` python
   from scipy.optimize import curve_fit
@@ -119,31 +80,20 @@ should re-name this variable below to whatever you titled this variable.
   print('The root mean square error for the model fit when adjusting the minor loss coefficient was',RMSE_Kminor)
 ```
 
-The root mean square error for the model fit when adjusting the minor
-loss coefficient was 0.39 cm
+The root mean square error for the model fit when adjusting the minor loss coefficient was 0.39 cm
 
 ## 5)
-Repeat the analysis above, but this time assume that the minor loss
-coefficient is zero and that diameter is the unknown parameter. The
-bounds specified in the line beginning with `popt, pcov` should be
-changed from the previous question (which had bounds from 0 to 20) to
-the new bounds of 0.001 to 0.01.
+Repeat the analysis above, but this time assume that the minor loss coefficient is zero and that diameter is the unknown parameter. The bounds specified in the line beginning with `popt, pcov` should be changed from the previous question (which had bounds from 0 to 20) to the new bounds of 0.001 to 0.01.
 
-Hint: You only need to change the name of the defined function (perhaps
-"`HL_curvefit2`"?) and adjust its inputs/values.
+Hint: You only need to change the name of the defined function (perhaps "`HL_curvefit2`"?) and adjust its inputs/values.
 
-The root mean square error for the model fit when adjusting the diameter
-was 0.47 cm
+The root mean square error for the model fit when adjusting the diameter was 0.47 cm
 
 ## 6)
-Changes to which of the two parameters, minor loss coefficient or tube
-diameter, results in a better fit to the data?
+Changes to which of the two parameters, minor loss coefficient or tube diameter, results in a better fit to the data?
 
 ## 7)
-Create a design for a [chemical dose controller using
-aguaclara](https://github.com/AguaClara/aguaclara/blob/master/aguaclara/design/cdc.py)
-. Then take that design and calculate the maximum coagulant dose that it
-will deliver.
+Create a design for a [chemical dose controller using aguaclara](https://github.com/AguaClara/aguaclara/blob/master/aguaclara/design/cdc.py). Then take that design and calculate the maximum coagulant dose that it will deliver.
 
 ``` python
   import aguaclara
@@ -175,12 +125,7 @@ will deliver.
 ```
 
 ## 8)
-An AguaClara plant will be upgraded from 20 L/s to 30 L/s by adding two
-sedimentation tanks, increasing the head loss through the flocculator,
-and adding an additional StaRS filter. Give the current design specs for
-the CDC. Propose the most cost effective modification to the CDC to
-handle the additional flow.
+An AguaClara plant will be upgraded from 20 L/s to 30 L/s by adding two sedimentation tanks, increasing the head loss through the flocculator, and adding an additional StaRS filter. Give the current design specs for the CDC. Propose the most cost effective modification to the CDC to handle the additional flow.
 
 ## 9)
-Determine if the LFOM diameter will need to be increased for a 20 L/s to
-30 L/s plant upgrade.
+Determine if the LFOM diameter will need to be increased for a 20 L/s to 30 L/s plant upgrade.
