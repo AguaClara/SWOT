@@ -28,7 +28,7 @@ What is the residence time in this mixing zone?
 ```
 ### 3)
 
-How much head loss from wall shear will have occurred in the pipe in the distance measured in the previous problem? Compare this with the
+How much head loss from wall shear will have occurred in the pipe in the distance measured in the previous problem?
 ```python
 
 ```
@@ -91,7 +91,7 @@ How much volume is "cleared" by these particles divided by the volume occupied b
 ```python
 
 ```
-The above calculations illustrate why 1 NTU is a practical limit for flocculation. Assuming that we don't want to apply so much coagulant that the clay particles are completely covered with coagulant, then some fraction of the collisions will be ineffective. Thus at 1 NTU a $G \theta$ of 40,000 might only cause one successful collisions
+The above calculations illustrate why 1 NTU is a practical limit for flocculation. Assuming that we don't want to apply so much coagulant that the clay particles are completely covered with coagulant, then some fraction of the collisions will be ineffective. Thus at 1 NTU a $G \theta$ of 40,000 might only cause one successful collision.
 
 # Flocculator design
 
