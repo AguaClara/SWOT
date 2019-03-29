@@ -1,4 +1,4 @@
-# Sedimentation Design Challenge
+# Sedimentation/Filtration Design Challenge
 The aguaclara code does not yet design a sedimentation tank. Here we will do design a few of the elements of the sedimentation tank and you will need to code some of these functions. Then we will explore the design of the diffuser system.
 
 ```python
