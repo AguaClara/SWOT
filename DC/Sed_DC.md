@@ -90,3 +90,22 @@ Analyze what happens as you vary the diameter of the diffuser by a factor of 20 
 Identify failures or fabrication challenges that occur if the diameter of the diffuser is too large or too small and derive and solve an equation that sets the limit for maximum and minimum diameters. Make reasonable assumptions and set constraints that you think would be important. For example, you can assume that the distance between the jet reverser and the bottom of the plate settler support system is 1 m. You can also assume that the wall thickness of the diffuser pipes is about 1 mm.
 
 After you identify the constraints for the smallest and largest diameter diffuser pipes, then assess those two options for viability. Which option uses the least material to fabricate? How might we fabricate the option that you are proposing?
+
+# Filtration Design Challenge
+
+
+### 1)
+
+A rapid sand filter treats settled water for 3 days before it is backwashed. The average settled water turbidity 1 NTU. The average filtered water turbidity is 0.03 NTU. The filtration velocity is 1.8 mm/s and the backwash velocity is 11 mm/s. The backwash duration is 15 minutes. Calculate the average turbidity of the backwash water.
+
+### 2)
+
+Explain why particles are captured at flow constrictions inside sand filters.
+
+### 3)
+
+Explain the role of coagulant nanoparticles in the capture of particles by flow constrictions in sand filters.
+
+### 4)
+
+Explain why a flow constriction in a filter has a limited capacity to collect particles.
