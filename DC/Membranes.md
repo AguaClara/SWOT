@@ -66,4 +66,22 @@ headloss
 
 (14800000*u.USD/(15*u.Mgal/u.day)).to(u.USD/(u.L/u.s))
 ```
-# what
+# what is the head loss vs time for accumulation of clay in a uniform layer on a membrane filter?
+
+```python
+d=100 * u.nm  
+L = 1000*d
+V_a = 8 * u.um/u.s  
+porosity = 0.15
+Temp=15*u.degC
+Membrane_HL =( 32*pc.viscosity_dynamic(Temp)*L*V_a/(porosity*pc.density_water(Temp)*u.standard_gravity*d**2)).to(u.cm)
+Clay_density = 2650 * u.kg/u.m**3
+Clay_C = 5 * u.NTU
+Clay_layer_V = V_a*Clay_C/(Clay_density*(1-porosity))
+t = 1*u.hr
+Clay_layer_t =( Clay_layer_V * t).to(u.nm)
+Clay_layer_t
+```
+
+# Pore blocking deposition of clay.
+Assume each clay particle blocks one port. Calculate head loss as a function of time, turbidity, velocity.
