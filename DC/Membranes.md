@@ -3,6 +3,7 @@
 
 ```python
 import aguaclara
+import aguaclara.research.floc_model as fm
 import aguaclara.core.physchem as pc
 import aguaclara.core.head_loss as minorloss
 import aguaclara.core.pipes as pipes
@@ -72,16 +73,46 @@ headloss
 d=100 * u.nm  
 L = 1000*d
 V_a = 8 * u.um/u.s  
-porosity = 0.15
+membrane_porosity = 0.15
+clay_porosity = 0.4
 Temp=15*u.degC
-Membrane_HL =( 32*pc.viscosity_dynamic(Temp)*L*V_a/(porosity*pc.density_water(Temp)*u.standard_gravity*d**2)).to(u.cm)
+Membrane_HL =( 32*pc.viscosity_dynamic(Temp)*L*V_a/(membrane_porosity*pc.density_water(Temp)*u.standard_gravity*d**2)).to(u.cm)
 Clay_density = 2650 * u.kg/u.m**3
 Clay_C = 5 * u.NTU
-Clay_layer_V = V_a*Clay_C/(Clay_density*(1-porosity))
+Clay_layer_V = V_a*Clay_C/(Clay_density*(1-clay_porosity))
 t = 1*u.hr
 Clay_layer_t =( Clay_layer_V * t).to(u.nm)
 Clay_layer_t
+
+#Let's assume 1 clay particle per pore
+
+Membrane_pore_density = membrane_porosity/pc.area_circle(d)
+Membrane_pore_density
+fm.Clay.Density
+def num_clay(ConcClay, material):
+    """Return the number of clay particles in suspension."""
+    return (ConcClay / ((material.Density * np.pi * material.Diameter**3) / 6)).to(1/u.L)
+Clay_N =num_clay(Clay_C,fm.Clay)
+Clay_N
+
+
+(Membrane_pore_density/Clay_N).to(u.m)
+t_clog = (Membrane_pore_density/Clay_N/V_a).to(u.hr)
+
+t_clog
 ```
+# Pall Aria FB Equipment
+
+[reference](https://food-beverage.pall.com/content/dam/pall/food-beverage/literature-library/non-gated/FBARIAFBEN.pdf)
+
+```python
+Modules_N = 12
+Module_L = 3.185 * u.m
+Module_W = 1.280 * u.m
+Module_Q = 60 * u.m**3/u.hr
+Module_V = (Module_Q/(Module_L*Module_W)).to(u.mm/u.s)
+Module_V
+|```
 
 # Pore blocking deposition of clay.
 Assume each clay particle blocks one port. Calculate head loss as a function of time, turbidity, velocity.
