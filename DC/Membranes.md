@@ -91,8 +91,11 @@ Membrane_pore_density
 fm.Clay.Density
 def num_clay(ConcClay, material):
     """Return the number of clay particles in suspension."""
-    return (ConcClay / ((material.Density * np.pi * material.Diameter**3) / 6)).to(1/u.L)
+    return (ConcClay / ((material.Density * np.pi * material.Diameter**3) / 6)).to(1/u.m**3)
 Clay_N =num_clay(Clay_C,fm.Clay)
+Clay_N
+
+Clay_N = fm.num_clay(Clay_C,fm.Clay)
 Clay_N
 
 
