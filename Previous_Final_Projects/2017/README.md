@@ -4,7 +4,7 @@ Project Title | Team | Team Members | Brief Project Description
 :------------: | :-------------: | ------------- | -------------
 **1 Liter per Second Plants in Parallel** | CHANCEUX | Priya Aggarwal, Sung Min Kim, Felix Yang | Feasibility and engineering details behind installing multiple 1 LPS plants
 **AguaClara LEED Design** | RC | Roswell Lo, Congcong Wu | Exploring implementation of LEED or other certifications in AguaClara plants
-**AguaClara in Colombia** | LFEM | Fletcher Chapin, Erica Marroquin, Erica Marroquin | Logistics behind implementation of an AguaClara plant in Santa Rosal�a, Colombia
+**AguaClara in Colombia** | LFEM | Fletcher Chapin, Erica Marroquin, Lilly Mendoza | Logistics behind implementation of an AguaClara plant in Santa Rosal�a, Colombia
 **Breaking Borders to Change Water Availability in Bolivia** | Sssssnakes | Aobei Cheng, Jacob Dahneke, Bo Yang | Water treatment plant options for Suriqui, Bolivia. Focused on energy sources
 **Chemical Dose Simplification** | MIC | Yuhao Du, Simiao Wang, Yinnge Wang, Lingzi Xia | Calculation behind minor loss-driven linearity in AguaClara Chemical Dose Controllers
 **Feasibility of AguaClara Plants in Puerto Rico** | Flamingos | Ben Diskin, Clare O'Conner, Thomas Suesser | Data consolidation of water treatment systems in Puerto Rico, emphasis on how AguaClara can fit into the island in the future
